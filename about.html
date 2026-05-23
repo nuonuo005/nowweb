@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="关于诺诺 — 10年跨行业运营人，终身学习者，技术爱好者" />
+  <meta property="og:title" content="关于我 — 诺诺的小博客空间" />
+  <meta name="theme-color" content="#1a1428" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E📝%3C/text%3E%3C/svg%3E" />
+  <title>关于我 — 诺诺的小博客空间</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
+          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
+        },
+      },
+    }
+  </script>
+  <style>
+    .text-gradient { background-clip: text; -webkit-background-clip: text; color: transparent; background-image: linear-gradient(135deg, #5E6AD2, #8D99AE); }
+  </style>
+</head>
+<body class="bg-neutral text-dark font-sans antialiased">
+
+  <!-- 阅读进度条 -->
+  <div id="reading-progress"></div>
+
+  <!-- ─── 导航栏 ─── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <i class="fa fa-paper-plane text-primary text-xl"></i>
+          <span class="text-xl font-semibold">诺诺的小博客空间</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">首页</a>
+          <a href="#journey" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
+          <a href="#skills" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
+          <a href="#articles" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
+          <a href="archive.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">归档</a>
+          <a href="about.html" class="nav-link text-sm font-medium text-primary transition-colors active">关于</a>
+          <a href="#contact" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
+        </div>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
+          <i class="fa fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
+      <div class="px-4 py-3 space-y-1">
+        <a href="index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
+        <a href="#journey" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
+        <a href="#skills" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
+        <a href="#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
+        <a href="archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
+        <a href="about.html" class="block px-4 py-2.5 rounded-lg text-primary bg-primary/5 font-medium">关于</a>
+        <a href="#contact" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden ink-bg pt-16">
+    <div class="ink-particle"></div>
+    <div class="ink-particle"></div>
+    <div class="ink-particle"></div>
+    <div class="ink-particle"></div>
+    <div class="ink-particle"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
+      <div class="animate-fadeIn">
+        <div class="mx-auto w-px h-12 mb-10" style="background: linear-gradient(180deg, transparent, rgba(212,175,55,0.3));"></div>
+        <h1 class="font-bold leading-tight mb-8" style="font-size: clamp(2.5rem, 8vw, 4rem); color: rgba(255,255,255,0.95);">
+          关于我
+        </h1>
+        <div class="about-avatar mx-auto flex items-center justify-center bg-primary/20">
+          <i class="fa fa-user text-4xl text-primary"></i>
+        </div>
+        <p class="font-ma text-xl md:text-2xl mt-6" style="color: rgba(253,230,138,0.8); letter-spacing: 0.08em;">
+          诺诺 · 终身学习者
+        </p>
+        <div class="brush-stroke mt-10"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 我是谁 ─── -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      <h2 class="font-bold mb-10 text-center" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">我是谁</h2>
+      <div class="text-gray-700 leading-relaxed space-y-5 text-lg">
+        <p>大家好，我是<strong>诺诺</strong>。一个拥有10年跨行业实战经验的运营人，也是一名始终在路上的终身学习者。</p>
+        <p>十年职场路，我从<strong>保险行业的内勤主训</strong>起步，到<strong>汽车集团的运营管理</strong>，再到如今独立运作的运营顾问——每一次转型都是一次自我突破。我深信，真正值钱的是<strong>可迁移的能力</strong>：数据分析思维、项目管理的闭环习惯、与不同层级高效沟通的同理心、以及快速扎入一个新领域并产出价值的学习力。</p>
+        <p>除了本职工作，我还是一个不折不扣的<strong>技术爱好者</strong>。自学了前端开发、自动化脚本和AI工具应用，独立搭建了这个个人博客。我相信技术不是程序员的专利——每个人都有能力用技术让生活和工作变得更高效、更有趣。</p>
+        <p>在日常生活中，我保持着大量<strong>阅读</strong>的习惯——一年50本书，涵盖商业、科技、心理学和文学。我也喜欢<strong>旅行和摄影</strong>，用脚步丈量世界，用镜头记录那些动人的瞬间。作为一个<strong>虚拟世界探索者</strong>，我通过互联网了解不一样的文化与风景，发现更多可能性。</p>
+        <p>这个博客承载着我的<strong>思考与感悟</strong>——关于技术、关于成长、关于这个快速变化的时代。期待在这里遇见志同道合的你，一起交流，共同进步。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 联系我 ─── -->
+  <section id="contact" class="py-20 bg-neutral">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <h2 class="font-bold mb-4" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">联系我</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">期待与志同道合的你交流学习</p>
+      </div>
+      <div class="max-w-2xl mx-auto reveal">
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <h3 class="text-xl font-bold mb-8 text-center">找到我</h3>
+          <div class="space-y-6">
+            <a href="mailto:nuon9951@gmail.com" class="flex items-center justify-center gap-4 group">
+              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <i class="fa fa-google text-primary text-xl"></i>
+              </div>
+              <div class="text-left">
+                <p class="text-gray-500 text-sm">谷歌邮箱</p>
+                <p class="font-bold text-lg group-hover:text-primary transition-colors">nuon9951@gmail.com</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 关于这个博客 ─── -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      <h2 class="font-bold mb-10 text-center" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">关于这个博客</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-neutral rounded-2xl p-8 shadow-lg">
+          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-5">
+            <i class="fa fa-pencil text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-3">博客初衷</h3>
+          <p class="text-gray-600 leading-relaxed">这是一个记录个人思考与成长的空间。分享关于AI时代的应对策略、读书心得、职场感悟和技术实践。希望通过文字连接更多志同道合的朋友，一起在快速变化的时代中保持学习和进步。</p>
+        </div>
+        <div class="bg-neutral rounded-2xl p-8 shadow-lg">
+          <div class="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center mb-5">
+            <i class="fa fa-code text-secondary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-3">技术栈</h3>
+          <p class="text-gray-600 leading-relaxed">纯静态站点，使用 HTML + CSS + JavaScript 构建。样式基于 Tailwind CSS 和自定义样式表，图标使用 Font Awesome。页面部署简单，加载迅速，专注于内容本身——正如一个运营人对技术"够用就好"的实用主义追求。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 页脚 ─── -->
+  <footer class="bg-dark text-white py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa fa-paper-plane text-primary text-xl"></i>
+            <span class="text-xl font-semibold">诺诺的小博客空间</span>
+          </div>
+          <p class="text-gray-400 mt-2 text-sm">记录生活，分享美好，终身学习</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="feed.xml" class="text-gray-400 hover:text-white transition-colors" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-xl"></i></a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <p class="text-gray-400 text-sm">&copy; 2026 诺诺的小博客空间 · 用 <i class="fa fa-heart text-red-400"></i> 打造</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 回到顶部 -->
+  <button id="back-to-top" aria-label="回到顶部">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+
+  <script src="js/common.js"></script>
+</body>
+</html>

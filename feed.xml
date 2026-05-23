@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>诺诺的小博客空间</title>
+    <link>https://nuonuo.me/</link>
+    <description>记录技术思考、阅读笔记与生活灵感</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 22 May 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>AI时代的个人成长：从焦虑到共生</title>
+      <link>https://nuonuo.me/posts/ai-growth.html</link>
+      <description>2022年底ChatGPT横空出世，我经历了从焦虑到从容的心路历程。分享四条应对AI时代的核心策略。</description>
+      <pubDate>Fri, 22 May 2026 00:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/ai-growth.html</guid>
+    </item>
+
+    <item>
+      <title>未来的寄托：写给 31 岁的自己</title>
+      <link>https://nuonuo.me/posts/letter-to-31.html</link>
+      <description>总说三十而立，可站在31岁的门槛上，我才发现成长从来都不是一瞬间的事。愿你遍历山河，仍觉人间值得。</description>
+      <pubDate>Fri, 15 May 2026 00:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/letter-to-31.html</guid>
+    </item>
+
+    <item>
+      <title>职场十年：那些谁也拿不走的底层能力</title>
+      <link>https://nuonuo.me/posts/career-10years.html</link>
+      <description>十年间辗转三个行业、四家公司，真正决定职业天花板的是那些看不见的底层能力。</description>
+      <pubDate>Fri, 08 May 2026 00:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/career-10years.html</guid>
+    </item>
+
+    <item>
+      <title>我用了4年AI，总结出这4个普通人也能上手的高效工作流</title>
+      <link>https://nuonuo.me/posts/ai-workflow.html</link>
+      <description>四年AI辅助工作总结，分享四个最实用的AI工作流：写作助手、数据分析、绘图、自动化。</description>
+      <pubDate>Tue, 28 Apr 2026 00:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/ai-workflow.html</guid>
+    </item>
+
+    <item>
+      <title>我的极简学习方法论：从兴趣出发，在复盘中成长</title>
+      <link>https://nuonuo.me/posts/learning-method.html</link>
+      <description>学习方法论特别简单：多看多学。兴趣是最好的驱动力，复盘总结是从知识到认知的关键一步。</description>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/learning-method.html</guid>
+    </item>
+
+    <item>
+      <title>从零开始搭建个人博客：一个运营人的AI时代技术实践</title>
+      <link>https://nuonuo.me/posts/build-blog-v2.html</link>
+      <description>一个完全不懂编程的运营人员，如何从零开始亲手搭建个人博客？在AI时代，不会写代码也能拥有自己的网站。</description>
+      <pubDate>Sun, 12 Apr 2026 00:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/build-blog-v2.html</guid>
+    </item>
+  </channel>
+</rss>

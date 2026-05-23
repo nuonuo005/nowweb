@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>未来的寄托：写给 31 岁的自己 — 诺诺的小博客空间</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
+          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-neutral text-dark font-sans antialiased">
+  <div id="reading-progress"></div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <i class="fa fa-paper-plane text-primary text-xl"></i>
+          <span class="text-xl font-semibold">诺诺的小博客空间</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="../index.html#home" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors">首页</a>
+          <a href="../index.html#journey" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
+          <a href="../index.html#skills" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
+          <a href="../index.html#articles" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
+          <a href="../archive.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">归档</a>
+          <a href="../about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
+          <a href="../index.html#contact" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
+        </div>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
+          <i class="fa fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
+      <div class="px-4 py-3 space-y-1">
+        <a href="../index.html#home" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
+        <a href="../index.html#journey" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
+        <a href="../index.html#skills" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
+        <a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
+        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
+        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
+        <a href="../index.html#contact" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
+      </div>
+    </div>
+  </nav>
+
+  <article data-tags='["随笔","人生","成长"]'>
+    <header class="pt-24 pb-16" style="background: linear-gradient(135deg, rgba(94,106,210,0.08), rgba(143,153,174,0.08));">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="text-sm text-gray-500 mb-4">2026-05-15 · 阅读约 5 分钟</div>
+        <h1 class="text-3xl sm:text-4xl font-bold leading-tight mb-6">未来的寄托：写给 31 岁的自己</h1>
+        <div class="flex flex-wrap justify-center gap-2">
+          <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">随笔</span>
+          <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">人生</span>
+          <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">成长</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-content">
+
+      <p>总说三十而立，可站在 31 岁的门槛上，我才发现，成长从来都不是一瞬间的事。</p>
+
+      <p>总说三十而立，可站在 31 岁的门槛上，我却从未真正觉得自己长成了一个成熟稳重的成年男性。</p>
+
+      <p>内心深处，总还住着那个 18 岁、眼神清亮、对世界抱有无限天真的小男孩。</p>
+
+      <p>一晃工作十年，我辗转于不同的单位，像一艘没有锚的船，在生活的海洋里随波逐流。</p>
+
+      <p>那些日子里，迷茫是常态。我常常在深夜问自己：人活着到底是为了什么？未来会走向何方？</p>
+
+      <p>答案总是缥缈如烟，抓不住，也看不清。</p>
+
+      <p>直到一场突如其来的病，像一记重锤敲醒了浑浑噩噩的我。</p>
+
+      <p>躺在病床上的那些日夜，我第一次如此真切地感受到生命的脆弱，也第一次开始认真思考：我究竟想要怎样度过这一生？</p>
+
+      <p>我从未甘心过平平淡淡、一眼望到头的生活，却也从未想过，想要活得"不一样"会如此艰难。</p>
+
+      <p>其实也谈不上多难，只是每个人对人生的理解本就千差万别。</p>
+
+      <p>很多时候，我甚至不知道自己想要表达什么，却又无比渴望能窥见未来的模样。</p>
+
+      <p>原来人生就是这样，迷迷糊糊地走，跌跌撞撞地长大。</p>
+
+      <p>成长从来都不是一蹴而就的瞬间，而是无数个平凡日子里的点滴积累。</p>
+
+      <p>那些经历过的迷茫、痛苦、喜悦与感动，像一颗颗散落的珍珠，串联起了我们独一无二的生命轨迹。</p>
+
+      <p>如今的我，没有什么宏大的野心，也不奢求大富大贵。</p>
+
+      <p>我唯一的愿望，是未来回首往事时，能够少一些遗憾，多一些坦然。</p>
+
+      <p>是无论走多远，都能守住自己的本心和良心。</p>
+
+      <p>这篇文字，写给未来的我。</p>
+
+      <p>希望那时的你，活得比现在更洒脱一些，再洒脱一些。</p>
+
+      <p>不必被世俗的眼光所束缚，不必为了迎合他人而委屈自己。</p>
+
+      <p>希望你依然保持着对生活的热爱和对世界的好奇，依然有勇气去尝试那些未曾体验过的事情。</p>
+
+      <p>希望你能稍微再努力一点，不是为了挣多少钱，而是为了拥有更多选择的权利。</p>
+
+      <p>为了能够去看看这个广阔世界的万千繁华。</p>
+
+      <p>愿你遍历山河，仍觉人间值得。</p>
+    </div>
+
+    <div class="giscus">
+      <div class="text-center py-8 bg-gray-50 rounded-xl border border-gray-200">
+        <i class="fa fa-comments text-3xl text-gray-300 mb-3 block"></i>
+        <p class="text-gray-500 text-sm mb-2">期待你的想法</p>
+        <p class="text-gray-400 text-xs">配置 GitHub 仓库并启用 Giscus 后，这里将显示评论区</p>
+      </div>
+    </div>
+  </article>
+
+  <div class="border-t border-gray-200">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex justify-between">
+      <a href="ai-growth.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
+        <i class="fa fa-arrow-left"></i> 上一篇：AI时代的个人成长
+      </a>
+      <a href="career-10years.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
+        下一篇：职场十年 <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white py-10">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <a href="../index.html" class="text-primary hover:underline text-sm inline-flex items-center gap-1">
+        <i class="fa fa-arrow-left"></i> 返回首页
+      </a>
+      <p class="text-gray-400 text-sm mt-4">&copy; 2026 诺诺的小博客空间</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
+
+  <script src="../js/common.js"></script>
+</body>
+</html>

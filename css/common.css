@@ -1,0 +1,223 @@
+/* ═══════════════════════════════════════════
+   诺诺的小博客空间 · 公共样式
+   仅包含 Tailwind CDN 不提供的自定义样式
+   ═══════════════════════════════════════════ */
+
+/* ── 字体类 ── */
+.font-ma { font-family: 'Ma Shan Zheng', cursive; }
+
+/* ── 玻璃效果 ── */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+/* ── 卡片悬停 ── */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* ── 文字渐变 ── */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(135deg, #5E6AD2, #8D99AE);
+}
+
+/* ── 行截断 ── */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── 滚动条 ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── 阅读进度条 ── */
+#reading-progress {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, #5E6AD2, #F77F00);
+  z-index: 9999; width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ── 回到顶部 ── */
+#back-to-top {
+  position: fixed; bottom: 32px; right: 32px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s; z-index: 100;
+}
+#back-to-top.visible { opacity: 1; transform: translateY(0); }
+#back-to-top:hover { background: #5E6AD2; border-color: #5E6AD2; }
+
+/* ── 入场动画 ── */
+.reveal {
+  opacity: 0; transform: translateY(1.5rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1 !important; transform: translateY(0) !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(2rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 0.7s ease-out forwards; }
+
+/* ── 英雄区水墨背景 ── */
+.ink-bg {
+  background: linear-gradient(160deg, #0f0c1a 0%, #1a1428 30%, #2c1810 70%, #1a1428 100%);
+}
+.ink-bg::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(120, 80, 60, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 60%, rgba(60, 40, 80, 0.10) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── 水墨粒子 ── */
+.ink-particle {
+  position: absolute; border-radius: 50%;
+  background: rgba(200, 180, 160, 0.06); pointer-events: none;
+  animation: float 12s infinite ease-in-out;
+}
+.ink-particle:nth-child(1) { width: 180px; height: 180px; top: 10%; left: -5%; animation-delay: 0s; }
+.ink-particle:nth-child(2) { width: 120px; height: 120px; top: 60%; right: -3%; animation-delay: -3s; }
+.ink-particle:nth-child(3) { width: 90px; height: 90px; bottom: 15%; left: 20%; animation-delay: -6s; }
+.ink-particle:nth-child(4) { width: 150px; height: 150px; top: 30%; right: 15%; animation-delay: -9s; }
+.ink-particle:nth-child(5) { width: 70px; height: 70px; bottom: 40%; left: 50%; animation-delay: -4s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0,0) scale(1); opacity: 0.4; }
+  25% { transform: translate(30px,-20px) scale(1.1); opacity: 0.6; }
+  50% { transform: translate(-20px,30px) scale(0.9); opacity: 0.3; }
+  75% { transform: translate(20px,10px) scale(1.05); opacity: 0.5; }
+}
+
+/* ── 诗词动画 ── */
+.poem-fade-in { animation: poemReveal 1.8s ease-out forwards; }
+@keyframes poemReveal {
+  0% { opacity: 0; transform: translateY(30px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.poem-line { opacity: 0; animation: lineDrop 0.8s ease-out forwards; }
+.poem-line:nth-child(1) { animation-delay: 0.2s; }
+.poem-line:nth-child(2) { animation-delay: 0.5s; }
+.poem-line:nth-child(3) { animation-delay: 0.8s; }
+.poem-line:nth-child(4) { animation-delay: 1.1s; }
+.poem-line:nth-child(5) { animation-delay: 1.4s; }
+.poem-line:nth-child(6) { animation-delay: 1.7s; }
+.poem-line:nth-child(7) { animation-delay: 2.0s; }
+.poem-line:nth-child(8) { animation-delay: 2.3s; }
+@keyframes lineDrop {
+  0% { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* ── 印章 ── */
+.seal {
+  width: 52px; height: 52px;
+  border: 2px solid rgba(200, 50, 50, 0.5); border-radius: 6px;
+  display: inline-flex; align-items: center; justify-content: center;
+  transform: rotate(-3deg); transition: transform 0.4s ease; cursor: default;
+}
+.seal:hover { transform: rotate(0deg) scale(1.05); }
+.seal span { font-family: 'Ma Shan Zheng', cursive; color: rgba(200, 50, 50, 0.7); font-size: 1.3rem; }
+
+/* ── 笔触线 ── */
+.brush-stroke {
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.15) 20%, rgba(212, 175, 55, 0.3) 40%, rgba(212, 175, 55, 0.15) 60%, transparent 100%);
+  width: 120px; margin: 0 auto; border-radius: 2px;
+}
+
+/* ── 导航标签 ── */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: #5E6AD2; transition: width 0.3s;
+}
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* ── 筛选标签 ── */
+.filter-btn {
+  padding: 6px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 500;
+  background: #f3f4f6; color: #6b7280; cursor: pointer; border: none;
+  transition: all 0.25s; user-select: none;
+}
+.filter-btn:hover { background: #e5e7eb; }
+.filter-btn.active { background: #5E6AD2; color: #fff; }
+
+/* ── 热榜卡片 ── */
+.hot-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+  padding: 1.25rem; transition: all 0.25s;
+}
+.hot-card:hover {
+  border-color: #5E6AD2; transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(94, 106, 210, 0.1);
+}
+.hot-source {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.75rem; padding: 2px 10px; border-radius: 999px; font-weight: 500;
+}
+
+/* ── 文章正文排版 ── */
+.article-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; }
+.article-content h3 { font-size: 1.2rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #374151; }
+.article-content p { margin-bottom: 1.25rem; line-height: 1.8; color: #4b5563; }
+.article-content blockquote {
+  border-left: 3px solid #5E6AD2; padding: 1rem 1.5rem; margin: 1.5rem 0;
+  background: #f3f4f6; border-radius: 0 8px 8px 0; color: #6b7280; font-style: italic;
+}
+.article-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; color: #4b5563; }
+.article-content ul li { margin-bottom: 0.5rem; line-height: 1.7; }
+.article-content .highlight-box {
+  background: linear-gradient(135deg, rgba(94, 106, 210, 0.06), rgba(143, 153, 174, 0.06));
+  border: 1px solid rgba(94, 106, 210, 0.15); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;
+}
+.article-content img { max-width: 100%; border-radius: 12px; margin: 1.5rem auto; display: block; }
+.article-content a { color: #5E6AD2; text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── 归档页 ── */
+.archive-year { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; color: #5E6AD2; }
+.archive-item {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: 0.6rem 0; border-bottom: 1px solid #f3f4f6;
+}
+.archive-item:last-child { border-bottom: none; }
+.archive-date { font-size: 0.85rem; color: #9ca3af; min-width: 5rem; }
+.archive-title { font-size: 1rem; color: #374151; text-decoration: none; }
+.archive-title:hover { color: #5E6AD2; }
+
+/* ── 响应式微调 ── */
+@media (max-width: 640px) {
+  .archive-item { flex-direction: column; gap: 0.25rem; }
+  .archive-date { min-width: auto; }
+  #back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+}

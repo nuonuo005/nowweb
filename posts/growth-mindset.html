@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>《终身成长》读后感 — 诺诺的小博客空间</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
+          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
+        },
+      },
+    }
+  </script>
+
+</head>
+<body class="bg-neutral text-dark font-sans antialiased">
+  <div id="reading-progress"></div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <i class="fa fa-paper-plane text-primary text-xl"></i>
+          <span class="text-xl font-semibold">诺诺的小博客空间</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="../index.html#home" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors">首页</a>
+          <a href="../index.html#journey" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
+          <a href="../index.html#skills" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
+          <a href="../index.html#articles" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
+          <a href="../archive.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">归档</a>
+          <a href="../about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
+          <a href="../index.html#contact" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
+        </div>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
+          <i class="fa fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
+      <div class="px-4 py-3 space-y-1">
+        <a href="../index.html#home" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
+        <a href="../index.html#journey" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
+        <a href="../index.html#skills" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
+        <a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
+        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
+        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
+        <a href="../index.html#contact" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
+      </div>
+    </div>
+  </nav>
+
+  <article data-tags='["读书","个人成长"]'>
+    <header class="pt-24 pb-16" style="background: linear-gradient(135deg, rgba(247,127,0,0.12), rgba(141,153,174,0.12));">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="text-sm text-gray-500 mb-4">2026-05-15 · 阅读约 10 分钟</div>
+        <h1 class="text-3xl sm:text-4xl font-bold leading-tight mb-6">《终身成长》读后感</h1>
+        <div class="flex flex-wrap justify-center gap-2">
+          <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">读书</span>
+          <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">心理学</span>
+          <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">个人成长</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-content">
+
+      <p>去年我陷入了一段职业低谷期。每天上班像上坟，觉得自己能力就到这儿了，再怎么努力也突破不了天花板。就在那个时候，朋友推荐了卡罗尔·德韦克的《终身成长》。说实话，书名听起来像机场成功学，但读了之后我才发现——<strong>这本书不是在教你怎么成功，而是在解释为什么有些人面对挫折会崩溃，而有些人却能越挫越勇。</strong></p>
+
+      <h2>一、固定型思维与成长型思维</h2>
+      <p>德韦克提出了一个简单但深刻的框架：人的思维模式分为两种——固定型思维和成长型思维。</p>
+      <p><strong>固定型思维</strong>的人认为能力是天生的、不变的。他们害怕失败，因为失败意味着"我不行"。他们回避挑战，因为挑战有可能暴露自己的不足。他们甚至害怕努力，因为如果努力了还做不好，那就真的证明自己不行了。</p>
+      <p><strong>成长型思维</strong>的人则相信能力可以通过努力提升。失败不是"我不行"，而是"我还不够努力"或"我需要换种方法"。挑战是成长的机会，努力是变好的必经之路。</p>
+      <p>读到这一段的时候，我被击中了。我发现自己身上有大量的固定型思维模式——不敢接手有难度的项目，怕搞砸了丢脸；不敢向领导争取晋升机会，怕被拒绝证明自己不行。这些思维模式在不知不觉中限制了我好多年。</p>
+
+      <div class="highlight-box">
+        <p class="text-sm font-medium text-primary mb-1">💡 一句话总结</p>
+        <p class="text-sm">固定型思维关注"我看起来行不行"，成长型思维关注"我有没有在进步"。两者本质区别在于：前者证明自己，后者提升自己。</p>
+      </div>
+
+      <h2>二、三个让我醍醐灌顶的概念</h2>
+
+      <h3>1. 表扬努力 vs 表扬天赋</h3>
+      <p>书中讲到的一个实验让我印象特别深刻。研究人员让两组孩子做同样的题目，完成后对第一组说"你真聪明"，对第二组说"你刚才很努力"。然后让他们选择下一轮任务的难度——结果被夸"聪明"的孩子大多选了简单的题目，而被夸"努力"的孩子多数选择了更有挑战的题目。</p>
+      <p>为什么？因为被夸聪明之后，孩子会想保护"聪明"这个标签，不敢冒险。而"努力"是可以持续投入的东西，所以不怕挑战。这个实验让我反思自己表扬下属和晚辈的方式——以前我总说"你真棒""你很有天赋"，现在我改成了"这个方案做得很好，我看到你花了很多心思在数据分析上"。</p>
+
+      <h3>2. "Not Yet" vs "Can't"</h3>
+      <p>德韦克提到芝加哥一所学校的评分体系很有意思——如果学生考试不及格，成绩单上不会写"不及格"，而是写"暂时还没通过"。这两个字的差异是巨大的。"不及格"是终结性的评判，意味着你不行；而"暂时还没通过"是在告诉你，你还在路上，只是还没到达终点。</p>
+      <p>我开始在工作中刻意使用这种表达。遇到同事说"这个我不会"，我会补一句"现在还不会，但我们可以一起学"。遇到自己搞砸的事情，我会告诉自己"只是这次没做好，不是我不行"。语言会塑造思维，改变说话方式真的能改变思考方式。</p>
+
+      <h3>3. 把批评当作反馈</h3>
+      <p>固定型思维的人听到批评会觉得被攻击，第一反应是防御和辩解。成长型思维的人则会思考：这个批评里有没有对我有用的信息？</p>
+      <p>说实话，这对我来说是最难做到的。被人批评的时候本能反应就是不爽。但书中给了一个很实用的方法：<strong>把"批评"重定义为"反馈"。</strong>批评听起来像人身攻击，反馈听起来像帮助。当同事或领导给你负面评价时，先深呼吸，告诉自己"这是反馈，不是批评"，然后从中提取有价值的点。</p>
+
+      <h2>三、我的转变故事</h2>
+      <p>读完这本书之后，我做了一个决定——主动接手了一个团队里没人想做的项目，一个公认的"烂摊子"。搁在以前，我会躲得远远的，怕搞砸了丢人。但这一次我想试试成长型思维。结果呢？项目确实遇到了很多困难，中间好几次想放弃，但最后做完的时候，我学到的比过去两年都多。更重要的是，<strong>我不再害怕"搞砸"这件事了。</strong></p>
+      <p>后来我陆续又挑战了几个以前不敢碰的事：在部门会议上做分享（以前上台就紧张）、主动申请跨部门的合作项目、甚至开始写博客公开分享自己的想法。每做一件，就感觉自己的"舒适圈"扩大了一点。</p>
+
+      <blockquote>人的潜能是未知的。在经历过努力和训练之前，你不可能知道自己能走多远。—— 卡罗尔·德韦克</blockquote>
+
+      <h2>四、如何把成长型思维用到工作中</h2>
+
+      <h3>设定学习目标而非表现目标</h3>
+      <p>平时我们容易给自己设"表现目标"——今年要完成多少业绩、要达到什么级别。这些目标本身没问题，但问题在于如果只盯着表现目标，一旦遇到挫折就容易自我怀疑。<strong>更好的方式是同时设定"学习目标"</strong>——比如这个季度我要学会用 SQL 做数据分析、我要掌握 A/B 测试的方法论。学习目标是可控的，而且达成了会自然带来表现提升。</p>
+
+      <h3>建立自己的成长日志</h3>
+      <p>我每天花 5 分钟记录三件事：今天学到了什么？今天遇到了什么困难？我打算怎么改进？这个习惯坚持了半年，回头看的时候能清晰地看到自己的成长轨迹，非常有成就感。</p>
+
+      <h3>容忍失败，但不容忍不努力</h3>
+      <p>在带团队的时候，我会跟团队成员说：你可以犯错，但是要从中学习。你可以失败，但不能什么都不做。这是成长型思维在管理中的具体应用。失败不是问题，问题是从失败中学到了什么。</p>
+
+      <p>写到最后想说的是，改变思维模式不是一朝一夕的事。我到现在面对压力的时候还是会不自觉地陷入固定型思维，但至少我现在有了觉察的能力。意识到自己在用固定型思维的那一刻，你就已经选择了成长型思维。</p>
+    </div>
+
+  <!-- Giscus 评论组件 — 需要你配置 GitHub 仓库后启用 -->
+  <div class="giscus">
+    <div class="text-center py-8 bg-gray-50 rounded-xl border border-gray-200">
+      <i class="fa fa-comments text-3xl text-gray-300 mb-3 block"></i>
+      <p class="text-gray-500 text-sm mb-2">期待你的想法</p>
+      <p class="text-gray-400 text-xs">配置 GitHub 仓库并启用 Giscus 后，这里将显示评论区</p>
+    </div>
+  </div>
+  </article>
+
+  <div class="border-t border-gray-200">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex justify-between">
+      <a href="ai-era.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
+        <i class="fa fa-arrow-left"></i> 上一篇：关于AI时代的个人成长思考
+      </a>
+      <a href="10y-experience.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
+        下一篇：十年职场经验总结 <i class="fa fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white py-10">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <a href="../index.html" class="text-primary hover:underline text-sm inline-flex items-center gap-1">
+        <i class="fa fa-arrow-left"></i> 返回首页
+      </a>
+      <p class="text-gray-400 text-sm mt-4">&copy; 2026 诺诺的小博客空间</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
+
+  <script src="../js/common.js"></script>
+</body>
+</html>

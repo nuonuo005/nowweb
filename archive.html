@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="文章归档 — 诺诺的小博客空间 | 按月份浏览所有文章" />
+  <meta property="og:title" content="文章归档 — 诺诺的小博客空间" />
+  <meta name="theme-color" content="#1a1428" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E📝%3C/text%3E%3C/svg%3E" />
+  <title>文章归档 — 诺诺的小博客空间</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
+          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
+        },
+      },
+    }
+  </script>
+  <style>
+    .text-gradient { background-clip: text; -webkit-background-clip: text; color: transparent; background-image: linear-gradient(135deg, #5E6AD2, #8D99AE); }
+  </style>
+</head>
+<body class="bg-neutral text-dark font-sans antialiased">
+
+  <!-- 阅读进度条 -->
+  <div id="reading-progress"></div>
+
+  <!-- ─── 导航栏 ─── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <i class="fa fa-paper-plane text-primary text-xl"></i>
+          <span class="text-xl font-semibold">诺诺的小博客空间</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">首页</a>
+          <a href="#journey" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
+          <a href="#skills" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
+          <a href="#articles" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
+          <a href="archive.html" class="nav-link text-sm font-medium text-primary transition-colors active">归档</a>
+          <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
+          <a href="#contact" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
+        </div>
+        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
+          <i class="fa fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
+      <div class="px-4 py-3 space-y-1">
+        <a href="index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
+        <a href="#journey" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
+        <a href="#skills" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
+        <a href="#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
+        <a href="archive.html" class="block px-4 py-2.5 rounded-lg text-primary bg-primary/5 font-medium">归档</a>
+        <a href="about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
+        <a href="#contact" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── 页面头部 ─── -->
+  <section class="relative pt-24 pb-16 overflow-hidden ink-bg">
+    <div class="ink-particle"></div>
+    <div class="ink-particle"></div>
+    <div class="ink-particle"></div>
+    <div class="ink-particle"></div>
+    <div class="ink-particle"></div>
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16">
+      <h1 class="font-bold leading-tight mb-4" style="font-size: clamp(2rem, 6vw, 3.5rem); color: rgba(255,255,255,0.95);">
+        文章归档
+      </h1>
+      <p class="font-ma text-lg md:text-xl" style="color: rgba(253,230,138,0.7); letter-spacing: 0.08em;">
+        按时间线收录所有文章
+      </p>
+      <div class="brush-stroke mt-8"></div>
+    </div>
+  </section>
+
+  <!-- ─── 归档列表 ─── -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-neutral rounded-2xl p-8 md:p-12 shadow-lg reveal">
+        <div class="archive-year">2026年5月</div>
+        <div class="archive-item">
+          <span class="archive-date">05-22</span>
+          <a href="posts/ai-growth.html" class="archive-title">AI时代的个人成长：从焦虑到共生</a>
+        </div>
+        <div class="archive-item">
+          <span class="archive-date">05-15</span>
+          <a href="posts/letter-to-31.html" class="archive-title">未来的寄托：写给 31 岁的自己</a>
+        </div>
+        <div class="archive-item">
+          <span class="archive-date">05-08</span>
+          <a href="posts/career-10years.html" class="archive-title">职场十年：那些谁也拿不走的底层能力</a>
+        </div>
+
+        <div class="mt-10 archive-year">2026年4月</div>
+        <div class="archive-item">
+          <span class="archive-date">04-28</span>
+          <a href="posts/ai-workflow.html" class="archive-title">我用了4年AI，总结出这4个普通人也能上手的高效工作流</a>
+        </div>
+        <div class="archive-item">
+          <span class="archive-date">04-20</span>
+          <a href="posts/learning-method.html" class="archive-title">我的极简学习方法论：从兴趣出发，在复盘中成长</a>
+        </div>
+        <div class="archive-item">
+          <span class="archive-date">04-12</span>
+          <a href="posts/build-blog-v2.html" class="archive-title">从零开始搭建个人博客：一个运营人的AI时代技术实践</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 页脚 ─── -->
+  <footer class="bg-dark text-white py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start gap-2">
+            <i class="fa fa-paper-plane text-primary text-xl"></i>
+            <span class="text-xl font-semibold">诺诺的小博客空间</span>
+          </div>
+          <p class="text-gray-400 mt-2 text-sm">记录生活，分享美好，终身学习</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="feed.xml" class="text-gray-400 hover:text-white transition-colors" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-xl"></i></a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <p class="text-gray-400 text-sm">&copy; 2026 诺诺的小博客空间 · 用 <i class="fa fa-heart text-red-400"></i> 打造</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 回到顶部 -->
+  <button id="back-to-top" aria-label="回到顶部">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+
+  <script src="js/common.js"></script>
+</body>
+</html>
