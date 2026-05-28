@@ -11,24 +11,33 @@
   <link rel="stylesheet" href="css/common.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
-          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
+          colors: {
+            primary: '#b8860b', secondary: '#78716c', accent: '#c0392b',
+            neutral: '#faf8f5', dark: '#1c1917',
+            gold: '#b8860b', amber: '#92400e', vermilion: '#c0392b',
+            sage: '#556b55', 'slate-blue': '#5a6d8a',
+            ink: '#1c1917', 'ink-soft': '#44403c', 'ink-muted': '#78716c',
+            parchment: '#faf8f5', paper: '#f5f0eb', cream: '#fffef9'
+          },
+          fontFamily: {
+            sans: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
+            serif: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
+            ma: ['"LXGW WenKai"', '"Ma Shan Zheng"', 'serif'],
+            display: ['"Crimson Pro"', '"Noto Serif SC"', 'Georgia', 'serif']
+          },
         },
       },
     }
   </script>
-  <style>
-    .text-gradient { background-clip: text; -webkit-background-clip: text; color: transparent; background-image: linear-gradient(135deg, #5E6AD2, #8D99AE); }
-  </style>
 </head>
-<body class="bg-neutral text-dark font-sans antialiased">
+<body class="bg-neutral text-dark font-sans antialiased grain">
 
   <!-- 阅读进度条 -->
   <div id="reading-progress"></div>
@@ -75,11 +84,14 @@
     <div class="ink-particle"></div>
     <div class="ink-particle"></div>
     <div class="ink-particle"></div>
+    <canvas id="ink-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1; opacity: 0.5;"></canvas>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full pointer-events-none" style="background: linear-gradient(180deg, transparent 10%, rgba(184,134,11,0.06) 40%, rgba(184,134,11,0.06) 60%, transparent 90%);"></div>
     <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16">
-      <h1 class="font-bold leading-tight mb-4" style="font-size: clamp(2rem, 6vw, 3.5rem); color: rgba(255,255,255,0.95);">
+      <p class="uppercase tracking-[0.25em] text-[11px] mb-5" style="color: rgba(184,134,11,0.4); font-family: 'Crimson Pro', serif; font-weight: 400;">Archive</p>
+      <h1 class="font-bold leading-tight mb-5" style="font-size: clamp(2rem, 6vw, 3.5rem); color: rgba(255,255,255,0.92); letter-spacing: 0.03em;">
         文章归档
       </h1>
-      <p class="font-ma text-lg md:text-xl" style="color: rgba(253,230,138,0.7); letter-spacing: 0.08em;">
+      <p class="font-ma text-lg md:text-xl" style="color: rgba(212,175,55,0.6); letter-spacing: 0.1em;">
         按时间线收录所有文章
       </p>
       <div class="brush-stroke mt-8"></div>
@@ -87,9 +99,9 @@
   </section>
 
   <!-- ─── 归档列表 ─── -->
-  <section class="py-16 bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-neutral rounded-2xl p-8 md:p-12 shadow-lg reveal">
+  <section class="py-20" style="background: var(--cream);">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="card-editorial p-8 md:p-12 reveal">
         <div class="archive-year">2026年5月</div>
         <div class="archive-item">
           <span class="archive-date">05-22</span>
@@ -104,7 +116,7 @@
           <a href="posts/career-10years.html" class="archive-title">职场十年：那些谁也拿不走的底层能力</a>
         </div>
 
-        <div class="mt-10 archive-year">2026年4月</div>
+        <div class="mt-12 archive-year">2026年4月</div>
         <div class="archive-item">
           <span class="archive-date">04-28</span>
           <a href="posts/ai-workflow.html" class="archive-title">我用了4年AI，总结出这4个普通人也能上手的高效工作流</a>
@@ -122,22 +134,21 @@
   </section>
 
   <!-- ─── 页脚 ─── -->
-  <footer class="bg-dark text-white py-12">
+  <footer class="text-white py-14">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="text-center md:text-left">
-          <div class="flex items-center justify-center md:justify-start gap-2">
-            <i class="fa fa-paper-plane text-primary text-xl"></i>
-            <span class="text-xl font-semibold">诺诺的小博客空间</span>
+          <div class="flex items-center justify-center md:justify-start gap-3">
+            <span class="text-lg font-semibold tracking-wide" style="color: rgba(255,255,255,0.9);">诺诺的小博客空间</span>
           </div>
-          <p class="text-gray-400 mt-2 text-sm">记录生活，分享美好，终身学习</p>
+          <p class="mt-3 text-sm tracking-wider" style="color: rgba(255,255,255,0.3); font-family: 'Crimson Pro', serif; font-style: italic;">记录生活，分享美好，终身学习</p>
         </div>
         <div class="flex items-center gap-6">
-          <a href="feed.xml" class="text-gray-400 hover:text-white transition-colors" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-xl"></i></a>
+          <a href="feed.xml" class="transition-colors hover:text-[var(--gold)]" style="color: rgba(255,255,255,0.3);" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-lg"></i></a>
         </div>
       </div>
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-        <p class="text-gray-400 text-sm">&copy; 2026 诺诺的小博客空间 · 用 <i class="fa fa-heart text-red-400"></i> 打造</p>
+      <div class="mt-10 pt-8 text-center" style="border-top: 1px solid rgba(255,255,255,0.06);">
+        <p class="text-xs tracking-wider" style="color: rgba(255,255,255,0.2); font-family: 'Crimson Pro', serif;">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></p>
       </div>
     </div>
   </footer>

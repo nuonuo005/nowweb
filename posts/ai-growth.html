@@ -6,22 +6,31 @@
   <title>AI时代的个人成长：从焦虑到共生 — 诺诺的小博客空间</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/common.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/common.css" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
-          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
+          colors: {
+            primary: '#b8860b', secondary: '#78716c', accent: '#c0392b',
+            neutral: '#faf8f5', dark: '#1c1917',
+            gold: '#b8860b', amber: '#92400e', vermilion: '#c0392b',
+            ink: '#1c1917', 'ink-soft': '#44403c', 'ink-muted': '#78716c',
+            parchment: '#faf8f5', paper: '#f5f0eb', cream: '#fffef9'
+          },
+          fontFamily: {
+            sans: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
+            ma: ['"LXGW WenKai"', '"Ma Shan Zheng"', 'serif']
+          },
         },
       },
     }
   </script>
 </head>
-<body class="bg-neutral text-dark font-sans antialiased">
+<body class="bg-neutral text-dark font-sans antialiased grain">
   <div id="reading-progress"></div>
 
   <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
@@ -59,14 +68,15 @@
   </nav>
 
   <article data-tags='["AI","个人成长","认知"]'>
-    <header class="pt-24 pb-16" style="background: linear-gradient(135deg, rgba(94,106,210,0.08), rgba(143,153,174,0.08));">
+    <header class="pt-24 pb-16" style="background: linear-gradient(135deg, rgba(184,134,11,0.04), rgba(250,248,245,1));">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="text-sm text-gray-500 mb-4">2026-05-22 · 阅读约 8 分钟</div>
-        <h1 class="text-3xl sm:text-4xl font-bold leading-tight mb-6">AI时代的个人成长：从焦虑到共生</h1>
+        <div class="text-xs tracking-wider mb-5" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-05-22 · 阅读约 8 分钟</div>
+        <h1 class="text-3xl sm:text-4xl font-bold leading-tight mb-7" style="letter-spacing: 0.02em;">AI时代的个人成长：从焦虑到共生</h1>
+        <div class="brush-stroke mb-6"></div>
         <div class="flex flex-wrap justify-center gap-2">
-          <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">AI</span>
-          <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">个人成长</span>
-          <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">认知</span>
+          <span class="px-3.5 py-1 rounded-full text-xs font-medium" style="background: rgba(184,134,11,0.06); color: var(--gold); border: 1px solid rgba(184,134,11,0.1);">AI</span>
+          <span class="px-3.5 py-1 rounded-full text-xs font-medium" style="background: rgba(90,109,138,0.06); color: var(--slate-blue); border: 1px solid rgba(90,109,138,0.1);">个人成长</span>
+          <span class="px-3.5 py-1 rounded-full text-xs font-medium" style="background: rgba(85,107,85,0.06); color: var(--sage); border: 1px solid rgba(85,107,85,0.1);">认知</span>
         </div>
       </div>
     </header>
@@ -144,23 +154,23 @@
     </div>
   </article>
 
-  <div class="border-t border-gray-200">
+  <div style="border-top: 1px solid rgba(28,25,23,0.06);">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex justify-between">
-      <a href="career-10years.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
+      <a href="career-10years.html" class="text-sm flex items-center gap-2 transition-colors hover:text-[var(--gold)]" style="color: var(--ink-muted);">
         <i class="fa fa-arrow-left"></i> 上一篇：职场十年
       </a>
-      <a href="letter-to-31.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
+      <a href="letter-to-31.html" class="text-sm flex items-center gap-2 transition-colors hover:text-[var(--gold)]" style="color: var(--ink-muted);">
         下一篇：写给31岁的自己 <i class="fa fa-arrow-right"></i>
       </a>
     </div>
   </div>
 
-  <footer class="bg-dark text-white py-10">
+  <footer class="text-white py-10">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <a href="../index.html" class="text-primary hover:underline text-sm inline-flex items-center gap-1">
+      <a href="../index.html" class="text-sm inline-flex items-center gap-1 transition-colors hover:text-[var(--gold)]" style="color: rgba(255,255,255,0.4);">
         <i class="fa fa-arrow-left"></i> 返回首页
       </a>
-      <p class="text-gray-400 text-sm mt-4">&copy; 2026 诺诺的小博客空间</p>
+      <p class="text-xs mt-4 tracking-wider" style="color: rgba(255,255,255,0.2); font-family: 'Crimson Pro', serif;">&copy; 2026 诺诺的小博客空间</p>
     </div>
   </footer>
 

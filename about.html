@@ -11,24 +11,33 @@
   <link rel="stylesheet" href="css/common.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
-          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
+          colors: {
+            primary: '#b8860b', secondary: '#78716c', accent: '#c0392b',
+            neutral: '#faf8f5', dark: '#1c1917',
+            gold: '#b8860b', amber: '#92400e', vermilion: '#c0392b',
+            sage: '#556b55', 'slate-blue': '#5a6d8a',
+            ink: '#1c1917', 'ink-soft': '#44403c', 'ink-muted': '#78716c',
+            parchment: '#faf8f5', paper: '#f5f0eb', cream: '#fffef9'
+          },
+          fontFamily: {
+            sans: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
+            serif: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
+            ma: ['"LXGW WenKai"', '"Ma Shan Zheng"', 'serif'],
+            display: ['"Crimson Pro"', '"Noto Serif SC"', 'Georgia', 'serif']
+          },
         },
       },
     }
   </script>
-  <style>
-    .text-gradient { background-clip: text; -webkit-background-clip: text; color: transparent; background-image: linear-gradient(135deg, #5E6AD2, #8D99AE); }
-  </style>
 </head>
-<body class="bg-neutral text-dark font-sans antialiased">
+<body class="bg-neutral text-dark font-sans antialiased grain">
 
   <!-- 阅读进度条 -->
   <div id="reading-progress"></div>
@@ -75,16 +84,18 @@
     <div class="ink-particle"></div>
     <div class="ink-particle"></div>
     <div class="ink-particle"></div>
+    <canvas id="ink-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1; opacity: 0.5;"></canvas>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full pointer-events-none" style="background: linear-gradient(180deg, transparent 10%, rgba(184,134,11,0.06) 40%, rgba(184,134,11,0.06) 60%, transparent 90%);"></div>
     <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-24">
       <div class="animate-fadeIn">
-        <div class="mx-auto w-px h-12 mb-10" style="background: linear-gradient(180deg, transparent, rgba(212,175,55,0.3));"></div>
-        <h1 class="font-bold leading-tight mb-8" style="font-size: clamp(2.5rem, 8vw, 4rem); color: rgba(255,255,255,0.95);">
+        <div class="mx-auto w-px h-14 mb-12" style="background: linear-gradient(180deg, transparent, rgba(184,134,11,0.25));"></div>
+        <h1 class="font-bold leading-tight mb-8" style="font-size: clamp(2.5rem, 8vw, 4rem); color: rgba(255,255,255,0.92); letter-spacing: 0.03em;">
           关于我
         </h1>
-        <div class="about-avatar mx-auto flex items-center justify-center bg-primary/20">
-          <i class="fa fa-user text-4xl text-primary"></i>
+        <div class="about-avatar mx-auto flex items-center justify-center" style="background: rgba(184,134,11,0.08); border-color: rgba(184,134,11,0.15);">
+          <i class="fa fa-user text-3xl" style="color: var(--gold);"></i>
         </div>
-        <p class="font-ma text-xl md:text-2xl mt-6" style="color: rgba(253,230,138,0.8); letter-spacing: 0.08em;">
+        <p class="font-ma text-xl md:text-2xl mt-6" style="color: rgba(212,175,55,0.7); letter-spacing: 0.1em;">
           诺诺 · 终身学习者
         </p>
         <div class="brush-stroke mt-10"></div>
@@ -93,10 +104,11 @@
   </section>
 
   <!-- ─── 我是谁 ─── -->
-  <section class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-      <h2 class="font-bold mb-10 text-center" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">我是谁</h2>
-      <div class="text-gray-700 leading-relaxed space-y-5 text-lg">
+  <section class="py-24" style="background: var(--cream);">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      <p class="uppercase tracking-[0.25em] text-[11px] mb-4 text-center" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">About Me</p>
+      <h2 class="font-bold mb-12 text-center" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">我是谁</h2>
+      <div class="space-y-6 article-content" style="color: var(--ink-soft); line-height: 1.9; font-size: 1.02rem;">
         <p>大家好，我是<strong>诺诺</strong>。一个拥有10年跨行业实战经验的运营人，也是一名始终在路上的终身学习者。</p>
         <p>十年职场路，我从<strong>保险行业的内勤主训</strong>起步，到<strong>汽车集团的运营管理</strong>，再到如今独立运作的运营顾问——每一次转型都是一次自我突破。我深信，真正值钱的是<strong>可迁移的能力</strong>：数据分析思维、项目管理的闭环习惯、与不同层级高效沟通的同理心、以及快速扎入一个新领域并产出价值的学习力。</p>
         <p>除了本职工作，我还是一个不折不扣的<strong>技术爱好者</strong>。自学了前端开发、自动化脚本和AI工具应用，独立搭建了这个个人博客。我相信技术不是程序员的专利——每个人都有能力用技术让生活和工作变得更高效、更有趣。</p>
@@ -107,71 +119,68 @@
   </section>
 
   <!-- ─── 联系我 ─── -->
-  <section id="contact" class="py-20 bg-neutral">
+  <section id="contact" class="py-24" style="background: var(--parchment);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
-        <h2 class="font-bold mb-4" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">联系我</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">期待与志同道合的你交流学习</p>
+        <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">Contact</p>
+        <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">联系我</h2>
+        <div class="brush-stroke"></div>
       </div>
-      <div class="max-w-2xl mx-auto reveal">
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <h3 class="text-xl font-bold mb-8 text-center">找到我</h3>
-          <div class="space-y-6">
-            <a href="mailto:nuon9951@gmail.com" class="flex items-center justify-center gap-4 group">
-              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <i class="fa fa-google text-primary text-xl"></i>
-              </div>
-              <div class="text-left">
-                <p class="text-gray-500 text-sm">谷歌邮箱</p>
-                <p class="font-bold text-lg group-hover:text-primary transition-colors">nuon9951@gmail.com</p>
-              </div>
-            </a>
+      <div class="max-w-xl mx-auto reveal">
+        <div class="card-editorial p-10 text-center">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6" style="background: rgba(184,134,11,0.06);">
+            <i class="fa fa-envelope-o text-xl" style="color: var(--gold);"></i>
           </div>
+          <h3 class="text-lg font-bold mb-6" style="color: var(--ink);">找到我</h3>
+          <a href="mailto:nuon9951@gmail.com" class="group inline-flex items-center gap-3 transition-all duration-300" style="color: var(--ink-soft);">
+            <span class="text-sm" style="color: var(--ink-muted);">谷歌邮箱</span>
+            <span class="font-semibold text-lg group-hover:text-[var(--gold)] transition-colors">nuon9951@gmail.com</span>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ─── 关于这个博客 ─── -->
-  <section class="py-20 bg-white">
+  <section class="py-24" style="background: var(--cream);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-      <h2 class="font-bold mb-10 text-center" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">关于这个博客</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-neutral rounded-2xl p-8 shadow-lg">
-          <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-5">
-            <i class="fa fa-pencil text-primary text-2xl"></i>
+      <p class="uppercase tracking-[0.25em] text-[11px] mb-4 text-center" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">About Blog</p>
+      <h2 class="font-bold mb-12 text-center" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">关于这个博客</h2>
+      <div class="grid md:grid-cols-2 gap-7 stagger-children">
+        <div class="card-editorial p-8">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background: rgba(184,134,11,0.06);">
+            <i class="fa fa-pencil text-lg" style="color: var(--gold);"></i>
           </div>
-          <h3 class="text-lg font-bold mb-3">博客初衷</h3>
-          <p class="text-gray-600 leading-relaxed">这是一个记录个人思考与成长的空间。分享关于AI时代的应对策略、读书心得、职场感悟和技术实践。希望通过文字连接更多志同道合的朋友，一起在快速变化的时代中保持学习和进步。</p>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">博客初衷</h3>
+          <p style="color: var(--ink-muted); line-height: 1.8; font-size: 0.95rem;">这是一个记录个人思考与成长的空间。分享关于AI时代的应对策略、读书心得、职场感悟和技术实践。希望通过文字连接更多志同道合的朋友，一起在快速变化的时代中保持学习和进步。</p>
         </div>
-        <div class="bg-neutral rounded-2xl p-8 shadow-lg">
-          <div class="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center mb-5">
-            <i class="fa fa-code text-secondary text-2xl"></i>
+        <div class="card-editorial p-8">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background: rgba(90,109,138,0.06);">
+            <i class="fa fa-code text-lg" style="color: var(--slate-blue);"></i>
           </div>
-          <h3 class="text-lg font-bold mb-3">技术栈</h3>
-          <p class="text-gray-600 leading-relaxed">纯静态站点，使用 HTML + CSS + JavaScript 构建。样式基于 Tailwind CSS 和自定义样式表，图标使用 Font Awesome。页面部署简单，加载迅速，专注于内容本身——正如一个运营人对技术"够用就好"的实用主义追求。</p>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">技术栈</h3>
+          <p style="color: var(--ink-muted); line-height: 1.8; font-size: 0.95rem;">纯静态站点，使用 HTML + CSS + JavaScript 构建。样式基于 Tailwind CSS 和自定义样式表，图标使用 Font Awesome。页面部署简单，加载迅速，专注于内容本身——正如一个运营人对技术"够用就好"的实用主义追求。</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ─── 页脚 ─── -->
-  <footer class="bg-dark text-white py-12">
+  <footer class="text-white py-14">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="text-center md:text-left">
-          <div class="flex items-center justify-center md:justify-start gap-2">
-            <i class="fa fa-paper-plane text-primary text-xl"></i>
-            <span class="text-xl font-semibold">诺诺的小博客空间</span>
+          <div class="flex items-center justify-center md:justify-start gap-3">
+            <span class="text-lg font-semibold tracking-wide" style="color: rgba(255,255,255,0.9);">诺诺的小博客空间</span>
           </div>
-          <p class="text-gray-400 mt-2 text-sm">记录生活，分享美好，终身学习</p>
+          <p class="mt-3 text-sm tracking-wider" style="color: rgba(255,255,255,0.3); font-family: 'Crimson Pro', serif; font-style: italic;">记录生活，分享美好，终身学习</p>
         </div>
         <div class="flex items-center gap-6">
-          <a href="feed.xml" class="text-gray-400 hover:text-white transition-colors" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-xl"></i></a>
+          <a href="feed.xml" class="transition-colors hover:text-[var(--gold)]" style="color: rgba(255,255,255,0.3);" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-lg"></i></a>
         </div>
       </div>
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-        <p class="text-gray-400 text-sm">&copy; 2026 诺诺的小博客空间 · 用 <i class="fa fa-heart text-red-400"></i> 打造</p>
+      <div class="mt-10 pt-8 text-center" style="border-top: 1px solid rgba(255,255,255,0.06);">
+        <p class="text-xs tracking-wider" style="color: rgba(255,255,255,0.2); font-family: 'Crimson Pro', serif;">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></p>
       </div>
     </div>
   </footer>

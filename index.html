@@ -13,15 +13,27 @@
   <link rel="stylesheet" href="css/common.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
-          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
+          colors: {
+            primary: '#b8860b', secondary: '#78716c', accent: '#c0392b',
+            neutral: '#faf8f5', dark: '#1c1917',
+            gold: '#b8860b', amber: '#92400e', vermilion: '#c0392b',
+            sage: '#556b55', 'slate-blue': '#5a6d8a',
+            ink: '#1c1917', 'ink-soft': '#44403c', 'ink-muted': '#78716c',
+            parchment: '#faf8f5', paper: '#f5f0eb', cream: '#fffef9'
+          },
+          fontFamily: {
+            sans: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
+            serif: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
+            ma: ['"LXGW WenKai"', '"Ma Shan Zheng"', 'serif'],
+            display: ['"Crimson Pro"', '"Noto Serif SC"', 'Georgia', 'serif']
+          },
         },
       },
     }
@@ -41,11 +53,8 @@
     }
   }
   </script>
-  <style>
-    .text-gradient { background-clip: text; -webkit-background-clip: text; color: transparent; background-image: linear-gradient(135deg, #5E6AD2, #8D99AE); }
-  </style>
 </head>
-<body class="bg-neutral text-dark font-sans antialiased">
+<body class="bg-neutral text-dark font-sans antialiased grain">
 
   <!-- 阅读进度条 -->
   <div id="reading-progress"></div>
@@ -63,6 +72,7 @@
           <a href="#journey" data-nav class="nav-link text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
           <a href="#skills" data-nav class="nav-link text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
           <a href="#articles" data-nav class="nav-link text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
+          <a href="#projects" data-nav class="nav-link text-sm font-medium text-gray-500 hover:text-primary transition-colors">小作品</a>
           <a href="archive.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">归档</a>
           <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
           <a href="#contact" data-nav class="nav-link text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
@@ -79,6 +89,7 @@
         <a href="#journey" data-nav class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
         <a href="#skills" data-nav class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
         <a href="#articles" data-nav class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
+        <a href="#projects" data-nav class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">小作品</a>
         <a href="archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
         <a href="about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
         <a href="#contact" data-nav class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
@@ -94,125 +105,158 @@
     <div class="ink-particle"></div>
     <div class="ink-particle"></div>
 
+    <!-- SVG 水墨纹理 -->
+    <div class="ink-wash">
+      <svg class="wash-blob" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="wg1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#b8860b" stop-opacity="0.08"/>
+            <stop offset="40%" stop-color="#92400e" stop-opacity="0.04"/>
+            <stop offset="100%" stop-color="#1c1917" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path d="M250,50 C350,30 480,120 460,250 C440,380 350,470 220,460 C90,450 20,350 40,220 C60,90 150,70 250,50Z" fill="url(#wg1)"/>
+      </svg>
+      <svg class="wash-blob" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="wg2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#c0392b" stop-opacity="0.05"/>
+            <stop offset="50%" stop-color="#92400e" stop-opacity="0.03"/>
+            <stop offset="100%" stop-color="#1c1917" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path d="M200,80 C320,40 460,140 440,280 C420,420 300,480 180,440 C60,400 10,280 50,160 C90,40 80,120 200,80Z" fill="url(#wg2)"/>
+      </svg>
+      <svg class="wash-blob" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="wg3" cx="40%" cy="40%" r="50%">
+            <stop offset="0%" stop-color="#d4a017" stop-opacity="0.06"/>
+            <stop offset="60%" stop-color="#b8860b" stop-opacity="0.02"/>
+            <stop offset="100%" stop-color="#1c1917" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="250" cy="250" rx="200" ry="180" fill="url(#wg3)" transform="rotate(-15, 250, 250)"/>
+      </svg>
+    </div>
+
+    <!-- 装饰性书法笔触 -->
+    <svg class="ink-brush-float" width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30,280 C30,280 50,200 40,150 C30,100 60,60 80,30 C90,15 70,10 60,25 C50,40 55,80 65,100 C75,120 45,180 40,220 C35,260 50,270 60,250" stroke="rgba(184,134,11,0.12)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <svg class="ink-brush-float" width="180" height="250" viewBox="0 0 180 250" xmlns="http://www.w3.org/2000/svg">
+      <path d="M150,230 C140,180 120,140 100,120 C80,100 60,90 50,70 C40,50 60,30 80,40 C100,50 90,80 85,100 C80,120 100,150 110,180 C120,210 130,220 140,200" stroke="rgba(192,57,43,0.08)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </svg>
+
+    <!-- 墨水扩散动画画布 -->
+    <canvas id="ink-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 2; opacity: 0.6;"></canvas>
+
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-         style="background: radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 70%);"></div>
+         style="background: radial-gradient(circle, rgba(184,134,11,0.04) 0%, transparent 70%);"></div>
+
+    <!-- 装饰性垂直线 -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full pointer-events-none" style="background: linear-gradient(180deg, transparent 10%, rgba(184,134,11,0.06) 40%, rgba(184,134,11,0.06) 60%, transparent 90%);"></div>
 
     <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
 
       <div id="poem-container" class="opacity-0">
-        <div class="mx-auto w-px h-12 mb-10" style="background: linear-gradient(180deg, transparent, rgba(212,175,55,0.3));"></div>
+        <div class="mx-auto w-px h-14 mb-12" style="background: linear-gradient(180deg, transparent, rgba(184,134,11,0.25));"></div>
 
-        <div id="poem-lines" class="font-ma" style="font-size: clamp(2.2rem, 6vw, 4.5rem); line-height: 1.4; color: rgba(253,230,138,0.9); letter-spacing: 0.08em;">
+        <div id="poem-lines" class="font-ma" style="font-size: clamp(2rem, 5.5vw, 4rem); line-height: 1.5; color: rgba(212,175,55,0.85); letter-spacing: 0.1em;">
         </div>
 
-        <div class="mt-10 flex items-center justify-center gap-4">
-          <span class="block w-12 h-px opacity-40" style="background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5));"></span>
-          <span id="poem-author" class="font-ma text-xl md:text-2xl" style="color: rgba(253,230,138,0.5); letter-spacing: 0.15em;"></span>
-          <span class="block w-12 h-px opacity-40" style="background: linear-gradient(90deg, rgba(212,175,55,0.5), transparent);"></span>
+        <div class="mt-10 flex items-center justify-center gap-5">
+          <span class="block w-16 h-px opacity-30" style="background: linear-gradient(90deg, transparent, rgba(184,134,11,0.4));"></span>
+          <span id="poem-author" class="font-ma text-lg md:text-xl" style="color: rgba(212,175,55,0.45); letter-spacing: 0.2em;"></span>
+          <span class="block w-16 h-px opacity-30" style="background: linear-gradient(90deg, rgba(184,134,11,0.4), transparent);"></span>
         </div>
 
-        <div class="seal mt-6"><span>诗</span></div>
+        <div class="seal mt-8"><span>诗</span></div>
       </div>
 
-      <div class="brush-stroke my-14"></div>
+      <div class="brush-stroke my-16"></div>
 
       <div class="opacity-0 transition-all duration-1000 delay-500" id="hero-intro">
-        <h1 class="font-bold leading-tight mb-6" style="font-size: clamp(2.5rem, 8vw, 4.5rem); color: rgba(255,255,255,0.95);">
-          你好，我是<span class="text-transparent bg-clip-text" style="background-image: linear-gradient(135deg, #c9a96e, #e8d5a3);">诺诺</span>
+        <p class="uppercase tracking-[0.3em] text-xs mb-6" style="color: rgba(184,134,11,0.4); font-family: 'Crimson Pro', serif; font-weight: 300;">Personal Blog & Digital Garden</p>
+        <h1 class="font-bold leading-tight mb-8" style="font-size: clamp(2.5rem, 8vw, 4.5rem); color: rgba(255,255,255,0.92); letter-spacing: 0.02em;">
+          你好，我是<span class="text-transparent bg-clip-text" style="background-image: linear-gradient(135deg, #d4a017, #b8860b);">诺诺</span>
         </h1>
-        <p class="max-w-2xl mx-auto mb-12 leading-relaxed" style="font-size: clamp(1rem, 2.5vw, 1.2rem); color: #9ca3af;">
-          10年跨行业实战经验 | 全栈运营能手 | 终身学习者
+        <p class="max-w-2xl mx-auto mb-14 leading-relaxed" style="font-size: clamp(1rem, 2.5vw, 1.15rem); color: rgba(255,255,255,0.45); font-family: 'Crimson Pro', serif; letter-spacing: 0.04em;">
+          10年跨行业实战经验 · 全栈运营能手 · 终身学习者
           <br />相信技术改变生活，热爱探索未知世界
         </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="#journey" class="bg-white/10 text-white border border-white/20 px-8 py-3 rounded-full font-medium
-             hover:bg-white/20 transition-all duration-300 backdrop-blur-sm">
-            了解我的故事
+        <div class="flex flex-col sm:flex-row justify-center gap-5">
+          <a href="#journey" class="group relative overflow-hidden px-10 py-3.5 rounded-full font-medium transition-all duration-500 backdrop-blur-sm border" style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);">
+            <span class="relative z-10">了解我的故事</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </a>
-          <a href="#contact" style="color: rgba(253,230,138,0.8); border-color: rgba(253,230,138,0.2);"
-             class="border px-8 py-3 rounded-full font-medium hover:bg-amber-100/10 transition-all duration-300 backdrop-blur-sm">
-            与我联系
+          <a href="#contact" class="group relative overflow-hidden px-10 py-3.5 rounded-full font-medium transition-all duration-500 backdrop-blur-sm border" style="color: rgba(212,175,55,0.75); border-color: rgba(184,134,11,0.15); background: rgba(184,134,11,0.03);">
+            <span class="relative z-10">与我联系</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-amber-900/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </a>
         </div>
       </div>
     </div>
 
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-      <a href="#journey" class="text-white/30 hover:text-amber-100/60 transition-colors">
-        <i class="fa fa-chevron-down text-2xl"></i>
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2" style="animation: gentleFloat 3s ease-in-out infinite;">
+      <a href="#journey" class="inline-flex flex-col items-center gap-2 transition-colors" style="color: rgba(184,134,11,0.25);">
+        <span class="text-[10px] uppercase tracking-[0.25em]" style="font-family: 'Crimson Pro', serif;">Scroll</span>
+        <i class="fa fa-chevron-down text-sm"></i>
       </a>
     </div>
   </section>
 
   <!-- ─── 个人经历 ─── -->
-  <section id="journey" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <h2 class="font-bold mb-4" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">我的成长之路</h2>
-        <p class="text-gray-500 max-w-2xl mx-auto">十年磨一剑，每一步都算数</p>
+  <section id="journey" class="py-24" style="background: var(--cream);">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-20 reveal">
+        <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">My Journey</p>
+        <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">我的成长之路</h2>
+        <div class="brush-stroke"></div>
+        <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">十年磨一剑，每一步都算数</p>
       </div>
-      <div class="max-w-4xl mx-auto space-y-8">
+      <div class="max-w-3xl mx-auto space-y-10 stagger-children">
 
-        <div class="reveal group">
-          <div class="flex items-start gap-5 p-6 rounded-2xl bg-gray-50 border-l-4 border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div class="hidden sm:flex flex-col items-center gap-1">
-              <div class="w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
-              <div class="w-px h-full bg-gray-200 min-h-[8rem]"></div>
+        <div class="timeline-item group">
+          <div class="timeline-dot" style="border-color: var(--gold);"></div>
+          <div class="p-7 rounded-2xl transition-all duration-500 hover:shadow-lg" style="background: var(--parchment); border: 1px solid rgba(28,25,23,0.04);">
+            <div class="flex items-center gap-3 mb-4 flex-wrap">
+              <span class="text-[11px] font-semibold px-3.5 py-1 rounded-full tracking-wider" style="background: rgba(184,134,11,0.08); color: var(--gold); font-family: 'Crimson Pro', serif;">2016 — 至今</span>
+              <h3 class="text-lg font-bold" style="color: var(--ink);">全能型职场老兵</h3>
             </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-3 mb-3 flex-wrap">
-                <span class="text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary">2016 — 至今</span>
-                <h3 class="text-xl font-bold text-gray-800">全能型职场老兵</h3>
-              </div>
-              <p class="text-gray-600 leading-relaxed text-sm">从保险行业内勤主训到汽车集团运营管理，<strong>10年跨行业实战经验</strong>锻造了我<strong>从0到1的全流程能力</strong>。精通<strong>文案策划、数据整理分析、运营方案设计与落地执行</strong>，同时具备<strong>新媒体运营、视频剪辑、平面设计</strong>等多项硬技能。能够独立完成一个项目从构思到落地的全过程，是团队中不可或缺的<strong>多面手和问题解决者</strong>。</p>
-            </div>
+            <p style="color: var(--ink-soft); line-height: 1.9; font-size: 0.95rem;">从保险行业内勤主训到汽车集团运营管理，<strong>10年跨行业实战经验</strong>锻造了我<strong>从0到1的全流程能力</strong>。精通<strong>文案策划、数据整理分析、运营方案设计与落地执行</strong>，同时具备<strong>新媒体运营、视频剪辑、平面设计</strong>等多项硬技能。能够独立完成一个项目从构思到落地的全过程，是团队中不可或缺的<strong>多面手和问题解决者</strong>。</p>
           </div>
         </div>
 
-        <div class="reveal group">
-          <div class="flex items-start gap-5 p-6 rounded-2xl bg-gray-50 border-l-4 border-secondary transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div class="hidden sm:flex flex-col items-center gap-1">
-              <div class="w-3 h-3 rounded-full bg-secondary ring-4 ring-secondary/20"></div>
-              <div class="w-px h-full bg-gray-200 min-h-[8rem]"></div>
+        <div class="timeline-item group">
+          <div class="timeline-dot" style="border-color: var(--slate-blue);"></div>
+          <div class="p-7 rounded-2xl transition-all duration-500 hover:shadow-lg" style="background: var(--parchment); border: 1px solid rgba(28,25,23,0.04);">
+            <div class="flex items-center gap-3 mb-4 flex-wrap">
+              <span class="text-[11px] font-semibold px-3.5 py-1 rounded-full tracking-wider" style="background: rgba(90,109,138,0.08); color: var(--slate-blue); font-family: 'Crimson Pro', serif;">2021 — 至今</span>
+              <h3 class="text-lg font-bold" style="color: var(--ink);">技术极客与终身学习者</h3>
             </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-3 mb-3 flex-wrap">
-                <span class="text-xs font-bold px-3 py-1 rounded-full bg-secondary/10 text-secondary">2021 — 至今</span>
-                <h3 class="text-xl font-bold text-gray-800">技术极客与终身学习者</h3>
-              </div>
-              <p class="text-gray-600 leading-relaxed text-sm">对技术有着近乎偏执的热情，<strong>自学计算机知识并成功搭建个人博客</strong>，掌握多种办公自动化工具，能够用技术手段大幅提升工作效率。紧跟AI技术发展浪潮，<strong>每日学习新知识、探索新工具</strong>，善于将前沿技术应用到实际工作中。坚信<strong>技术改变生活，学习永无止境</strong>，在快速变化的时代始终保持竞争力。</p>
-            </div>
+            <p style="color: var(--ink-soft); line-height: 1.9; font-size: 0.95rem;">对技术有着近乎偏执的热情，<strong>自学计算机知识并成功搭建个人博客</strong>，掌握多种办公自动化工具，能够用技术手段大幅提升工作效率。紧跟AI技术发展浪潮，<strong>每日学习新知识、探索新工具</strong>，善于将前沿技术应用到实际工作中。坚信<strong>技术改变生活，学习永无止境</strong>，在快速变化的时代始终保持竞争力。</p>
           </div>
         </div>
 
-        <div class="reveal group">
-          <div class="flex items-start gap-5 p-6 rounded-2xl bg-gray-50 border-l-4 border-accent transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div class="hidden sm:flex flex-col items-center gap-1">
-              <div class="w-3 h-3 rounded-full bg-accent ring-4 ring-accent/20"></div>
-              <div class="w-px h-full bg-gray-200 min-h-[8rem]"></div>
+        <div class="timeline-item group">
+          <div class="timeline-dot" style="border-color: var(--sage);"></div>
+          <div class="p-7 rounded-2xl transition-all duration-500 hover:shadow-lg" style="background: var(--parchment); border: 1px solid rgba(28,25,23,0.04);">
+            <div class="flex items-center gap-3 mb-4 flex-wrap">
+              <span class="text-[11px] font-semibold px-3.5 py-1 rounded-full tracking-wider" style="background: rgba(85,107,85,0.08); color: var(--sage); font-family: 'Crimson Pro', serif;">一直都在</span>
+              <h3 class="text-lg font-bold" style="color: var(--ink);">热爱生活的探索者</h3>
             </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-3 mb-3 flex-wrap">
-                <span class="text-xs font-bold px-3 py-1 rounded-full bg-accent/10 text-accent">一直都在</span>
-                <h3 class="text-xl font-bold text-gray-800">热爱生活的探索者</h3>
-              </div>
-              <p class="text-gray-600 leading-relaxed text-sm"><strong>深度阅读爱好者</strong>，在书籍中汲取智慧，拓宽认知边界。相信每一本书都是一次与智者的对话。<strong>旅行与摄影发烧友</strong>，用脚步丈量世界，用镜头记录美好。在旅途中感受不同的文化与风景。<strong>虚拟世界探索者</strong>，通过互联网了解不一样的世界，发现更多可能性。</p>
-            </div>
+            <p style="color: var(--ink-soft); line-height: 1.9; font-size: 0.95rem;"><strong>深度阅读爱好者</strong>，在书籍中汲取智慧，拓宽认知边界。相信每一本书都是一次与智者的对话。<strong>旅行与摄影发烧友</strong>，用脚步丈量世界，用镜头记录美好。在旅途中感受不同的文化与风景。<strong>虚拟世界探索者</strong>，通过互联网了解不一样的世界，发现更多可能性。</p>
           </div>
         </div>
 
-        <div class="reveal group">
-          <div class="flex items-start gap-5 p-6 rounded-2xl bg-gray-50 border-l-4 border-green-500 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            <div class="hidden sm:flex flex-col items-center gap-1">
-              <div class="w-3 h-3 rounded-full bg-green-500 ring-4 ring-green-500/20"></div>
+        <div class="timeline-item group">
+          <div class="timeline-dot" style="border-color: var(--vermilion);"></div>
+          <div class="p-7 rounded-2xl transition-all duration-500 hover:shadow-lg" style="background: var(--parchment); border: 1px solid rgba(28,25,23,0.04);">
+            <div class="flex items-center gap-3 mb-4 flex-wrap">
+              <span class="text-[11px] font-semibold px-3.5 py-1 rounded-full tracking-wider" style="background: rgba(192,57,43,0.06); color: var(--vermilion); font-family: 'Crimson Pro', serif;">未来</span>
+              <h3 class="text-lg font-bold" style="color: var(--ink);">未来可期</h3>
             </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-3 mb-3 flex-wrap">
-                <span class="text-xs font-bold px-3 py-1 rounded-full bg-green-500/10 text-green-600">未来</span>
-                <h3 class="text-xl font-bold text-gray-800">未来可期</h3>
-              </div>
-              <p class="text-gray-600 leading-relaxed text-sm">继续在自己热爱的领域深耕细作，不断提升专业能力，成为行业内的专家。保持终身学习的态度，拥抱变化，勇于尝试新事物，在不确定性中寻找确定性。通过这个博客平台，分享自己的知识与经验，<strong>认识更多志同道合的朋友，一起成长，共同进步</strong>。</p>
-            </div>
+            <p style="color: var(--ink-soft); line-height: 1.9; font-size: 0.95rem;">继续在自己热爱的领域深耕细作，不断提升专业能力，成为行业内的专家。保持终身学习的态度，拥抱变化，勇于尝试新事物，在不确定性中寻找确定性。通过这个博客平台，分享自己的知识与经验，<strong>认识更多志同道合的朋友，一起成长，共同进步</strong>。</p>
           </div>
         </div>
 
@@ -220,209 +264,273 @@
     </div>
   </section>
 
+  <!-- ─── 小项目 ─── -->
+  <section id="projects" class="py-20" style="background: var(--parchment);">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14 reveal">
+        <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">Projects</p>
+        <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">小作品</h2>
+        <div class="brush-stroke"></div>
+        <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">用代码实现的一些有趣小工具，欢迎体验</p>
+      </div>
+      <div class="max-w-2xl mx-auto reveal">
+        <a href="projects/typing-english.html" target="_blank" class="group block card-editorial p-8 transition-all duration-500 hover:shadow-lg" style="text-decoration: none;">
+          <div class="flex items-start gap-6">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: rgba(184,134,11,0.06);">
+              <i class="fa fa-keyboard-o text-2xl" style="color: var(--gold);"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-3 mb-2 flex-wrap">
+                <h3 class="text-lg font-bold" style="color: var(--ink);">Ogden 850 · 打字学英语</h3>
+                <span class="text-[10px] px-2.5 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold); font-family: 'Crimson Pro', serif;">HTML</span>
+              </div>
+              <p class="mb-3" style="color: var(--ink-muted); font-size: 0.92rem; line-height: 1.7;">基于奥格登850基础英语词汇的在线学习工具，通过打字练习、看中写英、句子填空、错词复习四种模式，帮助英语初学者高效掌握核心词汇。纯前端实现，进度自动保存。</p>
+              <span class="inline-flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all" style="color: var(--gold);">
+                点击体验 <i class="fa fa-arrow-right text-xs"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── 技能与专长 ─── -->
-  <section id="skills" class="py-20 bg-neutral">
+  <section id="skills" class="py-24" style="background: var(--parchment);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <h2 class="font-bold mb-4" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">我的核心技能</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">这些是我安身立命的根本，也是我不断前进的动力</p>
+      <div class="text-center mb-20 reveal">
+        <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">Expertise</p>
+        <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">我的核心技能</h2>
+        <div class="brush-stroke"></div>
+        <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">这些是我安身立命的根本，也是我不断前进的动力</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal">
-          <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fa fa-file-text-o text-primary text-3xl"></i></div>
-          <h3 class="text-xl font-bold mb-3">内容创作</h3>
-          <p class="text-gray-600">精通各类文案写作，从策划到落地全流程把控，具备优秀的文字表达能力</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+        <div class="card-editorial p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(184,134,11,0.06);"><i class="fa fa-file-text-o text-2xl" style="color: var(--gold);"></i></div>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">内容创作</h3>
+          <p style="color: var(--ink-muted); font-size: 0.9rem; line-height: 1.7;">精通各类文案写作，从策划到落地全流程把控，具备优秀的文字表达能力</p>
         </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal">
-          <div class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fa fa-bar-chart text-secondary text-3xl"></i></div>
-          <h3 class="text-xl font-bold mb-3">数据分析</h3>
-          <p class="text-gray-600">精通Excel及各类数据工具，擅长数据整理、分析与可视化，用数据驱动决策</p>
+        <div class="card-editorial p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(90,109,138,0.06);"><i class="fa fa-bar-chart text-2xl" style="color: var(--slate-blue);"></i></div>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">数据分析</h3>
+          <p style="color: var(--ink-muted); font-size: 0.9rem; line-height: 1.7;">精通Excel及各类数据工具，擅长数据整理、分析与可视化，用数据驱动决策</p>
         </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal">
-          <div class="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fa fa-video-camera text-accent text-3xl"></i></div>
-          <h3 class="text-xl font-bold mb-3">多媒体制作</h3>
-          <p class="text-gray-600">熟练掌握视频剪辑、平面设计技能，能够独立完成各类新媒体内容制作</p>
+        <div class="card-editorial p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(192,57,43,0.06);"><i class="fa fa-video-camera text-2xl" style="color: var(--vermilion);"></i></div>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">多媒体制作</h3>
+          <p style="color: var(--ink-muted); font-size: 0.9rem; line-height: 1.7;">熟练掌握视频剪辑、平面设计技能，能够独立完成各类新媒体内容制作</p>
         </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover reveal">
-          <div class="w-20 h-20 bg-green-600/10 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fa fa-code text-green-600 text-3xl"></i></div>
-          <h3 class="text-xl font-bold mb-3">技术应用</h3>
-          <p class="text-gray-600">自学编程与AI技术，擅长使用自动化工具提升效率，能够独立搭建个人网站</p>
+        <div class="card-editorial p-8 text-center">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(85,107,85,0.06);"><i class="fa fa-code text-2xl" style="color: var(--sage);"></i></div>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">技术应用</h3>
+          <p style="color: var(--ink-muted); font-size: 0.9rem; line-height: 1.7;">自学编程与AI技术，擅长使用自动化工具提升效率，能够独立搭建个人网站</p>
         </div>
       </div>
-      <div class="mt-16 bg-white rounded-2xl p-8 shadow-lg reveal">
-        <h3 class="text-xl font-bold mb-6 text-center">其他能力</h3>
-        <div class="flex flex-wrap justify-center gap-4">
-          <span class="px-4 py-2 bg-primary/10 text-primary rounded-full font-medium">项目管理</span>
-          <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full font-medium">团队协作</span>
-          <span class="px-4 py-2 bg-accent/10 text-accent rounded-full font-medium">沟通表达</span>
-          <span class="px-4 py-2 bg-green-600/10 text-green-600 rounded-full font-medium">问题解决</span>
-          <span class="px-4 py-2 bg-purple-600/10 text-purple-600 rounded-full font-medium">快速学习</span>
-          <span class="px-4 py-2 bg-red-600/10 text-red-600 rounded-full font-medium">执行力强</span>
-          <span class="px-4 py-2 bg-indigo-600/10 text-indigo-600 rounded-full font-medium">创新思维</span>
-          <span class="px-4 py-2 bg-teal-600/10 text-teal-600 rounded-full font-medium">虚拟上网</span>
+      <div class="mt-16 card-editorial p-8 reveal">
+        <h3 class="text-lg font-bold mb-7 text-center" style="color: var(--ink);">其他能力</h3>
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(184,134,11,0.06); color: var(--gold); border: 1px solid rgba(184,134,11,0.1);">项目管理</span>
+          <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(90,109,138,0.06); color: var(--slate-blue); border: 1px solid rgba(90,109,138,0.1);">团队协作</span>
+          <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(192,57,43,0.06); color: var(--vermilion); border: 1px solid rgba(192,57,43,0.1);">沟通表达</span>
+          <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(85,107,85,0.06); color: var(--sage); border: 1px solid rgba(85,107,85,0.1);">问题解决</span>
+          <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(146,64,14,0.06); color: var(--amber); border: 1px solid rgba(146,64,14,0.1);">快速学习</span>
+          <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(192,57,43,0.06); color: var(--vermilion); border: 1px solid rgba(192,57,43,0.1);">执行力强</span>
+          <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(90,109,138,0.06); color: var(--slate-blue); border: 1px solid rgba(90,109,138,0.1);">创新思维</span>
+          <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(85,107,85,0.06); color: var(--sage); border: 1px solid rgba(85,107,85,0.1);">虚拟上网</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ─── 随笔专栏 ─── -->
-  <section id="articles" class="py-20 bg-white">
+  <section id="articles" class="py-24" style="background: var(--cream);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <h2 class="font-bold mb-4" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">随笔专栏</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">记录思考，分享感悟，这里有我随手写下的文字</p>
+      <div class="text-center mb-20 reveal">
+        <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">Writings</p>
+        <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">随笔专栏</h2>
+        <div class="brush-stroke"></div>
+        <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">记录思考，分享感悟，这里有我随手写下的文字</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="stagger-children">
 
-        <article class="bg-neutral rounded-2xl overflow-hidden shadow-lg card-hover reveal">
-          <div class="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-            <i class="fa fa-android text-5xl text-primary/40"></i>
-          </div>
-          <div class="p-6">
-            <div class="text-sm text-gray-500 mb-2">2026-05-22</div>
-            <h3 class="text-xl font-bold mb-3">AI时代的个人成长：从焦虑到共生</h3>
-            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-              2022年底ChatGPT横空出世，我经历了从焦虑到从容的心路历程。这篇文章分享了我总结的四条应对策略：保持好奇心、深耕垂直领域、建立科学思维、善用AI工具。从惶恐不安到从容自信，AI不是敌人，而是最强大的伙伴。
-            </p>
-            <a href="posts/ai-growth.html" class="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1">
-              阅读全文 <i class="fa fa-arrow-right text-xs"></i>
-            </a>
+        <!-- 置顶文章：跨两列横向布局 -->
+        <article class="card-article lg:col-span-2 mb-7" style="display: grid; grid-template-columns: 1fr; ">
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <div class="card-img flex items-center justify-center" style="background: linear-gradient(135deg, rgba(184,134,11,0.08), rgba(146,64,14,0.04)); height: 200px; position: relative;">
+              <i class="fa fa-android text-5xl" style="color: rgba(184,134,11,0.2);"></i>
+              <span style="position: absolute; top: 1rem; left: 1.5rem; font-family: 'Crimson Pro', serif; font-size: 4rem; font-weight: 700; color: rgba(184,134,11,0.06); line-height: 1;">01</span>
+            </div>
+            <div class="p-7">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-05-22</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 8 分钟</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3 leading-snug" style="color: var(--ink);">AI时代的个人成长：从焦虑到共生</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted); max-width: 600px;">
+                2022年底ChatGPT横空出世，我经历了从焦虑到从容的心路历程。这篇文章分享了我总结的四条应对策略：保持好奇心、深耕垂直领域、建立科学思维、善用AI工具。从惶恐不安到从容自信，AI不是敌人，而是最强大的伙伴。
+              </p>
+              <a href="posts/ai-growth.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+                阅读全文 <i class="fa fa-arrow-right text-xs"></i>
+              </a>
+            </div>
           </div>
         </article>
 
-        <article class="bg-neutral rounded-2xl overflow-hidden shadow-lg card-hover reveal">
-          <div class="h-48 bg-gradient-to-br from-secondary/20 to-accent/20 flex items-center justify-center">
-            <i class="fa fa-heart text-5xl text-secondary/40"></i>
-          </div>
-          <div class="p-6">
-            <div class="text-sm text-gray-500 mb-2">2026-05-15</div>
-            <h3 class="text-xl font-bold mb-3">未来的寄托：写给 31 岁的自己</h3>
-            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-              总说三十而立，可站在31岁的门槛上，我才发现成长从来都不是一瞬间的事。内心深处总还住着那个18岁、眼神清亮的小男孩。这篇文字写给未来的我，愿你遍历山河，仍觉人间值得。
-            </p>
-            <a href="posts/letter-to-31.html" class="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1">
-              阅读全文 <i class="fa fa-arrow-right text-xs"></i>
-            </a>
-          </div>
-        </article>
+        <!-- 其余文章：三列网格 -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
 
-        <article class="bg-neutral rounded-2xl overflow-hidden shadow-lg card-hover reveal">
-          <div class="h-48 bg-gradient-to-br from-accent/20 to-green-600/20 flex items-center justify-center">
-            <i class="fa fa-briefcase text-5xl text-accent/40"></i>
-          </div>
-          <div class="p-6">
-            <div class="text-sm text-gray-500 mb-2">2026-05-08</div>
-            <h3 class="text-xl font-bold mb-3">职场十年：那些谁也拿不走的底层能力</h3>
-            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-              十年间辗转三个行业、四家公司，我最大的感悟是：真正决定职业天花板的，从来不是单一的专业技能，而是那些看不见的底层能力——数据分析、项目管理、共情能力。分享我快速适应新行业的三个心法。
-            </p>
-            <a href="posts/career-10years.html" class="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1">
-              阅读全文 <i class="fa fa-arrow-right text-xs"></i>
-            </a>
-          </div>
-        </article>
+          <article class="card-article">
+            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(192,57,43,0.06), rgba(184,134,11,0.06)); position: relative;">
+              <i class="fa fa-heart text-4xl" style="color: rgba(192,57,43,0.25);"></i>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(192,57,43,0.05); line-height: 1;">02</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-05-15</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(192,57,43,0.04); color: var(--vermilion);">约 5 分钟</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">未来的寄托：写给 31 岁的自己</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
+                总说三十而立，可站在31岁的门槛上，我才发现成长从来都不是一瞬间的事。内心深处总还住着那个18岁、眼神清亮的小男孩。
+              </p>
+              <a href="posts/letter-to-31.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+                阅读全文 <i class="fa fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </article>
 
-        <article class="bg-neutral rounded-2xl overflow-hidden shadow-lg card-hover reveal">
-          <div class="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-            <i class="fa fa-rocket text-5xl text-purple-500/40"></i>
-          </div>
-          <div class="p-6">
-            <div class="text-sm text-gray-500 mb-2">2026-04-28</div>
-            <h3 class="text-xl font-bold mb-3">我用了4年AI，总结出这4个普通人也能上手的高效工作流</h3>
-            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-              从2022年开始把AI融入日常工作，四年里总结出四个最实用的AI工作流：AI写作助手、AI数据分析、AI绘图、AI自动化。AI不会取代人类，但会使用AI的人，一定会取代那些不会使用AI的人。
-            </p>
-            <a href="posts/ai-workflow.html" class="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1">
-              阅读全文 <i class="fa fa-arrow-right text-xs"></i>
-            </a>
-          </div>
-        </article>
+          <article class="card-article">
+            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(85,107,85,0.08), rgba(90,109,138,0.06)); position: relative;">
+              <i class="fa fa-briefcase text-4xl" style="color: rgba(85,107,85,0.25);"></i>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(85,107,85,0.06); line-height: 1;">03</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-05-08</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(85,107,85,0.04); color: var(--sage);">约 6 分钟</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">职场十年：那些谁也拿不走的底层能力</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
+                十年间辗转三个行业、四家公司，我最大的感悟是：真正决定职业天花板的，从来不是单一的专业技能，而是那些看不见的底层能力。
+              </p>
+              <a href="posts/career-10years.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+                阅读全文 <i class="fa fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </article>
 
-        <article class="bg-neutral rounded-2xl overflow-hidden shadow-lg card-hover reveal">
-          <div class="h-48 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 flex items-center justify-center">
-            <i class="fa fa-pencil-square-o text-5xl text-teal-500/40"></i>
-          </div>
-          <div class="p-6">
-            <div class="text-sm text-gray-500 mb-2">2026-04-20</div>
-            <h3 class="text-xl font-bold mb-3">我的极简学习方法论：从兴趣出发，在复盘中成长</h3>
-            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-              学习方法论特别简单，就四个字：多看多学。兴趣是最好的驱动力，学习是一个从无到有的过程，复盘总结是从知识到认知的关键一步。学习不是为了比别人强，而是为了比昨天的自己强。
-            </p>
-            <a href="posts/learning-method.html" class="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1">
-              阅读全文 <i class="fa fa-arrow-right text-xs"></i>
-            </a>
-          </div>
-        </article>
+          <article class="card-article">
+            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(90,109,138,0.08), rgba(146,64,14,0.06)); position: relative;">
+              <i class="fa fa-rocket text-4xl" style="color: rgba(90,109,138,0.25);"></i>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(90,109,138,0.05); line-height: 1;">04</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-04-28</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(90,109,138,0.04); color: var(--slate-blue);">约 7 分钟</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">我用了4年AI，总结出这4个普通人也能上手的高效工作流</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
+                从2022年开始把AI融入日常工作，四年里总结出四个最实用的AI工作流。AI不会取代人类，但会使用AI的人，一定会取代那些不会使用AI的人。
+              </p>
+              <a href="posts/ai-workflow.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+                阅读全文 <i class="fa fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </article>
 
-        <article class="bg-neutral rounded-2xl overflow-hidden shadow-lg card-hover reveal">
-          <div class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center">
-            <i class="fa fa-code text-5xl text-indigo-500/40"></i>
-          </div>
-          <div class="p-6">
-            <div class="text-sm text-gray-500 mb-2">2026-04-12</div>
-            <h3 class="text-xl font-bold mb-3">从零开始搭建个人博客：一个运营人的AI时代技术实践</h3>
-            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-              一个完全不懂编程的运营人员，如何从零开始亲手搭建个人博客？在AI时代，"不会写代码"早已不再是拥有个人网站的障碍。分享我的完整经历和全套零成本技术方案。
-            </p>
-            <a href="posts/build-blog-v2.html" class="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1">
-              阅读全文 <i class="fa fa-arrow-right text-xs"></i>
-            </a>
-          </div>
-        </article>
+          <article class="card-article">
+            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(85,107,85,0.08), rgba(184,134,11,0.05)); position: relative;">
+              <i class="fa fa-pencil-square-o text-4xl" style="color: rgba(85,107,85,0.25);"></i>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(85,107,85,0.06); line-height: 1;">05</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-04-20</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(85,107,85,0.04); color: var(--sage);">约 4 分钟</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">我的极简学习方法论：从兴趣出发，在复盘中成长</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
+                学习方法论特别简单，就四个字：多看多学。兴趣是最好的驱动力，学习是一个从无到有的过程，复盘总结是从知识到认知的关键一步。
+              </p>
+              <a href="posts/learning-method.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+                阅读全文 <i class="fa fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </article>
 
+          <article class="card-article">
+            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(146,64,14,0.06), rgba(90,109,138,0.08)); position: relative;">
+              <i class="fa fa-code text-4xl" style="color: rgba(146,64,14,0.25);"></i>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(146,64,14,0.05); line-height: 1;">06</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-04-12</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(146,64,14,0.04); color: var(--amber);">约 8 分钟</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">从零开始搭建个人博客：一个运营人的AI时代技术实践</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
+                一个完全不懂编程的运营人员，如何从零开始亲手搭建个人博客？在AI时代，"不会写代码"早已不再是拥有个人网站的障碍。
+              </p>
+              <a href="posts/build-blog-v2.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+                阅读全文 <i class="fa fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </article>
+
+        </div>
       </div>
-      <div class="text-center mt-12 reveal">
-        <a href="#" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-medium
-           hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-          查看全部文章 <i class="fa fa-external-link"></i>
+      <div class="text-center mt-14 reveal">
+        <a href="#" class="group relative inline-flex items-center gap-2 px-10 py-3.5 rounded-full font-medium transition-all duration-500 overflow-hidden" style="background: var(--ink); color: var(--parchment);">
+          <span class="relative z-10">查看全部文章</span>
+          <i class="fa fa-external-link relative z-10 text-xs"></i>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ─── 联系我 ─── -->
-  <section id="contact" class="py-20 bg-neutral">
+  <section id="contact" class="py-24" style="background: var(--parchment);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
-        <h2 class="font-bold mb-4" style="font-size: clamp(1.75rem, 5vw, 2.5rem);">联系我</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">期待与志同道合的你交流学习</p>
+        <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">Contact</p>
+        <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">联系我</h2>
+        <div class="brush-stroke"></div>
+        <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">期待与志同道合的你交流学习</p>
       </div>
-      <div class="max-w-2xl mx-auto reveal">
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <h3 class="text-xl font-bold mb-8 text-center">找到我</h3>
-          <div class="space-y-6">
-            <a href="mailto:nuon9951@gmail.com" class="flex items-center justify-center gap-4 group">
-              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <i class="fa fa-google text-primary text-xl"></i>
-              </div>
-              <div class="text-left">
-                <p class="text-gray-500 text-sm">谷歌邮箱</p>
-                <p class="font-bold text-lg group-hover:text-primary transition-colors">nuon9951@gmail.com</p>
-              </div>
-            </a>
+      <div class="max-w-xl mx-auto reveal">
+        <div class="card-editorial p-10 text-center">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6" style="background: rgba(184,134,11,0.06);">
+            <i class="fa fa-envelope-o text-xl" style="color: var(--gold);"></i>
           </div>
+          <h3 class="text-lg font-bold mb-6" style="color: var(--ink);">找到我</h3>
+          <a href="mailto:nuon9951@gmail.com" class="group inline-flex items-center gap-3 transition-all duration-300" style="color: var(--ink-soft);">
+            <span class="text-sm" style="color: var(--ink-muted);">谷歌邮箱</span>
+            <span class="font-semibold text-lg group-hover:text-[var(--gold)] transition-colors">nuon9951@gmail.com</span>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ─── 页脚 ─── -->
-  <footer class="bg-dark text-white py-12">
+  <footer class="text-white py-14">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="text-center md:text-left">
-          <div class="flex items-center justify-center md:justify-start gap-2">
-            <i class="fa fa-paper-plane text-primary text-xl"></i>
-            <span class="text-xl font-semibold">诺诺的小博客空间</span>
+          <div class="flex items-center justify-center md:justify-start gap-3">
+            <span class="text-lg font-semibold tracking-wide" style="color: rgba(255,255,255,0.9);">诺诺的小博客空间</span>
           </div>
-          <p class="text-gray-400 mt-2 text-sm">记录生活，分享美好，终身学习</p>
+          <p class="mt-3 text-sm tracking-wider" style="color: rgba(255,255,255,0.3); font-family: 'Crimson Pro', serif; font-style: italic;">记录生活，分享美好，终身学习</p>
         </div>
         <div class="flex items-center gap-6">
-          <a href="feed.xml" class="text-gray-400 hover:text-white transition-colors" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-xl"></i></a>
+          <a href="feed.xml" class="transition-colors hover:text-[var(--gold)]" style="color: rgba(255,255,255,0.3);" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-lg"></i></a>
         </div>
       </div>
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-        <p class="text-gray-400 text-sm">&copy; 2026 诺诺的小博客空间 · 用 <i class="fa fa-heart text-red-400"></i> 打造</p>
+      <div class="mt-10 pt-8 text-center" style="border-top: 1px solid rgba(255,255,255,0.06);">
+        <p class="text-xs tracking-wider" style="color: rgba(255,255,255,0.2); font-family: 'Crimson Pro', serif;">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></p>
       </div>
     </div>
   </footer>
