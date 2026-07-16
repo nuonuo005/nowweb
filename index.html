@@ -10,14 +10,17 @@
   <meta name="theme-color" content="#1a1428" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E📝%3C/text%3E%3C/svg%3E" />
   <title>诺诺的小博客空间</title>
-  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/common.css?v=editorial-20260602g" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
     tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
       theme: {
         extend: {
           colors: {
@@ -29,10 +32,10 @@
             parchment: '#faf8f5', paper: '#f5f0eb', cream: '#fffef9'
           },
           fontFamily: {
-            sans: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
-            serif: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
+            sans: ['"Source Serif 4"', '"Noto Serif SC"', 'Georgia', 'serif'],
+            serif: ['"Source Serif 4"', '"Noto Serif SC"', 'Georgia', 'serif'],
             ma: ['"LXGW WenKai"', '"Ma Shan Zheng"', 'serif'],
-            display: ['"Crimson Pro"', '"Noto Serif SC"', 'Georgia', 'serif']
+            display: ['"Playfair Display"', '"Crimson Pro"', '"Noto Serif SC"', 'Georgia', 'serif']
           },
         },
       },
@@ -56,10 +59,8 @@
 </head>
 <body class="bg-neutral text-dark font-sans antialiased grain">
 
-  <!-- 阅读进度条 -->
   <div id="reading-progress"></div>
 
-  <!-- ─── 导航栏 ─── -->
   <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
@@ -77,12 +78,17 @@
           <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
           <a href="#contact" data-nav class="nav-link text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
         </div>
-        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
-          <i class="fa fa-bars text-xl"></i>
-        </button>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式">
+            <i class="fa fa-sun-o icon-sun"></i>
+            <i class="fa fa-moon-o icon-moon"></i>
+          </button>
+          <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false">
+            <i class="fa fa-bars text-xl"></i>
+          </button>
+        </div>
       </div>
     </div>
-    <!-- 移动菜单 -->
     <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
       <div class="px-4 py-3 space-y-1">
         <a href="#home" data-nav class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
@@ -96,17 +102,15 @@
       </div>
     </div>
   </nav>
+  <!-- 高级东方编辑感首屏 -->
+  <section id="home" class="editorial-hero relative min-h-screen flex items-center overflow-hidden ink-bg">
+    <div class="ink-particle" data-parallax-speed="-80"></div>
+    <div class="ink-particle" data-parallax-speed="-120"></div>
+    <div class="ink-particle" data-parallax-speed="-60"></div>
+    <div class="ink-particle" data-parallax-speed="-100"></div>
+    <div class="ink-particle" data-parallax-speed="-50"></div>
 
-  <!-- ─── 英雄区 · 每日诗词 ─── -->
-  <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden ink-bg">
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-
-    <!-- SVG 水墨纹理 -->
-    <div class="ink-wash">
+    <div class="ink-wash" aria-hidden="true">
       <svg class="wash-blob" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="wg1" cx="50%" cy="50%" r="50%">
@@ -139,82 +143,52 @@
       </svg>
     </div>
 
-    <!-- 装饰性书法笔触 -->
-    <svg class="ink-brush-float" width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
-      <path d="M30,280 C30,280 50,200 40,150 C30,100 60,60 80,30 C90,15 70,10 60,25 C50,40 55,80 65,100 C75,120 45,180 40,220 C35,260 50,270 60,250" stroke="rgba(184,134,11,0.12)" stroke-width="2" fill="none" stroke-linecap="round"/>
-    </svg>
-    <svg class="ink-brush-float" width="180" height="250" viewBox="0 0 180 250" xmlns="http://www.w3.org/2000/svg">
-      <path d="M150,230 C140,180 120,140 100,120 C80,100 60,90 50,70 C40,50 60,30 80,40 C100,50 90,80 85,100 C80,120 100,150 110,180 C120,210 130,220 140,200" stroke="rgba(192,57,43,0.08)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    </svg>
+    <canvas id="ink-canvas" class="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true"></canvas>
+    <div class="editorial-hero__rule" aria-hidden="true"></div>
 
-    <!-- 墨水扩散动画画布 -->
-    <canvas id="ink-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 2; opacity: 0.6;"></canvas>
-
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-         style="background: radial-gradient(circle, rgba(184,134,11,0.04) 0%, transparent 70%);"></div>
-
-    <!-- 装饰性垂直线 -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full pointer-events-none" style="background: linear-gradient(180deg, transparent 10%, rgba(184,134,11,0.06) 40%, rgba(184,134,11,0.06) 60%, transparent 90%);"></div>
-
-    <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
-
-      <div id="poem-container" class="opacity-0">
-        <div class="mx-auto w-px h-14 mb-12" style="background: linear-gradient(180deg, transparent, rgba(184,134,11,0.25));"></div>
-
-        <div id="poem-lines" class="font-ma" style="font-size: clamp(2rem, 5.5vw, 4rem); line-height: 1.5; color: rgba(212,175,55,0.85); letter-spacing: 0.1em;">
-        </div>
-
-        <div class="mt-10 flex items-center justify-center gap-5">
-          <span class="block w-16 h-px opacity-30" style="background: linear-gradient(90deg, transparent, rgba(184,134,11,0.4));"></span>
-          <span id="poem-author" class="font-ma text-lg md:text-xl" style="color: rgba(212,175,55,0.45); letter-spacing: 0.2em;"></span>
-          <span class="block w-16 h-px opacity-30" style="background: linear-gradient(90deg, rgba(184,134,11,0.4), transparent);"></span>
-        </div>
-
-        <div class="seal mt-8"><span>诗</span></div>
-      </div>
-
-      <div class="brush-stroke my-16"></div>
-
-      <div class="opacity-0 transition-all duration-1000 delay-500" id="hero-intro">
-        <p class="uppercase tracking-[0.3em] text-xs mb-6" style="color: rgba(184,134,11,0.4); font-family: 'Crimson Pro', serif; font-weight: 300;">Personal Blog & Digital Garden</p>
-        <h1 class="font-bold leading-tight mb-8" style="font-size: clamp(2.5rem, 8vw, 4.5rem); color: rgba(255,255,255,0.92); letter-spacing: 0.02em;">
-          你好，我是<span class="text-transparent bg-clip-text" style="background-image: linear-gradient(135deg, #d4a017, #b8860b);">诺诺</span>
-        </h1>
-        <p class="max-w-2xl mx-auto mb-14 leading-relaxed" style="font-size: clamp(1rem, 2.5vw, 1.15rem); color: rgba(255,255,255,0.45); font-family: 'Crimson Pro', serif; letter-spacing: 0.04em;">
-          10年跨行业实战经验 · 全栈运营能手 · 终身学习者
-          <br />相信技术改变生活，热爱探索未知世界
+    <div class="editorial-hero__inner relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+      <div class="editorial-hero__copy motion-reveal">
+        <p class="editorial-kicker">Personal Blog & Digital Garden</p>
+        <h1 class="editorial-hero__title">你好，我是<span>诺诺</span></h1>
+        <p class="editorial-hero__lead">
+          十年跨行业实战经验 · 全栈运营能手 · 终身学习者<br />
+          在技术、阅读与生活之间，记录一条持续生长的路。
         </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-5">
-          <a href="#journey" class="group relative overflow-hidden px-10 py-3.5 rounded-full font-medium transition-all duration-500 backdrop-blur-sm border" style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);">
-            <span class="relative z-10">了解我的故事</span>
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-          </a>
-          <a href="#contact" class="group relative overflow-hidden px-10 py-3.5 rounded-full font-medium transition-all duration-500 backdrop-blur-sm border" style="color: rgba(212,175,55,0.75); border-color: rgba(184,134,11,0.15); background: rgba(184,134,11,0.03);">
-            <span class="relative z-10">与我联系</span>
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-amber-900/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-          </a>
+        <div class="editorial-hero__actions motion-stagger">
+          <a href="#articles" class="editorial-button editorial-button--primary">读最新随笔</a>
+          <a href="#projects" class="editorial-button editorial-button--ghost">看小作品</a>
         </div>
       </div>
+
+      <aside id="poem-container" class="daily-poem motion-reveal" aria-label="每日诗句">
+        <div class="daily-poem__label">今日签语</div>
+        <div id="poem-lines" class="daily-poem__lines font-ma"></div>
+        <div class="daily-poem__meta">
+          <span></span>
+          <strong id="poem-author"></strong>
+        </div>
+        <div class="seal"><span>诗</span></div>
+      </aside>
     </div>
 
-    <div class="absolute bottom-12 left-1/2 -translate-x-1/2" style="animation: gentleFloat 3s ease-in-out infinite;">
-      <a href="#journey" class="inline-flex flex-col items-center gap-2 transition-colors" style="color: rgba(184,134,11,0.25);">
-        <span class="text-[10px] uppercase tracking-[0.25em]" style="font-family: 'Crimson Pro', serif;">Scroll</span>
-        <i class="fa fa-chevron-down text-sm"></i>
-      </a>
+    <div class="editorial-hero__scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <i class="fa fa-chevron-down"></i>
     </div>
   </section>
 
-  <!-- ─── 个人经历 ─── -->
+<!-- ─── 个人经历 ─── -->
   <section id="journey" class="py-24" style="background: var(--cream);">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-20 reveal">
+      <div class="text-center mb-20 section-header">
         <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">My Journey</p>
         <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">我的成长之路</h2>
         <div class="brush-stroke"></div>
         <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">十年磨一剑，每一步都算数</p>
       </div>
-      <div class="max-w-3xl mx-auto space-y-10 stagger-children">
+      <div class="max-w-3xl mx-auto relative">
+        <div class="timeline-track"></div>
+        <div class="space-y-10 journey-timeline">
 
         <div class="timeline-item group">
           <div class="timeline-dot" style="border-color: var(--gold);"></div>
@@ -259,74 +233,142 @@
             <p style="color: var(--ink-soft); line-height: 1.9; font-size: 0.95rem;">继续在自己热爱的领域深耕细作，不断提升专业能力，成为行业内的专家。保持终身学习的态度，拥抱变化，勇于尝试新事物，在不确定性中寻找确定性。通过这个博客平台，分享自己的知识与经验，<strong>认识更多志同道合的朋友，一起成长，共同进步</strong>。</p>
           </div>
         </div>
-
+      </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── 小项目 ─── -->
-  <section id="projects" class="py-20" style="background: var(--parchment);">
+  <!-- ─── 小作品 ─── -->
+  <section id="projects" class="py-24" style="background: var(--parchment);">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-14 reveal">
-        <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">Projects</p>
-        <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">小作品</h2>
+      <div class="text-center mb-16 section-header">
+        <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Playfair Display', 'Crimson Pro', serif; font-weight: 400;">Projects</p>
+        <h2 class="font-bold mb-5 font-display" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">小作品</h2>
         <div class="brush-stroke"></div>
         <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">用代码实现的一些有趣小工具，欢迎体验</p>
       </div>
-      <div class="max-w-2xl mx-auto reveal">
-        <a href="projects/typing-english.html" target="_blank" class="group block card-editorial p-8 transition-all duration-500 hover:shadow-lg" style="text-decoration: none;">
-          <div class="flex items-start gap-6">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: rgba(184,134,11,0.06);">
-              <i class="fa fa-keyboard-o text-2xl" style="color: var(--gold);"></i>
-            </div>
-            <div>
-              <div class="flex items-center gap-3 mb-2 flex-wrap">
-                <h3 class="text-lg font-bold" style="color: var(--ink);">Ogden 850 · 打字学英语</h3>
-                <span class="text-[10px] px-2.5 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold); font-family: 'Crimson Pro', serif;">HTML</span>
+
+      <div class="max-w-2xl mx-auto gsap-reveal">
+        <a href="projects/typing-english.html" target="_blank" class="project-card-enhanced">
+          <div class="project-card-visual flex items-center justify-center" style="background: linear-gradient(135deg, rgba(184,134,11,0.07), rgba(146,64,14,0.04), rgba(90,109,138,0.03));">
+            <div class="project-pattern"></div>
+            <span class="project-number">01</span>
+            <div class="project-mockup">
+              <div class="project-mockup-dots">
+                <span class="project-mockup-dot" style="background: #ff5f57;"></span>
+                <span class="project-mockup-dot" style="background: #febc2e;"></span>
+                <span class="project-mockup-dot" style="background: #28c840;"></span>
               </div>
-              <p class="mb-3" style="color: var(--ink-muted); font-size: 0.92rem; line-height: 1.7;">基于奥格登850基础英语词汇的在线学习工具，通过打字练习、看中写英、句子填空、错词复习四种模式，帮助英语初学者高效掌握核心词汇。纯前端实现，进度自动保存。</p>
-              <span class="inline-flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all" style="color: var(--gold);">
-                点击体验 <i class="fa fa-arrow-right text-xs"></i>
-              </span>
+              <div class="project-mockup-lines">
+                <span class="project-mockup-line" style="width: 100%; background: #e8e0d5;"></span>
+                <span class="project-mockup-line project-accent" style="width: 68%; background: var(--gold); opacity: 0.35;"></span>
+                <span class="project-mockup-line" style="width: 85%; background: #e8e0d5;"></span>
+                <span class="project-mockup-line" style="width: 55%; background: #d4c9b8;"></span>
+                <span class="project-mockup-line" style="width: 92%; background: #e8e0d5;"></span>
+                <span class="project-mockup-line" style="width: 62%; background: #d4c9b8;"></span>
+              </div>
             </div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-tech-tags">
+              <span class="project-tech-tag" style="background: rgba(184,134,11,0.08); color: var(--gold);">HTML/CSS</span>
+              <span class="project-tech-tag" style="background: rgba(90,109,138,0.08); color: var(--slate-blue);">JavaScript</span>
+              <span class="project-tech-tag" style="background: rgba(85,107,85,0.08); color: var(--sage);">纯前端</span>
+            </div>
+            <h3>Ogden 850 · 打字学英语</h3>
+            <p>基于奥格登850基础英语词汇的在线学习工具，通过打字练习、看中写英、句子填空、错词复习四种模式，帮助英语初学者高效掌握核心词汇。纯前端实现，进度自动保存。</p>
+            <span class="project-cta">
+              点击体验 <i class="fa fa-arrow-right text-xs"></i>
+            </span>
           </div>
         </a>
       </div>
+
+      <!-- 语言转写工具 -->
+      <div class="max-w-2xl mx-auto mt-8 gsap-reveal">
+        <a href="projects/yuyin-zhuanxie.html" class="project-card-enhanced">
+          <div class="project-card-visual flex items-center justify-center" style="background: linear-gradient(135deg, rgba(90,109,138,0.1), rgba(184,134,11,0.06), rgba(164,90,104,0.05));">
+            <div class="project-pattern"></div>
+            <span class="project-number">02</span>
+            <div class="project-mockup" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px;">
+              <div style="width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; color: var(--slate-blue); background: rgba(90,109,138,0.1); border: 1px solid rgba(90,109,138,0.16);">
+                <i class="fa fa-microphone" style="font-size: 1.25rem;"></i>
+              </div>
+              <div style="display: flex; align-items: center; gap: 7px; color: var(--ink-muted); font-size: 0.65rem; white-space: nowrap;">
+                <span>按键说话</span>
+                <i class="fa fa-angle-right" style="color: var(--gold);"></i>
+                <span>本地识别</span>
+                <i class="fa fa-angle-right" style="color: var(--gold);"></i>
+                <span>自动粘贴</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-tech-tags">
+              <span class="project-tech-tag" style="background: rgba(90,109,138,0.08); color: var(--slate-blue);">Python</span>
+              <span class="project-tech-tag" style="background: rgba(85,107,85,0.08); color: var(--sage);">本地 FunASR</span>
+              <span class="project-tech-tag" style="background: rgba(184,134,11,0.08); color: var(--gold);">Windows 桌面工具</span>
+            </div>
+            <h3>语言转写 · 本地语音输入工具</h3>
+            <p>按住 F2 说话，松开后自动转成中文文字；使用本地 FunASR 完成识别与标点恢复，可选 AI 整理口语，并直接粘贴到当前输入框。适合消息回复、灵感记录、会议纪要、长文写作与 AI 对话。</p>
+            <span class="project-cta">
+              查看项目介绍 <i class="fa fa-arrow-right text-xs"></i>
+            </span>
+          </div>
+        </a>
+      </div>
+
     </div>
   </section>
 
   <!-- ─── 技能与专长 ─── -->
   <section id="skills" class="py-24" style="background: var(--parchment);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-20 reveal">
+      <div class="text-center mb-20 section-header">
         <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">Expertise</p>
         <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">我的核心技能</h2>
         <div class="brush-stroke"></div>
         <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">这些是我安身立命的根本，也是我不断前进的动力</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
-        <div class="card-editorial p-8 text-center">
-          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(184,134,11,0.06);"><i class="fa fa-file-text-o text-2xl" style="color: var(--gold);"></i></div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">内容创作</h3>
-          <p style="color: var(--ink-muted); font-size: 0.9rem; line-height: 1.7;">精通各类文案写作，从策划到落地全流程把控，具备优秀的文字表达能力</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 skills-grid">
+        <div class="skill-card-enhanced">
+          <div class="skill-icon-box" style="background: rgba(184,134,11,0.06);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div class="skill-info">
+            <h3>内容创作</h3>
+            <p>精通各类文案写作，从策划到落地全流程把控，具备优秀的文字表达能力</p>
+          </div>
         </div>
-        <div class="card-editorial p-8 text-center">
-          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(90,109,138,0.06);"><i class="fa fa-bar-chart text-2xl" style="color: var(--slate-blue);"></i></div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">数据分析</h3>
-          <p style="color: var(--ink-muted); font-size: 0.9rem; line-height: 1.7;">精通Excel及各类数据工具，擅长数据整理、分析与可视化，用数据驱动决策</p>
+        <div class="skill-card-enhanced">
+          <div class="skill-icon-box" style="background: rgba(90,109,138,0.06);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--slate-blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+          </div>
+          <div class="skill-info">
+            <h3>数据分析</h3>
+            <p>精通Excel及各类数据工具，擅长数据整理、分析与可视化，用数据驱动决策</p>
+          </div>
         </div>
-        <div class="card-editorial p-8 text-center">
-          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(192,57,43,0.06);"><i class="fa fa-video-camera text-2xl" style="color: var(--vermilion);"></i></div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">多媒体制作</h3>
-          <p style="color: var(--ink-muted); font-size: 0.9rem; line-height: 1.7;">熟练掌握视频剪辑、平面设计技能，能够独立完成各类新媒体内容制作</p>
+        <div class="skill-card-enhanced">
+          <div class="skill-icon-box" style="background: rgba(192,57,43,0.06);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--vermilion)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="skill-info">
+            <h3>多媒体制作</h3>
+            <p>熟练掌握视频剪辑、平面设计技能，能够独立完成各类新媒体内容制作</p>
+          </div>
         </div>
-        <div class="card-editorial p-8 text-center">
-          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style="background: rgba(85,107,85,0.06);"><i class="fa fa-code text-2xl" style="color: var(--sage);"></i></div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--ink);">技术应用</h3>
-          <p style="color: var(--ink-muted); font-size: 0.9rem; line-height: 1.7;">自学编程与AI技术，擅长使用自动化工具提升效率，能够独立搭建个人网站</p>
+        <div class="skill-card-enhanced">
+          <div class="skill-icon-box" style="background: rgba(85,107,85,0.06);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="skill-info">
+            <h3>技术应用</h3>
+            <p>自学编程与AI技术，擅长使用自动化工具提升效率，能够独立搭建个人网站</p>
+          </div>
         </div>
       </div>
-      <div class="mt-16 card-editorial p-8 reveal">
+      <div class="mt-16 card-editorial p-8 other-abilities-card">
         <h3 class="text-lg font-bold mb-7 text-center" style="color: var(--ink);">其他能力</h3>
         <div class="flex flex-wrap justify-center gap-3">
           <span class="px-4 py-2 rounded-full text-sm font-medium" style="background: rgba(184,134,11,0.06); color: var(--gold); border: 1px solid rgba(184,134,11,0.1);">项目管理</span>
@@ -345,31 +387,46 @@
   <!-- ─── 随笔专栏 ─── -->
   <section id="articles" class="py-24" style="background: var(--cream);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-20 reveal">
+      <div class="text-center mb-20 section-header">
         <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">Writings</p>
         <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">随笔专栏</h2>
         <div class="brush-stroke"></div>
         <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">记录思考，分享感悟，这里有我随手写下的文字</p>
       </div>
-      <div class="stagger-children">
+      <!-- 标签过滤栏 -->
+      <div class="tag-filters" id="articleTagFilters">
+        <button class="tag-filter-btn active" data-filter="all">全部</button>
+        <button class="tag-filter-btn" data-filter="growth">成长</button>
+        <button class="tag-filter-btn" data-filter="ai">AI</button>
+        <button class="tag-filter-btn" data-filter="tech">技术</button>
+        <button class="tag-filter-btn" data-filter="daily">日志</button>
+        <button class="tag-filter-btn" data-filter="career">职场</button>
+        <button class="tag-filter-btn" data-filter="life">生活</button>
+      </div>
+      <div class="articles-container">
 
         <!-- 置顶文章：跨两列横向布局 -->
-        <article class="card-article lg:col-span-2 mb-7" style="display: grid; grid-template-columns: 1fr; ">
+        <article class="card-article article-filterable articles-featured lg:col-span-2 mb-7" data-tags="daily,ai,tech" style="display: grid; grid-template-columns: 1fr; ">
           <div style="display: flex; flex-direction: column; gap: 0;">
-            <div class="card-img flex items-center justify-center" style="background: linear-gradient(135deg, rgba(184,134,11,0.08), rgba(146,64,14,0.04)); height: 200px; position: relative;">
-              <i class="fa fa-android text-5xl" style="color: rgba(184,134,11,0.2);"></i>
-              <span style="position: absolute; top: 1rem; left: 1.5rem; font-family: 'Crimson Pro', serif; font-size: 4rem; font-weight: 700; color: rgba(184,134,11,0.06); line-height: 1;">01</span>
-            </div>
+          <div class="card-img flex items-center justify-center" style="height: 200px; position: relative;">
+            <img src="assets/journal/2026-07-16/paper-video-poster.jpg" alt="AI 剪纸视频《为什么太原被称为龙城》画面" class="article-cover-img" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, #30202a, #a45a68)';">
+            <div class="article-cover-overlay"></div>
+            <span class="article-cover-tag">工作日志 · AI</span>
+            <span style="position: absolute; top: 1rem; right: 1.5rem; font-family: 'Crimson Pro', serif; font-size: 3rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">01</span>
+          </div>
             <div class="p-7">
               <div class="flex items-center gap-3 mb-3">
-                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-05-22</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 8 分钟</span>
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-07-16</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 10 分钟</span>
+                <span class="article-tag" style="background: rgba(164,90,104,0.08); color: #a45a68;">日志</span>
+                <span class="article-tag article-tag-ai">AI</span>
+                <span class="article-tag article-tag-tech">技术</span>
               </div>
-              <h3 class="text-xl font-bold mb-3 leading-snug" style="color: var(--ink);">AI时代的个人成长：从焦虑到共生</h3>
+              <h3 class="text-xl font-bold mb-3 leading-snug" style="color: var(--ink);">我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频</h3>
               <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted); max-width: 600px;">
-                2022年底ChatGPT横空出世，我经历了从焦虑到从容的心路历程。这篇文章分享了我总结的四条应对策略：保持好奇心、深耕垂直领域、建立科学思维、善用AI工具。从惶恐不安到从容自信，AI不是敌人，而是最强大的伙伴。
+                一天完成三个可复用成果：把本地语音转写工具修到更稳定、更安全；从参考图中提取“绛霞绮梦”东方摄影风格；再把历史知识做成一条 24 秒 AI 剪纸视频。
               </p>
-              <a href="posts/ai-growth.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+              <a href="posts/2026-07-16-ai-work-journal.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
                 阅读全文 <i class="fa fa-arrow-right text-xs"></i>
               </a>
             </div>
@@ -377,17 +434,45 @@
         </article>
 
         <!-- 其余文章：三列网格 -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 articles-grid">
 
-          <article class="card-article">
-            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(192,57,43,0.06), rgba(184,134,11,0.06)); position: relative;">
-              <i class="fa fa-heart text-4xl" style="color: rgba(192,57,43,0.25);"></i>
-              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(192,57,43,0.05); line-height: 1;">02</span>
+          <article class="card-article article-filterable" data-tags="growth,ai">
+            <div class="card-img h-44 flex items-center justify-center" style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=300&fit=crop&crop=entropy" alt="" class="article-cover-img" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, #f5f0eb, #e8e0d5)';">
+              <div class="article-cover-overlay"></div>
+              <span class="article-cover-tag">AI · 成长</span>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">02</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-05-22</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 8 分钟</span>
+                <span class="article-tag article-tag-growth">成长</span>
+                <span class="article-tag article-tag-ai">AI</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">AI时代的个人成长：从焦虑到共生</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
+                从焦虑到从容，我总结了四条应对 AI 时代的策略：保持好奇心、深耕垂直领域、建立科学思维、善用 AI 工具。
+              </p>
+              <a href="posts/ai-growth.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+                阅读全文 <i class="fa fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="card-article article-filterable" data-tags="growth,life">
+            <div class="card-img h-44 flex items-center justify-center" style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=300&fit=crop&crop=entropy" alt="" class="article-cover-img" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, rgba(192,57,43,0.06), rgba(184,134,11,0.06))';">
+              <div class="article-cover-overlay"></div>
+              <span class="article-cover-tag">成长</span>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">02</span>
             </div>
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
                 <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-05-15</span>
                 <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(192,57,43,0.04); color: var(--vermilion);">约 5 分钟</span>
+                <span class="article-tag article-tag-growth">成长</span>
+                <span class="article-tag article-tag-life">生活</span>
               </div>
               <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">未来的寄托：写给 31 岁的自己</h3>
               <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
@@ -399,15 +484,19 @@
             </div>
           </article>
 
-          <article class="card-article">
-            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(85,107,85,0.08), rgba(90,109,138,0.06)); position: relative;">
-              <i class="fa fa-briefcase text-4xl" style="color: rgba(85,107,85,0.25);"></i>
-              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(85,107,85,0.06); line-height: 1;">03</span>
+          <article class="card-article article-filterable" data-tags="career,growth">
+            <div class="card-img h-44 flex items-center justify-center" style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=300&fit=crop&crop=entropy" alt="" class="article-cover-img" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, rgba(85,107,85,0.08), rgba(90,109,138,0.06))';">
+              <div class="article-cover-overlay"></div>
+              <span class="article-cover-tag">职场</span>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">03</span>
             </div>
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
                 <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-05-08</span>
                 <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(85,107,85,0.04); color: var(--sage);">约 6 分钟</span>
+                <span class="article-tag article-tag-career">职场</span>
+                <span class="article-tag article-tag-growth">成长</span>
               </div>
               <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">职场十年：那些谁也拿不走的底层能力</h3>
               <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
@@ -419,15 +508,19 @@
             </div>
           </article>
 
-          <article class="card-article">
-            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(90,109,138,0.08), rgba(146,64,14,0.06)); position: relative;">
-              <i class="fa fa-rocket text-4xl" style="color: rgba(90,109,138,0.25);"></i>
-              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(90,109,138,0.05); line-height: 1;">04</span>
+          <article class="card-article article-filterable" data-tags="ai,tech">
+            <div class="card-img h-44 flex items-center justify-center" style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&h=300&fit=crop&crop=entropy" alt="" class="article-cover-img" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, rgba(90,109,138,0.08), rgba(146,64,14,0.06))';">
+              <div class="article-cover-overlay"></div>
+              <span class="article-cover-tag">AI</span>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">04</span>
             </div>
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
                 <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-04-28</span>
                 <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(90,109,138,0.04); color: var(--slate-blue);">约 7 分钟</span>
+                <span class="article-tag article-tag-ai">AI</span>
+                <span class="article-tag article-tag-tech">技术</span>
               </div>
               <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">我用了4年AI，总结出这4个普通人也能上手的高效工作流</h3>
               <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
@@ -439,15 +532,18 @@
             </div>
           </article>
 
-          <article class="card-article">
-            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(85,107,85,0.08), rgba(184,134,11,0.05)); position: relative;">
-              <i class="fa fa-pencil-square-o text-4xl" style="color: rgba(85,107,85,0.25);"></i>
-              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(85,107,85,0.06); line-height: 1;">05</span>
+          <article class="card-article article-filterable" data-tags="growth">
+            <div class="card-img h-44 flex items-center justify-center" style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=300&fit=crop&crop=entropy" alt="" class="article-cover-img" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, rgba(85,107,85,0.08), rgba(184,134,11,0.05))';">
+              <div class="article-cover-overlay"></div>
+              <span class="article-cover-tag">成长</span>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">05</span>
             </div>
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
                 <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-04-20</span>
                 <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(85,107,85,0.04); color: var(--sage);">约 4 分钟</span>
+                <span class="article-tag article-tag-growth">成长</span>
               </div>
               <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">我的极简学习方法论：从兴趣出发，在复盘中成长</h3>
               <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
@@ -459,15 +555,19 @@
             </div>
           </article>
 
-          <article class="card-article">
-            <div class="card-img h-44 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(146,64,14,0.06), rgba(90,109,138,0.08)); position: relative;">
-              <i class="fa fa-code text-4xl" style="color: rgba(146,64,14,0.25);"></i>
-              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(146,64,14,0.05); line-height: 1;">06</span>
+          <article class="card-article article-filterable" data-tags="tech,ai">
+            <div class="card-img h-44 flex items-center justify-center" style="position: relative;">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=300&fit=crop&crop=entropy" alt="" class="article-cover-img" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, rgba(146,64,14,0.06), rgba(90,109,138,0.08))';">
+              <div class="article-cover-overlay"></div>
+              <span class="article-cover-tag">技术</span>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">06</span>
             </div>
             <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
                 <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-04-12</span>
                 <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(146,64,14,0.04); color: var(--amber);">约 8 分钟</span>
+                <span class="article-tag article-tag-tech">技术</span>
+                <span class="article-tag article-tag-ai">AI</span>
               </div>
               <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">从零开始搭建个人博客：一个运营人的AI时代技术实践</h3>
               <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">
@@ -481,8 +581,8 @@
 
         </div>
       </div>
-      <div class="text-center mt-14 reveal">
-        <a href="#" class="group relative inline-flex items-center gap-2 px-10 py-3.5 rounded-full font-medium transition-all duration-500 overflow-hidden" style="background: var(--ink); color: var(--parchment);">
+      <div class="text-center mt-14 view-all-btn">
+        <a href="archive.html" class="group relative inline-flex items-center gap-2 px-10 py-3.5 rounded-full font-medium transition-all duration-500 overflow-hidden" style="background: var(--ink); color: var(--parchment);">
           <span class="relative z-10">查看全部文章</span>
           <i class="fa fa-external-link relative z-10 text-xs"></i>
           <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
@@ -494,13 +594,13 @@
   <!-- ─── 联系我 ─── -->
   <section id="contact" class="py-24" style="background: var(--parchment);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
+      <div class="text-center mb-16 section-header">
         <p class="uppercase tracking-[0.25em] text-[11px] mb-4" style="color: var(--gold); font-family: 'Crimson Pro', serif; font-weight: 400;">Contact</p>
         <h2 class="font-bold mb-5" style="font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: 0.03em;">联系我</h2>
         <div class="brush-stroke"></div>
         <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">期待与志同道合的你交流学习</p>
       </div>
-      <div class="max-w-xl mx-auto reveal">
+      <div class="max-w-xl mx-auto contact-card">
         <div class="card-editorial p-10 text-center">
           <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6" style="background: rgba(184,134,11,0.06);">
             <i class="fa fa-envelope-o text-xl" style="color: var(--gold);"></i>
@@ -518,19 +618,24 @@
   <!-- ─── 页脚 ─── -->
   <footer class="text-white py-14">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="text-center md:text-left">
-          <div class="flex items-center justify-center md:justify-start gap-3">
+      <div class="footer-enhanced">
+        <div>
+          <div class="flex items-center gap-3">
             <span class="text-lg font-semibold tracking-wide" style="color: rgba(255,255,255,0.9);">诺诺的小博客空间</span>
           </div>
-          <p class="mt-3 text-sm tracking-wider" style="color: rgba(255,255,255,0.3); font-family: 'Crimson Pro', serif; font-style: italic;">记录生活，分享美好，终身学习</p>
+          <p class="mt-2 text-sm tracking-wider" style="color: rgba(255,255,255,0.3); font-family: 'Crimson Pro', serif; font-style: italic;">记录生活，分享美好，终身学习</p>
         </div>
-        <div class="flex items-center gap-6">
-          <a href="feed.xml" class="transition-colors hover:text-[var(--gold)]" style="color: rgba(255,255,255,0.3);" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-lg"></i></a>
+        <div class="footer-nav">
+          <a href="#home">首页</a>
+          <a href="#articles">随笔</a>
+          <a href="#projects">作品</a>
+          <a href="archive.html">归档</a>
+          <a href="about.html">关于</a>
+          <a href="feed.xml" aria-label="RSS 订阅" target="_blank" style="display: flex; align-items: center; gap: 4px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+          </a>
         </div>
-      </div>
-      <div class="mt-10 pt-8 text-center" style="border-top: 1px solid rgba(255,255,255,0.06);">
-        <p class="text-xs tracking-wider" style="color: rgba(255,255,255,0.2); font-family: 'Crimson Pro', serif;">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></p>
+        <div class="footer-bottom-bar">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></div>
       </div>
     </div>
   </footer>
@@ -540,41 +645,17 @@
     <i class="fa fa-chevron-up"></i>
   </button>
 
-  <script src="js/common.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+  <script src="js/common.js?v=editorial-20260602g"></script>
   <script>
-    // ─── 诗词库（31首，按日期轮换） ───
     const poems = [
-      { content: '春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。', author: '孟浩然 · 春晓' },
-      { content: '床前明月光，疑是地上霜。举头望明月，低头思故乡。', author: '李白 · 静夜思' },
-      { content: '白日依山尽，黄河入海流。欲穷千里目，更上一层楼。', author: '王之涣 · 登鹳雀楼' },
-      { content: '红豆生南国，春来发几枝。愿君多采撷，此物最相思。', author: '王维 · 相思' },
-      { content: '锄禾日当午，汗滴禾下土。谁知盘中餐，粒粒皆辛苦。', author: '李绅 · 悯农' },
-      { content: '千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。', author: '柳宗元 · 江雪' },
-      { content: '松下问童子，言师采药去。只在此山中，云深不知处。', author: '贾岛 · 寻隐者不遇' },
-      { content: '墙角数枝梅，凌寒独自开。遥知不是雪，为有暗香来。', author: '王安石 · 梅花' },
-      { content: '离离原上草，一岁一枯荣。野火烧不尽，春风吹又生。', author: '白居易 · 赋得古原草送别' },
-      { content: '小时不识月，呼作白玉盘。又疑瑶台镜，飞在青云端。', author: '李白 · 古朗月行' },
-      { content: '慈母手中线，游子身上衣。临行密密缝，意恐迟迟归。', author: '孟郊 · 游子吟' },
-      { content: '黄河远上白云间，一片孤城万仞山。羌笛何须怨杨柳，春风不度玉门关。', author: '王之涣 · 凉州词' },
-      { content: '葡萄美酒夜光杯，欲饮琵琶马上催。醉卧沙场君莫笑，古来征战几人回。', author: '王翰 · 凉州词' },
-      { content: '秦时明月汉时关，万里长征人未还。但使龙城飞将在，不教胡马度阴山。', author: '王昌龄 · 出塞' },
-      { content: '寒雨连江夜入吴，平明送客楚山孤。洛阳亲友如相问，一片冰心在玉壶。', author: '王昌龄 · 芙蓉楼送辛渐' },
-      { content: '独在异乡为异客，每逢佳节倍思亲。遥知兄弟登高处，遍插茱萸少一人。', author: '王维 · 九月九日忆山东兄弟' },
-      { content: '日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺，疑是银河落九天。', author: '李白 · 望庐山瀑布' },
-      { content: '故人西辞黄鹤楼，烟花三月下扬州。孤帆远影碧空尽，唯见长江天际流。', author: '李白 · 黄鹤楼送孟浩然之广陵' },
-      { content: '朝辞白帝彩云间，千里江陵一日还。两岸猿声啼不住，轻舟已过万重山。', author: '李白 · 早发白帝城' },
-      { content: '两个黄鹂鸣翠柳，一行白鹭上青天。窗含西岭千秋雪，门泊东吴万里船。', author: '杜甫 · 绝句' },
-      { content: '好雨知时节，当春乃发生。随风潜入夜，润物细无声。', author: '杜甫 · 春夜喜雨' },
-      { content: '月落乌啼霜满天，江枫渔火对愁眠。姑苏城外寒山寺，夜半钟声到客船。', author: '张继 · 枫桥夜泊' },
-      { content: '天街小雨润如酥，草色遥看近却无。最是一年春好处，绝胜烟柳满皇都。', author: '韩愈 · 早春呈水部张十八员外' },
-      { content: '西塞山前白鹭飞，桃花流水鳜鱼肥。青箬笠，绿蓑衣，斜风细雨不须归。', author: '张志和 · 渔歌子' },
-      { content: '九曲黄河万里沙，浪淘风簸自天涯。如今直上银河去，同到牵牛织女家。', author: '刘禹锡 · 浪淘沙' },
-      { content: '远上寒山石径斜，白云生处有人家。停车坐爱枫林晚，霜叶红于二月花。', author: '杜牧 · 山行' },
-      { content: '清明时节雨纷纷，路上行人欲断魂。借问酒家何处有？牧童遥指杏花村。', author: '杜牧 · 清明' },
-      { content: '千里莺啼绿映红，水村山郭酒旗风。南朝四百八十寺，多少楼台烟雨中。', author: '杜牧 · 江南春' },
-      { content: '不识庐山真面目，只缘身在此山中。', author: '苏轼 · 题西林壁' },
       { content: '人生自古谁无死，留取丹心照汗青。', author: '文天祥 · 过零丁洋' },
+      { content: '不识庐山真面目，只缘身在此山中。', author: '苏轼 · 题西林壁' },
       { content: '落红不是无情物，化作春泥更护花。', author: '龚自珍 · 己亥杂诗' },
+      { content: '白日依山尽，黄河入海流。欲穷千里目，更上一层楼。', author: '王之涣 · 登鹳雀楼' },
+      { content: '好雨知时节，当春乃发生。随风潜入夜，润物细无声。', author: '杜甫 · 春夜喜雨' },
+      { content: '海内存知己，天涯若比邻。', author: '王勃 · 送杜少府之任蜀州' },
+      { content: '长风破浪会有时，直挂云帆济沧海。', author: '李白 · 行路难' }
     ];
 
     function getDailyPoem() {
@@ -585,28 +666,18 @@
     }
 
     function splitPoem(text) {
-      return text.split(/[，。！？、；：]/).filter(s => s.trim()).map(s => s.trim());
-    }
-
-    function renderPoem() {
-      const poem = getDailyPoem();
-      const lines = splitPoem(poem.content);
-      document.getElementById('poem-lines').innerHTML =
-        lines.map(l => `<div class="poem-line">${l}</div>`).join('');
-      document.getElementById('poem-author').textContent = '—— ' + poem.author;
-    }
-
-    function animateHero() {
-      const c = document.getElementById('poem-container');
-      const i = document.getElementById('hero-intro');
-      setTimeout(() => { c.classList.remove('opacity-0'); c.classList.add('poem-fade-in'); }, 400);
-      setTimeout(() => { i.classList.remove('opacity-0'); }, 1600);
+      return text.split(/[，。！？、；]/).filter(Boolean).map(s => s.trim());
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderPoem();
-      animateHero();
+      const poem = getDailyPoem();
+      const poemLines = document.getElementById('poem-lines');
+      const poemAuthor = document.getElementById('poem-author');
+      if (!poemLines || !poemAuthor) return;
+      poemLines.innerHTML = splitPoem(poem.content).map(line => '<div class="poem-line">' + line + '</div>').join('');
+      poemAuthor.textContent = poem.author;
     });
   </script>
 </body>
+
 </html>

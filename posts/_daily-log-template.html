@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{DESCRIPTION}}" />
+  <meta name="theme-color" content="#21171d" />
+  <title>{{TITLE}} — 诺诺的小博客空间</title>
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="../css/journal.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
+  <div id="reading-progress"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="../index.html" class="font-semibold">诺诺的小博客空间</a>
+      <a href="../archive.html" class="text-sm">归档</a>
+    </div>
+  </nav>
+  <article data-tags='["工作日志"]'>
+    <header class="journal-hero">
+      <div class="journal-hero__inner">
+        <p class="journal-kicker">Daily Build Log · No. {{NUMBER}}</p>
+        <h1>{{TITLE}}</h1>
+        <p class="journal-hero__lead">{{DESCRIPTION}}</p>
+        <div class="journal-meta">
+          <span>{{DATE}}</span>
+          <span>{{READING_TIME}}</span>
+          <span>{{PROJECT_COUNT}} 个项目成果</span>
+        </div>
+      </div>
+    </header>
+    <main class="journal-shell">
+      <p class="journal-intro">{{INTRO}}</p>
+
+      <!-- 每个项目复制一份 journal-project，并替换标题、内容和素材。 -->
+      <section class="journal-project">
+        <div class="journal-project__head">
+          <div class="journal-project__index">01</div>
+          <div>
+            <p class="journal-project__label">Project Type</p>
+            <h2>{{PROJECT_TITLE}}</h2>
+            <p class="journal-project__desc">{{PROJECT_DESCRIPTION}}</p>
+          </div>
+        </div>
+        <div class="journal-card">
+          <h3>今天做了什么</h3>
+          <ul>
+            <li>{{WORK_ITEM}}</li>
+          </ul>
+        </div>
+        <div class="journal-card">
+          <h3>结果与验证</h3>
+          <p>{{RESULT}}</p>
+        </div>
+      </section>
+    </main>
+  </article>
+  <footer class="text-white py-12 text-center">&copy; 2026 诺诺的小博客空间</footer>
+  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
+  <script src="../js/common.js"></script>
+</body>
+</html>

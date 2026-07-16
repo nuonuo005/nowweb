@@ -5,8 +5,16 @@
     <link>https://nuonuo.me/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 22 May 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2026 22:30:00 +0800</lastBuildDate>
     <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频</title>
+      <link>https://nuonuo.me/posts/2026-07-16-ai-work-journal.html</link>
+      <description>一天完成三个可复用成果：桌面语音转写工具 v1.3.0 修复、绛霞绮梦东方摄影风格提取、太原龙城 AI 剪纸视频。</description>
+      <pubDate>Thu, 16 Jul 2026 22:30:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-07-16-ai-work-journal.html</guid>
+    </item>
 
     <item>
       <title>AI时代的个人成长：从焦虑到共生</title>

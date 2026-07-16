@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="诺诺的 AI 工作日志 #001：完成语音转写工具 v1.3.0 稳定性修复，提取绛霞绮梦古风柔雾摄影风格，并完成太原龙城 AI 剪纸视频。" />
+  <meta property="og:title" content="我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频" />
+  <meta property="og:description" content="一天完成三个可复用成果：桌面语音转写工具修复、东方摄影风格提取、AI 剪纸科普视频。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="../assets/journal/2026-07-16/paper-video-poster.jpg" />
+  <meta name="theme-color" content="#21171d" />
+  <title>我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频 — 诺诺的小博客空间</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E📝%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../css/common.css?v=editorial-20260716" />
+  <link rel="stylesheet" href="../css/journal.css?v=20260716" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' },
+          fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] }
+        }
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频",
+    "datePublished": "2026-07-16",
+    "dateModified": "2026-07-16",
+    "author": { "@type": "Person", "name": "诺诺" },
+    "description": "一天完成三个可复用成果：桌面语音转写工具修复、东方摄影风格提取、AI 剪纸科普视频。"
+  }
+  </script>
+</head>
+<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
+  <div id="reading-progress"></div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <i class="fa fa-paper-plane text-primary text-xl"></i>
+          <span class="text-xl font-semibold">诺诺的小博客空间</span>
+        </a>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a>
+          <a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a>
+          <a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a>
+          <a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式">
+            <i class="fa fa-sun-o icon-sun"></i>
+            <i class="fa fa-moon-o icon-moon"></i>
+          </button>
+          <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false">
+            <i class="fa fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
+      <div class="px-4 py-3 space-y-1">
+        <a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
+        <a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
+        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
+        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
+      </div>
+    </div>
+  </nav>
+
+  <article data-tags='["AI","技术","工作日志","视频"]'>
+    <header class="journal-hero">
+      <div class="journal-hero__inner">
+        <p class="journal-kicker">Daily Build Log · No. 001</p>
+        <h1>我的 AI 工作日志 #001：<br />语音转写修复、风格提取与剪纸视频</h1>
+        <p class="journal-hero__lead">
+          今天没有只停留在“试一试 AI”，而是把三个想法分别做成了能继续使用、能展示、也能复盘的实际成果。
+        </p>
+        <div class="journal-meta">
+          <span><i class="fa fa-calendar-o"></i> 2026-07-16</span>
+          <span><i class="fa fa-clock-o"></i> 阅读约 10 分钟</span>
+          <span><i class="fa fa-cubes"></i> 3 个项目成果</span>
+          <span><i class="fa fa-tag"></i> AI 工作日志</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="journal-shell">
+      <p class="journal-intro">
+        我想开始认真记录自己每天做过的事情。不是简单列一张待办清单，而是把“项目能做什么、今天解决了什么、过程里踩了哪些坑、最后产出了什么”完整留下来。以后回头看，能够看见能力是怎样一点点积累起来的，也能把这些经验继续变成作品、教程和新的工具。
+      </p>
+
+      <section class="journal-summary" aria-label="今日项目总览">
+        <a class="journal-summary__item" href="#speech">
+          <span class="journal-summary__number">01</span>
+          <i class="fa fa-microphone"></i>
+          <h2>语音转写工具 v1.3.0</h2>
+          <p>重点解决长时间运行、内存增长、重复触发、配置安全和打包可靠性。</p>
+        </a>
+        <a class="journal-summary__item" href="#style">
+          <span class="journal-summary__number">02</span>
+          <i class="fa fa-paint-brush"></i>
+          <h2>绛霞绮梦风格提取</h2>
+          <p>从多张参考图中提炼色彩、光线、材质、景深和后期语言，形成通用提示词。</p>
+        </a>
+        <a class="journal-summary__item" href="#video">
+          <span class="journal-summary__number">03</span>
+          <i class="fa fa-film"></i>
+          <h2>AI 剪纸视频成片</h2>
+          <p>把历史知识转成剪纸视觉短片，完成画面、旁白、配乐、节奏和最终渲染。</p>
+        </a>
+      </section>
+
+      <section class="journal-project" id="speech">
+        <div class="journal-project__head">
+          <div class="journal-project__index">01</div>
+          <div>
+            <p class="journal-project__label">Local AI Tool</p>
+            <h2>修复“语言转写”：让它更适合每天长期使用</h2>
+            <p class="journal-project__desc">
+              这是一个 Windows 本地桌面语音输入工具：按住快捷键说话，本地模型完成中文识别，可选用 AI 做书面化整理，最后把文字写入剪贴板并自动粘贴到当前输入框。
+            </p>
+          </div>
+        </div>
+
+        <div class="journal-flow" aria-label="语音转写工作流程">
+          <div class="journal-flow__step">按住 F2<br />开始录音</div>
+          <div class="journal-flow__step">本地 ASR / VAD<br />识别语音</div>
+          <div class="journal-flow__step">本地标点<br />整理句子</div>
+          <div class="journal-flow__step">可选 AI<br />书面化润色</div>
+          <div class="journal-flow__step">写入剪贴板<br />自动粘贴</div>
+        </div>
+
+        <div class="journal-card">
+          <h3>今天主要修复了什么</h3>
+          <ul>
+            <li><strong>长录音内存增长：</strong>录音过程改为实时写入临时 WAV，不再把全部音频帧一直堆在内存里；转写结束后自动清理临时文件。</li>
+            <li><strong>重复触发与重复请求：</strong>增加处理状态锁和 Windows 单实例保护，避免连续按热键时出现重复转写、重复 AI 请求或多个实例抢占快捷键。</li>
+            <li><strong>剪贴板稳定性：</strong>改用 Windows 原生接口读取文字；写入失败时停止自动粘贴，不再出现“实际失败但界面提示成功”。</li>
+            <li><strong>配置与密钥安全：</strong>API Key 使用 Windows DPAPI 加密；配置保存采用临时文件验证、原子替换和备份副本，降低配置损坏风险。</li>
+            <li><strong>AI 接口容错：</strong>补上 URL 校验、连接和读取超时、限流、权限、空返回和内容截断处理；网络失败时保留本地整理结果。</li>
+            <li><strong>安装与打包：</strong>移除没有实际使用的大型依赖，构建过程使用独立环境，并检查外部命令的真实退出结果。</li>
+          </ul>
+        </div>
+
+        <div class="journal-card">
+          <h3>我的修复过程</h3>
+          <div class="journal-timeline">
+            <div class="journal-timeline__item">
+              <strong>1. 先确定边界</strong>
+              <p>保留原来的界面、F2 热键和“本地识别 → 可选润色 → 自动粘贴”体验，只修稳定性、安全性和部署问题。</p>
+            </div>
+            <div class="journal-timeline__item">
+              <strong>2. 从长期运行问题开始</strong>
+              <p>先处理录音内存和临时文件，再加最长录音时间与处理锁，避免问题在连续使用中被放大。</p>
+            </div>
+            <div class="journal-timeline__item">
+              <strong>3. 补齐失败路径</strong>
+              <p>重点检查剪贴板、配置写入、AI 请求、安装脚本和打包脚本在失败时是否会给出真实结果。</p>
+            </div>
+            <div class="journal-timeline__item">
+              <strong>4. 做安全收尾</strong>
+              <p>加密 API Key、限制配置输入、保留配置备份，同时明确模型、个人配置和历史记录不进入分发包。</p>
+            </div>
+            <div class="journal-timeline__item">
+              <strong>5. 用真实流程验证</strong>
+              <p>不仅检查代码能否编译，还验证本地模型、真实录音、剪贴板、单实例、源码界面和最终 EXE。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>验证结果</h3>
+          <div class="journal-stats">
+            <div class="journal-stat"><strong>10</strong><span>自动化测试通过</span></div>
+            <div class="journal-stat"><strong>3</strong><span>本地模型检查通过</span></div>
+            <div class="journal-stat"><strong>8.4s</strong><span>真实录音转写成功</span></div>
+            <div class="journal-stat"><strong>2</strong><span>源码 GUI / EXE 存活验证</span></div>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>在哪里下载</h3>
+          <p>
+            项目源码已经放在 GitHub，可以直接下载
+            <a href="https://github.com/nuonuo005/yuyin-zhuanxie/archive/refs/tags/v1.3.0.zip" target="_blank" rel="noopener noreferrer">语言转写 v1.3.0 源码包</a>，
+            也可以进入
+            <a href="https://github.com/nuonuo005/yuyin-zhuanxie" target="_blank" rel="noopener noreferrer">项目主页</a>
+            阅读安装、模型准备和使用说明。
+          </p>
+          <p>
+            Windows 版使用 PyInstaller 文件夹模式构建，运行时需要完整的 <code>YuyanZhuanxie</code> 程序目录，不能只复制其中一个 EXE。后续整理好的 Windows 完整压缩包会放到
+            <a href="https://github.com/nuonuo005/yuyin-zhuanxie/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
+            页面。
+          </p>
+        </div>
+      </section>
+
+      <section class="journal-project" id="style">
+        <div class="journal-project__head">
+          <div class="journal-project__index">02</div>
+          <div>
+            <p class="journal-project__label">Visual Style Study</p>
+            <h2>提取“绛霞绮梦”：把感觉变成可重复使用的视觉语言</h2>
+            <p class="journal-project__desc">
+              第二项工作是从三张参考图中提取一种东方古风柔雾摄影风格。我把模糊的“好看、梦幻、高级”拆成了模型能够理解的色彩、光线、材质、边缘、景深和构图规则。
+            </p>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>这种风格能产生什么效果</h3>
+          <p>
+            它适合生成高完成度的写实东方时尚人像：人物皮肤明亮柔润，暖粉丝绸与半透明薄纱形成流动层次，刺绣、珍珠和香槟金饰品只在局部闪光；背景压入深棕和棕紫，再用窗光、灯笼暖光、浅景深、轻雾和前景纱幔制造朦胧空间。
+          </p>
+          <div class="journal-palette" aria-label="风格色彩">
+            <span style="--swatch:#e8c3bd;">低饱和暖粉</span>
+            <span style="--swatch:#d9b0a2;">裸杏</span>
+            <span style="--swatch:#b97983;">浅胭脂</span>
+            <span style="--swatch:#aa8a9e;">藕荷紫</span>
+            <span style="--swatch:#d4b06a;">香槟金</span>
+            <span style="--swatch:#5a3c49; color:#fff;">棕紫暗部</span>
+          </div>
+        </div>
+
+        <div class="journal-gallery">
+          <figure>
+            <img src="../assets/journal/2026-07-16/style-reference-01.jpg" alt="暖粉薄纱与香槟金细节的古风摄影参考图" loading="lazy" />
+            <figcaption>暖粉丝绸、薄纱层次与柔和人物轮廓</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/journal/2026-07-16/style-reference-02.jpg" alt="柔雾暖光和棕紫暗部的古风摄影参考图" loading="lazy" />
+            <figcaption>柔雾暖光、浅景深与棕紫色暗部</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/journal/2026-07-16/style-reference-03.jpg" alt="珠饰刺绣和东方电影人像效果参考图" loading="lazy" />
+            <figcaption>珠饰、刺绣与局部清晰的视觉锚点</figcaption>
+          </figure>
+        </div>
+        <p class="text-center text-xs mt-4" style="color: var(--ink-muted);">
+          以上为本次风格提取使用的参考素材，用于展示目标视觉效果，不代表本次新生成作品。
+        </p>
+
+        <div class="journal-card">
+          <h3>这次真正沉淀下来的成果</h3>
+          <ul>
+            <li>一份中文通用提示词和一份英文通用提示词。</li>
+            <li>固定的基础风格层、光线色彩层、构图层和负面约束层。</li>
+            <li>可替换的人物、动作、服装与场景内容区，方便继续生成系列图。</li>
+            <li>对当前证据范围的说明：人像与丝纱材质已经有参考支持，但无人环境、工业产品和高速动作仍需要继续测试。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="journal-project" id="video">
+        <div class="journal-project__head">
+          <div class="journal-project__index">03</div>
+          <div>
+            <p class="journal-project__label">AI Video Production</p>
+            <h2>完成一条 AI 剪纸视频：把“太原龙城”做成 24 秒视觉故事</h2>
+            <p class="journal-project__desc">
+              第三项工作是让 AI 自动生成一条完整短视频。主题是“为什么太原被称为龙城”，视觉采用剪纸、纸雕和历史画卷的表达方式，而不是普通的图片轮播。
+            </p>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>从内容到成片的完整链路</h3>
+          <div class="journal-flow" aria-label="AI 视频制作流程">
+            <div class="journal-flow__step">历史资料<br />提炼故事钩子</div>
+            <div class="journal-flow__step">脚本拆分<br />设计镜头节奏</div>
+            <div class="journal-flow__step">生成纸雕<br />人物与场景资产</div>
+            <div class="journal-flow__step">旁白配乐<br />字幕与转场</div>
+            <div class="journal-flow__step">Remotion<br />自动渲染成片</div>
+          </div>
+          <p>
+            成片经历了多轮迭代，重点调整了开场钩子、历史人物出场节奏、画面层级、转场、旁白音色与整体时长。最后输出 1920×1080 横版成片，并另外准备了适合博客加载的 720P 版本。
+          </p>
+        </div>
+
+        <div class="journal-video">
+          <video controls preload="metadata" poster="../assets/journal/2026-07-16/paper-video-poster.jpg">
+            <source src="../assets/journal/2026-07-16/taiyuan-paper-video.mp4" type="video/mp4" />
+            你的浏览器暂不支持 HTML5 视频播放。
+          </video>
+          <p class="journal-video__caption">《为什么太原被称为龙城》AI 剪纸风格短片 · 24.32 秒 · 画面、旁白、配乐与剪辑自动化完成</p>
+        </div>
+
+        <div class="journal-card">
+          <h3>这条视频让我确认的事情</h3>
+          <ul>
+            <li>AI 视频不只是“生成几个镜头”，真正决定完成度的是脚本、资产一致性、声音、节奏和反复质检。</li>
+            <li>剪纸视觉非常适合历史、城市文化和知识科普，它能避开写实人物不稳定的问题，同时形成明确的系列识别度。</li>
+            <li>把制作流程写成代码后，同类主题可以复用结构，下一次主要替换故事、图片资产和旁白内容。</li>
+          </ul>
+        </div>
+      </section>
+
+      <blockquote class="journal-quote">
+        <strong>今天最大的收获：</strong>
+        三件事情看起来完全不同——桌面工具、视觉风格、AI 视频——但它们背后其实是同一种工作方法：先把模糊需求拆清楚，再把过程做成可验证、可复用、可持续迭代的系统。
+      </blockquote>
+
+      <div class="journal-next">
+        <p>这会成为我的长期工作日志。以后每天继续记录：今天做了什么、解决了什么、产出了什么，以及下一步准备做什么。</p>
+        <a href="../archive.html">查看全部日志与文章 <i class="fa fa-arrow-right"></i></a>
+      </div>
+    </main>
+  </article>
+
+  <footer class="text-white py-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <a href="../index.html" class="text-primary hover:underline text-sm inline-flex items-center gap-1">
+        <i class="fa fa-arrow-left"></i> 返回首页
+      </a>
+      <p class="text-sm mt-4" style="color: rgba(255,255,255,0.35);">&copy; 2026 诺诺的小博客空间 · 每天留下真实的成长轨迹</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
+  <script src="../js/common.js"></script>
+</body>
+</html>

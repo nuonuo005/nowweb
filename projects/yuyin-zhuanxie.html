@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="语言转写是一款 Windows 本地语音输入工具：按住热键说话，松开自动转写，可选 AI 书面化，并自动粘贴到当前输入框。" />
+  <meta property="og:title" content="语言转写 · 本地语音输入工具" />
+  <meta property="og:description" content="少打字，多表达。把说话快速变成可直接使用的中文文本。" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#1b2634" />
+  <title>语言转写 · 本地语音输入工具 — 诺诺的小博客空间</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🎙️%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../css/common.css?v=editorial-20260716" />
+  <link rel="stylesheet" href="../css/project-yuyin.css?v=20260716" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' },
+          fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="speech-project bg-neutral text-dark font-sans antialiased grain">
+  <div id="reading-progress"></div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <i class="fa fa-paper-plane text-primary text-xl"></i>
+          <span class="text-xl font-semibold">诺诺的小博客空间</span>
+        </a>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a>
+          <a href="../index.html#projects" class="text-sm font-medium text-primary transition-colors">小作品</a>
+          <a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a>
+          <a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式">
+            <i class="fa fa-sun-o icon-sun"></i>
+            <i class="fa fa-moon-o icon-moon"></i>
+          </button>
+          <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false">
+            <i class="fa fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
+      <div class="px-4 py-3 space-y-1">
+        <a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
+        <a href="../index.html#projects" class="block px-4 py-2.5 rounded-lg text-primary bg-primary/5">小作品</a>
+        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
+        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="speech-hero">
+      <div class="speech-hero__inner">
+        <div class="speech-hero__copy">
+          <p class="speech-kicker">Windows Local Speech Input</p>
+          <h1>少打字，<br /><span>多表达。</span></h1>
+          <p class="speech-hero__lead">
+            “语言转写”是一款 Windows 本地语音输入工具。按住快捷键说话，松开后自动识别中文、整理标点，可选择用 AI 把口语变成通顺的书面文字，并直接粘贴到你正在使用的输入框。
+          </p>
+          <div class="speech-actions">
+            <a href="https://github.com/nuonuo005/yuyin-zhuanxie" target="_blank" rel="noopener noreferrer" class="speech-button speech-button--primary">
+              <i class="fa fa-github"></i> 查看 GitHub 项目
+            </a>
+            <a href="#features" class="speech-button">
+              了解它能做什么 <i class="fa fa-arrow-down"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="speech-app" aria-label="语言转写工具界面示意">
+          <div class="speech-app__window">
+            <div class="speech-app__bar">
+              <div class="speech-app__dots"><span></span><span></span><span></span></div>
+              <strong>语言转写 v1.3.0</strong>
+              <span>本地运行</span>
+            </div>
+            <div class="speech-app__body">
+              <div class="speech-app__nav">
+                <span><i class="fa fa-microphone"></i></span>
+                <span><i class="fa fa-keyboard-o"></i></span>
+                <span><i class="fa fa-file-text-o"></i></span>
+                <span><i class="fa fa-cog"></i></span>
+              </div>
+              <div class="speech-app__main">
+                <div class="speech-app__title">录音与输出</div>
+                <div class="speech-app__sub">按住 F2 开始说话，松开自动处理</div>
+                <div class="speech-recorder">
+                  <div class="speech-recorder__mic"><i class="fa fa-microphone"></i></div>
+                  <div class="speech-wave">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <div class="speech-recorder__status">正在聆听 · 00:08</div>
+                  <div class="speech-recorder__hint">松开 F2 后自动转写并粘贴</div>
+                </div>
+                <div class="speech-output">
+                  “帮我把今天完成的三个项目整理成一篇工作日志，并保持表达清楚、自然。”
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="speech-section speech-section--cream" id="features">
+      <div class="speech-container">
+        <div class="speech-section__head">
+          <p class="speech-section__eyebrow">What It Does</p>
+          <h2>它不是录音机，而是一套完整的语音输入流程</h2>
+          <p>从说话到文字输出，尽量减少中间操作，让语音真正成为键盘之外的第二种输入方式。</p>
+        </div>
+        <div class="speech-feature-grid">
+          <article class="speech-feature">
+            <div class="speech-feature__icon"><i class="fa fa-microphone"></i></div>
+            <h3>热键录音</h3>
+            <p>默认按住 F2 录音、松开结束，不用切换软件，也不用先打开一个网页。</p>
+          </article>
+          <article class="speech-feature">
+            <div class="speech-feature__icon"><i class="fa fa-laptop"></i></div>
+            <h3>本地中文识别</h3>
+            <p>使用本地 FunASR ONNX 模型完成中文识别、语音端点检测和标点恢复，基础转写无需联网。</p>
+          </article>
+          <article class="speech-feature">
+            <div class="speech-feature__icon"><i class="fa fa-magic"></i></div>
+            <h3>可选 AI 书面化</h3>
+            <p>把“嗯、那个、算了改成……”等口语整理成通顺文字，也可以关闭 AI，只保留本地处理。</p>
+          </article>
+          <article class="speech-feature">
+            <div class="speech-feature__icon"><i class="fa fa-clipboard"></i></div>
+            <h3>自动粘贴</h3>
+            <p>处理完成后自动复制，并粘贴到微信、浏览器、记事本、AI 对话框等当前输入位置。</p>
+          </article>
+          <article class="speech-feature">
+            <div class="speech-feature__icon"><i class="fa fa-file-text-o"></i></div>
+            <h3>多种表达模板</h3>
+            <p>可以切换书面整理、会议纪要、消息回复等提示词，也能为 F1 至 F12 绑定不同写作风格。</p>
+          </article>
+          <article class="speech-feature">
+            <div class="speech-feature__icon"><i class="fa fa-shield"></i></div>
+            <h3>隐私与安全控制</h3>
+            <p>本地识别优先，API Key 使用 Windows 数据保护加密；历史、配置和本地模型不会放进公开仓库。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="speech-section speech-section--paper">
+      <div class="speech-container">
+        <div class="speech-section__head">
+          <p class="speech-section__eyebrow">How It Works</p>
+          <h2>从按下热键到文字出现，只走六步</h2>
+        </div>
+        <div class="speech-flow">
+          <div class="speech-flow__step">
+            <div class="speech-flow__number">01</div>
+            <strong>按住 F2</strong>
+            <span>开始录音</span>
+          </div>
+          <div class="speech-flow__step">
+            <div class="speech-flow__number">02</div>
+            <strong>松开按键</strong>
+            <span>结束录音</span>
+          </div>
+          <div class="speech-flow__step">
+            <div class="speech-flow__number">03</div>
+            <strong>本地识别</strong>
+            <span>ASR + VAD</span>
+          </div>
+          <div class="speech-flow__step">
+            <div class="speech-flow__number">04</div>
+            <strong>恢复标点</strong>
+            <span>整理句子</span>
+          </div>
+          <div class="speech-flow__step">
+            <div class="speech-flow__number">05</div>
+            <strong>可选润色</strong>
+            <span>口语变书面语</span>
+          </div>
+          <div class="speech-flow__step">
+            <div class="speech-flow__number">06</div>
+            <strong>自动粘贴</strong>
+            <span>回到当前输入框</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="speech-section speech-section--cream">
+      <div class="speech-container">
+        <div class="speech-section__head">
+          <p class="speech-section__eyebrow">Who It Helps</p>
+          <h2>哪些人会特别适合使用它</h2>
+        </div>
+        <div class="speech-audience-grid">
+          <article class="speech-audience">
+            <div class="speech-audience__icon"><i class="fa fa-pencil"></i></div>
+            <h3>经常写内容的人</h3>
+            <p>自媒体创作者、文案、运营和写作者，可以先把想法说出来，再整理成文章、脚本或方案。</p>
+          </article>
+          <article class="speech-audience">
+            <div class="speech-audience__icon"><i class="fa fa-briefcase"></i></div>
+            <h3>高频办公沟通的人</h3>
+            <p>每天需要回复大量消息、写汇报、记会议重点的人，可以减少机械打字时间。</p>
+          </article>
+          <article class="speech-audience">
+            <div class="speech-audience__icon"><i class="fa fa-comments"></i></div>
+            <h3>经常与 AI 对话的人</h3>
+            <p>面对 ChatGPT、Codex、Claude 或其他 AI 工具时，可以直接口述更长、更完整的需求。</p>
+          </article>
+          <article class="speech-audience">
+            <div class="speech-audience__icon"><i class="fa fa-lightbulb-o"></i></div>
+            <h3>灵感来得很快的人</h3>
+            <p>想到一句话、一个选题或一个解决办法时，直接说出来，避免灵感消失在打开文档之前。</p>
+          </article>
+          <article class="speech-audience">
+            <div class="speech-audience__icon"><i class="fa fa-hand-paper-o"></i></div>
+            <h3>不喜欢或不方便长时间打字的人</h3>
+            <p>减少键盘输入负担，让长文本表达不再完全依赖手指和打字速度。</p>
+          </article>
+          <article class="speech-audience">
+            <div class="speech-audience__icon"><i class="fa fa-user-secret"></i></div>
+            <h3>重视本地识别与控制的人</h3>
+            <p>希望普通转写尽量在自己的电脑完成，并能自己决定是否调用第三方 AI 服务。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="speech-section speech-section--paper">
+      <div class="speech-container">
+        <div class="speech-section__head">
+          <p class="speech-section__eyebrow">What You Can Do</p>
+          <h2>我能拿它来做什么</h2>
+          <p>它的价值不在于“识别了一段声音”，而在于把表达快速送到真正要工作的地方。</p>
+        </div>
+        <div class="speech-use-grid">
+          <article class="speech-use">
+            <div class="speech-use__icon"><i class="fa fa-weixin"></i></div>
+            <h3>快速回复消息</h3>
+            <p>口述回复内容，让 AI 调整为自然、礼貌或正式语气，再直接粘贴发送。</p>
+          </article>
+          <article class="speech-use">
+            <div class="speech-use__icon"><i class="fa fa-book"></i></div>
+            <h3>口述文章与工作日志</h3>
+            <p>先完整说出今天做了什么，再把转写结果整理为博客、日报或项目复盘。</p>
+          </article>
+          <article class="speech-use">
+            <div class="speech-use__icon"><i class="fa fa-users"></i></div>
+            <h3>整理会议重点</h3>
+            <p>口述关键事项、负责人和下一步，切换会议纪要模板后生成清楚的条目。</p>
+          </article>
+          <article class="speech-use">
+            <div class="speech-use__icon"><i class="fa fa-terminal"></i></div>
+            <h3>给 AI 描述复杂任务</h3>
+            <p>把背景、目标、限制和期望结果一次说完整，减少短提示词造成的反复沟通。</p>
+          </article>
+          <article class="speech-use">
+            <div class="speech-use__icon"><i class="fa fa-list-alt"></i></div>
+            <h3>记录灵感和待办</h3>
+            <p>想到就说，用于记录选题、脚本片段、购物事项、工作计划和临时备忘。</p>
+          </article>
+          <article class="speech-use">
+            <div class="speech-use__icon"><i class="fa fa-exchange"></i></div>
+            <h3>统一专有名词</h3>
+            <p>通过替换词典修正常见同音词、姓名、品牌名和项目名，让输出更符合自己的工作环境。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="speech-section speech-section--dark">
+      <div class="speech-container">
+        <div class="speech-section__head">
+          <p class="speech-section__eyebrow">Verified Build</p>
+          <h2>这是一个已经实际跑通的工具</h2>
+          <p>当前版本为 v1.3.0，重点完成了长期运行、内存、安全、剪贴板与 Windows 打包方面的修复。</p>
+        </div>
+        <div class="speech-proof">
+          <div class="speech-proof__item"><strong>10</strong><span>自动化测试通过</span></div>
+          <div class="speech-proof__item"><strong>3</strong><span>本地模型检查通过</span></div>
+          <div class="speech-proof__item"><strong>8.4s</strong><span>真实录音转写通过</span></div>
+          <div class="speech-proof__item"><strong>v1.3.0</strong><span>当前公开版本</span></div>
+        </div>
+
+        <div class="speech-github" style="margin-top: 3rem;">
+          <div>
+            <h2>项目源码与使用说明</h2>
+            <p>
+              GitHub 仓库中包含源码、安装方式、模型准备、配置说明和版本更新记录。项目地址：
+              <br /><code>https://github.com/nuonuo005/yuyin-zhuanxie</code>
+            </p>
+          </div>
+          <a href="https://github.com/nuonuo005/yuyin-zhuanxie" target="_blank" rel="noopener noreferrer" class="speech-button speech-button--primary">
+            <i class="fa fa-github"></i> 打开 GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-white py-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <a href="../index.html#projects" class="text-primary hover:underline text-sm inline-flex items-center gap-1">
+        <i class="fa fa-arrow-left"></i> 返回小作品
+      </a>
+      <p class="text-sm mt-4" style="color: rgba(255,255,255,0.35);">&copy; 2026 诺诺的小博客空间</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
+  <script src="../js/common.js"></script>
+</body>
+</html>
