@@ -405,28 +405,34 @@
       </div>
       <div class="articles-container">
 
-        <!-- 置顶文章：跨两列横向布局 -->
+        <!-- 今日置顶文章：跨两列横向布局 -->
         <article class="card-article article-filterable articles-featured lg:col-span-2 mb-7" data-tags="daily,ai,tech" style="display: grid; grid-template-columns: 1fr; ">
           <div style="display: flex; flex-direction: column; gap: 0;">
-          <div class="card-img flex items-center justify-center" style="height: 200px; position: relative;">
-            <img src="assets/journal/2026-07-16/paper-video-poster.jpg" alt="AI 剪纸视频《为什么太原被称为龙城》画面" class="article-cover-img" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, #30202a, #a45a68)';">
+          <div class="card-img flex items-center justify-center" style="height: 200px; position: relative; background: linear-gradient(135deg, #21171d, #533744 58%, #8c5a67);">
+            <div style="position: relative; z-index: 1; display: flex; align-items: center; gap: 1.25rem; color: rgba(255,255,255,0.86);">
+              <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.35); border-radius: 1rem;"><i class="fa fa-pencil-square-o"></i></span>
+              <i class="fa fa-long-arrow-right" style="color: rgba(212,175,55,0.62);"></i>
+              <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.35); border-radius: 1rem;"><i class="fa fa-picture-o"></i></span>
+              <i class="fa fa-long-arrow-right" style="color: rgba(212,175,55,0.62);"></i>
+              <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.35); border-radius: 1rem;"><i class="fa fa-film"></i></span>
+            </div>
             <div class="article-cover-overlay"></div>
-            <span class="article-cover-tag">工作日志 · AI</span>
-            <span style="position: absolute; top: 1rem; right: 1.5rem; font-family: 'Crimson Pro', serif; font-size: 3rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">01</span>
+            <span class="article-cover-tag">AI 影视 · 技能梳理</span>
+            <span style="position: absolute; top: 1rem; right: 1.5rem; font-family: 'Crimson Pro', serif; font-size: 3rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">02</span>
           </div>
             <div class="p-7">
               <div class="flex items-center gap-3 mb-3">
-                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-07-16</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 10 分钟</span>
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-07-17</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 13 分钟</span>
                 <span class="article-tag" style="background: rgba(164,90,104,0.08); color: #a45a68;">日志</span>
                 <span class="article-tag article-tag-ai">AI</span>
                 <span class="article-tag article-tag-tech">技术</span>
               </div>
-              <h3 class="text-xl font-bold mb-3 leading-snug" style="color: var(--ink);">我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频</h3>
+              <h3 class="text-xl font-bold mb-3 leading-snug" style="color: var(--ink);">我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能</h3>
               <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted); max-width: 600px;">
-                一天完成三个可复用成果：把本地语音转写工具修到更稳定、更安全；从参考图中提取“绛霞绮梦”东方摄影风格；再把历史知识做成一条 24 秒 AI 剪纸视频。
+                详细梳理中文影视编剧、双语图像提示词和中文分镜三个技能：它们分别解决故事、视觉与镜头执行问题，并能串成一条完整 AI 影视生产线。
               </p>
-              <a href="posts/2026-07-16-ai-work-journal.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+              <a href="posts/2026-07-17-deepwhite-skills.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
                 阅读全文 <i class="fa fa-arrow-right text-xs"></i>
               </a>
             </div>
@@ -435,6 +441,25 @@
 
         <!-- 其余文章：三列网格 -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 articles-grid">
+
+          <article class="card-article article-filterable" data-tags="daily,ai,tech">
+            <div class="card-img h-44 flex items-center justify-center" style="position: relative;">
+              <img src="assets/journal/2026-07-16/paper-video-poster.jpg" alt="AI 剪纸视频《为什么太原被称为龙城》画面" class="article-cover-img" loading="lazy" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg, #30202a, #a45a68)';">
+              <div class="article-cover-overlay"></div>
+              <span class="article-cover-tag">工作日志 · AI</span>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">01</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-07-16</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 10 分钟</span>
+                <span class="article-tag article-tag-ai">AI</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">完成语音转写修复、东方摄影风格提取和一条 24 秒 AI 剪纸视频。</p>
+              <a href="posts/2026-07-16-ai-work-journal.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">阅读全文 <i class="fa fa-arrow-right text-xs"></i></a>
+            </div>
+          </article>
 
           <article class="card-article article-filterable" data-tags="growth,ai">
             <div class="card-img h-44 flex items-center justify-center" style="position: relative;">

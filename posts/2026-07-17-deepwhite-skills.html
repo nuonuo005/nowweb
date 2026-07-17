@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="详细梳理 DeepWhite 中文影视编剧、图像提示词构建器与中文分镜构建器：分别做什么、解决什么问题、能产出什么效果，以及如何串成完整 AI 影视工作流。" />
+  <meta property="og:title" content="我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能" />
+  <meta property="og:description" content="从剧本创作、视觉资产到分镜与 Seedance 提示词，完整理解三个 DeepWhite 技能的定位、边界和协作方式。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="../assets/journal/2026-07-17/deepwhite-skills-list.png" />
+  <meta name="theme-color" content="#21171d" />
+  <title>我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能 — 诺诺的小博客空间</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🎬%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../css/common.css?v=editorial-20260716" />
+  <link rel="stylesheet" href="../css/journal.css?v=20260716" />
+  <link rel="stylesheet" href="../css/deepwhite-skills.css?v=20260717" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' },
+          fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] }
+        }
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能",
+    "datePublished": "2026-07-17",
+    "dateModified": "2026-07-17",
+    "author": { "@type": "Person", "name": "诺诺" },
+    "description": "详细梳理 DeepWhite 中文影视编剧、图像提示词构建器与中文分镜构建器的定位、问题与产出效果。"
+  }
+  </script>
+</head>
+<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
+  <div id="reading-progress"></div>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <i class="fa fa-paper-plane text-primary text-xl"></i>
+          <span class="text-xl font-semibold">诺诺的小博客空间</span>
+        </a>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a>
+          <a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a>
+          <a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a>
+          <a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式">
+            <i class="fa fa-sun-o icon-sun"></i>
+            <i class="fa fa-moon-o icon-moon"></i>
+          </button>
+          <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false">
+            <i class="fa fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
+      <div class="px-4 py-3 space-y-1">
+        <a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
+        <a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
+        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
+        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
+      </div>
+    </div>
+  </nav>
+
+  <article data-tags='["AI","技能","工作日志","影视"]'>
+    <header class="journal-hero">
+      <div class="journal-hero__inner">
+        <p class="journal-kicker">Daily Build Log · No. 002</p>
+        <h1>从故事到画面：<br />拆解 3 个 DeepWhite 影视技能</h1>
+        <p class="journal-hero__lead">
+          今天不做零散工具介绍，而是把“写故事、定画面、拆镜头”三种能力放在同一条生产线上，看看它们分别解决什么问题。
+        </p>
+        <div class="journal-meta">
+          <span><i class="fa fa-calendar-o"></i> 2026-07-17</span>
+          <span><i class="fa fa-clock-o"></i> 阅读约 13 分钟</span>
+          <span><i class="fa fa-cubes"></i> 3 个技能梳理</span>
+          <span><i class="fa fa-tag"></i> AI 影视工作流</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="journal-shell">
+      <p class="journal-intro">
+        AI 影视创作最容易出现的误区，是把“会写剧本”“会写图像提示词”“会写视频提示词”当成同一件事。实际上，这三种工作面对的是三类完全不同的问题：故事有没有戏、画面有没有统一视觉、镜头能不能稳定执行。今天我把手里的三个 DeepWhite 技能重新梳理了一遍，也第一次真正看清它们怎样组成一条从创意到可生成画面的生产线。
+      </p>
+
+      <figure class="skills-figure">
+        <img src="../assets/journal/2026-07-17/deepwhite-skills-list.png" alt="DeepWhite Image Prompt Builder、Shotlist Builder ZH User 与中文影视编剧 v1 三个技能列表" />
+        <figcaption>本次梳理的三个 DeepWhite 技能：静态图像提示词、中文影视分镜、中文影视编剧。</figcaption>
+      </figure>
+
+      <section class="journal-summary" aria-label="三个技能总览">
+        <a class="journal-summary__item" href="#screenwriting">
+          <span class="journal-summary__number">01</span>
+          <i class="fa fa-pencil-square-o"></i>
+          <h2>中文影视编剧 v1</h2>
+          <p>负责故事、人物、结构、场景与对白，让一个想法先成为真正可拍的剧本。</p>
+        </a>
+        <a class="journal-summary__item" href="#image-prompt">
+          <span class="journal-summary__number">02</span>
+          <i class="fa fa-picture-o"></i>
+          <h2>Image Prompt Builder</h2>
+          <p>负责静态视觉，把模糊画面翻译成中英双语、可直接生成的图像提示词。</p>
+        </a>
+        <a class="journal-summary__item" href="#shotlist">
+          <span class="journal-summary__number">03</span>
+          <i class="fa fa-film"></i>
+          <h2>Shotlist Builder ZH</h2>
+          <p>负责导演与执行，把剧本拆成位置、构图、动作、机位、音效和视频提示词。</p>
+        </a>
+      </section>
+
+      <section aria-labelledby="pipeline-title">
+        <div class="journal-project__head">
+          <div class="journal-project__index">00</div>
+          <div>
+            <p class="journal-project__label">The Production Line</p>
+            <h2 id="pipeline-title">它们不是三个孤立工具，而是三个连续工位</h2>
+            <p class="journal-project__desc">前一个技能解决“内容是否成立”，中间技能建立“视觉是否清楚”，最后一个技能保证“镜头是否可执行”。</p>
+          </div>
+        </div>
+        <div class="skill-pipeline">
+          <div class="skill-pipeline__step">
+            <span class="skill-pipeline__number">01</span>
+            <h3>故事工位：先把“想法”写成剧本</h3>
+            <p>确定高概念、人物欲望、冲突、结构、分场和对白，检查因果与节奏。</p>
+            <small>产出：梗概、人物弧光、结构大纲、分场、场景、诊断报告。</small>
+          </div>
+          <div class="skill-pipeline__step">
+            <span class="skill-pipeline__number">02</span>
+            <h3>视觉工位：把“文字”变成参考图</h3>
+            <p>把角色、环境、道具、海报与关键时刻写成构图明确的双语图像提示词。</p>
+            <small>产出：人物设定图、场景概念图、道具图、海报和关键静帧。</small>
+          </div>
+          <div class="skill-pipeline__step">
+            <span class="skill-pipeline__number">03</span>
+            <h3>导演工位：把“剧本+资产”变成镜头</h3>
+            <p>确认资产、空间位置和时间划分，再写动作、构图、机位、声音与 Seedance 提示词。</p>
+            <small>产出：中文分镜、视频提示词、素材对照表和制作网页。</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="journal-project" id="screenwriting">
+        <div class="journal-project__head">
+          <div class="journal-project__index">01</div>
+          <div>
+            <p class="journal-project__label">Story Development & Script Doctor</p>
+            <h2>DeepWhite 中文影视编剧 v1：先解决“故事为什么值得看”</h2>
+            <p class="journal-project__desc">
+              这是一个中文影视编剧工作室型技能。它既能从一个模糊灵感开始孵化概念短片、微短剧、短片、长片和多集剧，也能接手已有梗概或剧本，做诊断、量化评分、精准修改、对白打磨与节奏删减。
+            </p>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>它接收什么、如何处理、最终给出什么</h3>
+          <div class="skill-io-grid">
+            <div class="skill-io">
+              <span>Input</span>
+              <strong>创意或已有文本</strong>
+              <p>一句灵感、主题、故事梗概、分场大纲、剧本片段，或一份需要诊断的完整剧本。</p>
+            </div>
+            <div class="skill-io">
+              <span>Process</span>
+              <strong>创作 + 结构审计</strong>
+              <p>从高概念、人物弧光到场景价值转变，再检查因果链、人物缺陷、危机、高潮和结局。</p>
+            </div>
+            <div class="skill-io">
+              <span>Output</span>
+              <strong>只写可拍、可听的中文剧本</strong>
+              <p>输出梗概、结构、分场、场景或诊断报告；避免心理说明、说教独白和书面化 AI 腔。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>它重点解决的四类问题</h3>
+          <div class="skill-problem-grid">
+            <div class="skill-problem"><strong>只有点子，没有戏</strong><p>把“这个设定挺有意思”继续追问成核心动作、欲望、阻碍、代价与变化。</p></div>
+            <div class="skill-problem"><strong>结构看似完整，但没有因果</strong><p>检查事件是否互相推动，而不是一串“然后发生了……”的情节堆积。</p></div>
+            <div class="skill-problem"><strong>人物在说剧情，不像人在说话</strong><p>压掉解释性台词，改成可以通过动作、停顿、声音和潜台词感受到的戏。</p></div>
+            <div class="skill-problem"><strong>不知道先改哪里</strong><p>通过结构、人物、场景价值、节奏和可拍性评分，把问题排出修改优先级。</p></div>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>它的工作方式为什么更可靠</h3>
+          <div class="journal-timeline">
+            <div class="journal-timeline__item"><strong>1. 先破题</strong><p>确认体量、高概念和核心戏剧动作，避免一上来就写长篇正文。</p></div>
+            <div class="journal-timeline__item"><strong>2. 再建人物与世界</strong><p>明确 Want、Need、Arc；长篇内容进一步补足人物前史、谎言与缺陷。</p></div>
+            <div class="journal-timeline__item"><strong>3. 搭结构和分场</strong><p>建立开场钩子、激励事件、递进冲突、高潮和结尾，再为每场标注目标、阻碍、结果与价值变化。</p></div>
+            <div class="journal-timeline__item"><strong>4. 最后才写场景</strong><p>场景文字只保留镜头能拍到、麦克风能听到的内容，让文本直接服务拍摄。</p></div>
+            <div class="journal-timeline__item"><strong>5. 分步骤确认</strong><p>每个正式阶段都允许“通过、修改或自检”，不会在方向尚未确认时一次性生成整部剧本。</p></div>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>最终呈现出来的效果</h3>
+          <div class="skill-effect-grid">
+            <div class="skill-effect"><span>Before</span><strong>一句抽象想法</strong><p>“我想做一个关于记忆被删除的科幻短片。”</p></div>
+            <div class="skill-effect"><span>After</span><strong>一套可继续生产的故事资产</strong><p>高概念、人物欲望与缺陷、冲突升级、结构节点、分场时长、可拍场景和修改优先级。</p></div>
+          </div>
+          <div class="skill-boundary"><strong>适合：</strong>只有灵感但不会展开的人、已有剧本却感觉“不够狠”的创作者、需要压缩片长或改善对白的人，以及准备把剧本交给 AI 视觉生产的人。</div>
+        </div>
+      </section>
+
+      <section class="journal-project" id="image-prompt">
+        <div class="journal-project__head">
+          <div class="journal-project__index">02</div>
+          <div>
+            <p class="journal-project__label">Still Image Prompt Design</p>
+            <h2>DeepWhite Image Prompt Builder：把“脑中的画面”翻译给图像模型</h2>
+            <p class="journal-project__desc">
+              这个技能只处理静态图像。它可以把一句视觉想法、剧本片段或风格说明，整理成可以直接使用的英文提示词和中文提示词，用于角色设定、场景概念、关键静帧、海报、插画或产品画面。
+            </p>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>它的核心不是“堆关键词”，而是建立可见的画面结构</h3>
+          <p>一个完整提示词会按视觉逻辑组织信息，让主体、空间、构图、光线、材质与色彩互相服务，而不是把几十个风格词机械拼在一起。</p>
+          <div class="skill-formula" aria-label="图像提示词结构">
+            <span>主体 + 动作</span><b>+</b><span>地点 / 情境</span><b>+</b><span>构图</span><b>+</b><span>光线</span><b>+</b><span>风格</span><b>+</b><span>镜头 / 焦段</span><b>+</b><span>色彩</span>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>它解决了什么</h3>
+          <div class="skill-problem-grid">
+            <div class="skill-problem"><strong>“好看一点”太抽象</strong><p>把高级、梦幻、压抑、纪实等感觉拆成光源方向、对比度、色温、材质、景深和构图。</p></div>
+            <div class="skill-problem"><strong>画面主体不明确</strong><p>让提示词先说清楚“谁在做什么”，再补环境和风格，避免模型只抓到装饰词。</p></div>
+            <div class="skill-problem"><strong>同一项目视觉漂移</strong><p>把时代、服装、光线哲学、色彩和材质写成稳定的风格约束，方便系列化生成。</p></div>
+            <div class="skill-problem"><strong>中英文版本意思走样</strong><p>同时提供英文和中文版本，两者保持同一视觉意图，而不是生硬逐字翻译。</p></div>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>面对长剧本时，它会先挑“最值得被看见的瞬间”</h3>
+          <ul>
+            <li><strong>人物首次亮相：</strong>建立角色脸、服装、气质和时代信息。</li>
+            <li><strong>环境建立画面：</strong>确定世界观、空间尺度、光线与材质语言。</li>
+            <li><strong>关键道具：</strong>固定会影响剧情的物件、文字、磨损和使用方式。</li>
+            <li><strong>情绪特写与高潮定格：</strong>留下最能代表人物变化和宣传价值的画面。</li>
+            <li><strong>海报画面：</strong>把主题、人物关系与视觉符号压缩到一张静态图中。</li>
+          </ul>
+        </div>
+
+        <div class="journal-card">
+          <h3>呈现效果：一份可以直接复制的双语视觉说明书</h3>
+          <div class="skill-output" aria-label="图像提示词输出示意">
+            <div class="skill-output__bar"><span>DEEPWHITE IMAGE PROMPT</span><span>STATIC · BILINGUAL</span></div>
+            <pre>English Prompt
+[subject and action] + [environment] + [composition]
++ [lighting] + [material] + [lens] + [color grading]
+
+中文提示词
+[主体与动作] + [空间情境] + [画面构图]
++ [光线情绪] + [材质细节] + [镜头语言] + [色彩分级]</pre>
+          </div>
+          <div class="skill-boundary"><strong>边界：</strong>它不负责视频时长、运镜、转场、音效或分镜时间轴。它的任务是把一张静态画面写清楚，而不是假装一段视频也是一张图。</div>
+        </div>
+      </section>
+
+      <section class="journal-project" id="shotlist">
+        <div class="journal-project__head">
+          <div class="journal-project__index">03</div>
+          <div>
+            <p class="journal-project__label">Directing, Blocking & Seedance Prompts</p>
+            <h2>DeepWhite Shotlist Builder ZH User：把剧本变成真正能执行的镜头</h2>
+            <p class="journal-project__desc">
+              这个技能面向中文影视分镜和 Seedance 2.0 视频提示词。它不只是把剧本按句切开，而是像导演和现场执行团队一样，继续决定人物站位、画面构图、机位、动作节拍、环境活动、音效和可能的模型失败点。
+            </p>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>为什么它设置了六道确认门</h3>
+          <p>AI 视频最常见的问题，不是提示词不够华丽，而是前面的生产信息没有确认。这个技能用六道门把容易返工的决定提前锁定。</p>
+          <div class="gate-grid">
+            <div class="gate-card"><strong>01 资产确认</strong><p>核对人物、场景、道具、风格图和可选故事板，避免文件与角色错配。</p></div>
+            <div class="gate-card"><strong>02 空间确认</strong><p>多人、关键道具与复杂机位先画俯视位置图，锁定前后左右、朝向和距离。</p></div>
+            <div class="gate-card"><strong>03 时间划分</strong><p>先确认剧情分成几条提示词，每条最多覆盖 15 秒，同时避免过度切碎。</p></div>
+            <div class="gate-card"><strong>04 结构确认</strong><p>如果改变最终提示词结构，先展示模板并确认，避免输出格式悄悄漂移。</p></div>
+            <div class="gate-card"><strong>05 交付确认</strong><p>明确最终要 HTML 制作网页，还是只要按顺序排列的文字提示词。</p></div>
+            <div class="gate-card"><strong>06 网页质检</strong><p>检查长中文换行、列布局与移动端稳定性，防止提示词重叠或溢出。</p></div>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>每个镜头最终会被写到什么程度</h3>
+          <p>镜头内部保持固定顺序，让生成模型和制作人员都能快速找到关键信息：</p>
+          <div class="journal-flow" aria-label="分镜提示词字段顺序">
+            <div class="journal-flow__step">画面动作概述<br />人物当前状态</div>
+            <div class="journal-flow__step">画面构图<br />区域与空间锁定</div>
+            <div class="journal-flow__step">机位<br />视角与运动逻辑</div>
+            <div class="journal-flow__step">动作<br />表演微节拍</div>
+            <div class="journal-flow__step">音效<br />环境与事件声音</div>
+          </div>
+          <p>风格部分还会明确全局画质、人物材质、灯光与风格、核心特效；人物情绪不会只写“紧张”，而会继续拆成呼吸、眼神、肌肉、皮肤、姿态和发生顺序。</p>
+        </div>
+
+        <div class="journal-card">
+          <h3>它重点解决的生成失败</h3>
+          <div class="skill-problem-grid">
+            <div class="skill-problem"><strong>人物位置每个镜头都在变</strong><p>通过俯视阻挡图和构图区域锁定人物、道具、前后关系与遮挡关系。</p></div>
+            <div class="skill-problem"><strong>剧情被拆得太碎</strong><p>连续地点、人物和情绪逻辑一致时，优先合并为一条 8—15 秒的完整提示词。</p></div>
+            <div class="skill-problem"><strong>只有镜头，没有声音和表演</strong><p>每个镜头必须包含动作、机位和音效，情绪也要落到身体的微变化上。</p></div>
+            <div class="skill-problem"><strong>素材很多，但不知道谁控制什么</strong><p>为每个提示词建立资产对照表，写清素材句柄、原文件、用途和使用镜头。</p></div>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>最终呈现出来的效果</h3>
+          <div class="skill-output" aria-label="中文分镜输出示意">
+            <div class="skill-output__bar"><span>SHOT 03 · 00:18—00:30</span><span>SEEDANCE PROMPT</span></div>
+            <pre>【全局画质】真实电影摄影与稳定物理质感……
+【人物材质】皮肤、发丝、呼吸与衣料受力……
+【灯光与风格】由剧本和已确认参考图建立……
+【核心特效】烟尘、雨水、火焰或能量的物理行为……
+
+画面动作概述：角色在压力下完成一个明确动作……
+画面构图：人物位于左三分区，道具在中景右侧……
+机位：镜头跟随情绪变化推进……
+动作：拆成可观察的身体微节拍……
+音效：环境底噪、衣料摩擦与关键事件声……</pre>
+          </div>
+          <div class="skill-boundary"><strong>适合：</strong>已经有剧本、准备进入 AI 视频生成的人；需要保持角色和空间连续性的项目；以及希望把分镜、提示词、素材对照和制作说明整理成一个中文网页的人。</div>
+        </div>
+      </section>
+
+      <section aria-labelledby="compare-title">
+        <div class="journal-project__head">
+          <div class="journal-project__index">✓</div>
+          <div>
+            <p class="journal-project__label">How To Choose</p>
+            <h2 id="compare-title">三个技能怎么选：先看你现在卡在哪一步</h2>
+            <p class="journal-project__desc">它们有交集，但不能互相替代。最简单的判断方式，是看当前缺的是故事、画面，还是镜头执行。</p>
+          </div>
+        </div>
+        <div class="skill-table-wrap">
+          <table class="skill-table">
+            <thead><tr><th>技能</th><th>最适合的输入</th><th>核心解决</th><th>主要产出</th><th>不负责</th></tr></thead>
+            <tbody>
+              <tr><td>中文影视编剧 v1</td><td>灵感、梗概、分场、剧本</td><td>故事结构、人物、因果、对白、节奏</td><td>可拍中文剧本与诊断报告</td><td>图像生成参数、视频镜头执行</td></tr>
+              <tr><td>Image Prompt Builder</td><td>视觉想法、剧本片段、风格说明</td><td>静态画面的主体、构图、光线、材质与风格</td><td>中英双语图像提示词</td><td>时长、运镜、音效、镜头时间轴</td></tr>
+              <tr><td>Shotlist Builder ZH</td><td>剧本 + 已确认资产 + 风格参考</td><td>空间连续、时间切分、动作、机位、声音和模型失败预防</td><td>中文分镜、Seedance 提示词与 HTML 制作页</td><td>替代前期故事开发</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="journal-project" id="workflow-example">
+        <div class="journal-project__head">
+          <div class="journal-project__index">→</div>
+          <div>
+            <p class="journal-project__label">A Practical Example</p>
+            <h2>如果我现在要做一条 AI 概念短片，会怎样使用它们</h2>
+            <p class="journal-project__desc">以“一名老人能删除自己的痛苦记忆，但每删除一次也会忘掉一个爱他的人”为例。</p>
+          </div>
+        </div>
+        <div class="journal-card">
+          <div class="journal-timeline">
+            <div class="journal-timeline__item"><strong>第一步：中文影视编剧</strong><p>把设定变成 3 分钟概念片：明确老人真正想要什么、删除记忆的代价、冲突如何升级，以及结尾留下哪一个无法删除的动作。</p></div>
+            <div class="journal-timeline__item"><strong>第二步：Image Prompt Builder</strong><p>为老人、记忆诊所、删除设备、家庭照片和高潮静帧分别写双语图像提示词，先生成稳定的角色与环境资产。</p></div>
+            <div class="journal-timeline__item"><strong>第三步：Shotlist Builder ZH</strong><p>导入剧本与资产，确认人物和设备位置，划分每条不超过 15 秒的提示词，再写构图、机位、动作、音效和风险警告。</p></div>
+            <div class="journal-timeline__item"><strong>第四步：进入生成与剪辑</strong><p>此时拿到的已经不是一句“做个科幻短片”，而是一套故事、视觉资产和镜头执行说明，可以直接进入视频生成、配音、配乐和剪辑。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <blockquote class="journal-quote">
+        <strong>今天最大的收获：</strong>
+        好的 AI 技能不是替我“按一下就生成”，而是替创作建立边界、检查点和交付标准。编剧技能守住故事，图像技能守住视觉，分镜技能守住执行；三者连起来，AI 影视才从一次碰运气的生成，变成一条可以复用、检查和迭代的工作流。
+      </blockquote>
+
+      <div class="journal-next">
+        <p>下一步，我会用一份真实剧本跑完整条流程，把三个技能的中间产物、修改过程和最后生成效果继续记录下来。</p>
+        <a href="../archive.html">查看全部日志与文章 <i class="fa fa-arrow-right"></i></a>
+      </div>
+    </main>
+  </article>
+
+  <footer class="text-white py-12">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <a href="../index.html" class="text-primary hover:underline text-sm inline-flex items-center gap-1"><i class="fa fa-arrow-left"></i> 返回首页</a>
+      <p class="text-sm mt-4" style="color: rgba(255,255,255,0.35);">&copy; 2026 诺诺的小博客空间 · 每天留下真实的成长轨迹</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
+  <script src="../js/common.js?v=editorial-20260716"></script>
+</body>
+</html>

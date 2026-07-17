@@ -5,8 +5,16 @@
     <link>https://nuonuo.me/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 16 Jul 2026 22:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 23:40:00 +0800</lastBuildDate>
     <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能</title>
+      <link>https://nuonuo.me/posts/2026-07-17-deepwhite-skills.html</link>
+      <description>详细梳理中文影视编剧、双语图像提示词与中文分镜三个技能，以及它们如何串成完整 AI 影视工作流。</description>
+      <pubDate>Fri, 17 Jul 2026 23:40:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-07-17-deepwhite-skills.html</guid>
+    </item>
 
     <item>
       <title>我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频</title>
