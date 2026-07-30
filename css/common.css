@@ -5,23 +5,23 @@
 
 /* ── 自定义属性 · 亮色模式 ── */
 :root {
-  --ink:        #1c1917;
-  --ink-soft:   #44403c;
-  --ink-muted:  #78716c;
-  --parchment:  #faf8f5;
-  --paper:      #f5f0eb;
-  --gold:       #b8860b;
-  --gold-warm:  #d4a017;
-  --amber:      #92400e;
-  --vermilion:  #c0392b;
-  --sage:       #556b55;
-  --sage-soft:  #6b8f6b;
-  --slate-blue: #5a6d8a;
-  --cream:      #fffef9;
-  --card-bg:    #fffef9;
+  --ink:        #20221d;
+  --ink-soft:   #4d5148;
+  --ink-muted:  #777c72;
+  --parchment:  #f7f1e5;
+  --paper:      #efe5d6;
+  --gold:       #c69b55;
+  --gold-warm:  #d8b370;
+  --amber:      #9c6e35;
+  --vermilion:  #b85a4a;
+  --sage:       #465548;
+  --sage-soft:  #74846f;
+  --slate-blue: #637487;
+  --cream:      #fffaf0;
+  --card-bg:    #fffaf0;
   --card-border:rgba(28, 25, 23, 0.06);
-  --nav-bg:     rgba(250, 248, 245, 0.85);
-  --nav-bg-scroll: rgba(250, 248, 245, 0.95);
+  --nav-bg:     rgba(247, 241, 229, 0.86);
+  --nav-bg-scroll: rgba(247, 241, 229, 0.96);
   --shadow-sm:  rgba(28, 25, 23, 0.06);
   --shadow-md:  rgba(28, 25, 23, 0.08);
   --shadow-lg:  rgba(28, 25, 23, 0.1);
@@ -31,29 +31,29 @@
   --project-gradient-2: rgba(90, 109, 138, 0.04);
   --project-gradient-3: rgba(85, 107, 85, 0.04);
   --footer-text: rgba(255, 255, 255, 0.3);
-  --page-bg:    #faf8f5;
+  --page-bg:    #f7f1e5;
   color-scheme: light;
 }
 
 /* ── 深色模式 ── */
 [data-theme="dark"] {
-  --ink:        #f0ece4;
-  --ink-soft:   #d4cec4;
-  --ink-muted:  #9c9588;
-  --parchment:  #141210;
-  --paper:      #1a1816;
-  --gold:       #d4a017;
-  --gold-warm:  #e6b422;
-  --amber:      #c68a1a;
-  --vermilion:  #e04a3a;
-  --sage:       #7fa87f;
-  --sage-soft:  #8fb88f;
-  --slate-blue: #8a9db8;
-  --cream:      #1a1816;
-  --card-bg:    #1e1c18;
+  --ink:        #f7f1e5;
+  --ink-soft:   #d6d1c2;
+  --ink-muted:  #aaa99c;
+  --parchment:  #171915;
+  --paper:      #1d211b;
+  --gold:       #d8b370;
+  --gold-warm:  #e7c983;
+  --amber:      #b99050;
+  --vermilion:  #cc7765;
+  --sage:       #8ba587;
+  --sage-soft:  #a9bca2;
+  --slate-blue: #9cabb9;
+  --cream:      #1d211b;
+  --card-bg:    #252922;
   --card-border:rgba(255, 255, 255, 0.06);
-  --nav-bg:     rgba(20, 18, 16, 0.85);
-  --nav-bg-scroll: rgba(20, 18, 16, 0.95);
+  --nav-bg:     rgba(23, 25, 21, 0.86);
+  --nav-bg-scroll: rgba(23, 25, 21, 0.96);
   --shadow-sm:  rgba(0, 0, 0, 0.2);
   --shadow-md:  rgba(0, 0, 0, 0.3);
   --shadow-lg:  rgba(0, 0, 0, 0.4);
@@ -63,7 +63,7 @@
   --project-gradient-2: rgba(138, 157, 184, 0.06);
   --project-gradient-3: rgba(127, 168, 127, 0.06);
   --footer-text: rgba(255, 255, 255, 0.2);
-  --page-bg:    #141210;
+  --page-bg:    #171915;
   color-scheme: dark;
 }
 
@@ -91,6 +91,9 @@
 /* ── 字体类 ── */
 .font-ma { font-family: 'LXGW WenKai', 'Ma Shan Zheng', 'Noto Serif SC', serif; }
 .font-serif-body { font-family: 'Source Serif 4', 'Noto Serif SC', Georgia, serif; }
+/* Shared typography contract: long-form pages remain readable while headings keep an editorial contrast. */
+body.font-sans { font-family: 'Source Serif 4', 'Noto Serif SC', Georgia, serif !important; }
+.font-display { font-family: 'Playfair Display', 'Crimson Pro', 'Noto Serif SC', Georgia, serif; }
 
 /* ── 全局质感 ── */
 body {
@@ -929,18 +932,35 @@ footer::before {
    响应式
    ══════════════════════════════════ */
 @media (max-width: 640px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   .archive-item {
     flex-direction: column;
     gap: 0.25rem;
   }
   .archive-date { min-width: auto; }
+  .archive-title { overflow-wrap: anywhere; }
   #back-to-top {
-    bottom: 20px;
-    right: 20px;
+    bottom: max(20px, env(safe-area-inset-bottom));
+    right: max(16px, env(safe-area-inset-right));
     width: 40px;
     height: 40px;
   }
   .timeline-item { padding-left: 2rem; }
+
+  .tag-filters {
+    justify-content: flex-start;
+    gap: .45rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .tag-filter-btn {
+    min-height: 2.5rem;
+    padding: .45rem .9rem;
+  }
 }
 
 /* ══════════════════════════════════
@@ -1758,6 +1778,30 @@ body { overflow-x: hidden; }
   height: 160px;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.article-cover-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 首页呈现最新六篇文章，完整列表保留在归档页。 */
+#articles .articles-curation-note {
+  max-width: 34rem;
+  margin: -3.8rem auto 2.6rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+#articles .articles-grid > .card-article:nth-child(n + 7) {
+  display: none !important;
+}
+
+#articles .generated-cover > div:not(.article-cover-overlay) {
+  display: none !important;
 }
 .card-article:hover .article-cover-img {
   transform: scale(1.06);

@@ -7,15 +7,16 @@
   <meta property="og:title" content="诺诺的小博客空间" />
   <meta property="og:description" content="10年跨行业实战经验 | 全栈运营能手 | 终身学习者" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#1a1428" />
+  <meta name="theme-color" content="#171815" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E📝%3C/text%3E%3C/svg%3E" />
   <title>诺诺的小博客空间</title>
-  <link rel="stylesheet" href="css/common.css?v=editorial-20260602g" />
+  <link rel="stylesheet" href="css/common.css?v=mobile-20260723" />
+  <link rel="stylesheet" href="css/home-3d.css?v=mobile-20260723" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
@@ -102,8 +103,35 @@
       </div>
     </div>
   </nav>
-  <!-- 高级东方编辑感首屏 -->
-  <section id="home" class="editorial-hero relative min-h-screen flex items-center overflow-hidden ink-bg">
+  <!-- 首页：以角色肖像为视觉锚点，文字和人物保持清晰分区。 -->
+  <section id="home" class="nuonuo-portrait-hero" aria-label="诺诺的数字花园">
+    <div class="nuonuo-portrait-hero__grain" aria-hidden="true"></div>
+    <div class="nuonuo-portrait-hero__inner">
+      <div class="nuonuo-portrait-hero__copy">
+        <p class="nuonuo-portrait-hero__eyebrow">NUO NUO · DIGITAL GARDEN / 2026</p>
+        <h1>你好，我是<em>诺诺</em></h1>
+        <p class="nuonuo-portrait-hero__lead">十年跨行业实战经验，全栈运营能手；在工具、阅读与生活之间，持续把复杂的事做得更轻、更清楚。</p>
+        <div class="nuonuo-portrait-hero__actions">
+          <a href="#articles">读最新随笔 <span aria-hidden="true">↘</span></a>
+          <a href="#projects">看小作品 <span aria-hidden="true">↘</span></a>
+        </div>
+        <dl class="nuonuo-portrait-hero__notes">
+          <div><dt>01</dt><dd>AI 应用与运营实践</dd></div>
+          <div><dt>02</dt><dd>写作、阅读与持续生长</dd></div>
+        </dl>
+      </div>
+
+      <figure class="nuonuo-portrait-hero__visual" aria-label="戴圆框眼镜、穿花纹外套的诺诺猫角色形象">
+        <div class="nuonuo-portrait-hero__halo" aria-hidden="true"></div>
+        <img src="assets/characters/nuonuo-cat-v1.png" alt="戴圆框眼镜、穿花纹外套的诺诺猫角色形象" />
+        <figcaption>WORK · WORDS · PLAY</figcaption>
+      </figure>
+    </div>
+    <p class="nuonuo-portrait-hero__scroll">SCROLL TO EXPLORE</p>
+  </section>
+
+  <!-- 保留旧首屏作为可回退来源；新版上线时不参与渲染。 -->
+  <section id="legacy-home" class="editorial-hero relative min-h-screen flex items-center overflow-hidden ink-bg" hidden>
     <div class="ink-particle" data-parallax-speed="-80"></div>
     <div class="ink-particle" data-parallax-speed="-120"></div>
     <div class="ink-particle" data-parallax-speed="-60"></div>
@@ -394,7 +422,8 @@
         <p class="mt-5 max-w-xl mx-auto" style="color: var(--ink-muted); font-size: 0.95rem;">记录思考，分享感悟，这里有我随手写下的文字</p>
       </div>
       <!-- 标签过滤栏 -->
-      <div class="tag-filters" id="articleTagFilters">
+      <p class="articles-curation-note">首页展示最新 6 篇记录；更多文章可在归档页查看。</p>
+      <div class="tag-filters" id="articleTagFilters" hidden aria-hidden="true">
         <button class="tag-filter-btn active" data-filter="all">全部</button>
         <button class="tag-filter-btn" data-filter="growth">成长</button>
         <button class="tag-filter-btn" data-filter="ai">AI</button>
@@ -403,44 +432,97 @@
         <button class="tag-filter-btn" data-filter="career">职场</button>
         <button class="tag-filter-btn" data-filter="life">生活</button>
       </div>
-      <div class="articles-container">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 articles-grid">
 
         <!-- 今日置顶文章：跨两列横向布局 -->
-        <article class="card-article article-filterable articles-featured lg:col-span-2 mb-7" data-tags="daily,ai,tech" style="display: grid; grid-template-columns: 1fr; ">
+        <article class="card-article article-filterable" data-tags="daily,ai,tech">
           <div style="display: flex; flex-direction: column; gap: 0;">
-          <div class="card-img flex items-center justify-center" style="height: 200px; position: relative; background: linear-gradient(135deg, #21171d, #533744 58%, #8c5a67);">
+          <div class="card-img generated-cover flex items-center justify-center" style="height: 176px; position: relative; background: linear-gradient(135deg, #121920, #334d57 58%, #b8860b);">
+            <img src="assets/article-covers/knowledge-base-cover-20260730.png" alt="个人知识库封面：笔记、文件夹与星图关系网" class="article-cover-img" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+            <div style="position: relative; z-index: 1; display: flex; align-items: center; gap: 1.25rem; color: rgba(255,255,255,0.86);">
+              <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.45); border-radius: 50%;"><i class="fa fa-folder-open-o"></i></span>
+              <i class="fa fa-long-arrow-right" style="color: rgba(212,175,55,0.72);"></i>
+              <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.45); border-radius: 50%;"><i class="fa fa-sitemap"></i></span>
+              <i class="fa fa-long-arrow-right" style="color: rgba(212,175,55,0.72);"></i>
+              <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.45); border-radius: 50%;"><i class="fa fa-lightbulb-o"></i></span>
+            </div>
+            <div class="article-cover-overlay"></div>
+            <span class="article-cover-tag">知识管理 · 工作系统</span>
+            <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">04</span>
+          </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-07-30</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 12 分钟</span>
+                <span class="article-tag" style="background: rgba(55,104,112,0.10); color: #376870;">日志</span>
+                <span class="article-tag article-tag-ai">AI</span>
+                <span class="article-tag article-tag-tech">知识库</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">未来真正属于你的资产，是一座能持续生长的知识库</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted); max-width: 600px;">从目录、飞书迁入、来源保留、主题索引到真实关系图谱，记录今天怎样把分散资料搭成一套可复用的个人 AI 工作系统。</p>
+              <a href="posts/2026-07-30-growing-knowledge-base.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">阅读全文 <i class="fa fa-arrow-right text-xs"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-article article-filterable" data-tags="daily,ai,tech">
+          <div style="display: flex; flex-direction: column; gap: 0;">
+          <div class="card-img generated-cover flex items-center justify-center" style="height: 176px; position: relative; background: linear-gradient(135deg, #1c2428, #425c60 58%, #ba8056);">
+            <img src="assets/article-covers/short-film-audio-cover-20260730.png" alt="AI 影视工作复盘封面：剧本、声音波形与分镜" class="article-cover-img" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
             <div style="position: relative; z-index: 1; display: flex; align-items: center; gap: 1.25rem; color: rgba(255,255,255,0.86);">
               <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.35); border-radius: 1rem;"><i class="fa fa-pencil-square-o"></i></span>
               <i class="fa fa-long-arrow-right" style="color: rgba(212,175,55,0.62);"></i>
-              <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.35); border-radius: 1rem;"><i class="fa fa-picture-o"></i></span>
+              <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.35); border-radius: 1rem;"><i class="fa fa-volume-up"></i></span>
               <i class="fa fa-long-arrow-right" style="color: rgba(212,175,55,0.62);"></i>
               <span style="width: 3.3rem; height: 3.3rem; display: grid; place-items: center; border: 1px solid rgba(212,175,55,0.35); border-radius: 1rem;"><i class="fa fa-film"></i></span>
             </div>
             <div class="article-cover-overlay"></div>
-            <span class="article-cover-tag">AI 影视 · 技能梳理</span>
-            <span style="position: absolute; top: 1rem; right: 1.5rem; font-family: 'Crimson Pro', serif; font-size: 3rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">02</span>
+            <span class="article-cover-tag">AI 影视 · 工作复盘</span>
+            <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">03</span>
           </div>
-            <div class="p-7">
+            <div class="p-6">
               <div class="flex items-center gap-3 mb-3">
-                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-07-17</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 13 分钟</span>
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-07-23</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 10 分钟</span>
                 <span class="article-tag" style="background: rgba(164,90,104,0.08); color: #a45a68;">日志</span>
                 <span class="article-tag article-tag-ai">AI</span>
-                <span class="article-tag article-tag-tech">技术</span>
+                <span class="article-tag article-tag-tech">影视</span>
               </div>
-              <h3 class="text-xl font-bold mb-3 leading-snug" style="color: var(--ink);">我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能</h3>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">我的 AI 工作日志 #003：短剧还在立骨架，声音开始落地</h3>
               <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted); max-width: 600px;">
-                详细梳理中文影视编剧、双语图像提示词和中文分镜三个技能：它们分别解决故事、视觉与镜头执行问题，并能串成一条完整 AI 影视生产线。
+                复盘最近的短剧、剧本与音频生产：哪些已经完成，哪些仍在中途，以及下一步怎样用一支 30—60 秒样片把故事、画面和声音真正接起来。
               </p>
-              <a href="posts/2026-07-17-deepwhite-skills.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
+              <a href="posts/2026-07-23-ai-film-audio-notes.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">
                 阅读全文 <i class="fa fa-arrow-right text-xs"></i>
               </a>
             </div>
           </div>
         </article>
 
-        <!-- 其余文章：三列网格 -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 articles-grid">
+        <!-- 其余文章 -->
+
+          <article class="card-article article-filterable" data-tags="daily,ai,tech">
+            <div class="card-img generated-cover h-44 flex items-center justify-center" style="position: relative; background: linear-gradient(135deg, #21171d, #533744 58%, #8c5a67);">
+              <img src="assets/article-covers/script-to-screen-cover-20260730.png" alt="AI 影视技能封面：剧本、分镜与电影画面" class="article-cover-img" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+              <div style="position: relative; z-index: 1; display: flex; align-items: center; gap: 0.8rem; color: rgba(255,255,255,0.86);">
+                <i class="fa fa-pencil-square-o"></i><i class="fa fa-long-arrow-right" style="color: rgba(212,175,55,0.62);"></i><i class="fa fa-picture-o"></i><i class="fa fa-long-arrow-right" style="color: rgba(212,175,55,0.62);"></i><i class="fa fa-film"></i>
+              </div>
+              <div class="article-cover-overlay"></div>
+              <span class="article-cover-tag">AI 影视 · 技能梳理</span>
+              <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">02</span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-07-17</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 13 分钟</span>
+                <span class="article-tag article-tag-ai">AI</span>
+                <span class="article-tag article-tag-tech">技术</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted);">梳理剧本、视觉资产和分镜三种能力，明确它们怎样串成完整的 AI 影视生产线。</p>
+              <a href="posts/2026-07-17-deepwhite-skills.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">阅读全文 <i class="fa fa-arrow-right text-xs"></i></a>
+            </div>
+          </article>
 
           <article class="card-article article-filterable" data-tags="daily,ai,tech">
             <div class="card-img h-44 flex items-center justify-center" style="position: relative;">
@@ -604,7 +686,6 @@
             </div>
           </article>
 
-        </div>
       </div>
       <div class="text-center mt-14 view-all-btn">
         <a href="archive.html" class="group relative inline-flex items-center gap-2 px-10 py-3.5 rounded-full font-medium transition-all duration-500 overflow-hidden" style="background: var(--ink); color: var(--parchment);">

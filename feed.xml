@@ -5,8 +5,24 @@
     <link>https://nuonuo.me/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 17 Jul 2026 23:40:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jul 2026 22:25:00 +0800</lastBuildDate>
     <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>未来真正属于你的资产，是一座能持续生长的知识库</title>
+      <link>https://nuonuo.me/posts/2026-07-30-growing-knowledge-base.html</link>
+      <description>从目录、飞书迁入、来源保留、主题索引到真实关系图谱，记录一座个人 AI 知识库如何搭建、如何持续生长。</description>
+      <pubDate>Thu, 30 Jul 2026 22:25:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-07-30-growing-knowledge-base.html</guid>
+    </item>
+
+    <item>
+      <title>我的 AI 工作日志 #003：短剧还在立骨架，声音开始落地</title>
+      <link>https://nuonuo.me/posts/2026-07-23-ai-film-audio-notes.html</link>
+      <description>复盘短剧、剧本与音频生产的真实进度、未完成项与下一步制作计划：先完成一支能判断成败的 30—60 秒样片。</description>
+      <pubDate>Thu, 23 Jul 2026 20:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-07-23-ai-film-audio-notes.html</guid>
+    </item>
 
     <item>
       <title>我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能</title>

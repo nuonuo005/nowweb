@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="复盘最近的 AI 短剧、剧本与音频生产：已经完成的诊断、声纹克隆和音轨处理，尚未完成的分镜、曲名识别与成片验证，以及下一步如何把它们接成一条可执行的生产线。" />
+  <meta property="og:title" content="我的 AI 工作日志 #003：短剧还在立骨架，声音开始落地" />
+  <meta property="og:description" content="不把半成品说成完成品：复盘剧本、分镜、声纹克隆与背景音乐处理的真实进度，并写下下一步制作计划。" />
+  <meta property="og:type" content="article" />
+  <meta name="theme-color" content="#21171d" />
+  <title>我的 AI 工作日志 #003：短剧还在立骨架，声音开始落地 — 诺诺的小博客空间</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🎙️%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../css/common.css?v=mobile-20260723" />
+  <link rel="stylesheet" href="../css/journal.css?v=visual-20260730" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: { extend: { colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' }, fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] } } }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "我的 AI 工作日志 #003：短剧还在立骨架，声音开始落地",
+    "datePublished": "2026-07-23",
+    "dateModified": "2026-07-23",
+    "author": { "@type": "Person", "name": "诺诺" },
+    "description": "复盘最近 AI 短剧、剧本和音频生产的真实进度、未完成项与下一步制作计划。"
+  }
+  </script>
+</head>
+<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
+  <div id="reading-progress"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"><i class="fa fa-paper-plane text-primary text-xl"></i><span class="text-xl font-semibold">诺诺的小博客空间</span></a>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a>
+          <a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a>
+          <a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a>
+          <a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式"><i class="fa fa-sun-o icon-sun"></i><i class="fa fa-moon-o icon-moon"></i></button>
+          <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false"><i class="fa fa-bars text-xl"></i></button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50"><div class="px-4 py-3 space-y-1"><a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a><a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a><a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a><a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a></div></div>
+  </nav>
+
+  <article data-tags='["工作日志","AI影视","短剧","剧本","音频"]'>
+    <header class="journal-hero">
+      <div class="journal-hero__inner">
+        <p class="journal-kicker">Daily Build Log · No. 003</p>
+        <h1>短剧还在立骨架，<br />声音开始落地</h1>
+        <p class="journal-hero__lead">把最近的短剧、剧本与音频工作摊开：哪些已经做成，哪些只是走到了中途，下一步怎样从“有工具”走向“有成片”。</p>
+        <div class="journal-meta">
+          <span><i class="fa fa-calendar-o"></i> 2026-07-23</span>
+          <span><i class="fa fa-clock-o"></i> 阅读约 10 分钟</span>
+          <span><i class="fa fa-film"></i> 剧本 × 声音 × 制作流程</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="journal-shell">
+      <p class="journal-intro">这段时间做的事，表面上分成了短剧、剧本、分镜和音频；真正的问题却是同一个：能不能把“一个想法”稳定地推到“观众愿意看完的一条片子”。所以这篇不写工具说明书，也不把半成品包装成结果，而是记录真实进度、缺口和下一步。</p>
+
+      <figure class="journal-opening-cover">
+        <img src="../assets/article-covers/short-film-audio-cover-20260730.png" alt="AI 影视工作复盘封面：剧本、声音波形与分镜" loading="eager" />
+        <figcaption>从故事、画面到声音，先把生产链路接起来，再让每一环在真实样片里经受检验。</figcaption>
+      </figure>
+
+      <section class="journal-project" id="script">
+        <div class="journal-project__head">
+          <div class="journal-project__index">01</div>
+          <div>
+            <p class="journal-project__label">Short Drama & Script Development</p>
+            <h2>短剧和剧本：先解决“值不值得看”，再讨论怎么生成</h2>
+            <p class="journal-project__desc">当前的工作重点不是把文字快速拉长，而是不断给故事做压力测试：概念够不够尖、人物有没有行动、冲突能不能持续升级、镜头能不能真正拍出来。</p>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>已经做了什么</h3>
+          <ul>
+            <li><strong>建立了“比赛级”而不是“文本通顺”的评估标准：</strong>对《净尘寺》这类 AI 短剧构想，重点从寓言意味转到观众是否愿意点开、是否能看懂、是否记得住，以及它有没有真正属于自己的狠劲。</li>
+            <li><strong>把一次不够锋利的改写当作校准：</strong>曾经得到一版表面完整、节奏顺滑的重写，但它太像“合理的故事”，没有留下尖锐的核心动作。这让后续判断更明确：概念普通时，不能只润色，得先重置冲突和结构。</li>
+            <li><strong>保护原剧本，启动《查无此做》的分镜转化：</strong>剧本文字不改动，准备从既有文本导出分镜、镜头调度和视频提示词，避免在制作环节反过来污染原始剧本。</li>
+            <li><strong>搭好从故事到镜头的工作分工：</strong>剧本负责人物、因果和场景价值变化；视觉提示词负责角色与场景资产；分镜负责机位、动作、声音与可生成的镜头描述。</li>
+          </ul>
+        </div>
+
+        <div class="journal-card">
+          <h3>还没有完成，也不该假装完成</h3>
+          <ul>
+            <li><strong>《查无此做》还没有最终分镜：</strong>流程停在制作前的确认门，尚未输出一份可直接进视频生成的完整镜头表。</li>
+            <li><strong>短剧的“唯一钩子”还要继续收紧：</strong>目前已经知道什么样的版本太平，但还需要把每个项目压成一句足够反常、足够具体、能引出连续行动的高概念。</li>
+            <li><strong>人物与场景资产没有锁定：</strong>没有稳定角色设定、服装、空间关系和关键道具，分镜即使写得好，也容易在生成时断裂。</li>
+            <li><strong>没有完成 30 秒可播放验证：</strong>剧本诊断和分镜计划不是成片。是否抓人、是否能看懂、声音和画面是否合在一起，仍然要靠一支短样片验证。</li>
+          </ul>
+        </div>
+
+        <div class="journal-card">
+          <h3>下一步怎么把剧本推成短片</h3>
+          <div class="journal-timeline">
+            <div class="journal-timeline__item"><strong>1. 先写一句“非它不可”的概念</strong><p>用一句话明确：谁在什么限制下，必须做一件什么危险或荒谬的事；如果一句话没有张力，就先不进入分场。</p></div>
+            <div class="journal-timeline__item"><strong>2. 只做 30—60 秒的冲突样片</strong><p>先选一个最能代表项目价值的片段，做开场钩子、一次升级和一个余味，而不是立刻铺开完整短剧。</p></div>
+            <div class="journal-timeline__item"><strong>3. 锁定资产再做分镜</strong><p>先固定角色脸、服装、场景、时间和道具，准备少量参考帧；再把每个镜头写成动作、景别、机位、音效和时长。</p></div>
+            <div class="journal-timeline__item"><strong>4. 用成片反馈改回剧本</strong><p>把“观众是否看懂、哪里跳出、哪里想继续看”记成修改依据，让下一稿由播放体验而不是想象驱动。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="journal-project" id="audio">
+        <div class="journal-project__head">
+          <div class="journal-project__index">02</div>
+          <div>
+            <p class="journal-project__label">Audio Production</p>
+            <h2>音频生产：声音不再只是“最后再补”的环节</h2>
+            <p class="journal-project__desc">短片里的声音至少有三层：台词/旁白、背景音乐、环境与转场。最近先把前两层的可用链路跑通，也把边界记清楚。</p>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>已经完成的音频工作</h3>
+          <ul>
+            <li><strong>从视频参考中提取声纹素材：</strong>从《2 审判.mp4》和《6.mp4》提取参考 WAV，沿用本地的小米 MiMo 声纹克隆流程，生成了中文与英文台词。</li>
+            <li><strong>为节奏保留了速度版本：</strong>当原有朗读偏慢时，额外生成了加速版本，避免“台词内容没问题，但镜头已经走完”的常见剪辑问题。</li>
+            <li><strong>本地完成背景音乐的弱人声处理：</strong>对提供的视频提取音轨，用立体声平衡和更强的人声抵消两种方式输出音乐优先版本，为后续试听、选段和剪辑保留素材。</li>
+            <li><strong>把语音转写工具修到更适合长时间使用：</strong>保留快捷转写的响应体验，同时降低内存压力，并把 AI 润色和本地标点的关系说清楚。它不是配音工具，但会成为整理台词、访谈和后期素材的辅助入口。</li>
+          </ul>
+        </div>
+
+        <div class="journal-card">
+          <h3>音频链路的不足</h3>
+          <ul>
+            <li><strong>背景音乐的曲名尚未确认：</strong>本地只能做到分离和弱化人声；没有把音频上传到外部识别服务，所以不应把它标记为“已识别”。</li>
+            <li><strong>声纹与角色表演还没有统一验收：</strong>生成了台词，不等于已经完成角色声音。情绪、停顿、咬字、语速和镜头时长仍要一条条对齐。</li>
+            <li><strong>还缺一份最终混音标准：</strong>旁白、音乐、环境声和字幕节奏之间的音量关系尚未固化，换项目时仍容易靠感觉反复调。</li>
+            <li><strong>版权与授权清单要先于公开发布：</strong>参考声音、背景音乐和任何外部素材，都必须在成片发布前确认授权范围与可公开性。</li>
+          </ul>
+        </div>
+
+        <div class="journal-card">
+          <h3>后续的声音制作顺序</h3>
+          <div class="journal-flow" aria-label="短片声音制作流程">
+            <div class="journal-flow__step">锁定台词<br />角色与情绪</div>
+            <div class="journal-flow__step">生成试音<br />语速与停顿</div>
+            <div class="journal-flow__step">选择配乐<br />授权与情绪</div>
+            <div class="journal-flow__step">补环境声<br />转场与空间</div>
+            <div class="journal-flow__step">统一混音<br />字幕与成片</div>
+          </div>
+          <p>真正进入制作时，每个镜头先有“台词时长 + 声音情绪 + 是否需要音乐”的小表，再开始剪画面。这样声音不是最后压上去的一层，而是直接参与决定镜头停留多久、转场落在哪里。</p>
+        </div>
+      </section>
+
+      <section class="journal-project" id="plan">
+        <div class="journal-project__head">
+          <div class="journal-project__index">03</div>
+          <div>
+            <p class="journal-project__label">The Next Build</p>
+            <h2>下一次要交付的，不是一堆素材，而是一支能判断成败的样片</h2>
+            <p class="journal-project__desc">把现在分散的能力收敛到同一件小而完整的事情上：一段短剧冲突、一组固定资产、一套可复用声音设计和一次播放验证。</p>
+          </div>
+        </div>
+        <div class="journal-card">
+          <h3>下一轮的完成定义</h3>
+          <div class="journal-stats">
+            <div class="journal-stat"><strong>1</strong><span>句高概念</span></div>
+            <div class="journal-stat"><strong>1</strong><span>段 30—60 秒样片</span></div>
+            <div class="journal-stat"><strong>1</strong><span>套锁定角色与场景</span></div>
+            <div class="journal-stat"><strong>1</strong><span>次声音与观看复盘</span></div>
+          </div>
+          <p>这四项同时成立，才算真正从“剧本开发和工具试验”跨到“可验证的 AI 短片生产”。之后再决定要不要扩成系列、重写剧本或继续投入更完整的声音制作。</p>
+        </div>
+      </section>
+
+      <blockquote class="journal-quote"><strong>这次的结论：</strong>剧本、画面和声音不是三件各自完成的事情。短剧要先有一个站得住的冲突，声音要从第一版分镜就参与节奏，最后由一支小样片来证明它们是否真的在一起工作。</blockquote>
+    </main>
+  </article>
+
+  <footer class="text-white py-12 text-center">&copy; 2026 诺诺的小博客空间</footer>
+  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
+  <script src="../js/common.js"></script>
+</body>
+</html>

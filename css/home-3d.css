@@ -1,0 +1,148 @@
+:root {
+  --portrait-ink: #171915;
+  --portrait-paper: #f7f1e5;
+  --portrait-mist: #c9c4b2;
+  --portrait-gold: #c99f59;
+  --portrait-moss: #66745f;
+}
+
+.nuonuo-portrait-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: max(680px, calc(100svh - 58px));
+  color: var(--portrait-paper);
+  background:
+    radial-gradient(circle at 76% 45%, rgba(177, 135, 67, .15), transparent 25rem),
+    radial-gradient(circle at 6% 92%, rgba(104, 125, 99, .17), transparent 25rem),
+    linear-gradient(122deg, #121310 0%, #1b211c 56%, #151713 100%);
+}
+
+.nuonuo-portrait-hero::before {
+  position: absolute;
+  z-index: 0;
+  inset: clamp(1.35rem, 3.2vw, 3rem);
+  content: '';
+  border: 1px solid rgba(247, 241, 229, .18);
+  pointer-events: none;
+}
+
+.nuonuo-portrait-hero__grain {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  opacity: .12;
+  background-image: radial-gradient(rgba(247, 241, 229, .75) .55px, transparent .6px);
+  background-size: 5px 5px;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.nuonuo-portrait-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(18rem, .88fr) minmax(28rem, 1.12fr);
+  align-items: center;
+  width: min(82rem, calc(100% - clamp(4.5rem, 13vw, 12rem)));
+  min-height: inherit;
+  margin: 0 auto;
+  gap: clamp(2rem, 6vw, 7rem);
+}
+
+.nuonuo-portrait-hero__copy { max-width: 33rem; padding: 5rem 0; }
+.nuonuo-portrait-hero__eyebrow,
+.nuonuo-portrait-hero__visual figcaption,
+.nuonuo-portrait-hero__scroll,
+.nuonuo-portrait-hero__notes dt {
+  font-family: 'IBM Plex Mono', 'Noto Serif SC', monospace;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.nuonuo-portrait-hero__eyebrow { margin: 0 0 1.5rem; color: var(--portrait-gold); font-size: clamp(.62rem, .74vw, .73rem); }
+.nuonuo-portrait-hero h1 { max-width: 8em; margin: 0; color: var(--portrait-paper); font-family: 'Playfair Display', 'Noto Serif SC', serif; font-size: clamp(3.25rem, 5.65vw, 6.1rem); font-weight: 400; line-height: 1.03; letter-spacing: -.055em; }
+.nuonuo-portrait-hero h1 em { color: var(--portrait-gold); font-style: normal; }
+.nuonuo-portrait-hero__lead { max-width: 29rem; margin: 1.5rem 0 0; color: rgba(247, 241, 229, .76); font-size: clamp(.96rem, 1.13vw, 1.09rem); line-height: 1.95; }
+
+.nuonuo-portrait-hero__actions { display: flex; flex-wrap: wrap; gap: .72rem; margin-top: 2.1rem; }
+.nuonuo-portrait-hero__actions a { display: inline-flex; align-items: center; gap: 2.2rem; min-height: 3rem; padding: .78rem 1rem  .78rem 1.12rem; border: 1px solid rgba(247, 241, 229, .42); color: var(--portrait-paper); text-decoration: none; font-size: .86rem; transition: transform .25s ease, background-color .25s ease, color .25s ease; }
+.nuonuo-portrait-hero__actions a:first-child { border-color: var(--portrait-gold); background: var(--portrait-gold); color: #171815; }
+.nuonuo-portrait-hero__actions a:hover { transform: translateY(-3px); background: var(--portrait-paper); color: #171815; }
+.nuonuo-portrait-hero__actions span { font-size: 1.05rem; }
+
+.nuonuo-portrait-hero__notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; margin: 3.4rem 0 0; padding: 1.25rem 0 0; border-top: 1px solid rgba(247, 241, 229, .22); }
+.nuonuo-portrait-hero__notes div { min-width: 0; }
+.nuonuo-portrait-hero__notes dt { color: var(--portrait-gold); font-size: .65rem; }
+.nuonuo-portrait-hero__notes dd { margin: .55rem 0 0; color: rgba(247, 241, 229, .69); font-size: .8rem; line-height: 1.6; }
+
+.nuonuo-portrait-hero__visual {
+  position: relative;
+  justify-self: end;
+  width: min(100%, 35rem);
+  margin: 0;
+  padding: clamp(.75rem, 1.25vw, 1.25rem);
+  isolation: isolate;
+}
+.nuonuo-portrait-hero__visual::before {
+  position: absolute;
+  z-index: -1;
+  inset: 9% 3% 5% 14%;
+  content: '';
+  border: 1px solid rgba(201, 159, 89, .46);
+  transform: rotate(4deg);
+}
+.nuonuo-portrait-hero__halo {
+  position: absolute;
+  z-index: -1;
+  inset: 7% 10% 10% 7%;
+  border: 1px solid rgba(201, 159, 89, .26);
+  border-radius: 50%;
+  animation: nuonuo-halo 7s ease-in-out infinite;
+}
+.nuonuo-portrait-hero__visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(.95) contrast(1.02);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, .34);
+  animation: nuonuo-portrait-float 6.8s ease-in-out infinite;
+}
+.nuonuo-portrait-hero__visual figcaption { position: absolute; right: -1.8rem; bottom: 2rem; margin: 0; color: rgba(247, 241, 229, .72); font-size: .62rem; writing-mode: vertical-rl; }
+.nuonuo-portrait-hero__scroll { position: absolute; z-index: 2; right: clamp(2.1rem, 4.8vw, 5rem); bottom: 2.2rem; margin: 0; color: rgba(247, 241, 229, .55); font-size: .62rem; }
+
+@keyframes nuonuo-portrait-float { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, -10px, 0); } }
+@keyframes nuonuo-halo { 0%, 100% { transform: scale(.98); opacity: .62; } 50% { transform: scale(1.035); opacity: 1; } }
+
+@media (max-width: 900px) {
+  .nuonuo-portrait-hero__inner { width: min(100% - 3rem, 42rem); grid-template-columns: 1fr; gap: 0; padding: 5.5rem 0 3rem; }
+  .nuonuo-portrait-hero__copy { max-width: 34rem; padding: 0; }
+  .nuonuo-portrait-hero__visual { justify-self: center; width: min(88vw, 28rem); margin-top: 2.25rem; }
+  .nuonuo-portrait-hero__scroll { right: 1.5rem; bottom: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  .nuonuo-portrait-hero { min-height: auto; }
+  .nuonuo-portrait-hero::before { inset: 1rem; }
+  .nuonuo-portrait-hero__inner { width: min(100% - 2rem, 32rem); padding: 4.85rem 0 2.75rem; }
+  .nuonuo-portrait-hero__eyebrow { margin-bottom: 1rem; font-size: .58rem; letter-spacing: .12em; }
+  .nuonuo-portrait-hero h1 { max-width: none; font-size: clamp(2.7rem, 14vw, 4.1rem); line-height: 1.08; letter-spacing: -.045em; }
+  .nuonuo-portrait-hero__lead { margin-top: 1.15rem; font-size: .92rem; line-height: 1.82; }
+  .nuonuo-portrait-hero__actions { display: grid; grid-template-columns: 1fr; gap: .65rem; margin-top: 1.6rem; }
+  .nuonuo-portrait-hero__actions a { justify-content: space-between; gap: 1rem; min-height: 3.25rem; padding-right: 1.15rem; }
+  .nuonuo-portrait-hero__notes { grid-template-columns: 1fr; gap: .85rem; margin-top: 1.8rem; padding-top: 1rem; }
+  .nuonuo-portrait-hero__notes dd { margin-top: .35rem; }
+  .nuonuo-portrait-hero__visual { width: min(100%, 22rem); margin-top: 1.75rem; padding: .45rem; }
+  .nuonuo-portrait-hero__visual figcaption { position: static; margin: .7rem 0 0 .25rem; writing-mode: horizontal-tb; font-size: .58rem; }
+  .nuonuo-portrait-hero__scroll { display: none; }
+}
+
+@media (max-width: 360px) {
+  .nuonuo-portrait-hero__inner { width: min(100% - 1.5rem, 32rem); }
+  .nuonuo-portrait-hero h1 { font-size: 2.58rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nuonuo-portrait-hero__halo,
+  .nuonuo-portrait-hero__visual img { animation: none; }
+}
