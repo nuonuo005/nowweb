@@ -7,11 +7,15 @@
   <meta property="og:title" content="诺诺的小博客空间" />
   <meta property="og:description" content="10年跨行业实战经验 | 全栈运营能手 | 终身学习者" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#171815" />
+  <meta name="theme-color" content="#8fcff2" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E📝%3C/text%3E%3C/svg%3E" />
   <title>诺诺的小博客空间</title>
-  <link rel="stylesheet" href="css/common.css?v=mobile-20260723" />
-  <link rel="stylesheet" href="css/home-3d.css?v=mobile-20260723" />
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  </script>
+  <link rel="stylesheet" href="css/common.css?v=typography-20260804" />
+  <link rel="stylesheet" href="css/home-3d.css?v=scene-2-5d-20260804" />
+  <link rel="preload" as="image" href="assets/hero-anime-sky-v1.png" fetchpriority="high" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -103,8 +107,28 @@
       </div>
     </div>
   </nav>
-  <!-- 首页：以角色肖像为视觉锚点，文字和人物保持清晰分区。 -->
+  <section id="anime-intro-stage" class="anime-intro-stage" aria-label="蓝天遗迹桥景首屏">
+    <img class="anime-intro-stage__image" src="assets/hero-anime-sky-v1.png" alt="" aria-hidden="true" fetchpriority="high" />
+    <video class="anime-intro-stage__video" autoplay muted loop playsinline preload="auto" poster="assets/hero-anime-sky-v1.png" aria-hidden="true">
+      <source src="assets/hero-anime-sky-motion-v1.mp4" type="video/mp4" />
+    </video>
+    <div class="anime-intro-stage__welcome" role="status" aria-live="polite">
+      <p>欢迎来到诺诺的小博客空间</p>
+      <span>愿你在蓝天与山谷之间，找到一点清澈的灵感</span>
+    </div>
+  </section>
+  <!-- 首页：保留原有博客内容结构，作为动漫首屏之后的自然落点。 -->
   <section id="home" class="nuonuo-portrait-hero" aria-label="诺诺的数字花园">
+    <video class="nuonuo-portrait-hero__motion" muted loop playsinline preload="metadata" poster="assets/hero-anime-sky-v1.png" aria-hidden="true">
+      <source src="assets/hero-anime-sky-motion-v1.mp4" type="video/mp4" />
+    </video>
+    <div class="nuonuo-portrait-hero__depth" aria-hidden="true">
+      <span class="nuonuo-portrait-hero__depth-layer nuonuo-portrait-hero__depth-layer--far"></span>
+      <span class="nuonuo-portrait-hero__depth-layer nuonuo-portrait-hero__depth-layer--cloud"></span>
+      <span class="nuonuo-portrait-hero__depth-layer nuonuo-portrait-hero__depth-layer--mist"></span>
+      <span class="nuonuo-portrait-hero__depth-layer nuonuo-portrait-hero__depth-layer--particles"></span>
+      <img class="nuonuo-portrait-hero__depth-bridge" src="assets/hero-foreground-bridge-v1.png" alt="" aria-hidden="true" />
+    </div>
     <div class="nuonuo-portrait-hero__grain" aria-hidden="true"></div>
     <div class="nuonuo-portrait-hero__inner">
       <div class="nuonuo-portrait-hero__copy">
@@ -121,11 +145,6 @@
         </dl>
       </div>
 
-      <figure class="nuonuo-portrait-hero__visual" aria-label="戴圆框眼镜、穿花纹外套的诺诺猫角色形象">
-        <div class="nuonuo-portrait-hero__halo" aria-hidden="true"></div>
-        <img src="assets/characters/nuonuo-cat-v1.png" alt="戴圆框眼镜、穿花纹外套的诺诺猫角色形象" />
-        <figcaption>WORK · WORDS · PLAY</figcaption>
-      </figure>
     </div>
     <p class="nuonuo-portrait-hero__scroll">SCROLL TO EXPLORE</p>
   </section>
@@ -433,6 +452,54 @@
         <button class="tag-filter-btn" data-filter="life">生活</button>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7 articles-grid">
+
+        <!-- 今日置顶文章：豆包无印资源助手使用指南 -->
+        <article class="card-article article-filterable" data-tags="daily,ai,tech">
+          <div style="display: flex; flex-direction: column; gap: 0;">
+          <div class="card-img generated-cover flex items-center justify-center" style="height: 176px; position: relative; background: radial-gradient(circle at 18% 20%, rgba(112,178,190,.52), transparent 30%), linear-gradient(135deg, #101b24, #293d48 56%, #4c2537);">
+            <img src="assets/article-covers/doubao-clean-resource-cover-20260806.png" alt="豆包无印资源助手封面：图片、视频资源与下载托盘" class="article-cover-img" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+            <div class="article-cover-overlay"></div>
+            <span class="article-cover-tag">使用指南 · 豆包工具</span>
+            <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">06</span>
+          </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-08-05</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 8 分钟</span>
+                <span class="article-tag" style="background: rgba(55,104,112,0.10); color: #376870;">教程</span>
+                <span class="article-tag article-tag-ai">AI</span>
+                <span class="article-tag article-tag-tech">工具</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">豆包生图、生视频怎么直接下载无印素材？豆包无印资源助手使用指南</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted); max-width: 600px;">安装一次，生成后打开资源面板，预览、截图、单独下载或批量保存；仅限私人、非商业使用。</p>
+              <a href="posts/2026-08-05-doubao-clean-resource-guide.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">阅读全文 <i class="fa fa-arrow-right text-xs"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 今日置顶文章：豆包无印资源助手 -->
+        <article class="card-article article-filterable" data-tags="daily,ai,tech">
+          <div style="display: flex; flex-direction: column; gap: 0;">
+          <div class="card-img generated-cover flex items-center justify-center" style="height: 176px; position: relative; background: radial-gradient(circle at 18% 20%, rgba(112,178,190,.52), transparent 30%), linear-gradient(135deg, #101b24, #293d48 56%, #4c2537);">
+            <img src="assets/article-covers/doubao-resource-assistant-cover-20260806.png" alt="豆包浏览器助手封面：资源面板、解析链路与浏览器扩展" class="article-cover-img" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+            <div class="article-cover-overlay"></div>
+            <span class="article-cover-tag">浏览器扩展 · 工作日志</span>
+            <span style="position: absolute; top: 0.75rem; right: 1rem; font-family: 'Crimson Pro', serif; font-size: 2.5rem; font-weight: 700; color: rgba(255,255,255,0.12); line-height: 1; z-index: 1;">05</span>
+          </div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs tracking-wider" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-08-05</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full" style="background: rgba(184,134,11,0.06); color: var(--gold);">约 12 分钟</span>
+                <span class="article-tag" style="background: rgba(55,104,112,0.10); color: #376870;">日志</span>
+                <span class="article-tag article-tag-ai">AI</span>
+                <span class="article-tag article-tag-tech">扩展</span>
+              </div>
+              <h3 class="text-lg font-bold mb-3 leading-snug" style="color: var(--ink);">我的 AI 工作日志 #005：把豆包无印资源做成一个真正能用的浏览器助手</h3>
+              <p class="mb-5 text-sm leading-relaxed" style="color: var(--ink-muted); max-width: 600px;">从 DLL 取证、响应解析到预览比例修复，记录豆包无印资源助手从能跑到能用的过程。</p>
+              <a href="posts/2026-08-05-doubao-clean-resource.html" class="inline-flex items-center gap-2 text-sm font-medium transition-all duration-300" style="color: var(--gold); border-bottom: 1px solid rgba(184,134,11,0.25);">阅读全文 <i class="fa fa-arrow-right text-xs"></i></a>
+            </div>
+          </div>
+        </article>
 
         <!-- 今日置顶文章：跨两列横向布局 -->
         <article class="card-article article-filterable" data-tags="daily,ai,tech">
@@ -752,7 +819,85 @@
   </button>
 
   <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
-  <script src="js/common.js?v=editorial-20260602g"></script>
+  <script src="js/common.js?v=motion-scene-20260804"></script>
+  <script>
+    (function () {
+      function initAnimeIntroSplash() {
+        var intro = document.getElementById('anime-intro-stage');
+        if (!intro) return;
+
+        var video = intro.querySelector('.anime-intro-stage__video');
+        if (video) {
+          video.muted = true;
+          var playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === 'function') playPromise.catch(function () {});
+        }
+
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var stayDuration = reduceMotion ? 900 : 2300;
+        window.setTimeout(function () {
+          var home = document.getElementById('home');
+          if (home) {
+            home.classList.add('nuonuo-portrait-hero--entered');
+            var heroVideo = home.querySelector('.nuonuo-portrait-hero__motion');
+            if (heroVideo && !reduceMotion) {
+              heroVideo.muted = true;
+              var heroPlayPromise = heroVideo.play();
+              if (heroPlayPromise && typeof heroPlayPromise.catch === 'function') heroPlayPromise.catch(function () {});
+            }
+          }
+          intro.classList.add('anime-intro-stage--leaving');
+          window.setTimeout(function () {
+            if (video) {
+              video.pause();
+              video.removeAttribute('autoplay');
+            }
+            intro.classList.add('anime-intro-stage--hidden');
+          }, reduceMotion ? 0 : 600);
+        }, stayDuration);
+      }
+
+      function initHeroMotion() {
+        var home = document.getElementById('home');
+        var video = home && home.querySelector('.nuonuo-portrait-hero__motion');
+        if (!home) return;
+
+        home.classList.add('nuonuo-portrait-hero--enhanced');
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion || !video) {
+          home.classList.add('nuonuo-portrait-hero--entered');
+          return;
+        }
+
+        function markVideoReady() { home.classList.add('nuonuo-portrait-hero--motion-ready'); }
+        if (video.readyState >= 3) markVideoReady();
+        else video.addEventListener('canplay', markVideoReady, { once: true });
+
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.fromTo(video,
+            { scale: 1.03, yPercent: 0 },
+            {
+              scale: 1.1,
+              yPercent: -6,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: home,
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1,
+                invalidateOnRefresh: true
+              }
+            }
+          );
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        initAnimeIntroSplash();
+        initHeroMotion();
+      }, { once: true });
+    }());
+  </script>
   <script>
     const poems = [
       { content: '人生自古谁无死，留取丹心照汗青。', author: '文天祥 · 过零丁洋' },

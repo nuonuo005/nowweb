@@ -5,8 +5,24 @@
     <link>https://nuonuo.me/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 30 Jul 2026 22:25:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 23:40:57 +0800</lastBuildDate>
     <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>豆包生图、生视频怎么直接下载无印素材？豆包无印资源助手使用指南</title>
+      <link>https://nuonuo.me/posts/2026-08-05-doubao-clean-resource-guide.html</link>
+      <description>安装一次，生成后打开资源面板，预览、截图、单独下载或批量保存豆包图片和视频；仅限私人、非商业使用。</description>
+      <pubDate>Wed, 05 Aug 2026 23:40:57 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-08-05-doubao-clean-resource-guide.html</guid>
+    </item>
+
+    <item>
+      <title>我的 AI 工作日志 #005：把豆包无印资源做成一个真正能用的浏览器助手</title>
+      <link>https://nuonuo.me/posts/2026-08-05-doubao-clean-resource.html</link>
+      <description>从编译 DLL 取证、豆包响应解析到 Chrome/Edge 插件封装，记录资源发现、预览、批量下载和视频比例自适应。</description>
+      <pubDate>Wed, 05 Aug 2026 23:21:02 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-08-05-doubao-clean-resource.html</guid>
+    </item>
 
     <item>
       <title>未来真正属于你的资产，是一座能持续生长的知识库</title>

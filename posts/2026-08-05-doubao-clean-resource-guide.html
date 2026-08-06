@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="豆包生图、生视频用户使用指南：安装豆包无印资源助手，在生成后直接发现、预览、截图和下载符合资源链路的无印图片与视频。仅限私人、非商业使用。" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="豆包生图、生视频怎么直接下载无印素材？豆包无印资源助手使用指南" />
+  <meta property="og:description" content="安装一次，生成后打开无印资源面板，预览、截图、单独下载或批量保存豆包图片和视频。" />
+  <meta property="og:type" content="article" />
+  <meta name="theme-color" content="#21171d" />
+  <title>豆包生图、生视频怎么直接下载无印素材？豆包无印资源助手使用指南 — 诺诺的小博客空间</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🪐%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../css/common.css?v=mobile-20260723" />
+  <link rel="stylesheet" href="../css/journal.css?v=visual-20260730" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: { extend: { colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' }, fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] } } }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "豆包生图、生视频怎么直接下载无印素材？豆包无印资源助手使用指南",
+    "datePublished": "2026-08-05",
+    "dateModified": "2026-08-05",
+    "author": { "@type": "Person", "name": "诺诺" },
+    "description": "面向豆包生图、生视频用户的无印资源助手使用指南，包含安装、预览、截图、单独下载、批量下载和使用边界。"
+  }
+  </script>
+</head>
+<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
+  <div id="reading-progress"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-16">
+      <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"><i class="fa fa-paper-plane text-primary text-xl"></i><span class="text-xl font-semibold">诺诺的小博客空间</span></a>
+      <div class="hidden md:flex items-center gap-7"><a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a><a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a><a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a><a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a></div>
+      <div class="flex items-center gap-2"><button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式"><i class="fa fa-sun-o icon-sun"></i><i class="fa fa-moon-o icon-moon"></i></button><button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false"><i class="fa fa-bars text-xl"></i></button></div>
+    </div></div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50"><div class="px-4 py-3 space-y-1"><a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a><a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a><a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a><a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a></div></div>
+  </nav>
+
+  <article data-tags='["教程","豆包","AI工具","无印资源"]'>
+    <header class="journal-hero"><div class="journal-hero__inner">
+      <p class="journal-kicker">Tool Guide · 2026.08.05</p>
+      <h1>豆包生图、生视频，<br />怎么直接下载无印素材？</h1>
+      <p class="journal-hero__lead">安装一次，生成之后打开资源面板，就能预览、截图、单独下载或批量保存符合链路的图片和视频。</p>
+      <div class="journal-meta"><span><i class="fa fa-picture-o"></i> 生图用户</span><span><i class="fa fa-film"></i> 生视频用户</span><span><i class="fa fa-download"></i> 当前版本 0.3.3</span></div>
+    </div></header>
+
+    <main class="journal-shell">
+      <p class="journal-intro">如果你经常用豆包生图或生成视频，可能会遇到一个很实际的问题：素材已经生成出来了，但想保存下来时，要么找不到入口，要么只能一张一张处理，要么预览比例不对，下载前很难确认是不是自己想要的那一张。豆包无印资源助手就是为这个场景做的：在豆包页面里发现资源、打开预览、截取画面、下载原始可用素材。</p>
+
+      <figure class="journal-opening-cover">
+        <img src="../assets/article-covers/doubao-clean-resource-cover-20260806.png" alt="豆包无印资源助手封面：图片、视频资源、预览与下载" loading="eager" />
+        <figcaption>适合经常使用豆包生图、生视频的人：少找入口，少重复操作，先确认再保存。</figcaption>
+      </figure>
+
+      <div class="journal-summary">
+        <div class="journal-summary__item"><span class="journal-summary__number">01</span><i class="fa fa-user-o"></i><h2>适合谁</h2><p>经常用豆包生成图片、视频，想把素材保存到本地的人。</p></div>
+        <div class="journal-summary__item"><span class="journal-summary__number">02</span><i class="fa fa-magic"></i><h2>能做什么</h2><p>发现图片和视频、预览、截图、单独下载、勾选后批量下载。</p></div>
+        <div class="journal-summary__item"><span class="journal-summary__number">03</span><i class="fa fa-shield"></i><h2>使用边界</h2><p>仅限私人、非商业使用，并且只处理你有权使用的内容。</p></div>
+      </div>
+
+      <section class="journal-project" id="what">
+        <div class="journal-project__head"><div class="journal-project__index">01</div><div><p class="journal-project__label">What It Does</p><h2>它到底是什么功能？</h2><p class="journal-project__desc">一句话：在豆包生成完成后，把页面里可用的图片和视频资源集中到一个“无印资源”面板里。</p></div></div>
+        <div class="journal-card"><h3>你能看到的功能</h3><ul><li><strong>图片：</strong>生成图片后，面板会显示图片缩略图，可以预览，也可以直接下载。</li><li><strong>视频：</strong>生成视频后，面板会显示视频资源，可以打开小窗预览并下载当前视频。</li><li><strong>批量：</strong>一次生成了多张图或多条视频时，可以勾选需要的资源，再点击“下载选中”。</li><li><strong>预览：</strong>支持上一项、下一项；视频预览支持播放 / 暂停、静音 / 取消静音、进度条和播放时间。</li><li><strong>比例：</strong>预览窗口会参考图片或视频真实尺寸调整，横屏、竖屏素材都更容易看清楚。</li></ul></div>
+        <blockquote class="journal-quote"><strong>它最方便的地方：</strong>你不用反复在生成页面里找下载入口，也不用先把所有素材都下载下来再筛选；先在资源面板里看，再决定保存哪一个。</blockquote>
+        <div class="journal-card"><h3>关于“无水印”的准确说明</h3><p>对豆包响应中存在可用无印资源链路的图片和视频，插件会把对应资源放到面板里，支持直接下载无印素材。它不是对任意本地视频做像素级擦除，也不是绕过登录权限的工具；如果豆包接口变化或解析服务不可用，资源可能不会出现。</p></div>
+      </section>
+
+      <section class="journal-project" id="install">
+        <div class="journal-project__head"><div class="journal-project__index">02</div><div><p class="journal-project__label">Install Once</p><h2>怎么安装？第一次设置只需要几步</h2><p class="journal-project__desc">这是 Chrome / Edge 的 Manifest V3 浏览器扩展，当前使用“加载已解压的扩展程序”的方式安装。</p></div></div>
+        <div class="journal-card"><ol style="margin: 0; padding-left: 1.35rem;"><li style="margin-bottom: .75rem;">解压插件文件夹，保留完整的 <code>doubao-clean-resource-extension</code> 目录。</li><li style="margin-bottom: .75rem;">打开 Chrome 的 <code>chrome://extensions/</code>，或 Edge 的 <code>edge://extensions/</code>。</li><li style="margin-bottom: .75rem;">打开右上角的“开发者模式”。</li><li style="margin-bottom: .75rem;">点击“加载已解压的扩展程序”，选择插件文件夹。</li><li>安装完成后，打开豆包并刷新页面。后续如果插件有更新，在扩展管理页点击“重新加载”，再刷新豆包页面即可。</li></ol></div>
+        <div class="journal-card"><h3>安装前记住一件事</h3><p>它不是独立桌面软件，不需要单独打开一个窗口；安装完成后，它会在豆包页面里出现“无印资源”入口。第一次使用时要保持豆包已登录，并等图片或视频生成请求完成。</p></div>
+      </section>
+
+      <section class="journal-project" id="use">
+        <div class="journal-project__head"><div class="journal-project__index">03</div><div><p class="journal-project__label">Use It</p><h2>怎么使用？从生成到下载的完整流程</h2><p class="journal-project__desc">实际操作可以记成六个字：生成、打开、预览、选择、下载。</p></div></div>
+        <div class="journal-card"><div class="journal-timeline"><div class="journal-timeline__item"><strong>第一步：在豆包里生成图片或视频</strong><p>登录豆包，正常使用生图或生视频功能。生成完成后不要立刻关闭页面，等资源请求完成。</p></div><div class="journal-timeline__item"><strong>第二步：打开“无印资源”面板</strong><p>页面右上角出现“无印资源”入口后，点击打开。面板会显示当前发现的图片和视频数量。</p></div><div class="journal-timeline__item"><strong>第三步：按类型筛选</strong><p>可以切换“全部”“图片”“视频”，快速找到这一轮生成的素材。</p></div><div class="journal-timeline__item"><strong>第四步：先预览</strong><p>点击资源卡片的“预览”，图片会直接打开；视频会进入小窗，可以播放、暂停、静音、拖动进度条和切换上一项 / 下一项。</p></div><div class="journal-timeline__item"><strong>第五步：选择下载方式</strong><p>只要一个素材，就点击“单独下载”；需要多个素材，就勾选资源后点击“下载选中”。</p></div><div class="journal-timeline__item"><strong>第六步：去下载目录找文件</strong><p>文件会进入浏览器默认下载目录下的 <code>DoubaoClean</code> 子目录，后续可以再放进你的素材库、剪辑项目或个人备份目录。</p></div></div></div>
+        <figure class="journal-card" style="padding: 0; overflow: hidden;"><img src="../assets/journal/2026-08-05/doubao-resource-panel.png" alt="豆包无印资源助手面板：显示图片和视频资源、筛选、勾选和下载选中按钮" style="display: block; width: 100%; height: auto;" loading="lazy" /><figcaption style="padding: 1rem 1.25rem; color: var(--ink-muted); font-size: .9rem; line-height: 1.7;">真实界面截图：面板会列出图片和视频，支持按类型筛选、勾选资源、预览和单独下载，也可以直接点击“下载选中”。</figcaption></figure>
+      </section>
+
+      <section class="journal-project" id="preview">
+        <div class="journal-project__head"><div class="journal-project__index">04</div><div><p class="journal-project__label">Preview & Screenshot</p><h2>还可以自己截图：先把画面定格，再保存需要的那一帧</h2><p class="journal-project__desc">插件负责发现和预览资源；如果你只想保存视频里的某一个画面，可以在预览窗口暂停后使用系统截图工具。</p></div></div>
+        <div class="journal-card"><h3>视频画面截图操作</h3><ol style="margin: 0; padding-left: 1.35rem;"><li style="margin-bottom: .75rem;">在资源面板里点击视频的“预览”。</li><li style="margin-bottom: .75rem;">用播放按钮或进度条找到想要的画面，点击“暂停”。</li><li style="margin-bottom: .75rem;">Windows 按 <code>Win + Shift + S</code>，拖动选择视频画面区域。</li><li>截图完成后，可以复制到笔记、选题文档或个人素材整理目录；如果需要完整动态素材，则点击“下载当前”。</li></ol></div>
+        <figure class="journal-card" style="padding: 0; overflow: hidden;"><img src="../assets/journal/2026-08-05/doubao-video-preview.png" alt="豆包无印资源助手视频预览窗口：播放暂停、静音、进度条、时间显示和下载当前" style="display: block; width: 100%; height: auto;" loading="lazy" /><figcaption style="padding: 1rem 1.25rem; color: var(--ink-muted); font-size: .9rem; line-height: 1.7;">真实界面截图：视频预览窗口保留播放 / 静音、进度条、当前时间、上一项 / 下一项和“下载当前”。暂停后即可用系统截图工具截取画面。</figcaption></figure>
+        <div class="journal-card"><h3>什么时候截图，什么时候下载？</h3><ul><li><strong>只要封面、参考画面或构图：</strong>暂停后截图，速度更快。</li><li><strong>需要完整视频用于个人剪辑或备份：</strong>点击“下载当前”，保留 MP4 文件。</li><li><strong>一轮生成结果需要集中整理：</strong>回到资源面板勾选多个素材，点击“下载选中”。</li></ul></div>
+      </section>
+
+      <section class="journal-project" id="why">
+        <div class="journal-project__head"><div class="journal-project__index">05</div><div><p class="journal-project__label">Why It Is Useful</p><h2>对豆包生图、生视频的人，具体方便在哪里？</h2><p class="journal-project__desc">它把生成后的“找素材”这一步变得更直接，让你可以把注意力放回画面本身。</p></div></div>
+        <div class="journal-card"><ul><li><strong>生图做选题和封面：</strong>一轮生成多张图片后，先看缩略图，选中满意的几张再下载，不用全部保存。</li><li><strong>生视频做分镜和样片：</strong>可以快速预览不同结果，比较动作、构图和画面比例，再保留真正需要的素材。</li><li><strong>个人素材归档：</strong>下载文件统一进入 <code>DoubaoClean</code> 子目录，后续整理到自己的项目文件夹更清楚。</li><li><strong>需要一帧就截图：</strong>视频不用先导出再截帧，预览暂停后直接用系统截图工具即可。</li><li><strong>一次生成很多资源：</strong>支持勾选后批量下载，适合个人测试、素材备份和非商业创作准备。</li></ul></div>
+        <blockquote class="journal-quote"><strong>它的价值很简单：</strong>豆包负责生成，插件负责把资源找出来；你可以先预览，再决定截图、下载一个，还是一次保存一批。</blockquote>
+      </section>
+
+      <section class="journal-project" id="boundary">
+        <div class="journal-project__head"><div class="journal-project__index">06</div><div><p class="journal-project__label">Private Use Only</p><h2>使用边界：仅限私人、非商业场景</h2><p class="journal-project__desc">方便归方便，但素材的使用权和平台规则仍然要放在第一位。</p></div></div>
+        <div class="journal-card"><h3>请在以下范围内使用</h3><ul><li>只处理你自己生成、拥有使用权，或已经获得明确授权的图片和视频。</li><li>仅用于个人学习、个人测试、私人备份、非商业创作准备等场景。</li><li>不要把下载的素材直接用于商业广告、商业账号、付费课程、客户项目或其他营利性用途。</li><li>不要使用它处理他人没有授权的内容，也不要把它当成绕过登录、权限或平台规则的工具。</li><li>如果平台条款、素材授权或具体使用场景有更严格要求，以它们为准。</li></ul></div>
+        <div class="journal-card"><h3>为什么要把这句话写在前面</h3><p>插件解决的是“资源发现和保存更方便”，并不会自动改变素材的版权、授权范围或商业使用权限。下载下来，不等于就获得了商业使用权；无印，也不等于可以随意传播。个人使用时把来源和授权边界留好，后续会少很多麻烦。</p></div>
+      </section>
+
+      <section class="journal-project" id="faq">
+        <div class="journal-project__head"><div class="journal-project__index">07</div><div><p class="journal-project__label">Quick FAQ</p><h2>常见问题</h2><p class="journal-project__desc">遇到没有资源、预览异常或下载失败时，可以先按下面的顺序排查。</p></div></div>
+        <div class="journal-card"><h3>为什么右上角没有“无印资源”？</h3><p>先确认豆包已经登录，图片或视频已经生成完成；然后刷新页面，确认扩展在扩展管理页处于启用状态。豆包前端接口变化、响应尚未完成或视频解析服务不可用时，也可能暂时没有资源。</p></div>
+        <div class="journal-card"><h3>是不是所有视频都能下载无印版本？</h3><p>不能保证。当前插件依赖豆包响应里存在可用的资源链路，视频还依赖解析服务；它不是对任意本地视频做像素级擦除工具。</p></div>
+        <div class="journal-card"><h3>下载后的文件在哪里？</h3><p>默认在浏览器下载目录下的 <code>DoubaoClean</code> 文件夹。具体位置以 Chrome / Edge 当前下载设置为准。</p></div>
+        <div class="journal-card"><h3>批量下载一次能选多少？</h3><p>当前最多提交 30 个已勾选资源。浏览器可能按照自己的下载安全策略弹出确认，这是浏览器的正常提示。</p></div>
+      </section>
+
+      <div class="journal-next"><p><strong>一句话总结：</strong>如果你经常使用豆包生图、生视频，安装这个插件后，生成完成就能直接打开资源面板，先预览，再截图、单独下载或批量保存。当前文章和插件均按私人、非商业使用场景整理。</p><a href="../archive.html">返回文章归档 ↗</a></div>
+    </main>
+  </article>
+
+  <footer class="text-white py-14"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="footer-enhanced"><div><div class="flex items-center gap-3"><span class="text-lg font-semibold tracking-wide" style="color: rgba(255,255,255,0.9);">诺诺的小博客空间</span></div><p class="mt-2 text-sm tracking-wider" style="color: rgba(255,255,255,0.3); font-family: 'Crimson Pro', serif; font-style: italic;">记录生活，分享美好，终身学习</p></div><div class="footer-nav"><a href="../index.html">首页</a><a href="../index.html#articles">随笔</a><a href="../archive.html">归档</a><a href="../about.html">关于</a><a href="../feed.xml" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer-bottom-bar">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></div></div></div></footer>
+  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
+  <script src="../js/common.js"></script>
+</body>
+</html>

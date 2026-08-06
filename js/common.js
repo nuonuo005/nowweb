@@ -179,6 +179,85 @@
     });
   }
 
+  function initCardDepth() {
+    if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    document.querySelectorAll('.project-card-enhanced, .card-article, .skill-card-enhanced').forEach(function (card) {
+      if (card.dataset.depthReady === 'true') return;
+      card.dataset.depthReady = 'true';
+
+      var glow = document.createElement('span');
+      glow.className = 'card-depth-glow';
+      glow.setAttribute('aria-hidden', 'true');
+      card.appendChild(glow);
+
+      var rect = null;
+      card.addEventListener('pointerenter', function () {
+        rect = card.getBoundingClientRect();
+      });
+      card.addEventListener('pointermove', function (event) {
+        rect = rect || card.getBoundingClientRect();
+        var x = (event.clientX - rect.left) / rect.width - 0.5;
+        var y = (event.clientY - rect.top) / rect.height - 0.5;
+        card.style.setProperty('--card-rotate-x', (-y * 5.5).toFixed(2) + 'deg');
+        card.style.setProperty('--card-rotate-y', (x * 7).toFixed(2) + 'deg');
+        card.style.setProperty('--card-glow-x', (x * 100 + 50).toFixed(1) + '%');
+        card.style.setProperty('--card-glow-y', (y * 100 + 50).toFixed(1) + '%');
+      }, { passive: true });
+      card.addEventListener('pointerleave', function () {
+        rect = null;
+        card.style.setProperty('--card-rotate-x', '0deg');
+        card.style.setProperty('--card-rotate-y', '0deg');
+        card.style.setProperty('--card-glow-x', '50%');
+        card.style.setProperty('--card-glow-y', '50%');
+      });
+    });
+  }
+
+  function initHeroPointerLight() {
+    if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var home = document.getElementById('home');
+    if (!home) return;
+
+    home.addEventListener('pointermove', function (event) {
+      var rect = home.getBoundingClientRect();
+      home.style.setProperty('--hero-pointer-x', (((event.clientX - rect.left) / rect.width) * 100).toFixed(1) + '%');
+      home.style.setProperty('--hero-pointer-y', (((event.clientY - rect.top) / rect.height) * 100).toFixed(1) + '%');
+    }, { passive: true });
+    home.addEventListener('pointerleave', function () {
+      home.style.setProperty('--hero-pointer-x', '50%');
+      home.style.setProperty('--hero-pointer-y', '50%');
+    });
+  }
+
+  function initHeroDepthScene() {
+    if (reduceMotion || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    var home = document.getElementById('home');
+    if (!home || typeof gsap.timeline !== 'function') return;
+    var layers = home.querySelectorAll('.nuonuo-portrait-hero__depth-layer');
+    if (!layers.length) return;
+    var bridge = home.querySelector('.nuonuo-portrait-hero__depth-bridge');
+
+    var timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: home,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.15,
+        invalidateOnRefresh: true
+      }
+    });
+
+    timeline.to(layers[0], { yPercent: -5, scale: 1.06, ease: 'none' }, 0);
+    timeline.to(layers[1], { yPercent: -12, scale: 1.11, rotate: -1.2, ease: 'none' }, 0);
+    timeline.to(layers[2], { yPercent: -20, scale: 1.18, ease: 'none' }, 0);
+    timeline.to(layers[3], { yPercent: -30, scale: 1.24, opacity: 0.2, ease: 'none' }, 0);
+    if (bridge) timeline.to(bridge, { yPercent: -15, scale: 1.12, ease: 'none' }, 0);
+
+    var copy = home.querySelector('.nuonuo-portrait-hero__copy');
+    if (copy) timeline.to(copy, { yPercent: -11, opacity: 0.42, ease: 'none' }, 0);
+  }
+
   function initPageTransition() {
     document.body.classList.add('page-enter');
     document.querySelectorAll('a[href]').forEach(function (a) {
@@ -220,7 +299,7 @@
 
   function initInkDiffusion() {
     var canvas = document.getElementById('ink-canvas');
-    if (!canvas || reduceMotion) return;
+    if (!canvas || reduceMotion || canvas.closest('[hidden]')) return;
     var ctx = canvas.getContext('2d');
     var drops = [];
     var running = true;
@@ -398,6 +477,9 @@
     boot('stagger', initStagger);
     boot('textReveal', initTextReveal);
     boot('cardClick', initCardClick);
+    boot('cardDepth', initCardDepth);
+    boot('heroPointerLight', initHeroPointerLight);
+    boot('heroDepthScene', initHeroDepthScene);
     boot('pageTransition', initPageTransition);
     boot('cursorGlow', initCursorGlow);
     boot('magneticButtons', initMagneticButtons);

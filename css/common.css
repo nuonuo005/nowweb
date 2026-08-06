@@ -1043,6 +1043,41 @@ footer::before {
 [data-theme="dark"] .article-tag-life     { background: rgba(224, 74, 58, 0.1); }
 [data-theme="dark"] .article-tag-career   { background: rgba(198, 138, 26, 0.12); }
 
+/* 文章卡片元信息：日期、时长和标签保持完整，不在窄卡片里拆字。 */
+.card-article .p-6 > .flex.items-center.gap-3.mb-3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.45rem;
+  row-gap: 0.4rem;
+  min-height: 1.35rem;
+}
+
+.card-article .p-6 > .flex.items-center.gap-3.mb-3 > span {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.card-article .p-6 > .flex.items-center.gap-3.mb-3 > span:first-child {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.025em;
+}
+
+.card-article .p-6 > .flex.items-center.gap-3.mb-3 > span:nth-child(2) {
+  padding: 0.22rem 0.5rem !important;
+  line-height: 1.15;
+}
+
+.card-article .article-tag {
+  padding: 0.22rem 0.5rem;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.card-article h3 { text-wrap: balance; }
+.card-article p { text-wrap: pretty; }
+
 /* 文章列表过滤过渡 */
 .article-filterable {
   transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
