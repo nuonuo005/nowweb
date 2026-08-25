@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="记录重装电脑后的两天：重新接上 Pi Agent、本地知识库和 AI 视频生产链路，也把这两天真正暴露出来的工程问题写下来。" />
+  <meta property="og:title" content="我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来" />
+  <meta property="og:description" content="Pi Agent、Obsidian 知识库恢复、口播剪辑与 H3 MV 生成：记录最近两天做了什么、哪里通过了验证、哪里还没有完成。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="../assets/article-covers/knowledge-base-cover-20260730.png" />
+  <meta name="theme-color" content="#21171d" />
+  <title>我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来 — 诺诺的小博客空间</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🧭%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="../css/common.css?v=mobile-20260825" />
+  <link rel="stylesheet" href="../css/journal.css?v=visual-20260825" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: { extend: { colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' }, fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] } } }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来",
+    "datePublished": "2026-08-25",
+    "dateModified": "2026-08-25",
+    "author": { "@type": "Person", "name": "诺诺" },
+    "description": "记录重装电脑后的两天：重新接上 Pi Agent、本地知识库和 AI 视频生产链路，也把这两天真正暴露出来的工程问题写下来。"
+  }
+  </script>
+</head>
+<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
+  <div id="reading-progress"></div>
+  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"><i class="fa fa-paper-plane text-primary text-xl"></i><span class="text-xl font-semibold">诺诺的小博客空间</span></a>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a>
+          <a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a>
+          <a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a>
+          <a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式"><i class="fa fa-sun-o icon-sun"></i><i class="fa fa-moon-o icon-moon"></i></button>
+          <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false"><i class="fa fa-bars text-xl"></i></button>
+        </div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50"><div class="px-4 py-3 space-y-1"><a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a><a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a><a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a><a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a></div></div>
+  </nav>
+
+  <article data-tags='["工作日志","AI","Pi Agent","Obsidian","视频剪辑"]'>
+    <header class="journal-hero">
+      <div class="journal-hero__inner">
+        <p class="journal-kicker">Daily Build Log · No. 007</p>
+        <h1>重装电脑后的两天，<br />把工作重新接起来</h1>
+        <p class="journal-hero__lead">Pi Agent、Obsidian 知识库恢复、口播剪辑与 H3 MV 生成：记录最近两天做了什么、哪里通过了验证、哪里还没有完成。</p>
+        <div class="journal-meta">
+          <span><i class="fa fa-calendar-o"></i> 2026-08-25</span>
+          <span><i class="fa fa-clock-o"></i> 阅读约 10 分钟</span>
+          <span><i class="fa fa-cubes"></i> 4 个项目成果</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="journal-shell">
+      <p class="journal-intro">重装电脑之后，最容易产生一种错觉：软件重新装上了，工作就恢复了。实际上，真正需要恢复的是入口、上下文、项目状态和验证习惯。过去两天我没有急着把所有工具都装满，而是先把几个每天会用到的工作系统重新接上，再把 AI 视频制作里暴露出来的问题留下记录。</p>
+
+      <figure class="journal-opening-cover">
+        <img src="../assets/article-covers/knowledge-base-cover-20260730.png" alt="个人知识库与 AI 工作系统的视觉封面" loading="eager" />
+        <figcaption>先恢复能持续工作的系统，再继续堆工具和产出；这次的重点不是“装回原样”，而是把工作重新变得可追踪。</figcaption>
+      </figure>
+
+      <section class="journal-summary" aria-label="最近两天项目总览">
+        <a class="journal-summary__item" href="#pi-agent"><span class="journal-summary__number">01</span><p>Local AI Entry</p><h2>Pi Agent / Pi Web</h2><span>本机入口重新可用</span></a>
+        <a class="journal-summary__item" href="#obsidian"><span class="journal-summary__number">02</span><p>Knowledge System</p><h2>Obsidian 恢复</h2><span>导航、总览与状态卡</span></a>
+        <a class="journal-summary__item" href="#video"><span class="journal-summary__number">03</span><p>AI Video</p><h2>剪辑问题复盘</h2><span>预览、动效与节奏</span></a>
+        <a class="journal-summary__item" href="#other-builds"><span class="journal-summary__number">04</span><p>Verified Output</p><h2>其他成果</h2><span>环境盘点与成片验收</span></a>
+      </section>
+
+      <section class="journal-project" id="pi-agent">
+        <div class="journal-project__head">
+          <div class="journal-project__index">01</div>
+          <div>
+            <p class="journal-project__label">Local AI Infrastructure</p>
+            <h2>Pi Agent：我为什么觉得它更顺手</h2>
+            <p class="journal-project__desc">重装后重新接上的第一个日常入口，是 Pi Agent 的本机 Web 界面。它没有强迫我换一套工作方法，而是把现有项目、技能和命令重新接到一个可以直接对话的入口里。</p>
+          </div>
+        </div>
+
+        <div class="journal-flow" aria-label="Pi Agent 本机工作流">
+          <div class="journal-flow__step">Pi CLI / Web<br />本机入口</div>
+          <div class="journal-flow__step">30141<br />局部服务</div>
+          <div class="journal-flow__step">读取项目<br />与现有技能</div>
+          <div class="journal-flow__step">直接处理<br />真实任务</div>
+          <div class="journal-flow__step">验证结果<br />留下记录</div>
+        </div>
+
+        <div class="journal-card">
+          <h3>这两天实际恢复了什么</h3>
+          <ul>
+            <li>Pi 的本机运行目录、Node.js、PortableGit 和 Pi Web 入口已经重新接好。</li>
+            <li>桌面启动包装会先检查 <code>http://127.0.0.1:30141/</code>，服务不存在时再启动 Pi Web。</li>
+            <li>本机实测 Pi Web 返回 HTTP 200，页面标题为 “Pi Web”，日志也记录了本地服务已就绪。</li>
+          </ul>
+        </div>
+
+        <div class="journal-card">
+          <h3>为什么它适合现在的工作方式</h3>
+          <p>Pi 的核心很小，但可以通过 skills、extensions、prompt templates 和项目上下文扩展。对我来说，真正有价值的不是“又多了一个 Agent”，而是它能把已有的技能、项目文件和验证规则放在同一个入口里。它更像一个可以继续长大的工作台，而不是一套必须从头学习的封闭流程。</p>
+          <p>当然，Agent 好用不等于任务天然正确。端口、配置、凭据、模型和输出文件仍然需要真实检查；以后遇到问题，先查服务是否活着，再查 Pi 配置和真实请求，最后看产物。</p>
+        </div>
+
+        <div class="journal-stats">
+          <div class="journal-stat"><strong>30141</strong><span>Pi Web 本机端口</span></div>
+          <div class="journal-stat"><strong>200</strong><span>当前入口 HTTP 状态</span></div>
+          <div class="journal-stat"><strong>4</strong><span>默认读写执行工具</span></div>
+          <div class="journal-stat"><strong>1</strong><span>日常工作入口</span></div>
+        </div>
+      </section>
+
+      <section class="journal-project" id="obsidian">
+        <div class="journal-project__head">
+          <div class="journal-project__index">02</div>
+          <div>
+            <p class="journal-project__label">Knowledge System Recovery</p>
+            <h2>Obsidian：恢复的核心不是找回文件，而是找回索引和状态</h2>
+            <p class="journal-project__desc">知识库恢复没有停在“文件还在不在”，而是先把项目导航、近期工作总览、状态字段、证据和下一动作重新整理出来。</p>
+          </div>
+        </div>
+
+        <div class="journal-flow" aria-label="Obsidian 知识库恢复结构">
+          <div class="journal-flow__step">项目导航<br />MOC 入口</div>
+          <div class="journal-flow__step">近期总览<br />主线与优先级</div>
+          <div class="journal-flow__step">项目状态卡<br />active / review</div>
+          <div class="journal-flow__step">最近证据<br />文件与验证</div>
+          <div class="journal-flow__step">下一动作<br />不再从零猜</div>
+        </div>
+
+        <div class="journal-card">
+          <h3>这次恢复真正留下的结构</h3>
+          <ul>
+            <li>项目导航：重新连接近期项目、项目状态卡和工作上下文。</li>
+            <li>2026 年 8 月近期工作总览：把道家运势视频、Pi Agent、AI 视频、知识库和其他工具放回同一张地图。</li>
+            <li>H3 MV 项目状态卡：明确首版已经通过技术核验，但节奏、镜头数量和音乐仍处于 review，而不是假装最终完成。</li>
+            <li>状态字段统一成 active、verified、review、maintenance 等，事实、判断和下一步分开写。</li>
+          </ul>
+        </div>
+
+        <div class="journal-card">
+          <h3>一个必须说清楚的边界</h3>
+          <p>目前本机能核实到的是 <code>_obsidian_patch_20260824</code> 里的恢复补丁：项目导航、项目总览和状态卡已经整理出来。但常见的 <code>E:\Obsidian Vault</code> 目录当前不在已检查位置，所以这一步应称为“恢复结构和补丁已落地”，还不能把它包装成完整 Vault 已经合并完成。</p>
+          <p>这反而提醒了我：知识库恢复不能只看“有没有生成 Markdown”。真正的完成定义应该是：能打开真实库、能从首页找到项目、能回到证据文件，并且下一次工作可以直接沿着状态继续。</p>
+        </div>
+
+        <blockquote class="journal-quote"><strong>知识库恢复的第一验收标准：</strong>不是笔记数量，而是下一次遇到同类任务时，能不能找到上一次已经验证过的判断。</blockquote>
+      </section>
+
+      <section class="journal-project" id="video">
+        <div class="journal-project__head">
+          <div class="journal-project__index">03</div>
+          <div>
+            <p class="journal-project__label">AI Video Production</p>
+            <h2>AI 视频制作：这两天最重要的不是多做成片，而是找出哪里会失真</h2>
+            <p class="journal-project__desc">最近的剪辑工作同时暴露了两类问题：工程状态可能和画面状态不一致，成片技术通过也不代表节奏和表达已经通过。</p>
+          </div>
+        </div>
+
+        <div class="journal-card">
+          <h3>8 月 23 日口播视频：成片完成，但流程暴露了问题</h3>
+          <ul>
+            <li>真人口播作为主画面，叠加重点词动效、知识图示、案例卡片、模型对比和流程动画；连续字幕没有烧录，保留给最终人工添加和校对。</li>
+            <li>正式成片使用了修正版分段工程，但 Studio 预览入口还指向旧的总工程，因此出现“预览和正式版本不同步”。</li>
+            <li>第一版还遇到 CSS 初始状态与 GSAP 入口动画冲突，部分元素实际不可见；静态检查通过，也不能证明观众真的能看到画面。</li>
+            <li>长视频最后通过分段渲染解决了稳定性问题，但以后仍要先做 30—60 秒样片，确认背景、视觉密度和 B-roll 形态后再铺满全片。</li>
+          </ul>
+        </div>
+
+        <div class="journal-card">
+          <h3>8 月 24 日 H3 MV：技术成片通过，节奏还没有通过</h3>
+          <p>这次从 14 张图片中筛出 8 张，完成参考图到视频的 R2V 生成。首版输出为 1344×768、约 15.08 秒的横版 MP4，文件读取和媒体参数都正常。</p>
+          <p>但首版仍然处于 review：没有正式参考音乐，镜头数量偏少，整体节奏偏慢。下一步不是覆盖首版，而是保留首版证据，先按音乐段落重新设计切点，再决定后期重剪还是重新调用 H3。</p>
+        </div>
+
+        <div class="journal-gallery" aria-label="AI 视频项目真实素材与验收画面">
+          <figure>
+            <img src="../assets/journal/2026-08-25/video-editing-source-contact-sheet.jpg" alt="8 月 23 日口播视频的原始画面联系表" loading="lazy" style="aspect-ratio: 16 / 9; object-fit: cover;" />
+            <figcaption>口播项目：先看整体画面，再检查单个动效。</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/journal/2026-08-25/h3-mv-reference-01.webp" alt="H3 MV 工作流中筛选出的参考图" loading="lazy" style="aspect-ratio: 16 / 9; object-fit: cover;" />
+            <figcaption>H3 MV：参考图数量和切点会直接影响节奏。</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/journal/2026-08-25/fortune-0825-v43-middle.jpg" alt="道家国风运势视频 V4.3 成片中段验收帧" loading="lazy" style="aspect-ratio: 16 / 9; object-fit: cover;" />
+            <figcaption>稳定产线：V4.3 成片通过技术和画面抽检。</figcaption>
+          </figure>
+        </div>
+
+        <div class="journal-card">
+          <h3>这两天真正沉淀下来的剪辑规则</h3>
+          <div class="journal-timeline">
+            <div class="journal-timeline__item"><strong>预览工程和正式工程必须是同一个源</strong><p>不能修了分段工程，却继续打开旧的总工程验收。</p></div>
+            <div class="journal-timeline__item"><strong>lint 通过不等于画面正确</strong><p>结构检查、Studio 实时预览和实际 draft 样片要同时存在。</p></div>
+            <div class="journal-timeline__item"><strong>先确认视觉方向，再铺完整片</strong><p>背景、卡片密度、B-roll 类型和遮挡范围要在制作前锁定。</p></div>
+            <div class="journal-timeline__item"><strong>技术验收和观看验收分开</strong><p>视频能播放、没有黑屏和削波，只说明它可交付；节奏、镜头数量和表达还要单独判断。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="journal-project" id="other-builds">
+        <div class="journal-project__head">
+          <div class="journal-project__index">04</div>
+          <div>
+            <p class="journal-project__label">Environment & Verified Output</p>
+            <h2>其他支线：一部分已经通过，一部分还在等待条件</h2>
+            <p class="journal-project__desc">恢复期里也顺手盘点了知识 IP 样片环境和道家运势视频产线，避免把“环境存在”误认为“项目已经完成”。</p>
+          </div>
+        </div>
+
+        <div class="journal-stats">
+          <div class="journal-stat"><strong>40.619s</strong><span>V4.3 成片时长</span></div>
+          <div class="journal-stat"><strong>1920×1080</strong><span>通过验收的规格</span></div>
+          <div class="journal-stat"><strong>0</strong><span>黑屏与削波样本</span></div>
+          <div class="journal-stat"><strong>3</strong><span>知识 IP 样片阻塞项</span></div>
+        </div>
+
+        <div class="journal-card">
+          <h3>已经验证的成果</h3>
+          <p>道家国风运势视频 V4.3 的 8 月 25 日成片已经通过技术验证和画面抽检：6 段视频、33 段文字，时间线上没有间隙和重叠，最长黑屏为 0 秒，最终混音没有削波。这说明这条生产线已经从“搭出来”进入“可以稳定复用”的阶段。</p>
+        </div>
+
+        <div class="journal-card">
+          <h3>知识 IP 样片目前还缺什么</h3>
+          <ul>
+            <li>新的 Qwen3 旁白凭据当前为空，不能直接生成新的旁白。</li>
+            <li>Whisper 模型文件还没有落到本机，无法继续做短语级声学对齐。</li>
+            <li>HyperFrames 版本存在 0.8.10 与 0.8.14 的差异，正式渲染前需要先固定版本。</li>
+          </ul>
+        </div>
+
+        <figure class="journal-card" style="padding: 0; overflow: hidden;">
+          <img src="../assets/journal/2026-08-25/knowledge-ip-turnaround-v01.webp" alt="知识 IP 样片角色三视图草案" loading="lazy" style="display: block; width: 100%; height: auto;" />
+          <figcaption style="padding: 1rem 1.25rem; color: var(--ink-muted); font-size: .9rem;">知识 IP 样片已经有角色资产草案，但正式样片还要先补齐声音、模型和版本条件。</figcaption>
+        </figure>
+      </section>
+
+      <blockquote class="journal-quote"><strong>这两天的总结果：</strong>重装系统之后，真正恢复的不是一台“装满软件”的电脑，而是一条从 Agent 入口、知识库上下文，到视频生产、真实验证和复盘回写的工作链。能通过的项目继续复用，没通过的项目明确写下缺口，下一次就不必从猜测开始。</blockquote>
+
+      <div class="journal-next">
+        <h2>接下来怎么继续</h2>
+        <ul>
+          <li>日常任务优先从 Pi Agent 入口进入，遇到问题先核端口、配置和真实请求。</li>
+          <li>确认真实 Obsidian Vault 路径后，把恢复补丁正式合并，并重新检查导航链接。</li>
+          <li>AI 视频制作先做 30—60 秒样片，统一预览与正式渲染工程，再决定是否铺满全片。</li>
+          <li>H3 MV 等用户确认音乐和节奏后再做 v2，不覆盖首版；道家运势视频继续按 V4.3 SOP 复用。</li>
+        </ul>
+      </div>
+    </main>
+  </article>
+
+  <footer class="text-white py-12 text-center">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></footer>
+  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
+  <script src="../js/common.js"></script>
+</body>
+</html>

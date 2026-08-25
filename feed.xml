@@ -5,8 +5,16 @@
     <link>https://nuonuo.me/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 05 Aug 2026 23:40:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 14:30:00 +0800</lastBuildDate>
     <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来</title>
+      <link>https://nuonuo.me/posts/2026-08-25-ai-work-journal-reinstall.html</link>
+      <description>记录 Pi Agent、Obsidian 知识库恢复、口播剪辑问题和 H3 MV 首版生成：把能复用的成果留下，也把还没完成的缺口写清楚。</description>
+      <pubDate>Tue, 25 Aug 2026 14:30:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-08-25-ai-work-journal-reinstall.html</guid>
+    </item>
 
     <item>
       <title>豆包生图、生视频怎么直接下载无印素材？豆包无印资源助手使用指南</title>
