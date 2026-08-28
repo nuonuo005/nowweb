@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>临时项目-婚庆大棚3D展示</title>
+    <meta name="description" content="36米×12米婚庆大棚全包布实景 3D 展示，可自由旋转浏览四个现场视角。">
+    <meta name="theme-color" content="#08090c">
+    <!-- Three.js 与 OrbitControls -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+        body {
+            background-color: #08090c;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+        #webgl-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* 顶部面板 */
+        .header-panel {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            z-index: 10;
+            background: rgba(12, 14, 18, 0.92);
+            padding: 14px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #c91818;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+            max-width: 440px;
+        }
+        .header-panel h1 {
+            font-size: 16px;
+            color: #ff4d4f;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .header-panel p {
+            font-size: 12px;
+            color: #aeb3c2;
+            line-height: 1.4;
+        }
+        .spec-tags {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .spec-tag {
+            background: #20242e;
+            color: #f1c40f;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 11px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* 边布图例 */
+        .legend-panel {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            z-index: 10;
+            background: rgba(12, 14, 18, 0.92);
+            padding: 14px 18px;
+            border-radius: 8px;
+            backdrop-filter: blur(12px);
+            font-size: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 320px;
+        }
+        .legend-title {
+            font-weight: bold;
+            color: #f1c40f;
+            margin-bottom: 8px;
+        }
+        .seq-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11.5px;
+            margin-bottom: 4px;
+        }
+        .color-box {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        .box-red { background: #961219; border: 1px solid #ff4d4d; }
+        .box-champagne { background: #d7b07d; border: 1px solid #ffe0b2; }
+        .box-sage { background: #4f7354; border: 1px solid #a3d1a9; }
+
+        /* 底部控制栏 */
+        .bottom-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 8px;
+            background: rgba(12, 14, 18, 0.94);
+            padding: 8px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+        }
+        .btn {
+            background: #232732;
+            border: 1px solid #3d4352;
+            color: #eee;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn:hover {
+            background: #a6121a;
+            border-color: #ff4d4f;
+            color: #fff;
+        }
+        .btn.active {
+            background: #a6121a;
+            border-color: #ff4d4f;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 0 12px rgba(201, 24, 24, 0.6);
+        }
+        .btn-capture {
+            background: linear-gradient(135deg, #d49a37, #f1c40f);
+            border: none;
+            color: #000;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(241, 196, 15, 0.4);
+        }
+        .btn-capture:hover {
+            background: linear-gradient(135deg, #f1c40f, #ffeaa7);
+            transform: scale(1.03);
+        }
+        /* 交互与移动端增强 */
+        html {
+            width: 100%;
+            height: 100%;
+            background: #08090c;
+        }
+        body {
+            width: 100%;
+            height: 100dvh;
+            min-height: 100%;
+            overflow: hidden;
+            overscroll-behavior: none;
+        }
+        #webgl-container {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #webgl-container canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            touch-action: none;
+        }
+        .header-panel,
+        .legend-panel,
+        .bottom-bar {
+            pointer-events: auto;
+        }
+        .header-panel {
+            top: max(15px, env(safe-area-inset-top));
+            left: max(20px, env(safe-area-inset-left));
+        }
+        .legend-panel {
+            top: max(15px, env(safe-area-inset-top));
+            right: max(20px, env(safe-area-inset-right));
+        }
+        .legend-title {
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: #f1c40f;
+            text-align: left;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .legend-title:focus-visible,
+        .btn:focus-visible {
+            outline: 2px solid #ffeaa7;
+            outline-offset: 3px;
+        }
+        .legend-toggle-mark {
+            display: none;
+            float: right;
+            color: #aeb3c2;
+        }
+        .bottom-bar {
+            position: fixed;
+            bottom: max(20px, env(safe-area-inset-bottom));
+            display: flex;
+            align-items: center;
+        }
+        .view-buttons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn {
+            min-height: 38px;
+            touch-action: manipulation;
+        }
+        .interaction-hint {
+            position: fixed;
+            left: 50%;
+            bottom: max(84px, calc(env(safe-area-inset-bottom) + 84px));
+            z-index: 8;
+            max-width: calc(100vw - 32px);
+            padding: 7px 12px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 999px;
+            background: rgba(12, 14, 18, 0.72);
+            color: #d9deea;
+            font-size: 11px;
+            letter-spacing: 0.02em;
+            text-align: center;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .interaction-hint.hidden {
+            opacity: 0;
+            transform: translate(-50%, 8px);
+        }
+
+        @media (max-width: 760px) {
+            .header-panel {
+                top: max(10px, env(safe-area-inset-top));
+                left: max(10px, env(safe-area-inset-left));
+                right: max(10px, env(safe-area-inset-right));
+                max-width: none;
+                padding: 10px 12px;
+                border-left-width: 3px;
+                border-radius: 10px;
+            }
+            .header-panel h1 {
+                font-size: 14px;
+                line-height: 1.25;
+                margin-bottom: 4px;
+            }
+            .header-panel p {
+                font-size: 11px;
+                line-height: 1.35;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+            }
+            .spec-tags {
+                max-height: 31px;
+                overflow: hidden;
+                margin-top: 6px;
+                gap: 4px;
+            }
+            .spec-tag {
+                padding: 2px 6px;
+                font-size: 10px;
+            }
+            .legend-panel {
+                top: clamp(92px, 16vh, 138px);
+                right: max(10px, env(safe-area-inset-right));
+                left: auto;
+                max-width: min(250px, calc(100vw - 20px));
+                padding: 10px 12px;
+                border-radius: 10px;
+            }
+            .legend-title {
+                margin-bottom: 0;
+                font-size: 11px;
+                line-height: 1.3;
+            }
+            .legend-toggle-mark {
+                display: inline;
+            }
+            .legend-panel:not(.expanded) .legend-content {
+                display: none;
+            }
+            .legend-panel.expanded .legend-title {
+                margin-bottom: 8px;
+            }
+            .seq-row {
+                gap: 6px;
+                font-size: 10px;
+                margin-bottom: 3px;
+            }
+            .color-box {
+                width: 12px;
+                height: 12px;
+            }
+            .bottom-bar {
+                left: max(10px, env(safe-area-inset-left));
+                right: max(10px, env(safe-area-inset-right));
+                bottom: max(10px, env(safe-area-inset-bottom));
+                width: auto;
+                transform: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding: 8px;
+                border-radius: 18px;
+            }
+            .view-buttons {
+                width: 100%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 1px 1px 3px;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .view-buttons::-webkit-scrollbar {
+                display: none;
+            }
+            .view-buttons .btn {
+                flex: 0 0 auto;
+                min-height: 42px;
+                padding: 8px 13px;
+                font-size: 12px;
+            }
+            .btn-capture {
+                width: 100%;
+                min-height: 42px;
+            }
+            .interaction-hint {
+                bottom: calc(env(safe-area-inset-bottom) + 154px);
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 760px) and (orientation: landscape) {
+            .header-panel {
+                max-width: min(470px, calc(100vw - 20px));
+            }
+            .legend-panel {
+                top: max(10px, env(safe-area-inset-top));
+            }
+            .bottom-bar {
+                flex-direction: row;
+                align-items: center;
+            }
+            .view-buttons {
+                flex: 1;
+            }
+            .btn-capture {
+                width: auto;
+                flex: 0 0 auto;
+            }
+            .interaction-hint {
+                bottom: calc(env(safe-area-inset-bottom) + 76px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn,
+            .interaction-hint {
+                transition: none;
+            }
+        }    </style>
+</head>
+<body>
+
+    <div class="header-panel">
+        <h1>北方36m×12m 婚宴大棚 · 实景包布成品</h1>
+        <p>已彻底隐藏骨架，全棚软装包布覆盖：通体全红顶布、下垂小灯串、全套宴席摆台与豆绿主舞台。</p>
+        <div class="spec-tags">
+            <span class="spec-tag">尺寸: 36m×12m</span>
+            <span class="spec-tag">全包裹软装包布</span>
+            <span class="spec-tag">全红顶棚+纵深灯串</span>
+            <span class="spec-tag">边布6段标准排列</span>
+            <span class="spec-tag">豆绿+白藤蔓主舞台</span>
+        </div>
+    </div>
+
+    <div class="legend-panel expanded">
+        <button class="legend-title" id="legendToggle" type="button" aria-expanded="true" aria-controls="legendContent">
+            <span>边布 6 段节奏严格锁定</span><span class="legend-toggle-mark" aria-hidden="true">⌃</span>
+        </button>
+        <div class="legend-content" id="legendContent">
+            <div class="seq-row"><span class="color-box box-red"></span> 01段: 9米 红色边布 (0m - 9m)</div>
+            <div class="seq-row"><span class="color-box box-champagne"></span> 02段: 3米 香槟色边布 (9m - 12m)</div>
+            <div class="seq-row"><span class="color-box box-red"></span> 03段: 9米 红色边布 (12m - 21m)</div>
+            <div class="seq-row"><span class="color-box box-champagne"></span> 04段: 3米 香槟色边布 (21m - 24m)</div>
+            <div class="seq-row"><span class="color-box box-red"></span> 05段: 3米 红色边布 (24m - 27m)</div>
+            <div class="seq-row"><span class="color-box box-champagne"></span> 06段: 9米 香槟色边布 (27m - 36m)</div>
+            <div class="seq-row" style="margin-top:4px; padding-top:4px; border-top:1px dashed #444;">
+                <span class="color-box box-sage"></span> 舞台区: 豆绿色立体壁板 + 白绿花瀑
+            </div>
+        </div>
+    </div>
+
+    <div class="interaction-hint" id="interaction-hint" role="status" aria-live="polite">拖拽画面旋转 · 滚轮/双指缩放</div>
+
+    <div class="bottom-bar">
+        <div class="view-buttons" role="group" aria-label="选择展示视角">
+            <button class="btn active" type="button" data-view="0" aria-pressed="true">视角1: 正中轴总览</button>
+            <button class="btn" type="button" data-view="1" aria-pressed="false">视角2: 左斜角透视</button>
+            <button class="btn" type="button" data-view="2" aria-pressed="false">视角3: 内部通道纵深</button>
+            <button class="btn" type="button" data-view="3" aria-pressed="false">视角4: 舞台新人特写</button>
+        </div>
+        <button class="btn btn-capture" id="captureBtn" type="button">📸 导出高清成品图</button>
+    </div>
+
+    <div id="webgl-container"></div>
+
+    <script>
+        const TENT_W = 12;
+        const TENT_L = 36;
+        const WALL_H = 4.2;
+        const RIDGE_H = 5.6;
+
+        let scene, camera, renderer, controls;
+        let isTransitioning = false;
+        let targetPos = new THREE.Vector3();
+        let targetLookAt = new THREE.Vector3();
+        let currentViewIndex = 0;
+        let transitionStartedAt = 0;
+        const TRANSITION_TIMEOUT = 1800;
+
+        const VIEW_PRESETS = [
+            { pos: new THREE.Vector3(0, 1.8, -5.5), lookAt: new THREE.Vector3(0, 2.2, 26) },   // 正中轴总览
+            { pos: new THREE.Vector3(-14, 5.5, -5), lookAt: new THREE.Vector3(0, 2.3, 18) },    // 左斜角透视
+            { pos: new THREE.Vector3(0, 1.6, 6.0),  lookAt: new THREE.Vector3(0, 2.0, 36) },    // 内部纵深
+            { pos: new THREE.Vector3(0, 1.5, 24.0), lookAt: new THREE.Vector3(0, 2.0, 34) }    // 舞台特写
+        ];
+
+        // 织物纤维材质生成器（法线微绒漫反射）
+        function createFabricMaterial(baseColorHex, isChampagne = false, roughness = 0.6) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1024;
+            canvas.height = 1024;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = baseColorHex;
+            ctx.fillRect(0, 0, 1024, 1024);
+
+            for (let y = 0; y < 1024; y += 4) {
+                ctx.fillStyle = (y % 8 === 0) ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.04)';
+                ctx.fillRect(0, y, 1024, 2);
+            }
+            for (let x = 0; x < 1024; x += 4) {
+                ctx.fillStyle = (x % 8 === 0) ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.03)';
+                ctx.fillRect(x, 0, 2, 1024);
+            }
+            for (let i = 0; i < 20000; i++) {
+                ctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.03)';
+                ctx.fillRect(Math.random() * 1024, Math.random() * 1024, 2, 2);
+            }
+
+            const diffTex = new THREE.CanvasTexture(canvas);
+            diffTex.wrapS = THREE.RepeatWrapping;
+            diffTex.wrapT = THREE.RepeatWrapping;
+
+            const nCanvas = document.createElement('canvas');
+            nCanvas.width = 512;
+            nCanvas.height = 512;
+            const nctx = nCanvas.getContext('2d');
+            nctx.fillStyle = '#8080ff';
+            nctx.fillRect(0, 0, 512, 512);
+
+            for (let x = 0; x < 512; x += 8) {
+                const grad = nctx.createLinearGradient(x, 0, x + 8, 0);
+                grad.addColorStop(0, '#6060e8');
+                grad.addColorStop(0.5, '#a0a0ff');
+                grad.addColorStop(1, '#6060e8');
+                nctx.fillStyle = grad;
+                nctx.fillRect(x, 0, 8, 512);
+            }
+
+            const normTex = new THREE.CanvasTexture(nCanvas);
+            normTex.wrapS = THREE.RepeatWrapping;
+            normTex.wrapT = THREE.RepeatWrapping;
+
+            return new THREE.MeshStandardMaterial({
+                map: diffTex,
+                normalMap: normTex,
+                normalScale: new THREE.Vector2(0.4, 0.4),
+                roughness: roughness,
+                metalness: isChampagne ? 0.15 : 0.04,
+                side: THREE.DoubleSide
+            });
+        }
+
+        // 3D 自然微垂波浪帷幔几何体
+        function createWavyCurtainGeometry(width, height, waveAmplitude = 0.06, waveFrequency = 6) {
+            const segX = 48;
+            const segY = 16;
+            const geo = new THREE.PlaneGeometry(width, height, segX, segY);
+            const pos = geo.attributes.position;
+
+            for (let i = 0; i < pos.count; i++) {
+                const x = pos.getX(i);
+                const y = pos.getY(i);
+                const falloff = 0.5 + 0.5 * (1 - (y + height / 2) / height);
+                const zOffset = Math.sin((x / width) * Math.PI * 2 * waveFrequency) * waveAmplitude * falloff;
+                pos.setZ(i, zOffset);
+            }
+            geo.computeVertexNormals();
+            return geo;
+        }
+
+        function init() {
+            const container = document.getElementById('webgl-container');
+            const viewport = getViewportSize();
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0a0c10);
+            scene.fog = new THREE.FogExp2(0x0a0c10, 0.012);
+
+            camera = new THREE.PerspectiveCamera(50, viewport.width / viewport.height, 0.1, 160);
+            camera.position.copy(VIEW_PRESETS[0].pos);
+            targetPos.copy(VIEW_PRESETS[0].pos);
+            targetLookAt.copy(VIEW_PRESETS[0].lookAt);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, powerPreference: "high-performance" });
+            renderer.setSize(viewport.width, viewport.height, false);
+            renderer.setPixelRatio(getPixelRatio());
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.25;
+            container.appendChild(renderer.domElement);
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.06;
+            controls.enablePan = false;
+            controls.minDistance = 3.2;
+            controls.maxDistance = 72;
+            controls.target.copy(VIEW_PRESETS[0].lookAt);
+            controls.maxPolarAngle = Math.PI / 2 - 0.01;
+            controls.update();
+
+            // 过渡时暂时锁定 OrbitControls；用户在画布上按下时会立即接管相机。
+            renderer.domElement.addEventListener('pointerdown', cancelViewTransitionOnPointerDown, { capture: true, passive: true });
+            controls.addEventListener('start', hideInteractionHint);
+            bindInterface();
+
+            setupHighEndLighting();
+            buildGroundAndCarpet();
+            buildFullyCoveredRedCeiling();
+            buildFullyCoveredSideCurtains();
+            buildRichBanquetDetails();
+            buildStageAndLEDs();
+            buildSageGreenStageAndBackdrop();
+            buildBridalCoupleAndDecor();
+
+            window.addEventListener('resize', onWindowResize);
+            window.addEventListener('orientationchange', onWindowResize);
+            if (window.visualViewport) {
+                window.visualViewport.addEventListener('resize', onWindowResize);
+            }
+            onWindowResize();
+            animate();
+        }
+
+        function getViewportSize() {
+            const viewport = window.visualViewport;
+            return {
+                width: Math.max(1, Math.round(viewport ? viewport.width : window.innerWidth)),
+                height: Math.max(1, Math.round(viewport ? viewport.height : window.innerHeight))
+            };
+        }
+
+        function getPixelRatio() {
+            const maxRatio = window.innerWidth <= 760 ? 1.5 : 2;
+            return Math.min(window.devicePixelRatio || 1, maxRatio);
+        }
+
+        function bindInterface() {
+            document.querySelectorAll('[data-view]').forEach(button => {
+                button.addEventListener('click', () => switchView(Number(button.dataset.view)));
+            });
+
+            const captureButton = document.getElementById('captureBtn');
+            if (captureButton) captureButton.addEventListener('click', captureImage);
+
+            const legendPanel = document.querySelector('.legend-panel');
+            const legendToggle = document.getElementById('legendToggle');
+            if (legendPanel && legendToggle) {
+                const setLegendExpanded = expanded => {
+                    legendPanel.classList.toggle('expanded', expanded);
+                    legendToggle.setAttribute('aria-expanded', String(expanded));
+                    const mark = legendToggle.querySelector('.legend-toggle-mark');
+                    if (mark) mark.textContent = expanded ? '⌃' : '⌄';
+                };
+                legendToggle.addEventListener('click', () => {
+                    setLegendExpanded(!legendPanel.classList.contains('expanded'));
+                });
+                if (window.matchMedia('(max-width: 760px)').matches) setLegendExpanded(false);
+            }
+
+            window.addEventListener('keydown', event => {
+                if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) return;
+                const index = ['1', '2', '3', '4'].indexOf(event.key);
+                if (index !== -1) switchView(index);
+            });
+        }
+
+        function hideInteractionHint() {
+            const hint = document.getElementById('interaction-hint');
+            if (hint) hint.classList.add('hidden');
+        }
+        // 1. 光照与氛围渲染系统
+        function setupHighEndLighting() {
+            const hemi = new THREE.HemisphereLight(0xfff6ec, 0x181a20, 0.75);
+            scene.add(hemi);
+
+            const sun = new THREE.DirectionalLight(0xfffaee, 1.2);
+            sun.position.set(-16, 22, -12);
+            sun.castShadow = true;
+            sun.shadow.mapSize.width = 2048;
+            sun.shadow.mapSize.height = 2048;
+            sun.shadow.camera.near = 1;
+            sun.shadow.camera.far = 75;
+            const d = 25;
+            sun.shadow.camera.left = -d;
+            sun.shadow.camera.right = d;
+            sun.shadow.camera.top = d;
+            sun.shadow.camera.bottom = -d;
+            sun.shadow.bias = -0.0003;
+            scene.add(sun);
+
+            // 舞台双侧聚焦面光
+            [-4.5, 4.5].forEach(x => {
+                const spot = new THREE.SpotLight(0xffeedd, 3.4, 22, Math.PI / 4, 0.45, 1);
+                spot.position.set(x, 4.8, 27.5);
+                spot.target.position.set(0, 1.8, 33.5);
+                scene.add(spot);
+                scene.add(spot.target);
+            });
+
+            // 舞台背景漫射补光
+            const wash = new THREE.PointLight(0xe0f7e9, 2.2, 15);
+            wash.position.set(0, 3.8, 34.5);
+            scene.add(wash);
+        }
+
+        // 2. 地面与婚礼红毯
+        function buildGroundAndCarpet() {
+            const ground = new THREE.Mesh(
+                new THREE.PlaneGeometry(70, 90),
+                new THREE.MeshStandardMaterial({ color: 0x141619, roughness: 0.9 })
+            );
+            ground.rotation.x = -Math.PI / 2;
+            ground.position.set(0, -0.01, 20);
+            ground.receiveShadow = true;
+            scene.add(ground);
+
+            const floor = new THREE.Mesh(
+                new THREE.PlaneGeometry(TENT_W, TENT_L),
+                new THREE.MeshStandardMaterial({ color: 0x3d0e11, roughness: 0.7 })
+            );
+            floor.rotation.x = -Math.PI / 2;
+            floor.position.set(0, 0.002, TENT_L / 2);
+            floor.receiveShadow = true;
+            scene.add(floor);
+
+            // 天鹅绒红地毯 (宽 2.4m, 长 28.5m)
+            const carpetMat = createFabricMaterial('#b8141c', false, 0.7);
+            carpetMat.map.repeat.set(2, 24);
+            carpetMat.normalMap.repeat.set(2, 24);
+
+            const carpet = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 28.5), carpetMat);
+            carpet.rotation.x = -Math.PI / 2;
+            carpet.position.set(0, 0.008, 28.5 / 2);
+            carpet.receiveShadow = true;
+            scene.add(carpet);
+
+            // 通道两侧金色花艺路引柱与温暖小灯球
+            for (let z = 4.5; z <= 26.5; z += 4.4) {
+                [-1.35, 1.35].forEach(x => {
+                    const stand = new THREE.Mesh(
+                        new THREE.CylinderGeometry(0.02, 0.02, 0.7, 8),
+                        new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.85, roughness: 0.25 })
+                    );
+                    stand.position.set(x, 0.35, z);
+                    scene.add(stand);
+
+                    const flowerBall = new THREE.Mesh(
+                        new THREE.SphereGeometry(0.18, 12, 12),
+                        new THREE.MeshStandardMaterial({ color: (z % 8 === 0) ? 0xffffff : 0x82a886, roughness: 0.8 })
+                    );
+                    flowerBall.position.set(x, 0.75, z);
+                    scene.add(flowerBall);
+
+                    const glow = new THREE.PointLight(0xffc56e, 0.35, 3.5);
+                    glow.position.set(x, 0.8, z);
+                    scene.add(glow);
+                });
+            }
+        }
+
+        // 3. 【彻底消除裸露钢架】全封闭一体化纯红顶棚 + 顶棚延伸暖光小灯串
+        function buildFullyCoveredRedCeiling() {
+            const halfW = TENT_W / 2;
+            const roofSlope = Math.sqrt(Math.pow(halfW, 2) + Math.pow(RIDGE_H - WALL_H, 2));
+            const slopeAngle = Math.atan2(RIDGE_H - WALL_H, halfW);
+
+            const redRoofMat = createFabricMaterial('#aa121d', false, 0.6);
+            redRoofMat.map.repeat.set(4, 24);
+            redRoofMat.normalMap.repeat.set(4, 24);
+
+            // 左坡顶布（无任何露架，全封闭）
+            const leftRoofGeo = createWavyCurtainGeometry(roofSlope, TENT_L, 0.04, 12);
+            const leftRoof = new THREE.Mesh(leftRoofGeo, redRoofMat);
+            leftRoof.position.set(-halfW / 2, (WALL_H + RIDGE_H) / 2, TENT_L / 2);
+            leftRoof.rotation.x = Math.PI / 2;
+            leftRoof.rotation.y = slopeAngle;
+            leftRoof.castShadow = true;
+            leftRoof.receiveShadow = true;
+            scene.add(leftRoof);
+
+            // 右坡顶布
+            const rightRoofGeo = createWavyCurtainGeometry(roofSlope, TENT_L, 0.04, 12);
+            const rightRoof = new THREE.Mesh(rightRoofGeo, redRoofMat);
+            rightRoof.position.set(halfW / 2, (WALL_H + RIDGE_H) / 2, TENT_L / 2);
+            rightRoof.rotation.x = Math.PI / 2;
+            rightRoof.rotation.y = -slopeAngle;
+            rightRoof.castShadow = true;
+            rightRoof.receiveShadow = true;
+            scene.add(rightRoof);
+
+            // 顶布内侧纵向延伸暖光小灯串（中心脊线 + 两侧共3组延伸）
+            const rows = [-2.8, 0, 2.8];
+            rows.forEach(x => {
+                const y = x === 0 ? RIDGE_H - 0.2 : (WALL_H + RIDGE_H) / 2 - 0.1;
+                const count = 36;
+                for (let j = 0; j < count; j++) {
+                    const z = (j / count) * TENT_L + 0.5;
+                    const bulb = new THREE.Mesh(
+                        new THREE.SphereGeometry(0.045, 8, 8),
+                        new THREE.MeshBasicMaterial({ color: 0xffeaab })
+                    );
+                    bulb.position.set(x, y - Math.sin((j % 5) * 0.5) * 0.08, z);
+                    scene.add(bulb);
+
+                    if (j % 5 === 0) {
+                        const point = new THREE.PointLight(0xffb84d, 0.45, 5);
+                        point.position.copy(bulb.position);
+                        scene.add(point);
+                    }
+                }
+            });
+        }
+
+        // 4. 【彻底消除侧立柱黑架】实景软装分段边布 (红9m → 香槟3m → 红9m → 香槟3m → 红3m → 香槟9m)
+        function buildFullyCoveredSideCurtains() {
+            const segments = [
+                { len: 9, hex: '#9b1118', isChampagne: false, rough: 0.65 },
+                { len: 3, hex: '#d9b380', isChampagne: true,  rough: 0.4 },
+                { len: 9, hex: '#9b1118', isChampagne: false, rough: 0.65 },
+                { len: 3, hex: '#d9b380', isChampagne: true,  rough: 0.4 },
+                { len: 3, hex: '#9b1118', isChampagne: false, rough: 0.65 },
+                { len: 9, hex: '#d9b380', isChampagne: true,  rough: 0.4 }
+            ];
+
+            let curZ = 0;
+            const halfW = TENT_W / 2;
+
+            segments.forEach(seg => {
+                const mat = createFabricMaterial(seg.hex, seg.isChampagne, seg.rough);
+                mat.map.repeat.set(seg.len * 1.5, 1);
+                mat.normalMap.repeat.set(seg.len * 1.5, 1);
+
+                const geo = createWavyCurtainGeometry(seg.len, WALL_H, 0.08, seg.len * 1.6);
+
+                // 左侧完全封闭帷幔
+                const left = new THREE.Mesh(geo, mat);
+                left.position.set(-halfW, WALL_H / 2, curZ + seg.len / 2);
+                left.rotation.y = Math.PI / 2;
+                left.castShadow = true;
+                left.receiveShadow = true;
+                scene.add(left);
+
+                // 右侧完全封闭帷幔
+                const right = new THREE.Mesh(geo, mat);
+                right.position.set(halfW, WALL_H / 2, curZ + seg.len / 2);
+                right.rotation.y = -Math.PI / 2;
+                right.castShadow = true;
+                right.receiveShadow = true;
+                scene.add(right);
+
+                curZ += seg.len;
+            });
+        }
+
+        // 5. 宴席区细节丰富化
+        function buildRichBanquetDetails() {
+            const tableMat = createFabricMaterial('#a8141c', false, 0.6);
+            const chairMat = createFabricMaterial('#850e14', false, 0.65);
+            const goldMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.85, roughness: 0.25 });
+            const porcelainMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.15 });
+            const glassMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.1, transparent: true, opacity: 0.65 });
+            const wineMat = new THREE.MeshStandardMaterial({ color: 0x220505, roughness: 0.2 });
+
+            const startZ = 4.0;
+            const stepZ = 3.8;
+            const rows = 6;
+
+            for (let r = 0; r < rows; r++) {
+                const z = startZ + r * stepZ;
+
+                [-3.8, 3.8].forEach(x => {
+                    const group = new THREE.Group();
+                    group.position.set(x, 0, z);
+
+                    const tableGeo = new THREE.CylinderGeometry(0.88, 0.98, 0.76, 32);
+                    const table = new THREE.Mesh(tableGeo, tableMat);
+                    table.position.y = 0.38;
+                    table.castShadow = true;
+                    table.receiveShadow = true;
+                    group.add(table);
+
+                    const susan = new THREE.Mesh(new THREE.CylinderGeometry(0.52, 0.52, 0.02, 24), goldMat);
+                    susan.position.y = 0.77;
+                    group.add(susan);
+
+                    const vase = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.05, 0.2, 12), goldMat);
+                    vase.position.set(0, 0.88, 0);
+                    group.add(vase);
+
+                    const flowerTop = new THREE.Mesh(
+                        new THREE.SphereGeometry(0.18, 10, 10),
+                        new THREE.MeshStandardMaterial({ color: 0xd62828, roughness: 0.8 })
+                    );
+                    flowerTop.position.set(0, 1.02, 0);
+                    group.add(flowerTop);
+
+                    const bottle = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.035, 0.24, 10), wineMat);
+                    bottle.position.set(0.22, 0.9, 0.1);
+                    group.add(bottle);
+
+                    for (let p = 0; p < 8; p++) {
+                        const ang = (p / 8) * Math.PI * 2;
+                        const px = Math.cos(ang) * 0.7;
+                        const pz = Math.sin(ang) * 0.7;
+
+                        const plate = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.015, 12), porcelainMat);
+                        plate.position.set(px, 0.77, pz);
+                        group.add(plate);
+
+                        const napkin = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 0.08, 8), porcelainMat);
+                        napkin.rotation.z = Math.PI / 2;
+                        napkin.position.set(px, 0.785, pz);
+                        group.add(napkin);
+
+                        const glassStem = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.08, 8), glassMat);
+                        glassStem.position.set(px * 0.85, 0.81, pz * 0.85);
+                        group.add(glassStem);
+                    }
+
+                    for (let c = 0; c < 8; c++) {
+                        const cAng = (c / 8) * Math.PI * 2;
+                        const cx = Math.cos(cAng) * 1.15;
+                        const cz = Math.sin(cAng) * 1.15;
+
+                        const chairGroup = new THREE.Group();
+                        chairGroup.position.set(cx, 0, cz);
+                        chairGroup.rotation.y = -cAng + Math.PI / 2;
+
+                        const seat = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.08, 0.4), chairMat);
+                        seat.position.y = 0.42;
+                        seat.castShadow = true;
+                        chairGroup.add(seat);
+
+                        [-0.16, 0.16].forEach(lx => {
+                            [-0.16, 0.16].forEach(lz => {
+                                const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.42, 6), chairMat);
+                                leg.position.set(lx, 0.21, lz);
+                                chairGroup.add(leg);
+                            });
+                        });
+
+                        const back = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.5, 0.04), chairMat);
+                        back.position.set(0, 0.68, 0.18);
+                        back.castShadow = true;
+                        chairGroup.add(back);
+
+                        const sash = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.09, 0.02), goldMat);
+                        sash.position.set(0, 0.65, 0.205);
+                        chairGroup.add(sash);
+
+                        group.add(chairGroup);
+                    }
+
+                    scene.add(group);
+                });
+            }
+        }
+
+        // 6. T字形舞台与对称电子屏 (距边1m)
+        function buildStageAndLEDs() {
+            const stageMat = new THREE.MeshStandardMaterial({ color: 0xa81119, roughness: 0.55 });
+
+            const mainStage = new THREE.Mesh(new THREE.BoxGeometry(9.6, 0.4, 4.5), stageMat);
+            mainStage.position.set(0, 0.2, 33.75);
+            mainStage.castShadow = true;
+            mainStage.receiveShadow = true;
+            scene.add(mainStage);
+
+            const tTongue = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.4, 3.0), stageMat);
+            tTongue.position.set(0, 0.2, 30.0);
+            tTongue.castShadow = true;
+            tTongue.receiveShadow = true;
+            scene.add(tTongue);
+
+            for (let x = -4.6; x <= 4.6; x += 0.45) {
+                const flower = new THREE.Mesh(
+                    new THREE.SphereGeometry(0.14, 8, 8),
+                    new THREE.MeshStandardMaterial({
+                        color: Math.random() > 0.4 ? 0xffffff : 0x8cb690,
+                        roughness: 0.8
+                    })
+                );
+                flower.position.set(x, 0.44, 31.5);
+                scene.add(flower);
+            }
+
+            const ledW = 2.4;
+            const ledH = 2.8;
+            const screenX = (TENT_W / 2) - 1.0 - (ledW / 2);
+
+            [-screenX, screenX].forEach((xPos, idx) => {
+                const frame = new THREE.Mesh(
+                    new THREE.BoxGeometry(ledW + 0.1, ledH + 0.1, 0.1),
+                    new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.4 })
+                );
+                frame.position.set(xPos, ledH / 2 + 0.4, 33.5);
+                scene.add(frame);
+
+                const canvas = document.createElement('canvas');
+                canvas.width = 512;
+                canvas.height = 600;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#172118';
+                ctx.fillRect(0, 0, 512, 600);
+
+                ctx.strokeStyle = '#d4af37';
+                ctx.lineWidth = 12;
+                ctx.strokeRect(20, 20, 472, 560);
+
+                ctx.fillStyle = '#9fc5a2';
+                ctx.font = 'bold 36px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('WEDDING CELEBRATION', 256, 110);
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 34px sans-serif';
+                ctx.fillText('新郎 & 新娘 喜结连理', 256, 185);
+
+                ctx.fillStyle = '#e8d28a';
+                ctx.font = '24px sans-serif';
+                ctx.fillText('百年好合 · 永结同心', 256, 450);
+
+                const tex = new THREE.CanvasTexture(canvas);
+                const screen = new THREE.Mesh(
+                    new THREE.PlaneGeometry(ledW, ledH),
+                    new THREE.MeshBasicMaterial({ map: tex })
+                );
+                screen.position.set(xPos, ledH / 2 + 0.4, 33.43);
+                screen.rotation.y = idx === 0 ? 0.14 : -0.14;
+                scene.add(screen);
+            });
+        }
+
+        // 7. 舞台背景核心：【豆绿色波浪壁板 + 白绿藤蔓花瀑 + 纯白幔头 + 金色立体双囍】
+        function buildSageGreenStageAndBackdrop() {
+            const stageZ = 35.85;
+            const stageGroup = new THREE.Group();
+
+            const sageMat = createFabricMaterial('#4e7353', false, 0.65);
+            const backGeo = createWavyCurtainGeometry(8.8, 4.4, 0.08, 14);
+            const backPanel = new THREE.Mesh(backGeo, sageMat);
+            backPanel.position.set(0, 2.2, stageZ);
+            stageGroup.add(backPanel);
+
+            const whiteSheerMat = new THREE.MeshStandardMaterial({
+                color: 0xfbfbfb,
+                roughness: 0.35,
+                transparent: true,
+                opacity: 0.92,
+                side: THREE.DoubleSide
+            });
+            const whiteSheer = new THREE.Mesh(new THREE.PlaneGeometry(5.2, 4.0), whiteSheerMat);
+            whiteSheer.position.set(0, 2.1, stageZ - 0.04);
+            stageGroup.add(whiteSheer);
+
+            for (let i = -2.4; i <= 2.4; i += 1.6) {
+                const swagGeo = new THREE.TorusGeometry(0.9, 0.12, 10, 24, Math.PI);
+                const swag = new THREE.Mesh(swagGeo, (Math.abs(i) > 1.5) ? sageMat : whiteSheerMat);
+                swag.position.set(i, 3.8, stageZ - 0.08);
+                swag.rotation.z = Math.PI;
+                stageGroup.add(swag);
+            }
+
+            const vineGreenMat = new THREE.MeshStandardMaterial({ color: 0x3b593f, roughness: 0.9 });
+            const vineWhiteMat = new THREE.MeshStandardMaterial({ color: 0xf5f6fa, roughness: 0.8 });
+
+            for (let x = -4.0; x <= 4.0; x += 0.4) {
+                const vineLen = 1.1 + Math.sin(x * 2.8) * 0.45 + (x % 0.3);
+                const vine = new THREE.Mesh(
+                    new THREE.CylinderGeometry(0.025, 0.01, vineLen, 6),
+                    (Math.abs(x) % 2 < 0.6) ? vineGreenMat : vineWhiteMat
+                );
+                vine.position.set(x, 4.0 - vineLen / 2, stageZ - 0.12);
+                stageGroup.add(vine);
+            }
+
+            const doubleHappinessCanvas = document.createElement('canvas');
+            doubleHappinessCanvas.width = 512;
+            doubleHappinessCanvas.height = 512;
+            const hCtx = doubleHappinessCanvas.getContext('2d');
+            hCtx.fillStyle = 'rgba(0,0,0,0)';
+            hCtx.fillRect(0, 0, 512, 512);
+
+            hCtx.fillStyle = '#f0cf75';
+            hCtx.font = 'bold 360px "Microsoft YaHei", sans-serif';
+            hCtx.textAlign = 'center';
+            hCtx.textBaseline = 'middle';
+            hCtx.fillText('囍', 256, 260);
+
+            const hTex = new THREE.CanvasTexture(doubleHappinessCanvas);
+            const hMat = new THREE.MeshStandardMaterial({
+                map: hTex,
+                transparent: true,
+                metalness: 0.9,
+                roughness: 0.2
+            });
+            const hMesh = new THREE.Mesh(new THREE.PlaneGeometry(2.0, 2.0), hMat);
+            hMesh.position.set(0, 2.4, stageZ - 0.1);
+            stageGroup.add(hMesh);
+
+            scene.add(stageGroup);
+        }
+
+        // 8. 舞台中央：端庄高雅新人形象（正装西服 + 刺绣秀禾红袍）
+        function buildBridalCoupleAndDecor() {
+            const coupleGroup = new THREE.Group();
+            coupleGroup.position.set(0, 0.4, 33.2);
+
+            const coupleCanvas = document.createElement('canvas');
+            coupleCanvas.width = 512;
+            coupleCanvas.height = 512;
+            const ctx = coupleCanvas.getContext('2d');
+            ctx.clearRect(0, 0, 512, 512);
+
+            ctx.fillStyle = '#1b1d24';
+            ctx.beginPath();
+            ctx.moveTo(170, 230);
+            ctx.lineTo(230, 230);
+            ctx.lineTo(240, 480);
+            ctx.lineTo(160, 480);
+            ctx.fill();
+
+            ctx.fillStyle = '#111';
+            ctx.beginPath();
+            ctx.arc(200, 160, 36, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#b7151e';
+            ctx.beginPath();
+            ctx.moveTo(270, 240);
+            ctx.lineTo(330, 240);
+            ctx.lineTo(365, 485);
+            ctx.lineTo(235, 485);
+            ctx.fill();
+
+            ctx.strokeStyle = '#f1c40f';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.arc(300, 320, 25, 0, Math.PI);
+            ctx.stroke();
+
+            ctx.fillStyle = '#111';
+            ctx.beginPath();
+            ctx.arc(300, 168, 32, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#d4af37';
+            ctx.beginPath();
+            ctx.arc(300, 138, 12, 0, Math.PI * 2);
+            ctx.fill();
+
+            const coupleTex = new THREE.CanvasTexture(coupleCanvas);
+            const coupleMat = new THREE.MeshStandardMaterial({
+                map: coupleTex,
+                transparent: true,
+                roughness: 0.4
+            });
+
+            const coupleMesh = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 1.8), coupleMat);
+            coupleMesh.position.set(0, 0.9, 0);
+            coupleGroup.add(coupleMesh);
+
+            scene.add(coupleGroup);
+        }
+
+        // 视角平滑过渡；过渡完成后把相机控制权交还给 OrbitControls。
+        function switchView(index) {
+            if (!camera || !controls || !VIEW_PRESETS[index]) return;
+
+            const btns = document.querySelectorAll('[data-view]');
+            btns.forEach((button, i) => {
+                const active = i === index;
+                button.classList.toggle('active', active);
+                button.setAttribute('aria-pressed', String(active));
+            });
+
+            const preset = VIEW_PRESETS[index];
+            currentViewIndex = index;
+            targetPos.copy(preset.pos);
+            targetLookAt.copy(preset.lookAt);
+            isTransitioning = true;
+            transitionStartedAt = performance.now();
+            controls.enabled = false;
+        }
+
+        function finishViewTransition() {
+            camera.position.copy(targetPos);
+            controls.target.copy(targetLookAt);
+            isTransitioning = false;
+            controls.enabled = true;
+            controls.update();
+        }
+
+        function cancelViewTransitionOnPointerDown() {
+            if (isTransitioning) finishViewTransition();
+        }
+
+        // 导出高清效果图
+        function captureImage() {
+            renderer.render(scene, camera);
+            const dataUrl = renderer.domElement.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = `36x12婚宴大棚_全包布实景成品图_${Date.now()}.png`;
+            link.href = dataUrl;
+            link.click();
+        }
+
+        function onWindowResize() {
+            if (!camera || !renderer) return;
+            const viewport = getViewportSize();
+            camera.aspect = viewport.width / viewport.height;
+            camera.fov = viewport.width <= 760 ? 56 : 50;
+            camera.updateProjectionMatrix();
+            renderer.setSize(viewport.width, viewport.height, false);
+            renderer.setPixelRatio(getPixelRatio());
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            if (isTransitioning) {
+                camera.position.lerp(targetPos, 0.08);
+                controls.target.lerp(targetLookAt, 0.08);
+                const reachedTarget = camera.position.distanceTo(targetPos) < 0.03 &&
+                    controls.target.distanceTo(targetLookAt) < 0.03;
+                const timedOut = performance.now() - transitionStartedAt > TRANSITION_TIMEOUT;
+                if (reachedTarget || timedOut) finishViewTransition();
+            }
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
