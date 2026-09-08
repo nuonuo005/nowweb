@@ -1,82 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>从零搭建个人博客：运营人的技术实践 — 诺诺的小博客空间</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/common.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="从零搭建个人博客：运营人的技术实践">
+  <meta name="theme-color" content="#ffffff">
+  <title>从零搭建个人博客：运营人的技术实践 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
-          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
-        },
-      },
-    }
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
   </script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<link rel="stylesheet" href="../article-content.css"><link rel="canonical" href="https://nuonuo.me/posts/build-blog.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
 </head>
-<body class="bg-neutral text-dark font-sans antialiased">
-  <div id="reading-progress"></div>
-
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <i class="fa fa-paper-plane text-primary text-xl"></i>
-          <span class="text-xl font-semibold">诺诺的小博客空间</span>
-        </a>
-        <div class="hidden md:flex items-center gap-6">
-          <a href="../index.html#home" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors">首页</a>
-          <a href="../index.html#journey" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
-          <a href="../index.html#skills" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
-          <a href="../index.html#articles" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
-          <a href="../archive.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">归档</a>
-          <a href="../about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
-          <a href="../index.html#contact" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
-        </div>
-        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
-          <i class="fa fa-bars text-xl"></i>
-        </button>
-      </div>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
-      <div class="px-4 py-3 space-y-1">
-        <a href="../index.html#home" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
-        <a href="../index.html#journey" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
-        <a href="../index.html#skills" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
-        <a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
-        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
-        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
-        <a href="../index.html#contact" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
-      </div>
-    </div>
-  </nav>
+  </header>
 
-  <article data-tags='["技术","效率"]'>
-    <header class="pt-24 pb-16" style="background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.12));">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="text-sm text-gray-500 mb-4">2026-04-12 · 阅读约 9 分钟</div>
-        <h1 class="text-3xl sm:text-4xl font-bold leading-tight mb-6">从零搭建个人博客：运营人的技术实践</h1>
-        <div class="flex flex-wrap justify-center gap-2">
-          <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">技术</span>
-          <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">博客</span>
-          <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">DIY</span>
-        </div>
-      </div>
-    </header>
+  <main><article data-tags='["技术", "效率"]'><header class="article-hero migrated-hero article-hero--text"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">NUO NOTES / 随笔</p><h1>从零搭建个人博客：运营人的技术实践</h1><div class="article-meta"><time datetime="2026-04-12">2026-04-12</time><span>约 9 分钟</span></div><div class="article-tags"><span>技术</span><span>效率</span></div></div></div></header><div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc="">开场</a><a href="#note-section-1" data-toc="">一、为什么我要自己搭博客</a><a href="#note-section-2" data-toc="">二、我用 AI 学会了写 HTML</a><a href="#note-section-3" data-toc="">三、我的技术方案</a><a href="#note-section-4" data-toc="">四、搭建过程的踩坑记录</a><a href="#note-section-5" data-toc="">五、我想对你说的话</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
 
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-content">
+      <p id="opening" data-article-section="">你现在看到的这个博客，是我——一个完全不懂编程的运营人——从零搭建起来的。如果你也是非技术背景但想拥有一个属于自己的网站，这篇文章就是为你写的。<strong>我想证明一件事：在 AI 时代，不会写代码已经不再是拥有个人网站的障碍了。</strong></p>
 
-      <p>你现在看到的这个博客，是我——一个完全不懂编程的运营人——从零搭建起来的。如果你也是非技术背景但想拥有一个属于自己的网站，这篇文章就是为你写的。<strong>我想证明一件事：在 AI 时代，不会写代码已经不再是拥有个人网站的障碍了。</strong></p>
-
-      <h2>一、为什么我要自己搭博客</h2>
+      <h2 id="note-section-1" data-article-section="">一、为什么我要自己搭博客</h2>
       <p>2025 年初，我在几个平台上零散地发了一些文章，虽然也有读者反馈，但总觉得受制于人——平台改规则、限流、甚至莫名其妙删文，这些事都让我很不爽。更重要的是，我不想把自己的内容资产全放在别人的平台上。我希望有一个完全属于自己的空间，想怎么写就怎么写，想怎么设计就怎么设计。</p>
       <p>有了这个念头之后，我去了解了一下搭建博客的方案，发现主要有三条路：</p>
       <ul>
@@ -86,7 +45,7 @@
       </ul>
       <p>我最后选了第三条路。听起来很夸张对吧？但在 AI 的帮助下，这条路其实比想象中简单得多。</p>
 
-      <h2>二、我用 AI 学会了写 HTML</h2>
+      <h2 id="note-section-2" data-article-section="">二、我用 AI 学会了写 HTML</h2>
       <p>一开始我对 HTML 的认知仅限于"它是网页的源代码"。我没学过任何编程语言，连 HTML 标签都不认识几个。但我发现了一个规律：<strong>AI 是最好的编程老师，因为它不会嫌弃我的问题太蠢。</strong></p>
       <p>我的学习过程是这样的：</p>
       <ul>
@@ -98,11 +57,11 @@
       <p>不到两周，我就能从零写一个完整的网页了。<strong>不是说我现在成了程序员，而是我学会了"用 AI 来写代码"这个元技能。</strong>这个能力比学会某个具体的语法重要得多。</p>
 
       <div class="highlight-box">
-        <p class="text-sm font-medium text-primary mb-1">💡 给非技术朋友的建议</p>
-        <p class="text-sm">不要一开始就想系统学习编程。而是先想清楚你要做什么，然后让 AI 帮你实现，过程中自然就学会了。需求驱动学习是最快的路径。你需要知道的不是"怎么写代码"，而是"怎么让 AI 帮你写代码"。</p>
+        <p>💡 给非技术朋友的建议</p>
+        <p>不要一开始就想系统学习编程。而是先想清楚你要做什么，然后让 AI 帮你实现，过程中自然就学会了。需求驱动学习是最快的路径。你需要知道的不是"怎么写代码"，而是"怎么让 AI 帮你写代码"。</p>
       </div>
 
-      <h2>三、我的技术方案</h2>
+      <h2 id="note-section-3" data-article-section="">三、我的技术方案</h2>
       <p>如果你也想搭一个类似的博客，这里是我的全套技术方案：</p>
       <ul>
         <li><strong>托管：</strong>Vercel（免费版），连接 GitHub 仓库后自动部署</li>
@@ -114,7 +73,7 @@
       </ul>
       <p>整套方案零成本（域名除外），不需要服务器、不需要数据库、不需要装任何软件，一个记事本加上浏览器就够了。</p>
 
-      <h2>四、搭建过程的踩坑记录</h2>
+      <h2 id="note-section-4" data-article-section="">四、搭建过程的踩坑记录</h2>
       <p>过程当然不是一帆风顺的。分享几个我踩过的坑：</p>
       <ul>
         <li><strong>坑一：</strong>第一次上传文件到 Vercel，发现样式全乱了。折腾半天发现是路径问题——在本地好好的，上传到服务器后 CSS 和图片的引用路径就不对了。我的解决方案是用相对路径代替绝对路径。</li>
@@ -123,7 +82,7 @@
       </ul>
       <p>每个坑对应我学到的一个新知识。从这个角度看，踩坑不是坏事，反而是最好的学习机会。</p>
 
-      <h2>五、我想对你说的话</h2>
+      <h2 id="note-section-5" data-article-section="">五、我想对你说的话</h2>
       <p>写这篇文章的初衷，是想鼓励和我一样的非技术背景的朋友：<strong>不要被"编程"这两个字吓到。</strong>搭一个个人博客所需的技术知识，远没有你想象的那么多。在 AI 的帮助下，一个零基础的人两周就能上线自己的网站。</p>
       <p>拥有一个自己的网站有什么好处？对我的改变是：</p>
       <ul>
@@ -137,40 +96,7 @@
 
       <p>如果你看了这篇文章也想去试试，我的建议很简单：今天就注册一个 GitHub 账号，然后把你想写的文章用最简单的 HTML 写出来。迈出第一步，你已经超过了 99% 只停留在"想想"阶段的人。</p>
     </div>
-  </article>
-
-  <!-- Giscus 评论组件 — 需要你配置 GitHub 仓库后启用 -->
-  <div class="giscus">
-    <div class="text-center py-8 bg-gray-50 rounded-xl border border-gray-200">
-      <i class="fa fa-comments text-3xl text-gray-300 mb-3 block"></i>
-      <p class="text-gray-500 text-sm mb-2">期待你的想法</p>
-      <p class="text-gray-400 text-xs">配置 GitHub 仓库并启用 Giscus 后，这里将显示评论区</p>
-    </div>
-  </div>
-  </article>
-
-  <div class="border-t border-gray-200">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex justify-between">
-      <a href="reading-method.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
-        <i class="fa fa-arrow-left"></i> 上一篇：我的阅读方法论
-      </a>
-      <a href="ai-era.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
-        下一篇：关于AI时代的个人成长思考 <i class="fa fa-arrow-right"></i>
-      </a>
-    </div>
-  </div>
-
-  <footer class="bg-dark text-white py-10">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <a href="../index.html" class="text-primary hover:underline text-sm inline-flex items-center gap-1">
-        <i class="fa fa-arrow-left"></i> 返回首页
-      </a>
-      <p class="text-gray-400 text-sm mt-4">&copy; 2026 诺诺的小博客空间</p>
-    </div>
-  </footer>
-
-  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
-
-  <script src="../js/common.js"></script>
+  <footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-04-12</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div><nav class="article-related" aria-label="相邻文章"><a href="reading-method.html">上一篇：我的阅读方法论</a><a href="ai-era.html">下一篇：关于AI时代的个人成长思考</a></nav></footer></div></div></article></main><button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button>
+  <script src="../article.js"></script>
 </body>
 </html>

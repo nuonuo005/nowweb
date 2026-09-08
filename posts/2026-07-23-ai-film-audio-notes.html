@@ -1,29 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="复盘最近的 AI 短剧、剧本与音频生产：已经完成的诊断、声纹克隆和音轨处理，尚未完成的分镜、曲名识别与成片验证，以及下一步如何把它们接成一条可执行的生产线。" />
-  <meta property="og:title" content="我的 AI 工作日志 #003：短剧还在立骨架，声音开始落地" />
-  <meta property="og:description" content="不把半成品说成完成品：复盘剧本、分镜、声纹克隆与背景音乐处理的真实进度，并写下下一步制作计划。" />
-  <meta property="og:type" content="article" />
-  <meta name="theme-color" content="#21171d" />
-  <title>我的 AI 工作日志 #003：短剧还在立骨架，声音开始落地 — 诺诺的小博客空间</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🎙️%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="../css/common.css?v=mobile-20260723" />
-  <link rel="stylesheet" href="../css/journal.css?v=visual-20260730" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="复盘最近的 AI 短剧、剧本与音频生产：已经完成的诊断、声纹克隆和音轨处理，尚未完成的分镜、曲名识别与成片验证，以及下一步如何把它们接成一条可执行的生产线。">
+  <meta name="theme-color" content="#ffffff">
+  <title>短剧还在立骨架，声音开始落地 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
   <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: { extend: { colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' }, fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] } } }
-    }
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
   </script>
-  <script type="application/ld+json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -34,56 +27,33 @@
     "description": "复盘最近 AI 短剧、剧本和音频生产的真实进度、未完成项与下一步制作计划。"
   }
   </script>
+<link rel="stylesheet" href="../article-content.css"><link rel="canonical" href="https://nuonuo.me/posts/2026-07-23-ai-film-audio-notes.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
 </head>
-<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
-  <div id="reading-progress"></div>
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"><i class="fa fa-paper-plane text-primary text-xl"></i><span class="text-xl font-semibold">诺诺的小博客空间</span></a>
-        <div class="hidden md:flex items-center gap-7">
-          <a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a>
-          <a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a>
-          <a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a>
-          <a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a>
-        </div>
-        <div class="flex items-center gap-2">
-          <button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式"><i class="fa fa-sun-o icon-sun"></i><i class="fa fa-moon-o icon-moon"></i></button>
-          <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false"><i class="fa fa-bars text-xl"></i></button>
-        </div>
-      </div>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50"><div class="px-4 py-3 space-y-1"><a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a><a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a><a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a><a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a></div></div>
-  </nav>
+  </header>
 
-  <article data-tags='["工作日志","AI影视","短剧","剧本","音频"]'>
-    <header class="journal-hero">
-      <div class="journal-hero__inner">
-        <p class="journal-kicker">Daily Build Log · No. 003</p>
-        <h1>短剧还在立骨架，<br />声音开始落地</h1>
-        <p class="journal-hero__lead">把最近的短剧、剧本与音频工作摊开：哪些已经做成，哪些只是走到了中途，下一步怎样从“有工具”走向“有成片”。</p>
-        <div class="journal-meta">
-          <span><i class="fa fa-calendar-o"></i> 2026-07-23</span>
-          <span><i class="fa fa-clock-o"></i> 阅读约 10 分钟</span>
-          <span><i class="fa fa-film"></i> 剧本 × 声音 × 制作流程</span>
-        </div>
-      </div>
-    </header>
-
-    <main class="journal-shell">
-      <p class="journal-intro">这段时间做的事，表面上分成了短剧、剧本、分镜和音频；真正的问题却是同一个：能不能把“一个想法”稳定地推到“观众愿意看完的一条片子”。所以这篇不写工具说明书，也不把半成品包装成结果，而是记录真实进度、缺口和下一步。</p>
-
-      <figure class="journal-opening-cover">
-        <img src="../assets/article-covers/short-film-audio-cover-20260730.png" alt="AI 影视工作复盘封面：剧本、声音波形与分镜" loading="eager" />
+  <main><article data-tags='["工作日志", "AI影视", "短剧", "剧本", "音频"]'><header class="article-hero migrated-hero"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">Daily Build Log · No. 003</p><h1>短剧还在立骨架，声音开始落地</h1><p class="article-deck">把最近的短剧、剧本与音频工作摊开：哪些已经做成，哪些只是走到了中途，下一步怎样从“有工具”走向“有成片”。</p><div class="article-meta"><span><i></i> 2026-07-23</span><span><i></i> 阅读约 10 分钟</span><span><i></i> 剧本 × 声音 × 制作流程</span></div><div class="article-tags"><span>工作日志</span><span>AI影视</span><span>短剧</span><span>剧本</span><span>音频</span></div></div><figure class="article-cover">
+        <img src="../assets/article-covers/short-film-audio-cover-20260730.png" alt="AI 影视工作复盘封面：剧本、声音波形与分镜" loading="eager" fetchpriority="high" width="1672" height="941">
         <figcaption>从故事、画面到声音，先把生产链路接起来，再让每一环在真实样片里经受检验。</figcaption>
-      </figure>
+      </figure></div></header><div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc="">开场</a><a href="#note-section-1" data-toc="">短剧和剧本：先解决“值不值得看”，再讨论怎么生成</a><a href="#note-section-2" data-toc="">音频生产：声音不再只是“最后再补”的环节</a><a href="#note-section-3" data-toc="">下一次要交付的，不是一堆素材，而是一支能判断成败的样片</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
+      <p class="journal-intro" id="opening" data-article-section="">这段时间做的事，表面上分成了短剧、剧本、分镜和音频；真正的问题却是同一个：能不能把“一个想法”稳定地推到“观众愿意看完的一条片子”。所以这篇不写工具说明书，也不把半成品包装成结果，而是记录真实进度、缺口和下一步。</p>
 
       <section class="journal-project" id="script">
         <div class="journal-project__head">
           <div class="journal-project__index">01</div>
           <div>
-            <p class="journal-project__label">Short Drama & Script Development</p>
-            <h2>短剧和剧本：先解决“值不值得看”，再讨论怎么生成</h2>
+            <p class="journal-project__label">Short Drama &amp; Script Development</p>
+            <h2 id="note-section-1" data-article-section="">短剧和剧本：先解决“值不值得看”，再讨论怎么生成</h2>
             <p class="journal-project__desc">当前的工作重点不是把文字快速拉长，而是不断给故事做压力测试：概念够不够尖、人物有没有行动、冲突能不能持续升级、镜头能不能真正拍出来。</p>
           </div>
         </div>
@@ -124,7 +94,7 @@
           <div class="journal-project__index">02</div>
           <div>
             <p class="journal-project__label">Audio Production</p>
-            <h2>音频生产：声音不再只是“最后再补”的环节</h2>
+            <h2 id="note-section-2" data-article-section="">音频生产：声音不再只是“最后再补”的环节</h2>
             <p class="journal-project__desc">短片里的声音至少有三层：台词/旁白、背景音乐、环境与转场。最近先把前两层的可用链路跑通，也把边界记清楚。</p>
           </div>
         </div>
@@ -152,11 +122,11 @@
         <div class="journal-card">
           <h3>后续的声音制作顺序</h3>
           <div class="journal-flow" aria-label="短片声音制作流程">
-            <div class="journal-flow__step">锁定台词<br />角色与情绪</div>
-            <div class="journal-flow__step">生成试音<br />语速与停顿</div>
-            <div class="journal-flow__step">选择配乐<br />授权与情绪</div>
-            <div class="journal-flow__step">补环境声<br />转场与空间</div>
-            <div class="journal-flow__step">统一混音<br />字幕与成片</div>
+            <div class="journal-flow__step">锁定台词<br>角色与情绪</div>
+            <div class="journal-flow__step">生成试音<br>语速与停顿</div>
+            <div class="journal-flow__step">选择配乐<br>授权与情绪</div>
+            <div class="journal-flow__step">补环境声<br>转场与空间</div>
+            <div class="journal-flow__step">统一混音<br>字幕与成片</div>
           </div>
           <p>真正进入制作时，每个镜头先有“台词时长 + 声音情绪 + 是否需要音乐”的小表，再开始剪画面。这样声音不是最后压上去的一层，而是直接参与决定镜头停留多久、转场落在哪里。</p>
         </div>
@@ -167,7 +137,7 @@
           <div class="journal-project__index">03</div>
           <div>
             <p class="journal-project__label">The Next Build</p>
-            <h2>下一次要交付的，不是一堆素材，而是一支能判断成败的样片</h2>
+            <h2 id="note-section-3" data-article-section="">下一次要交付的，不是一堆素材，而是一支能判断成败的样片</h2>
             <p class="journal-project__desc">把现在分散的能力收敛到同一件小而完整的事情上：一段短剧冲突、一组固定资产、一套可复用声音设计和一次播放验证。</p>
           </div>
         </div>
@@ -184,11 +154,8 @@
       </section>
 
       <blockquote class="journal-quote"><strong>这次的结论：</strong>剧本、画面和声音不是三件各自完成的事情。短剧要先有一个站得住的冲突，声音要从第一版分镜就参与节奏，最后由一支小样片来证明它们是否真的在一起工作。</blockquote>
-    </main>
-  </article>
-
-  <footer class="text-white py-12 text-center">&copy; 2026 诺诺的小博客空间</footer>
-  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
-  <script src="../js/common.js"></script>
+    </div>
+  <footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-07-23</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div></footer></div></div></article></main><button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button>
+  <script src="../article.js"></script>
 </body>
 </html>

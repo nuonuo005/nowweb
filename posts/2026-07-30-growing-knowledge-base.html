@@ -1,29 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="记录今天如何把分散的飞书资料、本机项目经验和创作资产搭成一座可检索、可追溯、可持续生长的 Obsidian 知识库。" />
-  <meta property="og:title" content="未来真正属于你的资产，是一座能持续生长的知识库" />
-  <meta property="og:description" content="从目录、导入、清洗、索引到关系图谱：复盘一座个人 AI 知识库今天是怎样搭起来的。" />
-  <meta property="og:type" content="article" />
-  <meta name="theme-color" content="#21171d" />
-  <title>未来真正属于你的资产，是一座能持续生长的知识库 — 诺诺的小博客空间</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🪐%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="../css/common.css?v=mobile-20260723" />
-  <link rel="stylesheet" href="../css/journal.css?v=visual-20260730" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="记录今天如何把分散的飞书资料、本机项目经验和创作资产搭成一座可检索、可追溯、可持续生长的 Obsidian 知识库。">
+  <meta name="theme-color" content="#ffffff">
+  <title>未来真正属于你的资产，是能持续生长的知识库 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
   <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: { extend: { colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' }, fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] } } }
-    }
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
   </script>
-  <script type="application/ld+json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -34,75 +27,66 @@
     "description": "复盘一座个人 AI 知识库的架构、导入规则、图谱状态与持续维护方法。"
   }
   </script>
+<link rel="stylesheet" href="../article-content.css"><link rel="canonical" href="https://nuonuo.me/posts/2026-07-30-growing-knowledge-base.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
 </head>
-<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
-  <div id="reading-progress"></div>
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-16">
-      <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"><i class="fa fa-paper-plane text-primary text-xl"></i><span class="text-xl font-semibold">诺诺的小博客空间</span></a>
-      <div class="hidden md:flex items-center gap-7"><a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a><a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a><a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a><a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a></div>
-      <div class="flex items-center gap-2"><button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式"><i class="fa fa-sun-o icon-sun"></i><i class="fa fa-moon-o icon-moon"></i></button><button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false"><i class="fa fa-bars text-xl"></i></button></div>
-    </div></div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50"><div class="px-4 py-3 space-y-1"><a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a><a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a><a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a><a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a></div></div>
-  </nav>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
+    </div>
+  </header>
 
-  <article data-tags='["工作日志","AI","知识管理","Obsidian"]'>
-    <header class="journal-hero"><div class="journal-hero__inner">
-      <p class="journal-kicker">Daily Build Log · No. 004</p>
-      <h1>未来真正属于你的资产，<br />是能持续生长的知识库</h1>
-      <p class="journal-hero__lead">工具会换，平台会变，聊天记录会沉下去；真正会累积的，是那些被保留来源、被验证、能在下一次工作里重新调用的知识。</p>
-      <div class="journal-meta"><span><i class="fa fa-calendar-o"></i> 2026-07-30</span><span><i class="fa fa-clock-o"></i> 阅读约 12 分钟</span><span><i class="fa fa-sitemap"></i> Obsidian × 飞书 × AI 工作流</span></div>
-    </div></header>
-
-    <main class="journal-shell">
-      <p class="journal-intro">今天做的并不是“往 Obsidian 里塞文件”。真正要解决的是一个更实际的问题：当资料来自飞书、网页、项目文件夹、提示词、工作对话和日常实践时，几周以后我还能不能知道它从哪里来、值不值得信、和哪个项目有关、下一次又该怎么用？所以这次搭建的目标不是一个好看的资料库，而是一套能持续整理、复用和自我校正的个人工作系统。</p>
-
-      <figure class="journal-opening-cover">
-        <img src="../assets/article-covers/knowledge-base-cover-20260730.png" alt="个人知识库封面：笔记、文件夹与星图关系网" loading="eager" />
+  <main><article data-tags='["工作日志", "AI", "知识管理", "Obsidian"]'><header class="article-hero migrated-hero"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">Daily Build Log · No. 004</p><h1>未来真正属于你的资产，是能持续生长的知识库</h1><p class="article-deck">工具会换，平台会变，聊天记录会沉下去；真正会累积的，是那些被保留来源、被验证、能在下一次工作里重新调用的知识。</p><div class="article-meta"><span><i></i> 2026-07-30</span><span><i></i> 阅读约 12 分钟</span><span><i></i> Obsidian × 飞书 × AI 工作流</span></div><div class="article-tags"><span>工作日志</span><span>AI</span><span>知识管理</span><span>Obsidian</span></div></div><figure class="article-cover">
+        <img src="../assets/article-covers/knowledge-base-cover-20260730.png" alt="个人知识库封面：笔记、文件夹与星图关系网" loading="eager" fetchpriority="high" width="1672" height="941">
         <figcaption>知识库不是资料堆放处，而是让来源、主题与项目经验持续发生连接的工作系统。</figcaption>
-      </figure>
+      </figure></div></header><div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc="">开场</a><a href="#note-section-1" data-toc="">先定义：资料不是资产，能再次产生结果的知识才是</a><a href="#note-section-2" data-toc="">怎么搭：先搭“流向”，再搭文件夹</a><a href="#note-section-3" data-toc="">怎么把旧知识搬进来：先筛选，再导入，永远保留来源</a><a href="#note-section-4" data-toc="">现在搭成什么样：124 篇笔记，开始出现自己的“星球”</a><a href="#note-section-5" data-toc="">以后怎么让它自己长：每一次工作都走同一条闭环</a><a href="#note-section-6" data-toc="">下一步不是继续囤资料，而是拿它解决一个真实问题</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
+      <p class="journal-intro" id="opening" data-article-section="">今天做的并不是“往 Obsidian 里塞文件”。真正要解决的是一个更实际的问题：当资料来自飞书、网页、项目文件夹、提示词、工作对话和日常实践时，几周以后我还能不能知道它从哪里来、值不值得信、和哪个项目有关、下一次又该怎么用？所以这次搭建的目标不是一个好看的资料库，而是一套能持续整理、复用和自我校正的个人工作系统。</p>
 
-      <figure class="journal-card" style="padding: 0; overflow: hidden; margin-bottom: 3.5rem;"><a class="journal-graph-link" href="../assets/knowledge-base-graph-20260730.png" target="_blank" rel="noopener" aria-label="在新标签页查看知识图谱大图"><img src="../assets/knowledge-base-graph-20260730.png" alt="Obsidian 知识库关系图谱：研究、内容创作、项目、提示词、长期记忆等节点已形成连接" style="display:block;width:100%;height:auto;" loading="eager" /></a><figcaption style="padding: 1rem 1.25rem; color: var(--ink-muted); font-size: .9rem;">这是今天的真实知识图谱状态：当前库内共 124 篇 Markdown 笔记；左侧是稳定的工作分区，中间与右侧开始出现 AI 工作流、内容生产、项目经验和研究资料之间的连接。手机端可点图查看大图。</figcaption></figure>
+      <figure class="journal-card"><a class="journal-graph-link" href="../assets/knowledge-base-graph-20260730.png" target="_blank" rel="noopener" aria-label="在新标签页查看知识图谱大图"><img src="../assets/knowledge-base-graph-20260730.png" alt="Obsidian 知识库关系图谱：研究、内容创作、项目、提示词、长期记忆等节点已形成连接" loading="lazy" width="1605" height="1110"></a><figcaption>这是今天的真实知识图谱状态：当前库内共 124 篇 Markdown 笔记；左侧是稳定的工作分区，中间与右侧开始出现 AI 工作流、内容生产、项目经验和研究资料之间的连接。手机端可点图查看大图。</figcaption></figure>
 
       <section class="journal-project">
-        <div class="journal-project__head"><div class="journal-project__index">01</div><div><p class="journal-project__label">First Principle</p><h2>先定义：资料不是资产，能再次产生结果的知识才是</h2><p class="journal-project__desc">收藏、下载和转发只能制造“我见过”；把来源、场景、验证状态和下一步行动保留下来，才会形成可调用的能力。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">01</div><div><p class="journal-project__label">First Principle</p><h2 id="note-section-1" data-article-section="">先定义：资料不是资产，能再次产生结果的知识才是</h2><p class="journal-project__desc">收藏、下载和转发只能制造“我见过”；把来源、场景、验证状态和下一步行动保留下来，才会形成可调用的能力。</p></div></div>
         <div class="journal-card"><h3>为什么今天要先做知识库</h3><p>AI 时代最容易被误解的一点，是以为“知道更多工具”就是优势。但模型、插件和热词变化非常快。真正会留下来的，是你对问题的判断、已经验证过的工作顺序、能复用的提示词、项目失败过的原因，以及把这些东西串起来的上下文。</p><p>所以文章标题里说“资产”，不是说资料越多越好。没有来源、没有分类、没有实践记录的内容，只是更大的信息噪音。知识库的价值在于：它让一条经验从一次聊天里出来，变成下一次项目可以直接调用的依据。</p></div>
         <blockquote class="journal-quote"><strong>这座知识库的原则：</strong>不追求把所有东西都收进来，只追求把未来的自己和 AI 需要再次使用的东西，放在找得到、看得懂、敢采用的位置。</blockquote>
       </section>
 
       <section class="journal-project">
-        <div class="journal-project__head"><div class="journal-project__index">02</div><div><p class="journal-project__label">Architecture</p><h2>怎么搭：先搭“流向”，再搭文件夹</h2><p class="journal-project__desc">目录不是按软件功能分，而是按一条知识从外部进入、被使用、被验证到沉淀的生命周期分。</p></div></div>
-        <div class="journal-card"><h3>这次建立的八个工作区</h3><div class="journal-flow" aria-label="知识库信息流"><div class="journal-flow__step">00-Inbox<br />新资料唯一入口</div><div class="journal-flow__step">10-Research<br />已整理的研究资料</div><div class="journal-flow__step">20-Content<br />选题、脚本、内容工作台</div><div class="journal-flow__step">30-Projects<br />真实项目与决策</div><div class="journal-flow__step">40-Prompts<br />可复用提示词</div></div><div class="journal-flow" style="margin-top: 1rem;"><div class="journal-flow__step">50-Templates<br />重复任务模板</div><div class="journal-flow__step">60-AI-Memory<br />已验证长期规则</div><div class="journal-flow__step">70-AI-Context<br />与 Codex 协作上下文</div><div class="journal-flow__step">80-Archive<br />已过期或仅备查</div></div><p>这套分区背后有一个简单约束：外部资料先入收件箱；清洗和分类后进研究库；真的用于写内容或做项目时，再连接到内容与项目；只有被实践验证过的结论，才能进入“AI 长期记忆”。这样可以避免把一篇未经验证的教程误当成自己的工作规则。</p></div>
+        <div class="journal-project__head"><div class="journal-project__index">02</div><div><p class="journal-project__label">Architecture</p><h2 id="note-section-2" data-article-section="">怎么搭：先搭“流向”，再搭文件夹</h2><p class="journal-project__desc">目录不是按软件功能分，而是按一条知识从外部进入、被使用、被验证到沉淀的生命周期分。</p></div></div>
+        <div class="journal-card"><h3>这次建立的八个工作区</h3><div class="journal-flow" aria-label="知识库信息流"><div class="journal-flow__step">00-Inbox<br>新资料唯一入口</div><div class="journal-flow__step">10-Research<br>已整理的研究资料</div><div class="journal-flow__step">20-Content<br>选题、脚本、内容工作台</div><div class="journal-flow__step">30-Projects<br>真实项目与决策</div><div class="journal-flow__step">40-Prompts<br>可复用提示词</div></div><div class="journal-flow"><div class="journal-flow__step">50-Templates<br>重复任务模板</div><div class="journal-flow__step">60-AI-Memory<br>已验证长期规则</div><div class="journal-flow__step">70-AI-Context<br>与 Codex 协作上下文</div><div class="journal-flow__step">80-Archive<br>已过期或仅备查</div></div><p>这套分区背后有一个简单约束：外部资料先入收件箱；清洗和分类后进研究库；真的用于写内容或做项目时，再连接到内容与项目；只有被实践验证过的结论，才能进入“AI 长期记忆”。这样可以避免把一篇未经验证的教程误当成自己的工作规则。</p></div>
         <div class="journal-card"><h3>首页不是装饰，是地图</h3><p>知识库首页做成 MOC（Map of Content）：快速入口指向收件箱、研究、内容、项目、提示词、长期记忆和 AI 工作上下文。它同时写明固定流程：收集 → 预览清洗方案 → 保留原文并分类 → 在项目里实践 → 把验证结论写回长期记忆 → 定期巡检孤立、重复、过期和无来源的笔记。</p></div>
       </section>
 
       <section class="journal-project">
-        <div class="journal-project__head"><div class="journal-project__index">03</div><div><p class="journal-project__label">Import & Provenance</p><h2>怎么把旧知识搬进来：先筛选，再导入，永远保留来源</h2><p class="journal-project__desc">导入的重点不是“搬运成功”，而是每一条内容未来仍能回到原始出处，知道它属于谁、什么时候产生、是否应该继续相信。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">03</div><div><p class="journal-project__label">Import &amp; Provenance</p><h2 id="note-section-3" data-article-section="">怎么把旧知识搬进来：先筛选，再导入，永远保留来源</h2><p class="journal-project__desc">导入的重点不是“搬运成功”，而是每一条内容未来仍能回到原始出处，知道它属于谁、什么时候产生、是否应该继续相信。</p></div></div>
         <div class="journal-card"><h3>今天实际完成的两批迁入</h3><ul><li><strong>飞书 AI 使用知识：</strong>导入 12 篇文档，按教程与方法、AI 工具与 Agent、开发与自动化、技术观察、使用说明分区；每篇笔记的 frontmatter 保留飞书来源链接和导入日期。</li><li><strong>第二批近期 AI 资料：</strong>只筛选已确认发布时间在 2026-04-30 至 2026-07-30 的 14 篇内容，落在 AI Agent 与工作流、AI 视频、AI 工具、AI 做 PPT、AI 编程、本地知识库等分类中。</li><li><strong>本机可复用经验：</strong>把视频生产、博客发布、语音转写、Codex 配置和提示词资产先整理成待审核包；敏感密钥、声纹参考、隐私记录和模型/依赖目录不入库。</li></ul></div>
         <div class="journal-card"><h3>导入时做了什么，而不只是复制</h3><ul><li>保留原文和原始链接，不把别人写的经验伪装成自己的结论。</li><li>去掉固定宣传区、重复导航等对学习无帮助的页面噪音，但不篡改正文观点。</li><li>给导入笔记写入来源、日期和标签；让搜索、图谱和后续 AI 检索都能识别上下文。</li><li>把同主题资料连接到 Hub、索引或项目笔记，而不是让它们以孤岛状态堆在文件夹里。</li></ul></div>
       </section>
 
       <section class="journal-project">
-        <div class="journal-project__head"><div class="journal-project__index">04</div><div><p class="journal-project__label">Current State</p><h2>现在搭成什么样：124 篇笔记，开始出现自己的“星球”</h2><p class="journal-project__desc">图谱的意义不是炫酷，而是快速发现哪些主题形成了密度、哪些笔记还孤立、哪些关系缺少连接。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">04</div><div><p class="journal-project__label">Current State</p><h2 id="note-section-4" data-article-section="">现在搭成什么样：124 篇笔记，开始出现自己的“星球”</h2><p class="journal-project__desc">图谱的意义不是炫酷，而是快速发现哪些主题形成了密度、哪些笔记还孤立、哪些关系缺少连接。</p></div></div>
         <div class="journal-card"><h3>如何读这张图</h3><p>图里密集的节点不是“内容多就好”，而是说明它们已经通过索引、引用或项目关系发生了对话。今天最重要的不是让每个点都连成一团，而是先保证核心主题有 Hub：AI 工具与自动化、内容工作台、AI 视频与内容生产、项目管理、提示词库和长期记忆。未来每做完一个项目，都应该至少留下一个项目总结，连接到用过的流程、提示词和真实结论。</p></div>
       </section>
 
       <section class="journal-project">
-        <div class="journal-project__head"><div class="journal-project__index">05</div><div><p class="journal-project__label">Operating System</p><h2>以后怎么让它自己长：每一次工作都走同一条闭环</h2><p class="journal-project__desc">“自生长”不是让 AI 自动堆素材，而是让每次输入、验证和复盘都有明确的落点。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">05</div><div><p class="journal-project__label">Operating System</p><h2 id="note-section-5" data-article-section="">以后怎么让它自己长：每一次工作都走同一条闭环</h2><p class="journal-project__desc">“自生长”不是让 AI 自动堆素材，而是让每次输入、验证和复盘都有明确的落点。</p></div></div>
         <div class="journal-card"><h3>一条可长期执行的工作流</h3><div class="journal-timeline"><div class="journal-timeline__item"><strong>1. 捕获</strong><p>新链接、网页、灵感、文件先进入 Inbox，不在聊天窗口和下载文件夹里失踪。</p></div><div class="journal-timeline__item"><strong>2. 预览与清洗</strong><p>先看来源、时效、用途和重复度；再提出分类与标签方案。没有确认，不删除原资料。</p></div><div class="journal-timeline__item"><strong>3. 连接到工作</strong><p>研究资料放进主题 Hub；正在使用的内容连到项目、脚本、提示词或 SOP，而不是只放一个路径。</p></div><div class="journal-timeline__item"><strong>4. 实践与验证</strong><p>项目跑完后写清结果、失败原因、适用条件和验证方式。只有这一层才进入长期记忆。</p></div><div class="journal-timeline__item"><strong>5. 月度巡检</strong><p>检查孤立节点、重复文章、过期教程和缺失来源；该归档的归档，该补索引的补索引。</p></div></div></div>
         <div class="journal-card"><h3>三个一定要守住的边界</h3><ul><li><strong>未经验证的内容不升格为规则：</strong>收藏的教程可以参考，但不能直接变成长期记忆。</li><li><strong>敏感资料不入知识库：</strong>API Key、Token、声纹样本、隐私记录和本地模型目录保持在私有位置。</li><li><strong>发布与外部同步仍要确认：</strong>知识库用于帮助决策，不替代授权；涉及公开发布、账号和外部服务时，仍然要单独确认。</li></ul></div>
       </section>
 
       <section class="journal-project">
-        <div class="journal-project__head"><div class="journal-project__index">06</div><div><p class="journal-project__label">What Comes Next</p><h2>下一步不是继续囤资料，而是拿它解决一个真实问题</h2><p class="journal-project__desc">知识库真正的验收方式，不是节点数，而是下一次做视频、写博客、搭工作流时，它能否让决策更快、更准、更可追溯。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">06</div><div><p class="journal-project__label">What Comes Next</p><h2 id="note-section-6" data-article-section="">下一步不是继续囤资料，而是拿它解决一个真实问题</h2><p class="journal-project__desc">知识库真正的验收方式，不是节点数，而是下一次做视频、写博客、搭工作流时，它能否让决策更快、更准、更可追溯。</p></div></div>
         <div class="journal-card"><h3>接下来的三个动作</h3><div class="journal-stats"><div class="journal-stat"><strong>1</strong><span>个项目复盘模板</span></div><div class="journal-stat"><strong>1</strong><span>套提示词验证记录</span></div><div class="journal-stat"><strong>1</strong><span>次月度知识库巡检</span></div></div><p>我会优先把下一次真实项目的“目标—素材—流程—结果—复用规则”完整写入，而不是再批量导入一百篇文章。只有当资料开始帮助完成新项目，个人知识库才从静态文件夹变成真正会增值的资产。</p></div>
       </section>
 
       <blockquote class="journal-quote"><strong>今天的结论：</strong>未来最难被替代的，不是你收藏过多少工具，而是你能不能把经历过的项目、判断过的资料、验证过的流程，沉淀成一套自己和 AI 都能持续调用的系统。知识库不替你思考，但它让每一次思考不必从零开始。</blockquote>
-    </main>
-  </article>
-  <footer class="text-white py-12 text-center">&copy; 2026 诺诺的小博客空间</footer>
-  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
-  <script src="../js/common.js"></script>
+    </div>
+  <footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-07-30</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div></footer></div></div></article></main><button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button>
+  <script src="../article.js"></script>
 </body>
 </html>

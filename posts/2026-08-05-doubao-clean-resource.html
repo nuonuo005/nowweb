@@ -1,29 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="从编译 DLL 取证、豆包响应解析到 Chrome/Edge 插件封装，记录豆包无印资源助手如何实现资源发现、预览、批量下载与视频比例自适应。" />
-  <meta name="robots" content="noindex, nofollow" />
-  <meta property="og:title" content="我的 AI 工作日志 #005：把豆包无印资源做成一个真正能用的浏览器助手" />
-  <meta property="og:description" content="从 DLL 取证、响应解析到预览比例修复，记录豆包无印资源助手从能跑到能用的过程。" />
-  <meta property="og:type" content="article" />
-  <meta name="theme-color" content="#21171d" />
-  <title>我的 AI 工作日志 #005：把豆包无印资源做成一个真正能用的浏览器助手 — 诺诺的小博客空间</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🪐%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="../css/common.css?v=mobile-20260723" />
-  <link rel="stylesheet" href="../css/journal.css?v=visual-20260730" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="从编译 DLL 取证、豆包响应解析到 Chrome/Edge 插件封装，记录豆包无印资源助手如何实现资源发现、预览、批量下载与视频比例自适应。">
+  <meta name="theme-color" content="#ffffff">
+  <title>把豆包无印资源，做成一个真正能用的浏览器助手 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
   <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: { extend: { colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' }, fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] } } }
-    }
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<meta name="robots" content="noindex, nofollow">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,94 +28,84 @@
     "description": "从编译 DLL 取证、豆包响应解析到 Chrome/Edge 插件封装，记录豆包无印资源助手的实现过程、验证结果和使用边界。"
   }
   </script>
+<link rel="stylesheet" href="../article-content.css"><link rel="canonical" href="https://nuonuo.me/posts/2026-08-05-doubao-clean-resource.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
 </head>
-<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
-  <div id="reading-progress"></div>
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-16">
-      <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"><i class="fa fa-paper-plane text-primary text-xl"></i><span class="text-xl font-semibold">诺诺的小博客空间</span></a>
-      <div class="hidden md:flex items-center gap-7"><a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a><a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a><a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a><a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a></div>
-      <div class="flex items-center gap-2"><button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式"><i class="fa fa-sun-o icon-sun"></i><i class="fa fa-moon-o icon-moon"></i></button><button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false"><i class="fa fa-bars text-xl"></i></button></div>
-    </div></div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50"><div class="px-4 py-3 space-y-1"><a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a><a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a><a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a><a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a></div></div>
-  </nav>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
+    </div>
+  </header>
 
-  <article data-tags='["工作日志","AI","浏览器扩展","豆包"]'>
-    <header class="journal-hero"><div class="journal-hero__inner">
-      <p class="journal-kicker">Daily Build Log · No. 005</p>
-      <h1>把豆包无印资源，<br />做成一个真正能用的浏览器助手</h1>
-      <p class="journal-hero__lead">今天把一个藏在编译程序里的资源链路，整理成了可发现、可预览、可批量下载的 Chrome / Edge 扩展。</p>
-      <div class="journal-meta"><span><i class="fa fa-calendar-o"></i> 2026-08-05</span><span><i class="fa fa-clock-o"></i> 阅读约 12 分钟</span><span><i class="fa fa-cubes"></i> 豆包资源 × 浏览器扩展</span></div>
-    </div></header>
-
-    <main class="journal-shell">
-      <p class="journal-intro">今天做的不是给视频画面“擦掉一个水印按钮”，而是把豆包生成过程中已经出现、但不容易直接拿到的图片和视频资源，整理成一个页面内的资源助手：发现资源、看清楚、选出来、再下载。更重要的是，我先把原程序到底做了什么查明白，再开始重新封装，避免把“看起来像去水印”和“实际拿到了无印直链”混成一件事。</p>
-
-      <figure class="journal-opening-cover">
-        <img src="../assets/article-covers/doubao-resource-assistant-cover-20260806.png" alt="豆包浏览器助手封面：资源面板、解析链路与浏览器扩展" loading="eager" />
+  <main><article data-tags='["工作日志", "AI", "浏览器扩展", "豆包"]'><header class="article-hero migrated-hero"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">Daily Build Log · No. 005</p><h1>把豆包无印资源，做成一个真正能用的浏览器助手</h1><p class="article-deck">今天把一个藏在编译程序里的资源链路，整理成了可发现、可预览、可批量下载的 Chrome / Edge 扩展。</p><div class="article-meta"><span><i></i> 2026-08-05</span><span><i></i> 阅读约 12 分钟</span><span><i></i> 豆包资源 × 浏览器扩展</span></div><div class="article-tags"><span>工作日志</span><span>AI</span><span>浏览器扩展</span><span>豆包</span></div></div><figure class="article-cover">
+        <img src="../assets/article-covers/doubao-resource-assistant-cover-20260806.png" alt="豆包浏览器助手封面：资源面板、解析链路与浏览器扩展" loading="eager" fetchpriority="high" width="1672" height="941">
         <figcaption>从编译 DLL 里的线索，到浏览器页面上的资源面板：今天完成的是一条可以继续维护的工作链路。</figcaption>
-      </figure>
+      </figure></div></header><div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc="">开场</a><a href="#note-section-4" data-toc="">先弄清楚：这不是像素级擦除水印</a><a href="#note-section-5" data-toc="">怎么做：把原程序的资源链路重新封装成 MV3 扩展</a><a href="#note-section-6" data-toc="">功能是怎么一步步长出来的</a><a href="#note-section-7" data-toc="">今天最难的 bug：预览比例为什么看起来不对</a><a href="#note-section-8" data-toc="">这个功能有什么用：让素材真正进入我的创作流程</a><a href="#note-section-9" data-toc="">今天验证到了什么，哪些还不能提前宣布完成</a><a href="#note-section-10" data-toc="">下一步：从“能用”继续走向“稳定可复用”</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
+      <p class="journal-intro" id="opening" data-article-section="">今天做的不是给视频画面“擦掉一个水印按钮”，而是把豆包生成过程中已经出现、但不容易直接拿到的图片和视频资源，整理成一个页面内的资源助手：发现资源、看清楚、选出来、再下载。更重要的是，我先把原程序到底做了什么查明白，再开始重新封装，避免把“看起来像去水印”和“实际拿到了无印直链”混成一件事。</p>
 
       <div class="journal-summary">
-        <div class="journal-summary__item"><span class="journal-summary__number">01</span><i class="fa fa-search"></i><h2>发现资源</h2><p>从豆包页面响应中识别图片与视频，不再只盯着页面上的渲染结果。</p></div>
-        <div class="journal-summary__item"><span class="journal-summary__number">02</span><i class="fa fa-desktop"></i><h2>页面内预览</h2><p>缩略图、小窗、上一项、下一项，以及播放、静音和进度控制。</p></div>
-        <div class="journal-summary__item"><span class="journal-summary__number">03</span><i class="fa fa-cloud-download"></i><h2>单个与批量下载</h2><p>可先筛选再保存，最多提交 30 个已勾选资源，并显示下载状态。</p></div>
+        <div class="journal-summary__item"><span class="journal-summary__number">01</span><i></i><h2>发现资源</h2><p>从豆包页面响应中识别图片与视频，不再只盯着页面上的渲染结果。</p></div>
+        <div class="journal-summary__item"><span class="journal-summary__number">02</span><i></i><h2>页面内预览</h2><p>缩略图、小窗、上一项、下一项，以及播放、静音和进度控制。</p></div>
+        <div class="journal-summary__item"><span class="journal-summary__number">03</span><i></i><h2>单个与批量下载</h2><p>可先筛选再保存，最多提交 30 个已勾选资源，并显示下载状态。</p></div>
       </div>
 
       <section class="journal-project" id="what">
-        <div class="journal-project__head"><div class="journal-project__index">01</div><div><p class="journal-project__label">First Principle</p><h2>先弄清楚：这不是像素级擦除水印</h2><p class="journal-project__desc">功能名称可以叫“无印资源”，但实现机制必须讲准确：它是在响应链路里找到更适合下载的资源地址，而不是把已经下载到本地的画面逐帧修图。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">01</div><div><p class="journal-project__label">First Principle</p><h2 id="note-section-4" data-article-section="">先弄清楚：这不是像素级擦除水印</h2><p class="journal-project__desc">功能名称可以叫“无印资源”，但实现机制必须讲准确：它是在响应链路里找到更适合下载的资源地址，而不是把已经下载到本地的画面逐帧修图。</p></div></div>
         <div class="journal-card"><h3>我在原程序里确认了什么</h3><p>最开始我去找的是浏览器程序目录里的源码，但目录中没有原始的 <code>.cs</code>、<code>.js</code> 或工程文件，真正的实现载体是编译后的 <code>DolaMultiBrowser.dll</code>。通过 .NET 元数据、方法名和字符串引用的静态分析，确认到了豆包备用接口提取、解析、视频源下载、预览转换和资源下载这些方法。</p><p>所以这次的核心结论是：原程序不是把视频画面上的水印擦掉，而是拦截豆包响应，提取 <code>fallback_api</code>，再经过解析得到 <code>main_url</code> / <code>videoUrl</code>，最后把它作为“无印资源”展示和下载。原始 C# 源码没有找到，具体的像素级去水印算法也没有被确认。</p></div>
-        <div class="journal-card"><h3>已经确认的调用链</h3><div class="journal-flow" aria-label="豆包资源发现与下载流程"><div class="journal-flow__step">豆包响应<br /><code>im/chain/single</code></div><div class="journal-flow__step">识别资源<br />图片 / 视频</div><div class="journal-flow__step">视频解析<br /><code>fallback_api</code></div><div class="journal-flow__step">得到直链<br /><code>main_url</code></div><div class="journal-flow__step">资源面板<br />预览 / 下载</div></div><p>这一步的意义是把问题从“猜它怎么去水印”变成“确认它如何找到可用资源”。只有先分清这两件事，后面的插件封装才不会写成一个看似能点、实际上靠猜的壳。</p></div>
+        <div class="journal-card"><h3>已经确认的调用链</h3><div class="journal-flow" aria-label="豆包资源发现与下载流程"><div class="journal-flow__step">豆包响应<br><code>im/chain/single</code></div><div class="journal-flow__step">识别资源<br>图片 / 视频</div><div class="journal-flow__step">视频解析<br><code>fallback_api</code></div><div class="journal-flow__step">得到直链<br><code>main_url</code></div><div class="journal-flow__step">资源面板<br>预览 / 下载</div></div><p>这一步的意义是把问题从“猜它怎么去水印”变成“确认它如何找到可用资源”。只有先分清这两件事，后面的插件封装才不会写成一个看似能点、实际上靠猜的壳。</p></div>
         <blockquote class="journal-quote"><strong>今天最重要的判断：</strong>把一个功能做得可靠，第一步不是立刻改 UI，而是先确认它真实依赖什么、已经验证到哪一层、还有哪些地方不能宣称已经完成。</blockquote>
       </section>
 
       <section class="journal-project" id="how">
-        <div class="journal-project__head"><div class="journal-project__index">02</div><div><p class="journal-project__label">Rebuild the Chain</p><h2>怎么做：把原程序的资源链路重新封装成 MV3 扩展</h2><p class="journal-project__desc">我没有把 DLL 硬拆成一个独立工具，而是按浏览器扩展的边界，重新写了页面侦测、界面桥接、下载和设置这几层。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">02</div><div><p class="journal-project__label">Rebuild the Chain</p><h2 id="note-section-5" data-article-section="">怎么做：把原程序的资源链路重新封装成 MV3 扩展</h2><p class="journal-project__desc">我没有把 DLL 硬拆成一个独立工具，而是按浏览器扩展的边界，重新写了页面侦测、界面桥接、下载和设置这几层。</p></div></div>
         <div class="journal-card"><h3>四个文件，各自只负责一件事</h3><ul><li><strong><code>page-hook.js</code>：</strong>运行在页面 MAIN world，观察豆包页面的响应，在 <code>im/chain/single</code> 这类响应中递归寻找图片的 <code>image_ori_raw.url</code>，同时识别视频的 <code>fallback_api</code>。</li><li><strong><code>content-bridge.js</code>：</strong>运行在扩展侧，负责创建“无印资源”面板、资源卡片、缩略图、筛选、选中状态、小窗预览，以及播放和导航交互。</li><li><strong><code>service-worker.js</code>：</strong>调用浏览器下载 API，统一文件名和下载目录，把单个下载与批量下载从页面 UI 中分离出来。</li><li><strong><code>manifest.json</code>：</strong>声明 Chrome / Edge Manifest V3、豆包页面匹配范围、下载与设置权限，以及可替换的解析接口配置。</li></ul></div>
         <div class="journal-card"><h3>图片和视频为什么是两条不同的路径</h3><p>图片可以直接从豆包响应里的 <code>image_ori_raw.url</code> 取到，所以 0.2.0 就能完成图片预览和下载；视频则需要把 <code>fallback_api</code> 交给原 DLL 使用的解析服务，得到可下载的视频地址。这个解析服务是第三方依赖，不是我今天新建的服务，因此它可能因为接口变化或服务不可用而失败，设置页也保留了替换地址的入口。</p><p>这样拆分之后，插件能把“发现资源”和“保存资源”放在浏览器里完成，同时把外部解析依赖单独标记出来。以后哪一层变化，才知道应该改页面侦测、解析配置，还是下载逻辑。</p></div>
       </section>
 
       <section class="journal-project" id="versions">
-        <div class="journal-project__head"><div class="journal-project__index">03</div><div><p class="journal-project__label">From Working to Usable</p><h2>功能是怎么一步步长出来的</h2><p class="journal-project__desc">今天不是一次性写完全部功能，而是沿着真实使用中暴露的问题，把“能发现”继续推进到“看得懂、选得准、下得稳”。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">03</div><div><p class="journal-project__label">From Working to Usable</p><h2 id="note-section-6" data-article-section="">功能是怎么一步步长出来的</h2><p class="journal-project__desc">今天不是一次性写完全部功能，而是沿着真实使用中暴露的问题，把“能发现”继续推进到“看得懂、选得准、下得稳”。</p></div></div>
         <div class="journal-card"><div class="journal-timeline"><div class="journal-timeline__item"><strong>0.1.0：先把视频链路跑通</strong><p>先做成 Chrome / Edge 插件版本，捕获页面响应，识别视频资源，支持单独下载。这个版本证明了 DLL 里的链路可以在页面侧重新组织，但还没有图片和完整的资源管理界面。</p></div><div class="journal-timeline__item"><strong>0.2.0：把图片也纳入资源面板</strong><p>增加图片提取，按 <code>image_ori_raw.url</code> 识别图片，支持预览和下载。到这里，面板从“视频下载按钮”变成了图片和视频共用的资源入口。</p></div><div class="journal-timeline__item"><strong>0.3.0：从按钮变成资源工作台</strong><p>增加图片 / 视频筛选、缩略卡片、可调大小的小窗、上一项 / 下一项、单个下载、勾选多项下载、全选、取消全选和状态提示。离线样例中验证了 3 个视频和 1 个图片的提取，以及 PNG / MP4 下载路由。</p></div><div class="journal-timeline__item"><strong>0.3.1：先修交互误解</strong><p>列表滚动后，“已选 4 项”容易让人误以为当前可见区域也有 4 项，于是补上“当前可见”数量；同时补了播放 / 暂停、静音、进度条和播放时间，让视频预览不再只像一张静态截图。</p></div><div class="journal-timeline__item"><strong>0.3.2 → 0.3.3：解决比例问题</strong><p>移除视频强制填满小窗的规则，改为读取真实媒体尺寸，再根据屏幕可用空间计算窗口大小；最终版本 0.3.3 同时读取视频的 <code>videoWidth / videoHeight</code> 和图片的 <code>naturalWidth / naturalHeight</code>，继续保留播放控制。</p></div></div></div>
       </section>
 
       <section class="journal-project" id="ratio">
-        <div class="journal-project__head"><div class="journal-project__index">04</div><div><p class="journal-project__label">Bug Fixing</p><h2>今天最难的 bug：预览比例为什么看起来不对</h2><p class="journal-project__desc">这次没有继续凭感觉改 CSS，而是把截图、媒体真实尺寸、预览容器和浏览器行为放在一起对照，先确认根因，再只改一条链路。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">04</div><div><p class="journal-project__label">Bug Fixing</p><h2 id="note-section-7" data-article-section="">今天最难的 bug：预览比例为什么看起来不对</h2><p class="journal-project__desc">这次没有继续凭感觉改 CSS，而是把截图、媒体真实尺寸、预览容器和浏览器行为放在一起对照，先确认根因，再只改一条链路。</p></div></div>
         <div class="journal-card"><h3>根因不是视频源被裁切，而是容器比例不匹配</h3><p>旧的小窗大约固定为 <code>760 × 600</code>，同时视频元素又被要求把宽和高都填满预览区。对于横屏、竖屏或其他比例的视频，这会造成黑边、视觉比例不协调，甚至让人误以为素材本身被裁掉了。</p><p>第一轮修复把图片和视频改为自动宽高、最大宽高限制和等比显示；第二轮进一步加深遮罩，避免豆包页面底部的按钮视觉穿透；最后在 0.3.3 中加入窗口自适应：先读取媒体真实宽高，再在屏幕允许范围内计算 stage 和小窗的宽高。</p></div>
-        <div class="journal-card"><h3>最后采用的计算思路</h3><pre style="margin: 1rem 0 0; padding: 1rem; overflow-x: auto; border-radius: .8rem; color: #f5eee9; background: #21171d; font: .82rem/1.8 'Crimson Pro', Consolas, monospace;"><code>aspect = mediaWidth / mediaHeight
+        <div class="journal-card"><h3>最后采用的计算思路</h3><pre><code>aspect = mediaWidth / mediaHeight
 stageWidth = min(screenWidth, maxWindowWidth)
 stageHeight = stageWidth / aspect
 if stageHeight &gt; maxStageHeight:
     stageHeight = maxStageHeight
     stageWidth = stageHeight * aspect
-window = stage + header + footer</code></pre><p style="margin-top: 1rem;">这段逻辑的价值不在于代码多，而在于它把“视觉上像比例不对”的问题，变成了可以测量、计算和复查的规则。最终保留了上一项、下一项、下载当前、播放、静音、进度条和时间显示。</p></div>
+window = stage + header + footer</code></pre><p>这段逻辑的价值不在于代码多，而在于它把“视觉上像比例不对”的问题，变成了可以测量、计算和复查的规则。最终保留了上一项、下一项、下载当前、播放、静音、进度条和时间显示。</p></div>
       </section>
 
       <section class="journal-project" id="use">
-        <div class="journal-project__head"><div class="journal-project__index">05</div><div><p class="journal-project__label">Why It Matters</p><h2>这个功能有什么用：让素材真正进入我的创作流程</h2><p class="journal-project__desc">它解决的不是“少点一次鼠标”这么简单，而是把生成页面里的临时资源，变成可以筛选、复看和进入后续制作的素材。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">05</div><div><p class="journal-project__label">Why It Matters</p><h2 id="note-section-8" data-article-section="">这个功能有什么用：让素材真正进入我的创作流程</h2><p class="journal-project__desc">它解决的不是“少点一次鼠标”这么简单，而是把生成页面里的临时资源，变成可以筛选、复看和进入后续制作的素材。</p></div></div>
         <div class="journal-card"><h3>对 AI 短视频和短剧制作来说</h3><ul><li><strong>先看再下：</strong>生成了多张图或多条视频时，先在面板里看缩略图和预览，减少把不合适的素材全部下载下来再筛选。</li><li><strong>批量收集：</strong>需要把一轮生成结果带入剪辑、分镜或素材整理时，可以勾选后一次提交下载，减少手动复制临时链接。</li><li><strong>比例可靠：</strong>横屏和竖屏资源在预览中按真实尺寸显示，减少因为小窗拉伸造成的错误判断。</li><li><strong>链路可维护：</strong>页面侦测、外部解析和浏览器下载分开，豆包接口变化时，可以定位到具体一层，而不是重新猜整个功能。</li></ul></div>
         <div class="journal-card"><h3>对我自己的工作方式来说</h3><p>以前拿到生成素材，往往是在页面里找按钮、打开开发者工具、复制临时地址，或者依赖一个完整的浏览器程序。现在的思路是：把“发现资源”做成页面上的固定入口，把“预览”和“下载”做成连续动作，把资源直接放进后续视频生产的素材流里。</p><p>当然，这个助手只用于我有权使用的内容。它不是一个绕过权限或处理任意视频的工具；它依赖豆包前端响应结构和第三方解析服务，也不能保证平台接口变化后永远有效。</p></div>
         <blockquote class="journal-quote"><strong>真正有用的功能，不是多一个按钮，而是把下一步工作变短：</strong>从“我知道资源在那里”到“我能确认它、选中它，并把它放进项目里”。</blockquote>
       </section>
 
       <section class="journal-project" id="check">
-        <div class="journal-project__head"><div class="journal-project__index">06</div><div><p class="journal-project__label">Evidence & Boundaries</p><h2>今天验证到了什么，哪些还不能提前宣布完成</h2><p class="journal-project__desc">把验证结果和未验证项分开，是这次工作里和代码同样重要的一部分。</p></div></div>
-        <div class="journal-card"><h3>已经完成的本地检查</h3><div class="journal-stats"><div class="journal-stat"><strong>0.3.3</strong><span>当前插件版本</span></div><div class="journal-stat"><strong>3 + 1</strong><span>视频 / 图片样例</span></div><div class="journal-stat"><strong>PNG / MP4</strong><span>下载路由</span></div><div class="journal-stat"><strong>30</strong><span>批量提交上限</span></div></div><ul style="margin-top: 1.25rem;"><li>完成 JavaScript 语法检查。</li><li>完成图片和视频提取样例检查。</li><li>完成单个与批量下载路由检查。</li><li>完成媒体真实宽高和预览自适应规则检查。</li></ul></div>
+        <div class="journal-project__head"><div class="journal-project__index">06</div><div><p class="journal-project__label">Evidence &amp; Boundaries</p><h2 id="note-section-9" data-article-section="">今天验证到了什么，哪些还不能提前宣布完成</h2><p class="journal-project__desc">把验证结果和未验证项分开，是这次工作里和代码同样重要的一部分。</p></div></div>
+        <div class="journal-card"><h3>已经完成的本地检查</h3><div class="journal-stats"><div class="journal-stat"><strong>0.3.3</strong><span>当前插件版本</span></div><div class="journal-stat"><strong>3 + 1</strong><span>视频 / 图片样例</span></div><div class="journal-stat"><strong>PNG / MP4</strong><span>下载路由</span></div><div class="journal-stat"><strong>30</strong><span>批量提交上限</span></div></div><ul><li>完成 JavaScript 语法检查。</li><li>完成图片和视频提取样例检查。</li><li>完成单个与批量下载路由检查。</li><li>完成媒体真实宽高和预览自适应规则检查。</li></ul></div>
         <div class="journal-card"><h3>目前仍然存在的边界</h3><ul><li>原始 C# 源码不在发现的浏览器目录里，当前扩展是按已确认行为重新封装，不是从源码直接编译出来的版本。</li><li>视频依赖原 DLL 使用的第三方解析服务；解析服务不可用、豆包接口改变或响应尚未完成时，面板可能不会出现资源。</li><li>今天的本地检查不等于已经在当前登录的豆包页面完成长期实时回归，下一步仍需重新加载扩展并在实际页面里验证一轮。</li><li>批量下载最多提交 30 个资源，浏览器可能根据下载安全策略弹出确认。</li></ul></div>
       </section>
 
       <section class="journal-project" id="next">
-        <div class="journal-project__head"><div class="journal-project__index">07</div><div><p class="journal-project__label">Next Iteration</p><h2>下一步：从“能用”继续走向“稳定可复用”</h2><p class="journal-project__desc">今天先把关键链路和主要交互跑通，下一轮会把实时验证、失败提示和长期维护补齐。</p></div></div>
+        <div class="journal-project__head"><div class="journal-project__index">07</div><div><p class="journal-project__label">Next Iteration</p><h2 id="note-section-10" data-article-section="">下一步：从“能用”继续走向“稳定可复用”</h2><p class="journal-project__desc">今天先把关键链路和主要交互跑通，下一轮会把实时验证、失败提示和长期维护补齐。</p></div></div>
         <div class="journal-card"><div class="journal-timeline"><div class="journal-timeline__item"><strong>第一步：登录页面回归</strong><p>重新加载 0.3.3，刷新豆包页面，确认图片、视频、预览和下载在实际登录环境中都能按预期出现。</p></div><div class="journal-timeline__item"><strong>第二步：把失败原因说清楚</strong><p>区分“没有发现响应”“解析服务失败”“资源已过期”和“浏览器拦截下载”，让使用者知道该重试哪一步。</p></div><div class="journal-timeline__item"><strong>第三步：继续服务创作流程</strong><p>后续可以考虑资源去重、按项目命名、保存一次生成批次，以及把下载后的素材和分镜、剪辑项目建立关联。</p></div></div></div>
       </section>
 
       <div class="journal-next"><p><strong>今日复盘：</strong>先做逆向确认，再做功能拆分；先修真实根因，再谈界面完成。今天完成的是一版本地可用、边界透明的 0.3.3 扩展草稿。</p><a href="../archive.html">返回文章归档 ↗</a></div>
-    </main>
-  </article>
-
-  <footer class="text-white py-14"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="footer-enhanced"><div><div class="flex items-center gap-3"><span class="text-lg font-semibold tracking-wide" style="color: rgba(255,255,255,0.9);">诺诺的小博客空间</span></div><p class="mt-2 text-sm tracking-wider" style="color: rgba(255,255,255,0.3); font-family: 'Crimson Pro', serif; font-style: italic;">记录生活，分享美好，终身学习</p></div><div class="footer-nav"><a href="../index.html">首页</a><a href="../index.html#articles">随笔</a><a href="../archive.html">归档</a><a href="../about.html">关于</a><a href="../feed.xml" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer-bottom-bar">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></div></div></div></footer>
-  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
-  <script src="../js/common.js"></script>
+    </div>
+  <footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-08-05</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div></footer></div></div></article></main><button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button>
+  <script src="../article.js"></script>
 </body>
 </html>

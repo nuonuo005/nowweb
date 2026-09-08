@@ -1,89 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI时代的个人成长：从焦虑到共生 — 诺诺的小博客空间</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/common.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI时代的个人成长：从焦虑到共生">
+  <meta name="theme-color" content="#ffffff">
+  <title>AI时代的个人成长：从焦虑到共生 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#b8860b', secondary: '#78716c', accent: '#c0392b',
-            neutral: '#faf8f5', dark: '#1c1917',
-            gold: '#b8860b', amber: '#92400e', vermilion: '#c0392b',
-            ink: '#1c1917', 'ink-soft': '#44403c', 'ink-muted': '#78716c',
-            parchment: '#faf8f5', paper: '#f5f0eb', cream: '#fffef9'
-          },
-          fontFamily: {
-            sans: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
-            ma: ['"LXGW WenKai"', '"Ma Shan Zheng"', 'serif']
-          },
-        },
-      },
-    }
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<link rel="stylesheet" href="../article-content.css"><link rel="canonical" href="https://nuonuo.me/posts/ai-growth.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
 </head>
-<body class="bg-neutral text-dark font-sans antialiased grain">
-  <div id="reading-progress"></div>
-
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <i class="fa fa-paper-plane text-primary text-xl"></i>
-          <span class="text-xl font-semibold">诺诺的小博客空间</span>
-        </a>
-        <div class="hidden md:flex items-center gap-6">
-          <a href="../index.html#home" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors">首页</a>
-          <a href="../index.html#journey" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
-          <a href="../index.html#skills" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
-          <a href="../index.html#articles" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
-          <a href="../archive.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">归档</a>
-          <a href="../about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
-          <a href="../index.html#contact" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
-        </div>
-        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
-          <i class="fa fa-bars text-xl"></i>
-        </button>
-      </div>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
-      <div class="px-4 py-3 space-y-1">
-        <a href="../index.html#home" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
-        <a href="../index.html#journey" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
-        <a href="../index.html#skills" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
-        <a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
-        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
-        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
-        <a href="../index.html#contact" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
-      </div>
-    </div>
-  </nav>
+  </header>
 
-  <article data-tags='["AI","个人成长","认知"]'>
-    <header class="pt-24 pb-16" style="background: linear-gradient(135deg, rgba(184,134,11,0.04), rgba(250,248,245,1));">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="text-xs tracking-wider mb-5" style="color: var(--ink-muted); font-family: 'Crimson Pro', serif;">2026-05-22 · 阅读约 8 分钟</div>
-        <h1 class="text-3xl sm:text-4xl font-bold leading-tight mb-7" style="letter-spacing: 0.02em;">AI时代的个人成长：从焦虑到共生</h1>
-        <div class="brush-stroke mb-6"></div>
-        <div class="flex flex-wrap justify-center gap-2">
-          <span class="px-3.5 py-1 rounded-full text-xs font-medium" style="background: rgba(184,134,11,0.06); color: var(--gold); border: 1px solid rgba(184,134,11,0.1);">AI</span>
-          <span class="px-3.5 py-1 rounded-full text-xs font-medium" style="background: rgba(90,109,138,0.06); color: var(--slate-blue); border: 1px solid rgba(90,109,138,0.1);">个人成长</span>
-          <span class="px-3.5 py-1 rounded-full text-xs font-medium" style="background: rgba(85,107,85,0.06); color: var(--sage); border: 1px solid rgba(85,107,85,0.1);">认知</span>
-        </div>
-      </div>
-    </header>
+  <main><article data-tags='["AI", "个人成长", "认知"]'><header class="article-hero migrated-hero article-hero--text"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">NUO NOTES / 随笔</p><h1>AI时代的个人成长：从焦虑到共生</h1><div class="article-meta"><time datetime="2026-05-22">2026-05-22</time><span>约 8 分钟</span></div><div class="article-tags"><span>AI</span><span>个人成长</span><span>认知</span></div></div></div></header><div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc="">开场</a><a href="#note-section-1" data-toc="">误区一：AI能做所有事情</a><a href="#note-section-2" data-toc="">误区二：学不会AI就会被淘汰</a><a href="#note-section-3" data-toc="">1. 保持好奇心，持续学习</a><a href="#note-section-4" data-toc="">2. 深耕垂直领域，打造不可复制的个人品牌</a><a href="#note-section-5" data-toc="">3. 建立科学的问题解决思维</a><a href="#note-section-6" data-toc="">4. 善用AI工具，做AI的主人</a><a href="#note-section-7" data-toc="">我的日常AI工作流</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
 
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-content">
-
-      <p class="text-lg text-gray-500 italic mb-8">2022-2026 我的认知进化之路</p>
+      <p id="opening" data-article-section="">2022-2026 我的认知进化之路</p>
 
       <p>2022年底，ChatGPT横空出世，像一颗投入平静湖面的巨石，在无数人的心中激起了层层涟漪。我和大多数人一样，第一反应是难以抑制的焦虑：我做了几年的工作，会不会一夜之间被这个无所不能的AI取代？</p>
 
@@ -91,39 +41,39 @@
 
       <p>当我静下心来剖析这份焦虑时，才发现它源于两个根深蒂固的认知误区：</p>
 
-      <h2>误区一：AI能做所有事情</h2>
+      <h2 id="note-section-1" data-article-section="">误区一：AI能做所有事情</h2>
 
       <p>事实上，当时的AI最擅长的只是模式识别和信息整理，它可以快速处理海量数据，生成看似流畅的文本，但它缺乏真正的独立思考和原创创造力。它没有灵魂，没有情感，也没有对世界的独特体验。</p>
 
-      <h2>误区二：学不会AI就会被淘汰</h2>
+      <h2 id="note-section-2" data-article-section="">误区二：学不会AI就会被淘汰</h2>
 
       <p>我们不必去深究AI背后复杂的算法原理和技术支撑，就像我们不必学会制造汽车才能开车一样。我们真正需要掌握的，是如何使用AI工具，让它成为我们手中的利器。</p>
 
       <p>想通这两点后，我心中的阴霾一扫而空。我开始主动拥抱变化，踏上了AI学习之路。从最初的ChatGPT，到后来的豆包、DeepSeek，再到Gemini Mini，我像一个好奇的探险家，不断探索着AI世界的无限可能。</p>
 
-      <hr />
+      <hr>
 
       <p>在这段探索之旅中，我逐渐总结出了四条应对AI时代的核心策略：</p>
 
-      <h2>1. 保持好奇心，持续学习</h2>
+      <h2 id="note-section-3" data-article-section="">1. 保持好奇心，持续学习</h2>
 
       <p>AI时代唯一不变的就是变化本身。技术迭代的速度远超我们的想象，只有保持一颗永不枯竭的好奇心，才能跟上时代的步伐。我给自己定下了一个小小的目标：每天花一点时间浏览最新的AI资讯，了解新工具、新功能。每当有实际需求时，我都会优先尝试用AI来解决，在实践中学习，在学习中成长。</p>
 
-      <h2>2. 深耕垂直领域，打造不可复制的个人品牌</h2>
+      <h2 id="note-section-4" data-article-section="">2. 深耕垂直领域，打造不可复制的个人品牌</h2>
 
       <p>AI可以写出通顺的文案，可以生成精美的图片，可以完成很多标准化的工作。但它永远无法复制一个人的独特经历、情感体验和行业洞察。我会在AI生成内容的基础上，融入自己的思考、感悟和灵魂，让最终的作品带有鲜明的个人印记。这就是我们在AI时代最核心的竞争力。</p>
 
-      <h2>3. 建立科学的问题解决思维</h2>
+      <h2 id="note-section-5" data-article-section="">3. 建立科学的问题解决思维</h2>
 
       <p>与AI相处的过程，也是重塑我思维方式的过程。现在遇到任何问题，我都会下意识地遵循这样的步骤：首先明确问题的本质，然后思考是否有专业的知识节点可以参考，最后清晰地告诉AI我需要它做什么。这种跨学科、系统化的思维方式，让我的工作效率得到了质的提升。</p>
 
-      <h2>4. 善用AI工具，做AI的主人</h2>
+      <h2 id="note-section-6" data-article-section="">4. 善用AI工具，做AI的主人</h2>
 
       <p>我们是AI的使用者，而不是被AI支配的奴隶。AI可以帮我们润色文字、分析数据、整理思路，但它永远不能代替我们做决策。我始终坚持一个原则：我负责做有创造性、有价值的部分，把那些重复、繁琐、机械的工作交给AI。</p>
 
-      <hr />
+      <hr>
 
-      <h2>我的日常AI工作流</h2>
+      <h2 id="note-section-7" data-article-section="">我的日常AI工作流</h2>
 
       <p>经过不断的摸索和调整，我形成了一套适合自己的AI工作流：</p>
 
@@ -142,40 +92,10 @@
 
       <p>从2022年的惶恐不安，到2026年的从容自信，这三年多的时间，是我与AI共同成长的历程。AI不是我们的敌人，而是我们最强大的伙伴。在这个充满无限可能的时代，愿我们都能放下焦虑，拥抱变化，与AI一起，创造更美好的未来。</p>
 
-      <p class="text-sm text-gray-500 mt-8">写于2026年5月23日</p>
+      <p>写于2026年5月23日</p>
     </div>
 
-    <div class="giscus">
-      <div class="text-center py-8 bg-gray-50 rounded-xl border border-gray-200">
-        <i class="fa fa-comments text-3xl text-gray-300 mb-3 block"></i>
-        <p class="text-gray-500 text-sm mb-2">期待你的想法</p>
-        <p class="text-gray-400 text-xs">配置 GitHub 仓库并启用 Giscus 后，这里将显示评论区</p>
-      </div>
-    </div>
-  </article>
-
-  <div style="border-top: 1px solid rgba(28,25,23,0.06);">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex justify-between">
-      <a href="career-10years.html" class="text-sm flex items-center gap-2 transition-colors hover:text-[var(--gold)]" style="color: var(--ink-muted);">
-        <i class="fa fa-arrow-left"></i> 上一篇：职场十年
-      </a>
-      <a href="letter-to-31.html" class="text-sm flex items-center gap-2 transition-colors hover:text-[var(--gold)]" style="color: var(--ink-muted);">
-        下一篇：写给31岁的自己 <i class="fa fa-arrow-right"></i>
-      </a>
-    </div>
-  </div>
-
-  <footer class="text-white py-10">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <a href="../index.html" class="text-sm inline-flex items-center gap-1 transition-colors hover:text-[var(--gold)]" style="color: rgba(255,255,255,0.4);">
-        <i class="fa fa-arrow-left"></i> 返回首页
-      </a>
-      <p class="text-xs mt-4 tracking-wider" style="color: rgba(255,255,255,0.2); font-family: 'Crimson Pro', serif;">&copy; 2026 诺诺的小博客空间</p>
-    </div>
-  </footer>
-
-  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
-
-  <script src="../js/common.js"></script>
+    <footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-05-22</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div><nav class="article-related" aria-label="相邻文章"><a href="career-10years.html">上一篇：职场十年</a><a href="letter-to-31.html">下一篇：写给31岁的自己</a></nav></footer></div></div></article></main><button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button>
+  <script src="../article.js"></script>
 </body>
 </html>

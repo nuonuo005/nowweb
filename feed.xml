@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>诺诺的小博客空间</title>
     <link>https://nuonuo.me/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 25 Aug 2026 14:30:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 10:48:09 +0800</lastBuildDate>
     <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
 
-    <item>
+    <item><title>给博客换一个新样子，也把过去的记录重新安放</title><link>https://nuonuo.me/posts/2026-09-08-blog-redesign.html</link><description>从首页 Demo 到整站更新：统一随笔、归档、关于与作品页面，调整阅读排版和手机体验，也为过去的记录保留原来的位置。</description><pubDate>Tue, 08 Sep 2026 10:48:09 +0800</pubDate><guid>https://nuonuo.me/posts/2026-09-08-blog-redesign.html</guid></item><item>
       <title>我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来</title>
       <link>https://nuonuo.me/posts/2026-08-25-ai-work-journal-reinstall.html</link>
       <description>记录 Pi Agent、Obsidian 知识库恢复、口播剪辑问题和 H3 MV 首版生成：把能复用的成果留下，也把还没完成的缺口写清楚。</description>

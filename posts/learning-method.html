@@ -1,83 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>我的极简学习方法论：从兴趣出发，在复盘中成长 — 诺诺的小博客空间</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/common.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="我的极简学习方法论：从兴趣出发，在复盘中成长">
+  <meta name="theme-color" content="#ffffff">
+  <title>我的极简学习方法论：从兴趣出发，在复盘中成长 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
-          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
-        },
-      },
-    }
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<link rel="stylesheet" href="../article-content.css"><link rel="canonical" href="https://nuonuo.me/posts/learning-method.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
 </head>
-<body class="bg-neutral text-dark font-sans antialiased">
-  <div id="reading-progress"></div>
-
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <i class="fa fa-paper-plane text-primary text-xl"></i>
-          <span class="text-xl font-semibold">诺诺的小博客空间</span>
-        </a>
-        <div class="hidden md:flex items-center gap-6">
-          <a href="../index.html#home" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors">首页</a>
-          <a href="../index.html#journey" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
-          <a href="../index.html#skills" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
-          <a href="../index.html#articles" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
-          <a href="../archive.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">归档</a>
-          <a href="../about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
-          <a href="../index.html#contact" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
-        </div>
-        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
-          <i class="fa fa-bars text-xl"></i>
-        </button>
-      </div>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
-      <div class="px-4 py-3 space-y-1">
-        <a href="../index.html#home" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
-        <a href="../index.html#journey" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
-        <a href="../index.html#skills" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
-        <a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
-        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
-        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
-        <a href="../index.html#contact" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
-      </div>
-    </div>
-  </nav>
+  </header>
 
-  <article data-tags='["学习","方法论","成长"]'>
-    <header class="pt-24 pb-16" style="background: linear-gradient(135deg, rgba(94,106,210,0.08), rgba(143,153,174,0.08));">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="text-sm text-gray-500 mb-4">2026-04-20 · 阅读约 6 分钟</div>
-        <h1 class="text-3xl sm:text-4xl font-bold leading-tight mb-6">我的极简学习方法论：从兴趣出发，在复盘中成长</h1>
-        <div class="flex flex-wrap justify-center gap-2">
-          <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">学习</span>
-          <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">方法论</span>
-          <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">成长</span>
-        </div>
-      </div>
-    </header>
+  <main><article data-tags='["学习", "方法论", "成长"]'><header class="article-hero migrated-hero article-hero--text"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">NUO NOTES / 随笔</p><h1>我的极简学习方法论：从兴趣出发，在复盘中成长</h1><div class="article-meta"><time datetime="2026-04-20">2026-04-20</time><span>约 6 分钟</span></div><div class="article-tags"><span>学习</span><span>方法论</span><span>成长</span></div></div></div></header><div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc="">开场</a><a href="#note-section-1" data-toc="">兴趣是最好的驱动力</a><a href="#note-section-2" data-toc="">学习是一个从无到有的过程</a><a href="#note-section-3" data-toc="">复盘总结：从知识到认知的关键一步</a><a href="#note-section-4" data-toc="">学习的真正意义</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
 
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-content">
-
-      <p>经常有人问我：你每天工作那么忙，还喜欢打游戏，哪来的时间学习？</p>
+      <p id="opening" data-article-section="">经常有人问我：你每天工作那么忙，还喜欢打游戏，哪来的时间学习？</p>
 
       <p>其实我的学习方法论特别简单，就四个字：多看多学。</p>
 
-      <h2>兴趣是最好的驱动力</h2>
+      <h2 id="note-section-1" data-article-section="">兴趣是最好的驱动力</h2>
 
       <p>我始终认为，学习最有效的切入点，永远是你的兴趣。</p>
 
@@ -85,7 +45,7 @@
 
       <p>就像我在搭建个人博客的时候，常常沉浸其中好几个小时。从最基础的框架搭建，到一点点调整样式、优化功能，每解决一个问题，每实现一个新想法，都能带来巨大的成就感。这种由兴趣驱动的学习，效率是最高的，也是最能持久的。</p>
 
-      <h2>学习是一个从无到有的过程</h2>
+      <h2 id="note-section-2" data-article-section="">学习是一个从无到有的过程</h2>
 
       <p>很多人害怕学习新东西，觉得门槛太高，无从下手。但其实学习本来就是一个从无到有、循序渐进的过程。</p>
 
@@ -93,7 +53,7 @@
 
       <p>没有人天生就懂一切。重要的是敢于迈出第一步，然后保持好奇心，遇到问题就解决问题，不懂的地方就去查资料、去学习。慢慢的，你就会发现，原来那些看起来高深莫测的东西，其实也没有那么难。</p>
 
-      <h2>复盘总结：从知识到认知的关键一步</h2>
+      <h2 id="note-section-3" data-article-section="">复盘总结：从知识到认知的关键一步</h2>
 
       <p>过去很长一段时间，我一直在不停地学习新东西，但却很少停下来系统地梳理和总结。这也是我现在正在弥补的一课——你现在看到的这篇文章，就是我梳理自己学习方法论的开始。</p>
 
@@ -101,7 +61,7 @@
 
       <p>很多时候，我们以为自己学会了，但其实只是记住了一些零散的知识点。只有当你把这些知识点写下来，用自己的话重新组织、系统梳理的时候，它们才会真正内化为你的认知，成为你知识体系的一部分。</p>
 
-      <h2>学习的真正意义</h2>
+      <h2 id="note-section-4" data-article-section="">学习的真正意义</h2>
 
       <p>最后，我想对自己说，也想对每一个正在学习的人说：</p>
 
@@ -114,37 +74,7 @@
       <p>从现在开始，我会持续梳理和总结自己的学习心得，把它们变成系统化的知识。也希望看到这篇文章的你，能和我一起，养成复盘总结的好习惯。让我们在学习中成长，在成长中遇见更好的自己。</p>
     </div>
 
-    <div class="giscus">
-      <div class="text-center py-8 bg-gray-50 rounded-xl border border-gray-200">
-        <i class="fa fa-comments text-3xl text-gray-300 mb-3 block"></i>
-        <p class="text-gray-500 text-sm mb-2">期待你的想法</p>
-        <p class="text-gray-400 text-xs">配置 GitHub 仓库并启用 Giscus 后，这里将显示评论区</p>
-      </div>
-    </div>
-  </article>
-
-  <div class="border-t border-gray-200">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex justify-between">
-      <a href="build-blog-v2.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
-        <i class="fa fa-arrow-left"></i> 上一篇：从零搭建博客
-      </a>
-      <a href="ai-workflow.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
-        下一篇：AI高效工作流 <i class="fa fa-arrow-right"></i>
-      </a>
-    </div>
-  </div>
-
-  <footer class="bg-dark text-white py-10">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <a href="../index.html" class="text-primary hover:underline text-sm inline-flex items-center gap-1">
-        <i class="fa fa-arrow-left"></i> 返回首页
-      </a>
-      <p class="text-gray-400 text-sm mt-4">&copy; 2026 诺诺的小博客空间</p>
-    </div>
-  </footer>
-
-  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
-
-  <script src="../js/common.js"></script>
+    <footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-04-20</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div><nav class="article-related" aria-label="相邻文章"><a href="build-blog-v2.html">上一篇：从零搭建博客</a><a href="ai-workflow.html">下一篇：AI高效工作流</a></nav></footer></div></div></article></main><button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button>
+  <script src="../article.js"></script>
 </body>
 </html>

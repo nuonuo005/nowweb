@@ -1,0 +1,48 @@
+/* Preserve the learning app; use NUO NOTES colors and surrounding navigation. */
+:root {
+  --bg: #fff; --bg-card: #fff; --bg-input: #f4f7ff;
+  --ink: #12161a; --ink-soft: #354047; --ink-faint: #56636e;
+  --accent: #2457d6; --accent-light: #e7edff; --border: #dfe3e8;
+  --radius: 6px; --shadow: 0 8px 24px rgba(25,43,66,.06);
+}
+[data-theme="dark"] {
+  --bg: #0d1318; --bg-card: #141c22; --bg-input: #17233a;
+  --ink: #f1f3f2; --ink-soft: #d1d8da; --ink-faint: #b4bec8;
+  --accent: #9cbaff; --accent-light: #1b2b4d; --border: #344049;
+  --correct: #8bdbab; --correct-bg: #163725; --wrong: #ffa1a1; --wrong-bg: #3e2025;
+  --cat-op: #ffd18a; --cat-op-bg: #3a2a16; --cat-gt: #a4e4b6; --cat-gt-bg: #163725;
+  --cat-pt: #eadb99; --cat-pt-bg: #343017; --cat-qg: #d6b2fa; --cat-qg-bg: #30203f;
+  --cat-qo: #f9b8d2; --cat-qo-bg: #3b2030;
+}
+body.tool-page { display: block; margin: 0; padding: 0; background: var(--bg); color: var(--ink); min-height: 100vh; background-image: none; }
+.tool-workspace { display: flex; flex-direction: column; align-items: center; padding: calc(var(--header-h) + 30px) 22px 48px; max-width: 1100px; margin: auto; }
+.tool-workspace .header { margin-bottom: 22px; animation: none; }
+.tool-workspace .header h1 { font-family: "Cormorant Garamond", "Noto Serif SC", serif; font-size: clamp(26px,3vw,38px); line-height: 1.5; }
+.tool-workspace .header p { font-size: 15px; }
+.tool-workspace :is(.tabs,.stats-bar,.controls,.cats) { animation: none; }
+.tool-workspace :is(.tab,.btn,.hb,.nb,.ob) { font-size: 14px; border-radius: 5px; }
+.tool-workspace .tabs { border-radius: 6px; }
+.tool-workspace .tab { padding: 10px 16px; }
+.tool-workspace .stat { border-radius: 5px; }
+.tool-workspace .stat .lbl { font-size: 12px; }
+.tool-workspace .ct { font-size: 13px; }
+.tool-workspace .ct[data-cat="all"] { background: var(--accent-light); color: var(--ink-soft); }
+.tool-workspace #ma { width: 100%; max-width: 680px; }
+.tool-workspace .cd { max-width: none; }
+.tool-workspace .cd::before { background: var(--accent); opacity: 1; height: 2px; }
+.tool-workspace .cd-en, .tool-workspace .cd-ex .zh { font-size: 15px; line-height: 1.8; }
+.tool-workspace .cd-cat, .tool-workspace .cd-syn, .tool-workspace .tl, .tool-workspace .eh { font-size: 13px; }
+.tool-workspace .cd-syn span { font-size: 12px; }
+.tool-workspace .btn.active, .tool-workspace .nb.pri { background: var(--accent); color: var(--bg); }
+.tool-workspace #ti { font-size: 22px; }
+.tool-workspace #ti:focus { box-shadow: 0 0 0 3px var(--accent-light); }
+.tool-page .site-footer { width: 100%; }
+@media(max-width:560px) {
+  .tool-workspace { padding-inline: 16px; }
+  .tool-workspace .tabs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); width: 100%; }
+  .tool-workspace .tab { padding: 10px; }
+  .tool-workspace .stats-bar { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); width: 100%; gap: 6px; }
+  .tool-workspace .stat { min-width: 0; padding: 10px 3px; }
+  .tool-workspace .stat .lbl { font-size: 12px; letter-spacing: 0; }
+  .tool-workspace .cd { padding: 24px 18px; }
+}

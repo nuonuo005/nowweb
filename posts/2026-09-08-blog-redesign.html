@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="从首页 Demo 到整站更新：统一随笔、归档、关于与作品页面，调整阅读排版和手机体验，也为过去的记录保留原来的位置。">
+  <meta name="theme-color" content="#ffffff">
+  <title>给博客换一个新样子，也把过去的记录重新安放 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
+  <script>
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<link rel="stylesheet" href="../article-content.css"><link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
+<link rel="canonical" href="https://nuonuo.me/posts/2026-09-08-blog-redesign.html">
+</head>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
+    </div>
+  </header>
+
+  <main><article data-tags='["博客改版", "随笔", "AI 实践"]'>
+<header class="article-hero migrated-hero article-hero--text"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">NUO NOTES / 随笔</p><h1>给博客换一个新样子，也把过去的记录重新安放</h1><p>从首页 Demo 到整站更新：统一随笔、归档、关于与作品页面，调整阅读排版和手机体验，也为过去的记录保留原来的位置。</p><div class="article-meta"><time datetime="2026-09-08">2026-09-08</time><span>约 6 分钟</span></div><div class="article-tags"><span>博客改版</span><span>随笔</span><span>AI 实践</span></div></div></div></header>
+<div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc>开场</a><a href="#why" data-toc>为什么又改了一次博客</a><a href="#home" data-toc>首页，先把正在做的事情说清楚</a><a href="#reading" data-toc>把所有文章放回同一种阅读节奏</a><a href="#pages" data-toc>关于、作品和那些容易遗漏的页面</a><a href="#process" data-toc>从一版 Demo，慢慢改到整站</a><a href="#next" data-toc>接下来，继续把内容写下来</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content"><p id="opening" data-article-section>今天，把博客从首页到内页重新走了一遍，终于让它们用上了同一套新样式。随笔、工作日志、归档、关于，以及平时做的小作品，都在这次更新里重新整理了。</p>
+<p>如果你以前来过，应该能一眼看出变化：页面更明亮了，蓝天和石桥还在，文字也有了更宽松、清楚的位置。我希望这里既能让人知道我最近在忙什么，也能让人点开一篇文章后，安稳地读下去。</p>
+<h2 id="why" data-article-section>为什么又改了一次博客</h2>
+<p>写下来的东西越来越多，博客也逐渐从几篇个人随笔，长成了一个同时放着工作日志、AI 实践和小工具的空间。内容之间的差别很大：有的只是几段生活感受，有的带着长表格、操作截图，还有视频和一整段项目复盘。</p>
+<p>这时候，页面是否好看之外，我更在意几个很具体的问题：最近写的东西能不能马上找到？长文章会不会读着累？从首页点进去，是否还是同一个博客的感觉？用手机打开，图片、表格和按钮能不能正常使用？</p>
+<p>这次改版，就是围绕这些问题，一页一页往下整理。</p>
+<h2 id="home" data-article-section>首页，先把正在做的事情说清楚</h2>
+<p>新版保留了蓝天、石桥和缓慢流动的影像，用白色与蓝色作为主要颜色。我很喜欢这种有一点开阔、又能安静下来的感觉，也希望它和这里的文字相处得自然。</p>
+<p>首页现在按随笔、作品、经历和联系组织内容。最新文章有了明确入口，小作品能直接打开，个人经历也收在一条更容易浏览的时间线上。比起放很多抽象的介绍，我更愿意让具体的文章和已经做出来的东西，说明我在做什么。</p>
+<p>开场画面仍然保留，首次访问后会记住状态，也可以直接跳过。对于经常回来读文章的人，我希望每次访问都能更快到达内容。</p>
+<h2 id="reading" data-article-section>把所有文章放回同一种阅读节奏</h2>
+<p>这次把已有的 19 篇文章都适配到了新版，原来的正文、图片、视频和文章地址继续保留。过去写下的判断、当时遇到的问题，以及尚未完成的记录，都有它们各自的时间背景。</p>
+<p>改动主要在阅读层面：重新调整标题大小、正文宽度、行距和段落间隔；长文章配上目录与阅读进度，方便知道自己读到哪里；图片、表格、代码和项目卡片也重新检查了排版。现在从一篇普通随笔切换到一篇很长的工作日志，页面的基本用法是一致的。</p>
+<p>归档也重新梳理了一遍，按月份排列，并补上此前没有直接展示的旧文章入口。加上这篇改版随笔，归档里一共可以找到 20 篇记录。</p>
+<h2 id="pages" data-article-section>关于、作品和那些容易遗漏的页面</h2>
+<p>只改首页，很容易让网站停在一个漂亮的开头。这次我也把“关于”页整理了一遍，让个人介绍、博客想记录什么，以及如何联系我，都能在同一套页面里读到。</p>
+<p>英语练习工具和语音转写介绍页接上了新版样式。英语工具仍然保留打字练习、看中写英、句子填空和错词复习，词库与本地学习记录的保存方式继续沿用。语音转写页面则继续说明桌面工具的用途和使用方式。</p>
+<p>同步仓库时，还接回了婚庆大棚 3D 展示的作品入口。它仍然可以自由旋转并切换预设视角，方便从不同角度看空间。连同导航、页脚和 404 页面，这些容易遗漏的地方也一起纳入了整理。</p>
+<h2 id="process" data-article-section>从一版 Demo，慢慢改到整站</h2>
+<p>这次仍然是和 AI 一起完成的。我先看一版首页效果，确定喜欢的方向，再把具体感受说出来：哪里太满、哪里需要收一点、哪些部分应该更突出。样式逐渐确定之后，再继续处理归档、文章、关于和工具页面。</p>
+<p>真正花时间的地方，是让不同类型的内容都能用起来。首页好看，只说明首页做到了；一篇长文章里的表格、手机上的菜单、工具里的输入框，都需要另外打开看看。每补完一类页面，就检查它和其他页面之间的连接。</p>
+<p>最后，把确认后的新版放到正式站点的位置，保留已有文章路径，并同步首页、归档、RSS 订阅和站点地图。以后无论是从收藏夹、旧链接，还是订阅阅读器进来，都能继续找到这些记录。</p>
+<h2 id="next" data-article-section>接下来，继续把内容写下来</h2>
+<p>做完这次改版，我更能体会到，一个个人博客会随着使用慢慢长出自己的样子。刚开始只想有个地方写字，后来想把工具放进来，再后来，又希望把做事的过程和经验连起来。</p>
+<p>页面整理好了，接下来还是继续写：记录 AI 工具怎样真正进入日常工作，记录知识库怎样积累，也记录那些绕了弯、做了一半、下次还想继续的尝试。</p>
+<p>蓝天和石桥换了新的呈现，路上的事情还会继续发生。欢迎你随时回来看看。</p></div>
+<footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-09-08 · 诺诺</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div></footer></div></div></article></main>
+<button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button><script src="../article.js"></script></body></html>

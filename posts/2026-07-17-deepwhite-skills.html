@@ -1,36 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="详细梳理 DeepWhite 中文影视编剧、图像提示词构建器与中文分镜构建器：分别做什么、解决什么问题、能产出什么效果，以及如何串成完整 AI 影视工作流。" />
-  <meta property="og:title" content="我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能" />
-  <meta property="og:description" content="从剧本创作、视觉资产到分镜与 Seedance 提示词，完整理解三个 DeepWhite 技能的定位、边界和协作方式。" />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="../assets/journal/2026-07-17/deepwhite-skills-list.png" />
-  <meta name="theme-color" content="#21171d" />
-  <title>我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能 — 诺诺的小博客空间</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🎬%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="../css/common.css?v=mobile-20260723" />
-  <link rel="stylesheet" href="../css/journal.css?v=visual-20260730" />
-  <link rel="stylesheet" href="../css/deepwhite-skills.css?v=20260717" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="详细梳理 DeepWhite 中文影视编剧、图像提示词构建器与中文分镜构建器：分别做什么、解决什么问题、能产出什么效果，以及如何串成完整 AI 影视工作流。">
+  <meta name="theme-color" content="#ffffff">
+  <title>从故事到画面：拆解 3 个 DeepWhite 影视技能 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
   <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: {
-        extend: {
-          colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' },
-          fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] }
-        }
-      }
-    }
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
   </script>
-  <script type="application/ld+json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -41,92 +27,50 @@
     "description": "详细梳理 DeepWhite 中文影视编剧、图像提示词构建器与中文分镜构建器的定位、问题与产出效果。"
   }
   </script>
+<link rel="stylesheet" href="../article-content.css"><link rel="canonical" href="https://nuonuo.me/posts/2026-07-17-deepwhite-skills.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
 </head>
-<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
-  <div id="reading-progress"></div>
-
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <i class="fa fa-paper-plane text-primary text-xl"></i>
-          <span class="text-xl font-semibold">诺诺的小博客空间</span>
-        </a>
-        <div class="hidden md:flex items-center gap-7">
-          <a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a>
-          <a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a>
-          <a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a>
-          <a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a>
-        </div>
-        <div class="flex items-center gap-2">
-          <button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式">
-            <i class="fa fa-sun-o icon-sun"></i>
-            <i class="fa fa-moon-o icon-moon"></i>
-          </button>
-          <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false">
-            <i class="fa fa-bars text-xl"></i>
-          </button>
-        </div>
-      </div>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
-      <div class="px-4 py-3 space-y-1">
-        <a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
-        <a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
-        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
-        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
-      </div>
-    </div>
-  </nav>
+  </header>
 
-  <article data-tags='["AI","技能","工作日志","影视"]'>
-    <header class="journal-hero">
-      <div class="journal-hero__inner">
-        <p class="journal-kicker">Daily Build Log · No. 002</p>
-        <h1>从故事到画面：<br />拆解 3 个 DeepWhite 影视技能</h1>
-        <p class="journal-hero__lead">
-          今天不做零散工具介绍，而是把“写故事、定画面、拆镜头”三种能力放在同一条生产线上，看看它们分别解决什么问题。
-        </p>
-        <div class="journal-meta">
-          <span><i class="fa fa-calendar-o"></i> 2026-07-17</span>
-          <span><i class="fa fa-clock-o"></i> 阅读约 13 分钟</span>
-          <span><i class="fa fa-cubes"></i> 3 个技能梳理</span>
-          <span><i class="fa fa-tag"></i> AI 影视工作流</span>
-        </div>
-      </div>
-    </header>
-
-    <main class="journal-shell">
-      <p class="journal-intro">
+  <main><article data-tags='["AI", "技能", "工作日志", "影视"]'><header class="article-hero migrated-hero"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">Daily Build Log · No. 002</p><h1>从故事到画面：拆解 3 个 DeepWhite 影视技能</h1><p class="article-deck">今天不做零散工具介绍，而是把“写故事、定画面、拆镜头”三种能力放在同一条生产线上，看看它们分别解决什么问题。</p><div class="article-meta"><span><i></i> 2026-07-17</span><span><i></i> 阅读约 13 分钟</span><span><i></i> 3 个技能梳理</span><span><i></i> AI 影视工作流</span></div><div class="article-tags"><span>AI</span><span>技能</span><span>工作日志</span><span>影视</span></div></div><figure class="article-cover">
+        <img src="../assets/article-covers/script-to-screen-cover-20260730.png" alt="AI 影视技能封面：剧本、分镜与电影画面" loading="eager" fetchpriority="high" width="1672" height="941">
+        <figcaption>一份剧本要走到可执行画面，需要经过叙事、视觉资产与动态镜头三个相互衔接的阶段。</figcaption>
+      </figure></div></header><div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc="">开场</a><a href="#pipeline-title" data-toc="">它们不是三个孤立工具，而是三个连续工位</a><a href="#note-section-5" data-toc="">DeepWhite 中文影视编剧 v1：先解决“故事为什么值得看”</a><a href="#note-section-6" data-toc="">DeepWhite Image Prompt Builder：把“脑中的画面”翻译给图像模型</a><a href="#note-section-7" data-toc="">DeepWhite Shotlist Builder ZH User：把剧本变成真正能执行的镜头</a><a href="#compare-title" data-toc="">三个技能怎么选：先看你现在卡在哪一步</a><a href="#note-section-9" data-toc="">如果我现在要做一条 AI 概念短片，会怎样使用它们</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
+      <p class="journal-intro" id="opening" data-article-section="">
         AI 影视创作最容易出现的误区，是把“会写剧本”“会写图像提示词”“会写视频提示词”当成同一件事。实际上，这三种工作面对的是三类完全不同的问题：故事有没有戏、画面有没有统一视觉、镜头能不能稳定执行。今天我把手里的三个 DeepWhite 技能重新梳理了一遍，也第一次真正看清它们怎样组成一条从创意到可生成画面的生产线。
       </p>
 
-      <figure class="journal-opening-cover">
-        <img src="../assets/article-covers/script-to-screen-cover-20260730.png" alt="AI 影视技能封面：剧本、分镜与电影画面" loading="eager" />
-        <figcaption>一份剧本要走到可执行画面，需要经过叙事、视觉资产与动态镜头三个相互衔接的阶段。</figcaption>
-      </figure>
-
       <figure class="skills-figure">
-        <img src="../assets/journal/2026-07-17/deepwhite-skills-list.png" alt="DeepWhite Image Prompt Builder、Shotlist Builder ZH User 与中文影视编剧 v1 三个技能列表" />
+        <img src="../assets/journal/2026-07-17/deepwhite-skills-list.png" alt="DeepWhite Image Prompt Builder、Shotlist Builder ZH User 与中文影视编剧 v1 三个技能列表" loading="lazy" width="710" height="92">
         <figcaption>本次梳理的三个 DeepWhite 技能：静态图像提示词、中文影视分镜、中文影视编剧。</figcaption>
       </figure>
 
       <section class="journal-summary" aria-label="三个技能总览">
         <a class="journal-summary__item" href="#screenwriting">
           <span class="journal-summary__number">01</span>
-          <i class="fa fa-pencil-square-o"></i>
+          <i></i>
           <h2>中文影视编剧 v1</h2>
           <p>负责故事、人物、结构、场景与对白，让一个想法先成为真正可拍的剧本。</p>
         </a>
         <a class="journal-summary__item" href="#image-prompt">
           <span class="journal-summary__number">02</span>
-          <i class="fa fa-picture-o"></i>
+          <i></i>
           <h2>Image Prompt Builder</h2>
           <p>负责静态视觉，把模糊画面翻译成中英双语、可直接生成的图像提示词。</p>
         </a>
         <a class="journal-summary__item" href="#shotlist">
           <span class="journal-summary__number">03</span>
-          <i class="fa fa-film"></i>
+          <i></i>
           <h2>Shotlist Builder ZH</h2>
           <p>负责导演与执行，把剧本拆成位置、构图、动作、机位、音效和视频提示词。</p>
         </a>
@@ -137,7 +81,7 @@
           <div class="journal-project__index">00</div>
           <div>
             <p class="journal-project__label">The Production Line</p>
-            <h2 id="pipeline-title">它们不是三个孤立工具，而是三个连续工位</h2>
+            <h2 id="pipeline-title" data-article-section="">它们不是三个孤立工具，而是三个连续工位</h2>
             <p class="journal-project__desc">前一个技能解决“内容是否成立”，中间技能建立“视觉是否清楚”，最后一个技能保证“镜头是否可执行”。</p>
           </div>
         </div>
@@ -167,8 +111,8 @@
         <div class="journal-project__head">
           <div class="journal-project__index">01</div>
           <div>
-            <p class="journal-project__label">Story Development & Script Doctor</p>
-            <h2>DeepWhite 中文影视编剧 v1：先解决“故事为什么值得看”</h2>
+            <p class="journal-project__label">Story Development &amp; Script Doctor</p>
+            <h2 id="note-section-5" data-article-section="">DeepWhite 中文影视编剧 v1：先解决“故事为什么值得看”</h2>
             <p class="journal-project__desc">
               这是一个中文影视编剧工作室型技能。它既能从一个模糊灵感开始孵化概念短片、微短剧、短片、长片和多集剧，也能接手已有梗概或剧本，做诊断、量化评分、精准修改、对白打磨与节奏删减。
             </p>
@@ -232,7 +176,7 @@
           <div class="journal-project__index">02</div>
           <div>
             <p class="journal-project__label">Still Image Prompt Design</p>
-            <h2>DeepWhite Image Prompt Builder：把“脑中的画面”翻译给图像模型</h2>
+            <h2 id="note-section-6" data-article-section="">DeepWhite Image Prompt Builder：把“脑中的画面”翻译给图像模型</h2>
             <p class="journal-project__desc">
               这个技能只处理静态图像。它可以把一句视觉想法、剧本片段或风格说明，整理成可以直接使用的英文提示词和中文提示词，用于角色设定、场景概念、关键静帧、海报、插画或产品画面。
             </p>
@@ -288,8 +232,8 @@
         <div class="journal-project__head">
           <div class="journal-project__index">03</div>
           <div>
-            <p class="journal-project__label">Directing, Blocking & Seedance Prompts</p>
-            <h2>DeepWhite Shotlist Builder ZH User：把剧本变成真正能执行的镜头</h2>
+            <p class="journal-project__label">Directing, Blocking &amp; Seedance Prompts</p>
+            <h2 id="note-section-7" data-article-section="">DeepWhite Shotlist Builder ZH User：把剧本变成真正能执行的镜头</h2>
             <p class="journal-project__desc">
               这个技能面向中文影视分镜和 Seedance 2.0 视频提示词。它不只是把剧本按句切开，而是像导演和现场执行团队一样，继续决定人物站位、画面构图、机位、动作节拍、环境活动、音效和可能的模型失败点。
             </p>
@@ -313,11 +257,11 @@
           <h3>每个镜头最终会被写到什么程度</h3>
           <p>镜头内部保持固定顺序，让生成模型和制作人员都能快速找到关键信息：</p>
           <div class="journal-flow" aria-label="分镜提示词字段顺序">
-            <div class="journal-flow__step">画面动作概述<br />人物当前状态</div>
-            <div class="journal-flow__step">画面构图<br />区域与空间锁定</div>
-            <div class="journal-flow__step">机位<br />视角与运动逻辑</div>
-            <div class="journal-flow__step">动作<br />表演微节拍</div>
-            <div class="journal-flow__step">音效<br />环境与事件声音</div>
+            <div class="journal-flow__step">画面动作概述<br>人物当前状态</div>
+            <div class="journal-flow__step">画面构图<br>区域与空间锁定</div>
+            <div class="journal-flow__step">机位<br>视角与运动逻辑</div>
+            <div class="journal-flow__step">动作<br>表演微节拍</div>
+            <div class="journal-flow__step">音效<br>环境与事件声音</div>
           </div>
           <p>风格部分还会明确全局画质、人物材质、灯光与风格、核心特效；人物情绪不会只写“紧张”，而会继续拆成呼吸、眼神、肌肉、皮肤、姿态和发生顺序。</p>
         </div>
@@ -356,11 +300,11 @@
           <div class="journal-project__index">✓</div>
           <div>
             <p class="journal-project__label">How To Choose</p>
-            <h2 id="compare-title">三个技能怎么选：先看你现在卡在哪一步</h2>
+            <h2 id="compare-title" data-article-section="">三个技能怎么选：先看你现在卡在哪一步</h2>
             <p class="journal-project__desc">它们有交集，但不能互相替代。最简单的判断方式，是看当前缺的是故事、画面，还是镜头执行。</p>
           </div>
         </div>
-        <div class="skill-table-wrap">
+        <div class="skill-table-wrap" tabindex="0" role="region" aria-label="技能对比表，可左右滚动">
           <table class="skill-table">
             <thead><tr><th>技能</th><th>最适合的输入</th><th>核心解决</th><th>主要产出</th><th>不负责</th></tr></thead>
             <tbody>
@@ -377,7 +321,7 @@
           <div class="journal-project__index">→</div>
           <div>
             <p class="journal-project__label">A Practical Example</p>
-            <h2>如果我现在要做一条 AI 概念短片，会怎样使用它们</h2>
+            <h2 id="note-section-9" data-article-section="">如果我现在要做一条 AI 概念短片，会怎样使用它们</h2>
             <p class="journal-project__desc">以“一名老人能删除自己的痛苦记忆，但每删除一次也会忘掉一个爱他的人”为例。</p>
           </div>
         </div>
@@ -398,19 +342,10 @@
 
       <div class="journal-next">
         <p>下一步，我会用一份真实剧本跑完整条流程，把三个技能的中间产物、修改过程和最后生成效果继续记录下来。</p>
-        <a href="../archive.html">查看全部日志与文章 <i class="fa fa-arrow-right"></i></a>
+        <a href="../archive.html">查看全部日志与文章 <i></i></a>
       </div>
-    </main>
-  </article>
-
-  <footer class="text-white py-12">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <a href="../index.html" class="text-primary hover:underline text-sm inline-flex items-center gap-1"><i class="fa fa-arrow-left"></i> 返回首页</a>
-      <p class="text-sm mt-4" style="color: rgba(255,255,255,0.35);">&copy; 2026 诺诺的小博客空间 · 每天留下真实的成长轨迹</p>
     </div>
-  </footer>
-
-  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
-  <script src="../js/common.js?v=editorial-20260716"></script>
+  <footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-07-17</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div></footer></div></div></article></main><button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button>
+  <script src="../article.js"></script>
 </body>
 </html>

@@ -1,136 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="页面未找到 — 诺诺的小博客空间" />
-  <meta property="og:title" content="页面未找到 — 诺诺的小博客空间" />
-  <meta name="theme-color" content="#1a1428" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E📝%3C/text%3E%3C/svg%3E" />
-  <title>页面未找到 — 诺诺的小博客空间</title>
-  <link rel="stylesheet" href="css/common.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&display=swap" rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#b8860b', secondary: '#78716c', accent: '#c0392b',
-            neutral: '#faf8f5', dark: '#1c1917',
-            gold: '#b8860b', amber: '#92400e', vermilion: '#c0392b',
-            sage: '#556b55', 'slate-blue': '#5a6d8a',
-            ink: '#1c1917', 'ink-soft': '#44403c', 'ink-muted': '#78716c',
-            parchment: '#faf8f5', paper: '#f5f0eb', cream: '#fffef9'
-          },
-          fontFamily: {
-            sans: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
-            serif: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
-            ma: ['"LXGW WenKai"', '"Ma Shan Zheng"', 'serif'],
-            display: ['"Crimson Pro"', '"Noto Serif SC"', 'Georgia', 'serif']
-          },
-        },
-      },
-    }
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="页面未找到 · 诺诺的小博客空间">
+  <meta name="theme-color" content="#ffffff">
+  <title>页面未找到 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="reading-refinement.css">
+<script>(function(){var t;try{t=localStorage.getItem('nuo-demo-theme')}catch(e){}document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')})();</script><link rel="stylesheet" href="site-pages.css"><link rel="canonical" href="https://nuonuo.me/404.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="feed.xml">
 </head>
-<body class="bg-neutral text-dark font-sans antialiased grain">
-
-  <!-- 阅读进度条 -->
-  <div id="reading-progress"></div>
-
-  <!-- ─── 导航栏（简约） ─── -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <i class="fa fa-paper-plane text-primary text-xl"></i>
-          <span class="text-xl font-semibold">诺诺的小博客空间</span>
-        </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors">首页</a>
-          <a href="archive.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">归档</a>
-          <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
-        </div>
-        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
-          <i class="fa fa-bars text-xl"></i>
-        </button>
-      </div>
+<body class="error-page"><a class="skip-link" href="#main">跳到主要内容</a><header class="site-header" data-header>
+    <a class="brand" href="index.html" aria-label="返回 NUO NOTES 首页">
+      <span class="brand-mark">N</span>
+      <span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="主要导航">
+      <a href="index.html">首页</a><a href="index.html#writings">随笔</a><a href="index.html#projects">作品</a><a href="archive.html">归档</a><a href="about.html">关于</a><a href="about.html#contact">联系</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题">
+        <svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg>
+        <svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg>
+      </button>
+      <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span><b>菜单</b></button>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
-      <div class="px-4 py-3 space-y-1">
-        <a href="index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
-        <a href="archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
-        <a href="about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
-      </div>
-    </div>
-  </nav>
+    <nav class="mobile-nav" id="mobile-menu" aria-label="移动导航" hidden>
+      <a href="index.html">首页</a><a href="index.html#writings">随笔</a><a href="index.html#projects">作品</a><a href="archive.html">归档</a><a href="about.html">关于</a><a href="about.html#contact">联系</a></nav>
+  </header>
 
-  <!-- ─── 404 内容 ─── -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden ink-bg">
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <canvas id="ink-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1; opacity: 0.5;"></canvas>
-    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-      <span class="font-ma" style="font-size: clamp(16rem, 40vw, 30rem); color: rgba(184,134,11,0.025); letter-spacing: 0.1em;">404</span>
-    </div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full pointer-events-none" style="background: linear-gradient(180deg, transparent 10%, rgba(184,134,11,0.06) 40%, rgba(184,134,11,0.06) 60%, transparent 90%);"></div>
-    <div class="relative z-10 w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="animate-fadeIn">
-        <h1 class="font-bold leading-none mb-6" style="font-size: clamp(6rem, 18vw, 12rem);">
-          <span class="text-gradient">404</span>
-        </h1>
-        <div class="mx-auto w-20 h-px mb-8" style="background: linear-gradient(90deg, transparent, rgba(184,134,11,0.3), transparent);"></div>
-        <p class="font-bold mb-5" style="font-size: clamp(1.5rem, 4vw, 2.5rem); color: rgba(255,255,255,0.8);">
-          页面不见了
-        </p>
-        <div class="font-ma text-lg md:text-xl leading-relaxed max-w-lg mx-auto" style="color: rgba(212,175,55,0.45); letter-spacing: 0.1em;">
-          <p>这首诗可能被风吹走了……</p>
-          <p class="mt-3">寻寻觅觅，冷冷清清，</p>
-          <p>点一盏灯，等一片归来的云。</p>
-        </div>
-        <div class="mt-14">
-          <a href="index.html" class="group relative inline-flex items-center gap-2 px-10 py-3.5 rounded-full font-medium transition-all duration-500 backdrop-blur-sm border overflow-hidden" style="color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.04);">
-            <span class="relative z-10"><i class="fa fa-arrow-left mr-1"></i> 返回首页</span>
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-          </a>
-        </div>
-        <div class="seal mt-10 mx-auto"><span>失</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── 页脚 ─── -->
-  <footer class="text-white py-14">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="text-center md:text-left">
-          <div class="flex items-center justify-center md:justify-start gap-3">
-            <span class="text-lg font-semibold tracking-wide" style="color: rgba(255,255,255,0.9);">诺诺的小博客空间</span>
-          </div>
-          <p class="mt-3 text-sm tracking-wider" style="color: rgba(255,255,255,0.3); font-family: 'Crimson Pro', serif; font-style: italic;">记录生活，分享美好，终身学习</p>
-        </div>
-        <div class="flex items-center gap-6">
-          <a href="feed.xml" class="transition-colors hover:text-[var(--gold)]" style="color: rgba(255,255,255,0.3);" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-lg"></i></a>
-        </div>
-      </div>
-      <div class="mt-10 pt-8 text-center" style="border-top: 1px solid rgba(255,255,255,0.06);">
-        <p class="text-xs tracking-wider" style="color: rgba(255,255,255,0.2); font-family: 'Crimson Pro', serif;">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- 回到顶部 -->
-  <button id="back-to-top" aria-label="回到顶部">
-    <i class="fa fa-chevron-up"></i>
-  </button>
-
-  <script src="js/common.js"></script>
-</body>
-</html>
+  <main id="main"><section class="error-content"><p class="page-eyebrow">404 / PAGE NOT FOUND</p><h1>这页暂时找不到了。</h1><p class="page-lead">地址可能已经改变，也可能还没有这篇内容。可以回到首页，或在归档里找找。</p><div class="speech-actions"><a class="speech-button speech-button--primary" href="index.html">返回首页</a><a class="speech-button" href="archive.html">浏览文章归档 →</a></div></section></main><footer class="site-footer"><strong>NUO NOTES</strong><p>记录、实践，以及还在继续的路。</p><nav><a href="index.html">首页</a><a href="archive.html">文章归档</a><a href="about.html">关于诺诺</a></nav><small>© 2026 诺诺的小博客空间</small></footer><script src="site-shell.js"></script></body></html>

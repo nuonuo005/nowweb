@@ -1,30 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="记录重装电脑后的两天：重新接上 Pi Agent、本地知识库和 AI 视频生产链路，也把这两天真正暴露出来的工程问题写下来。" />
-  <meta property="og:title" content="我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来" />
-  <meta property="og:description" content="Pi Agent、Obsidian 知识库恢复、口播剪辑与 H3 MV 生成：记录最近两天做了什么、哪里通过了验证、哪里还没有完成。" />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="../assets/article-covers/knowledge-base-cover-20260730.png" />
-  <meta name="theme-color" content="#21171d" />
-  <title>我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来 — 诺诺的小博客空间</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E🧭%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="../css/common.css?v=mobile-20260825" />
-  <link rel="stylesheet" href="../css/journal.css?v=visual-20260825" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=LXGW+WenKai:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="记录重装电脑后的两天：重新接上 Pi Agent、本地知识库和 AI 视频生产链路，也把这两天真正暴露出来的工程问题写下来。">
+  <meta name="theme-color" content="#ffffff">
+  <title>重装电脑后的两天，把工作重新接起来 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
   <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: { extend: { colors: { primary: '#b8860b', neutral: '#faf8f5', dark: '#1c1917' }, fontFamily: { sans: ['"Noto Serif SC"', 'Georgia', 'serif'] } } }
-    }
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
   </script>
-  <script type="application/ld+json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -35,49 +27,26 @@
     "description": "记录重装电脑后的两天：重新接上 Pi Agent、本地知识库和 AI 视频生产链路，也把这两天真正暴露出来的工程问题写下来。"
   }
   </script>
+<link rel="stylesheet" href="../article-content.css"><link rel="canonical" href="https://nuonuo.me/posts/2026-08-25-ai-work-journal-reinstall.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
 </head>
-<body class="journal-page bg-neutral text-dark font-sans antialiased grain">
-  <div id="reading-progress"></div>
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"><i class="fa fa-paper-plane text-primary text-xl"></i><span class="text-xl font-semibold">诺诺的小博客空间</span></a>
-        <div class="hidden md:flex items-center gap-7">
-          <a href="../index.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">首页</a>
-          <a href="../index.html#articles" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">随笔专栏</a>
-          <a href="../archive.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">归档</a>
-          <a href="../about.html" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">关于</a>
-        </div>
-        <div class="flex items-center gap-2">
-          <button id="themeToggle" class="theme-toggle" aria-label="切换深色模式" title="切换深色/亮色模式"><i class="fa fa-sun-o icon-sun"></i><i class="fa fa-moon-o icon-moon"></i></button>
-          <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单" aria-expanded="false"><i class="fa fa-bars text-xl"></i></button>
-        </div>
-      </div>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50"><div class="px-4 py-3 space-y-1"><a href="../index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a><a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a><a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a><a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a></div></div>
-  </nav>
+  </header>
 
-  <article data-tags='["工作日志","AI","Pi Agent","Obsidian","视频剪辑"]'>
-    <header class="journal-hero">
-      <div class="journal-hero__inner">
-        <p class="journal-kicker">Daily Build Log · No. 007</p>
-        <h1>重装电脑后的两天，<br />把工作重新接起来</h1>
-        <p class="journal-hero__lead">Pi Agent、Obsidian 知识库恢复、口播剪辑与 H3 MV 生成：记录最近两天做了什么、哪里通过了验证、哪里还没有完成。</p>
-        <div class="journal-meta">
-          <span><i class="fa fa-calendar-o"></i> 2026-08-25</span>
-          <span><i class="fa fa-clock-o"></i> 阅读约 10 分钟</span>
-          <span><i class="fa fa-cubes"></i> 4 个项目成果</span>
-        </div>
-      </div>
-    </header>
-
-    <main class="journal-shell">
-      <p class="journal-intro">重装电脑之后，最容易产生一种错觉：软件重新装上了，工作就恢复了。实际上，真正需要恢复的是入口、上下文、项目状态和验证习惯。过去两天我没有急着把所有工具都装满，而是先把几个每天会用到的工作系统重新接上，再把 AI 视频制作里暴露出来的问题留下记录。</p>
-
-      <figure class="journal-opening-cover">
-        <img src="../assets/article-covers/knowledge-base-cover-20260730.png" alt="个人知识库与 AI 工作系统的视觉封面" loading="eager" />
+  <main><article data-tags='["工作日志", "AI", "Pi Agent", "Obsidian", "视频剪辑"]'><header class="article-hero migrated-hero"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">Daily Build Log · No. 007</p><h1>重装电脑后的两天，把工作重新接起来</h1><p class="article-deck">Pi Agent、Obsidian 知识库恢复、口播剪辑与 H3 MV 生成：记录最近两天做了什么、哪里通过了验证、哪里还没有完成。</p><div class="article-meta"><span><i></i> 2026-08-25</span><span><i></i> 阅读约 10 分钟</span><span><i></i> 4 个项目成果</span></div><div class="article-tags"><span>工作日志</span><span>AI</span><span>Pi Agent</span><span>Obsidian</span><span>视频剪辑</span></div></div><figure class="article-cover">
+        <img src="../assets/article-covers/knowledge-base-cover-20260730.png" alt="个人知识库与 AI 工作系统的视觉封面" loading="eager" fetchpriority="high" width="1672" height="941">
         <figcaption>先恢复能持续工作的系统，再继续堆工具和产出；这次的重点不是“装回原样”，而是把工作重新变得可追踪。</figcaption>
-      </figure>
+      </figure></div></header><div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc="">开场</a><a href="#note-section-5" data-toc="">Pi Agent：我为什么觉得它更顺手</a><a href="#note-section-6" data-toc="">Obsidian：恢复的核心不是找回文件，而是找回索引和状态</a><a href="#note-section-7" data-toc="">AI 视频制作：这两天最重要的不是多做成片，而是找出哪里会失真</a><a href="#note-section-8" data-toc="">其他支线：一部分已经通过，一部分还在等待条件</a><a href="#note-section-9" data-toc="">接下来怎么继续</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
+      <p class="journal-intro" id="opening" data-article-section="">重装电脑之后，最容易产生一种错觉：软件重新装上了，工作就恢复了。实际上，真正需要恢复的是入口、上下文、项目状态和验证习惯。过去两天我没有急着把所有工具都装满，而是先把几个每天会用到的工作系统重新接上，再把 AI 视频制作里暴露出来的问题留下记录。</p>
 
       <section class="journal-summary" aria-label="最近两天项目总览">
         <a class="journal-summary__item" href="#pi-agent"><span class="journal-summary__number">01</span><p>Local AI Entry</p><h2>Pi Agent / Pi Web</h2><span>本机入口重新可用</span></a>
@@ -91,17 +60,17 @@
           <div class="journal-project__index">01</div>
           <div>
             <p class="journal-project__label">Local AI Infrastructure</p>
-            <h2>Pi Agent：我为什么觉得它更顺手</h2>
+            <h2 id="note-section-5" data-article-section="">Pi Agent：我为什么觉得它更顺手</h2>
             <p class="journal-project__desc">重装后重新接上的第一个日常入口，是 Pi Agent 的本机 Web 界面。它没有强迫我换一套工作方法，而是把现有项目、技能和命令重新接到一个可以直接对话的入口里。</p>
           </div>
         </div>
 
         <div class="journal-flow" aria-label="Pi Agent 本机工作流">
-          <div class="journal-flow__step">Pi CLI / Web<br />本机入口</div>
-          <div class="journal-flow__step">30141<br />局部服务</div>
-          <div class="journal-flow__step">读取项目<br />与现有技能</div>
-          <div class="journal-flow__step">直接处理<br />真实任务</div>
-          <div class="journal-flow__step">验证结果<br />留下记录</div>
+          <div class="journal-flow__step">Pi CLI / Web<br>本机入口</div>
+          <div class="journal-flow__step">30141<br>局部服务</div>
+          <div class="journal-flow__step">读取项目<br>与现有技能</div>
+          <div class="journal-flow__step">直接处理<br>真实任务</div>
+          <div class="journal-flow__step">验证结果<br>留下记录</div>
         </div>
 
         <div class="journal-card">
@@ -132,17 +101,17 @@
           <div class="journal-project__index">02</div>
           <div>
             <p class="journal-project__label">Knowledge System Recovery</p>
-            <h2>Obsidian：恢复的核心不是找回文件，而是找回索引和状态</h2>
+            <h2 id="note-section-6" data-article-section="">Obsidian：恢复的核心不是找回文件，而是找回索引和状态</h2>
             <p class="journal-project__desc">知识库恢复没有停在“文件还在不在”，而是先把项目导航、近期工作总览、状态字段、证据和下一动作重新整理出来。</p>
           </div>
         </div>
 
         <div class="journal-flow" aria-label="Obsidian 知识库恢复结构">
-          <div class="journal-flow__step">项目导航<br />MOC 入口</div>
-          <div class="journal-flow__step">近期总览<br />主线与优先级</div>
-          <div class="journal-flow__step">项目状态卡<br />active / review</div>
-          <div class="journal-flow__step">最近证据<br />文件与验证</div>
-          <div class="journal-flow__step">下一动作<br />不再从零猜</div>
+          <div class="journal-flow__step">项目导航<br>MOC 入口</div>
+          <div class="journal-flow__step">近期总览<br>主线与优先级</div>
+          <div class="journal-flow__step">项目状态卡<br>active / review</div>
+          <div class="journal-flow__step">最近证据<br>文件与验证</div>
+          <div class="journal-flow__step">下一动作<br>不再从零猜</div>
         </div>
 
         <div class="journal-card">
@@ -169,7 +138,7 @@
           <div class="journal-project__index">03</div>
           <div>
             <p class="journal-project__label">AI Video Production</p>
-            <h2>AI 视频制作：这两天最重要的不是多做成片，而是找出哪里会失真</h2>
+            <h2 id="note-section-7" data-article-section="">AI 视频制作：这两天最重要的不是多做成片，而是找出哪里会失真</h2>
             <p class="journal-project__desc">最近的剪辑工作同时暴露了两类问题：工程状态可能和画面状态不一致，成片技术通过也不代表节奏和表达已经通过。</p>
           </div>
         </div>
@@ -192,15 +161,15 @@
 
         <div class="journal-gallery" aria-label="AI 视频项目真实素材与验收画面">
           <figure>
-            <img src="../assets/journal/2026-08-25/video-editing-source-contact-sheet.jpg" alt="8 月 23 日口播视频的原始画面联系表" loading="lazy" style="aspect-ratio: 16 / 9; object-fit: cover;" />
+            <img src="../assets/journal/2026-08-25/video-editing-source-contact-sheet.jpg" alt="8 月 23 日口播视频的原始画面联系表" loading="lazy" width="1440" height="810">
             <figcaption>口播项目：先看整体画面，再检查单个动效。</figcaption>
           </figure>
           <figure>
-            <img src="../assets/journal/2026-08-25/h3-mv-reference-01.webp" alt="H3 MV 工作流中筛选出的参考图" loading="lazy" style="aspect-ratio: 16 / 9; object-fit: cover;" />
+            <img src="../assets/journal/2026-08-25/h3-mv-reference-01.webp" alt="H3 MV 工作流中筛选出的参考图" loading="lazy" width="1200" height="2132">
             <figcaption>H3 MV：参考图数量和切点会直接影响节奏。</figcaption>
           </figure>
           <figure>
-            <img src="../assets/journal/2026-08-25/fortune-0825-v43-middle.jpg" alt="道家国风运势视频 V4.3 成片中段验收帧" loading="lazy" style="aspect-ratio: 16 / 9; object-fit: cover;" />
+            <img src="../assets/journal/2026-08-25/fortune-0825-v43-middle.jpg" alt="道家国风运势视频 V4.3 成片中段验收帧" loading="lazy" width="1920" height="1080">
             <figcaption>稳定产线：V4.3 成片通过技术和画面抽检。</figcaption>
           </figure>
         </div>
@@ -220,8 +189,8 @@
         <div class="journal-project__head">
           <div class="journal-project__index">04</div>
           <div>
-            <p class="journal-project__label">Environment & Verified Output</p>
-            <h2>其他支线：一部分已经通过，一部分还在等待条件</h2>
+            <p class="journal-project__label">Environment &amp; Verified Output</p>
+            <h2 id="note-section-8" data-article-section="">其他支线：一部分已经通过，一部分还在等待条件</h2>
             <p class="journal-project__desc">恢复期里也顺手盘点了知识 IP 样片环境和道家运势视频产线，避免把“环境存在”误认为“项目已经完成”。</p>
           </div>
         </div>
@@ -247,16 +216,16 @@
           </ul>
         </div>
 
-        <figure class="journal-card" style="padding: 0; overflow: hidden;">
-          <img src="../assets/journal/2026-08-25/knowledge-ip-turnaround-v01.webp" alt="知识 IP 样片角色三视图草案" loading="lazy" style="display: block; width: 100%; height: auto;" />
-          <figcaption style="padding: 1rem 1.25rem; color: var(--ink-muted); font-size: .9rem;">知识 IP 样片已经有角色资产草案，但正式样片还要先补齐声音、模型和版本条件。</figcaption>
+        <figure class="journal-card">
+          <img src="../assets/journal/2026-08-25/knowledge-ip-turnaround-v01.webp" alt="知识 IP 样片角色三视图草案" loading="lazy" width="1199" height="682">
+          <figcaption>知识 IP 样片已经有角色资产草案，但正式样片还要先补齐声音、模型和版本条件。</figcaption>
         </figure>
       </section>
 
       <blockquote class="journal-quote"><strong>这两天的总结果：</strong>重装系统之后，真正恢复的不是一台“装满软件”的电脑，而是一条从 Agent 入口、知识库上下文，到视频生产、真实验证和复盘回写的工作链。能通过的项目继续复用，没通过的项目明确写下缺口，下一次就不必从猜测开始。</blockquote>
 
       <div class="journal-next">
-        <h2>接下来怎么继续</h2>
+        <h2 id="note-section-9" data-article-section="">接下来怎么继续</h2>
         <ul>
           <li>日常任务优先从 Pi Agent 入口进入，遇到问题先核端口、配置和真实请求。</li>
           <li>确认真实 Obsidian Vault 路径后，把恢复补丁正式合并，并重新检查导航链接。</li>
@@ -264,11 +233,8 @@
           <li>H3 MV 等用户确认音乐和节奏后再做 v2，不覆盖首版；道家运势视频继续按 V4.3 SOP 复用。</li>
         </ul>
       </div>
-    </main>
-  </article>
-
-  <footer class="text-white py-12 text-center">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></footer>
-  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
-  <script src="../js/common.js"></script>
+    </div>
+  <footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-08-25</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div></footer></div></div></article></main><button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button>
+  <script src="../article.js"></script>
 </body>
 </html>

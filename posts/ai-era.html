@@ -1,84 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>关于AI时代的个人成长思考 — 诺诺的小博客空间</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/common.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="关于AI时代的个人成长思考">
+  <meta name="theme-color" content="#ffffff">
+  <title>关于AI时代的个人成长思考 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: { primary: '#5E6AD2', secondary: '#8D99AE', accent: '#F77F00', neutral: '#FAFAFA', dark: '#1A1A1A' },
-          fontFamily: { sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'], ma: ['"Ma Shan Zheng"', 'cursive'] },
-        },
-      },
-    }
+    (function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
   </script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+<link rel="stylesheet" href="../article-content.css"><link rel="canonical" href="https://nuonuo.me/posts/ai-era.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
 </head>
-<body class="bg-neutral text-dark font-sans antialiased">
-  <div id="reading-progress"></div>
-
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <i class="fa fa-paper-plane text-primary text-xl"></i>
-          <span class="text-xl font-semibold">诺诺的小博客空间</span>
-        </a>
-        <div class="hidden md:flex items-center gap-6">
-          <a href="../index.html#home" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors">首页</a>
-          <a href="../index.html#journey" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
-          <a href="../index.html#skills" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
-          <a href="../index.html#articles" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
-          <a href="../archive.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">归档</a>
-          <a href="../about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
-          <a href="../index.html#contact" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
-        </div>
-        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
-          <i class="fa fa-bars text-xl"></i>
-        </button>
-      </div>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions">
+      <button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button>
+      <a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a>
     </div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
-      <div class="px-4 py-3 space-y-1">
-        <a href="../index.html#home" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
-        <a href="../index.html#journey" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
-        <a href="../index.html#skills" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
-        <a href="../index.html#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
-        <a href="../archive.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">归档</a>
-        <a href="../about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
-        <a href="../index.html#contact" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
-      </div>
-    </div>
-  </nav>
+  </header>
 
-  <article data-tags='["AI","个人成长","效率"]'>
-    <!-- 文章头部 -->
-    <header class="pt-24 pb-16" style="background: linear-gradient(135deg, rgba(94,106,210,0.08), rgba(143,153,174,0.08));">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="text-sm text-gray-500 mb-4">2026-05-22 · 阅读约 8 分钟</div>
-        <h1 class="text-3xl sm:text-4xl font-bold leading-tight mb-6">关于AI时代的个人成长思考</h1>
-        <div class="flex flex-wrap justify-center gap-2">
-          <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">AI</span>
-          <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">个人成长</span>
-          <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm">方法论</span>
-        </div>
-      </div>
-    </header>
+  <main><article data-tags='["AI", "个人成长", "效率"]'><header class="article-hero migrated-hero article-hero--text"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">NUO NOTES / 随笔</p><h1>关于AI时代的个人成长思考</h1><div class="article-meta"><time datetime="2026-05-22">2026-05-22</time><span>约 8 分钟</span></div><div class="article-tags"><span>AI</span><span>个人成长</span><span>效率</span></div></div></div></header><div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#opening" data-toc="">开场</a><a href="#note-section-1" data-toc="">一、焦虑的来源</a><a href="#note-section-2" data-toc="">二、四个应对策略</a><a href="#note-section-3" data-toc="">三、我的日常 AI 工作流</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
 
-    <!-- 正文 -->
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-content">
+      <p id="opening" data-article-section="">2022 年底，ChatGPT 横空出世。和很多人一样，我的第一反应是焦虑——我做了十年的运营工作，会不会突然就被取代了？这种焦虑持续了大概两周，直到我开始认真思考一个问题：<strong>与其担心被 AI 取代，不如思考如何与 AI 共舞。</strong></p>
 
-      <p>2022 年底，ChatGPT 横空出世。和很多人一样，我的第一反应是焦虑——我做了十年的运营工作，会不会突然就被取代了？这种焦虑持续了大概两周，直到我开始认真思考一个问题：<strong>与其担心被 AI 取代，不如思考如何与 AI 共舞。</strong></p>
-
-      <h2>一、焦虑的来源</h2>
+      <h2 id="note-section-1" data-article-section="">一、焦虑的来源</h2>
       <p>我们的焦虑源于两个误解：</p>
       <ul>
         <li><strong>误解一：AI 会做所有事。</strong>事实是，AI 擅长的是模式识别和信息整合，但它缺乏真正的理解、判断力和创造力。</li>
@@ -86,14 +43,14 @@
       </ul>
       <p>想通这两点之后，我的心态从焦虑变成了好奇——我开始每天花一小时探索各种 AI 工具，从 ChatGPT 到 Claude，从 Midjourney 到 Copilot。</p>
 
-      <h2>二、四个应对策略</h2>
+      <h2 id="note-section-2" data-article-section="">二、四个应对策略</h2>
 
       <h3>1. 保持好奇心，持续学习</h3>
       <p>AI 时代变化太快，唯一不变的就是变化本身。我给自己定了一个小目标：<strong>每周至少学习一个新工具或新概念。</strong>不需要精通，只需要了解它能做什么、不能做什么。这样当实际需求出现时，你就知道用什么工具来解决。</p>
 
       <div class="highlight-box">
-        <p class="text-sm font-medium text-primary mb-1">💡 我的做法</p>
-        <p class="text-sm">每周五下午，花 30 分钟浏览 Product Hunt、GitHub Trending 或少数派的 AI 相关文章，发现有趣的新工具就记录下来。一个月下来，你会惊讶于自己积累的工具库。</p>
+        <p>💡 我的做法</p>
+        <p>每周五下午，花 30 分钟浏览 Product Hunt、GitHub Trending 或少数派的 AI 相关文章，发现有趣的新工具就记录下来。一个月下来，你会惊讶于自己积累的工具库。</p>
       </div>
 
       <h3>2. 深耕垂直领域</h3>
@@ -112,7 +69,7 @@
       </ul>
       <p>记住一个原则：<strong>AI 负责"快"，你负责"好"。</strong></p>
 
-      <h2>三、我的日常 AI 工作流</h2>
+      <h2 id="note-section-3" data-article-section="">三、我的日常 AI 工作流</h2>
       <p>最后分享一下我现在的日常 AI 工作流，供你参考：</p>
       <ul>
         <li><strong>早晨：</strong>用 ChatGPT 整理昨天的会议记录，生成待办清单</li>
@@ -126,39 +83,7 @@
       <p>希望我的思考能给你一些启发。如果你也在探索如何与 AI 共处，欢迎联系我交流。</p>
     </div>
 
-  <!-- Giscus 评论组件 — 需要你配置 GitHub 仓库后启用 -->
-  <div class="giscus">
-    <div class="text-center py-8 bg-gray-50 rounded-xl border border-gray-200">
-      <i class="fa fa-comments text-3xl text-gray-300 mb-3 block"></i>
-      <p class="text-gray-500 text-sm mb-2">期待你的想法</p>
-      <p class="text-gray-400 text-xs">配置 GitHub 仓库并启用 Giscus 后，这里将显示评论区</p>
-    </div>
-  </div>
-  </article>
-
-  <!-- 上下篇文章导航 -->
-  <div class="border-t border-gray-200">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex justify-between">
-      <a href="reading-method.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
-        <i class="fa fa-arrow-left"></i> 上一篇：阅读方法论
-      </a>
-      <a href="growth-mindset.html" class="text-gray-500 hover:text-primary transition-colors text-sm flex items-center gap-2">
-        下一篇：《终身成长》读后感 <i class="fa fa-arrow-right"></i>
-      </a>
-    </div>
-  </div>
-
-  <footer class="bg-dark text-white py-10">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <a href="../index.html" class="text-primary hover:underline text-sm inline-flex items-center gap-1">
-        <i class="fa fa-arrow-left"></i> 返回首页
-      </a>
-      <p class="text-gray-400 text-sm mt-4">&copy; 2026 诺诺的小博客空间</p>
-    </div>
-  </footer>
-
-  <button id="back-to-top" aria-label="回到顶部"><i class="fa fa-chevron-up"></i></button>
-
-  <script src="../js/common.js"></script>
+  <footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-05-22</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div><nav class="article-related" aria-label="相邻文章"><a href="reading-method.html">上一篇：阅读方法论</a><a href="growth-mindset.html">下一篇：《终身成长》读后感</a></nav></footer></div></div></article></main><button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button>
+  <script src="../article.js"></script>
 </body>
 </html>

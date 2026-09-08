@@ -1,195 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="文章归档 — 诺诺的小博客空间 | 按月份浏览所有文章" />
-  <meta property="og:title" content="文章归档 — 诺诺的小博客空间" />
-  <meta name="theme-color" content="#171815" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='28' font-size='28'%3E📝%3C/text%3E%3C/svg%3E" />
-  <title>文章归档 — 诺诺的小博客空间</title>
-  <link rel="stylesheet" href="css/common.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700&family=LXGW+WenKai:wght@300;400;700&display=swap" rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#b8860b', secondary: '#78716c', accent: '#c0392b',
-            neutral: '#faf8f5', dark: '#1c1917',
-            gold: '#b8860b', amber: '#92400e', vermilion: '#c0392b',
-            sage: '#556b55', 'slate-blue': '#5a6d8a',
-            ink: '#1c1917', 'ink-soft': '#44403c', 'ink-muted': '#78716c',
-            parchment: '#faf8f5', paper: '#f5f0eb', cream: '#fffef9'
-          },
-          fontFamily: {
-            sans: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
-            serif: ['"Noto Serif SC"', '"Crimson Pro"', 'Georgia', 'serif'],
-            ma: ['"LXGW WenKai"', '"Ma Shan Zheng"', 'serif'],
-            display: ['"Crimson Pro"', '"Noto Serif SC"', 'Georgia', 'serif']
-          },
-        },
-      },
-    }
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="诺诺的小博客空间文章归档，按时间浏览全部随笔与工作日志。">
+  <meta name="theme-color" content="#ffffff">
+  <title>文章归档 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
+  <script>(function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css"><link rel="stylesheet" href="archive.css">
+  <link rel="stylesheet" href="reading-refinement.css">
+<link rel="canonical" href="https://nuonuo.me/archive.html">
+<link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="feed.xml">
 </head>
-<body class="bg-neutral text-dark font-sans antialiased grain">
+<body class="archive-page">
+  <a class="skip-link" href="#archive-list">跳到归档列表</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="主要导航"><a href="index.html#writings">随笔</a><a href="index.html#projects">作品</a><a class="is-active" href="archive.html" aria-current="page">归档</a><a href="about.html">关于</a></nav>
+    <div class="header-actions"><button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button><a class="archive-home" href="index.html">首页 ↙</a></div>
+  </header>
 
-  <!-- 阅读进度条 -->
-  <div id="reading-progress"></div>
+  <main>
+    <header class="archive-hero">
+      <div class="archive-hero__copy"><p>NUO NOTES / COMPLETE INDEX</p><h1>文章归档</h1><div class="archive-rule"><span></span></div><p>这里收录工作日志、AI 实践、成长、职场与生活随笔。时间不是装饰，而是每一次真实记录留下的位置。</p></div>
+      <div class="archive-hero__number" aria-hidden="true">20</div>
+      <div class="archive-hero__meta"><span><b>20</b> 篇记录</span><span><b>2026</b> 当前年份</span><span><b>04—09</b> 收录月份</span></div>
+    </header>
 
-  <!-- ─── 导航栏 ─── -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-gray-200/50 transition-shadow duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <i class="fa fa-paper-plane text-primary text-xl"></i>
-          <span class="text-xl font-semibold">诺诺的小博客空间</span>
-        </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="index.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">首页</a>
-          <a href="#journey" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">个人经历</a>
-          <a href="#skills" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">技能专长</a>
-          <a href="#articles" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">随笔专栏</a>
-          <a href="archive.html" class="nav-link text-sm font-medium text-primary transition-colors active">归档</a>
-          <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">关于</a>
-          <a href="#contact" class="text-sm font-medium text-gray-500 hover:text-primary transition-colors">联系我</a>
-        </div>
-        <button id="menuBtn" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary rounded-lg hover:bg-gray-100 transition-colors" aria-label="菜单">
-          <i class="fa fa-bars text-xl"></i>
-        </button>
-      </div>
-    </div>
-    <div id="mobileMenu" class="hidden md:hidden glass border-t border-gray-200/50">
-      <div class="px-4 py-3 space-y-1">
-        <a href="index.html" class="block px-4 py-2.5 rounded-lg text-gray-700 hover:bg-gray-100 font-medium">首页</a>
-        <a href="#journey" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">个人经历</a>
-        <a href="#skills" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">技能专长</a>
-        <a href="#articles" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">随笔专栏</a>
-        <a href="archive.html" class="block px-4 py-2.5 rounded-lg text-primary bg-primary/5 font-medium">归档</a>
-        <a href="about.html" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">关于</a>
-        <a href="#contact" class="block px-4 py-2.5 rounded-lg text-gray-600 hover:bg-gray-100">联系我</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ─── 页面头部 ─── -->
-  <section class="relative pt-24 pb-16 overflow-hidden ink-bg">
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <div class="ink-particle"></div>
-    <canvas id="ink-canvas" class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1; opacity: 0.5;"></canvas>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full pointer-events-none" style="background: linear-gradient(180deg, transparent 10%, rgba(184,134,11,0.06) 40%, rgba(184,134,11,0.06) 60%, transparent 90%);"></div>
-    <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16">
-      <p class="uppercase tracking-[0.25em] text-[11px] mb-5" style="color: rgba(184,134,11,0.4); font-family: 'Crimson Pro', serif; font-weight: 400;">Archive</p>
-      <h1 class="font-bold leading-tight mb-5" style="font-size: clamp(2rem, 6vw, 3.5rem); color: rgba(255,255,255,0.92); letter-spacing: 0.03em;">
-        文章归档
-      </h1>
-      <p class="font-ma text-lg md:text-xl" style="color: rgba(212,175,55,0.6); letter-spacing: 0.1em;">
-        按时间线收录所有文章
-      </p>
-      <div class="brush-stroke mt-8"></div>
-    </div>
-  </section>
-
-  <!-- ─── 归档列表 ─── -->
-  <section class="py-20" style="background: var(--cream);">
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="card-editorial p-8 md:p-12 reveal">
-        <div class="archive-year">2026年8月</div>
-        <div class="archive-item">
-          <span class="archive-date">08-25</span>
-          <a href="posts/2026-08-25-ai-work-journal-reinstall.html" class="archive-title">我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来</a>
-        </div>
-        <div class="archive-item">
-          <span class="archive-date">08-05</span>
-          <a href="posts/2026-08-05-doubao-clean-resource-guide.html" class="archive-title">豆包生图、生视频怎么直接下载无印素材？豆包无印资源助手使用指南</a>
-        </div>
-        <div class="archive-item">
-          <span class="archive-date">08-05</span>
-          <a href="posts/2026-08-05-doubao-clean-resource.html" class="archive-title">我的 AI 工作日志 #005：把豆包无印资源做成一个真正能用的浏览器助手</a>
-        </div>
-
-        <div class="mt-12 archive-year">2026年7月</div>
-        <div class="archive-item">
-          <span class="archive-date">07-30</span>
-          <a href="posts/2026-07-30-growing-knowledge-base.html" class="archive-title">未来真正属于你的资产，是一座能持续生长的知识库</a>
-        </div>
-        <div class="archive-item">
-          <span class="archive-date">07-23</span>
-          <a href="posts/2026-07-23-ai-film-audio-notes.html" class="archive-title">我的 AI 工作日志 #003：短剧还在立骨架，声音开始落地</a>
-        </div>
-        <div class="archive-item">
-          <span class="archive-date">07-17</span>
-          <a href="posts/2026-07-17-deepwhite-skills.html" class="archive-title">我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能</a>
-        </div>
-        <div class="archive-item">
-          <span class="archive-date">07-16</span>
-          <a href="posts/2026-07-16-ai-work-journal.html" class="archive-title">我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频</a>
-        </div>
-
-        <div class="mt-12 archive-year">2026年5月</div>
-        <div class="archive-item">
-          <span class="archive-date">05-22</span>
-          <a href="posts/ai-growth.html" class="archive-title">AI时代的个人成长：从焦虑到共生</a>
-        </div>
-        <div class="archive-item">
-          <span class="archive-date">05-15</span>
-          <a href="posts/letter-to-31.html" class="archive-title">未来的寄托：写给 31 岁的自己</a>
-        </div>
-        <div class="archive-item">
-          <span class="archive-date">05-08</span>
-          <a href="posts/career-10years.html" class="archive-title">职场十年：那些谁也拿不走的底层能力</a>
-        </div>
-
-        <div class="mt-12 archive-year">2026年4月</div>
-        <div class="archive-item">
-          <span class="archive-date">04-28</span>
-          <a href="posts/ai-workflow.html" class="archive-title">我用了4年AI，总结出这4个普通人也能上手的高效工作流</a>
-        </div>
-        <div class="archive-item">
-          <span class="archive-date">04-20</span>
-          <a href="posts/learning-method.html" class="archive-title">我的极简学习方法论：从兴趣出发，在复盘中成长</a>
-        </div>
-        <div class="archive-item">
-          <span class="archive-date">04-12</span>
-          <a href="posts/build-blog-v2.html" class="archive-title">从零开始搭建个人博客：一个运营人的AI时代技术实践</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── 页脚 ─── -->
-  <footer class="text-white py-14">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="text-center md:text-left">
-          <div class="flex items-center justify-center md:justify-start gap-3">
-            <span class="text-lg font-semibold tracking-wide" style="color: rgba(255,255,255,0.9);">诺诺的小博客空间</span>
-          </div>
-          <p class="mt-3 text-sm tracking-wider" style="color: rgba(255,255,255,0.3); font-family: 'Crimson Pro', serif; font-style: italic;">记录生活，分享美好，终身学习</p>
-        </div>
-        <div class="flex items-center gap-6">
-          <a href="feed.xml" class="transition-colors hover:text-[var(--gold)]" style="color: rgba(255,255,255,0.3);" aria-label="RSS 订阅" target="_blank"><i class="fa fa-rss text-lg"></i></a>
-        </div>
-      </div>
-      <div class="mt-10 pt-8 text-center" style="border-top: 1px solid rgba(255,255,255,0.06);">
-        <p class="text-xs tracking-wider" style="color: rgba(255,255,255,0.2); font-family: 'Crimson Pro', serif;">&copy; 2026 诺诺的小博客空间 · Crafted with <span style="color: var(--vermilion);">&hearts;</span></p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- 回到顶部 -->
-  <button id="back-to-top" aria-label="回到顶部">
-    <i class="fa fa-chevron-up"></i>
-  </button>
-
-  <script src="js/common.js"></script>
+    <section class="archive-layout" id="archive-list">
+      <aside class="archive-aside"><p>INDEX BY MONTH</p><nav><a href="#september">09 / SEP</a><a href="#august">08 / AUG</a><a href="#july">07 / JUL</a><a href="#may">05 / MAY</a><a href="#april">04 / APR</a></nav><a class="archive-back" href="index.html#writings">← 返回首页随笔</a></aside>
+      <div class="archive-content"><section class="archive-month" id="september"><header><span>09</span><div><p>SEPTEMBER / 2026</p><h2>九月</h2></div><b>01 NOTES</b></header><div class="archive-entries"><a class="archive-entry archive-entry--featured" href="posts/2026-09-08-blog-redesign.html"><time datetime="2026-09-08"><b>08</b><span>SEP</span></time><div><p>博客改版 · 随笔 · AI 实践</p><h3>给博客换一个新样子，也把过去的记录重新安放</h3></div><i>↗</i></a></div></section><section class="archive-month" id="august"><header><span>08</span><div><p>AUGUST / 2026</p><h2>八月</h2></div><b>03 NOTES</b></header><div class="archive-entries"><a class="archive-entry" href="posts/2026-08-25-ai-work-journal-reinstall.html"><time datetime="2026-08-25"><b>25</b><span>AUG</span></time><div><p>工作日志 · AI · Pi Agent · Obsidian · 视频剪辑</p><h3>重装电脑后的两天，把工作重新接起来</h3></div><i>↗</i></a><a class="archive-entry" href="posts/2026-08-05-doubao-clean-resource-guide.html"><time datetime="2026-08-05"><b>05</b><span>AUG</span></time><div><p>教程 · 豆包 · AI工具 · 无印资源</p><h3>豆包生图、生视频，怎么直接下载无印素材？</h3></div><i>↗</i></a><a class="archive-entry" href="posts/2026-08-05-doubao-clean-resource.html"><time datetime="2026-08-05"><b>05</b><span>AUG</span></time><div><p>工作日志 · AI · 浏览器扩展 · 豆包</p><h3>把豆包无印资源，做成一个真正能用的浏览器助手</h3></div><i>↗</i></a></div></section><section class="archive-month" id="july"><header><span>07</span><div><p>JULY / 2026</p><h2>七月</h2></div><b>04 NOTES</b></header><div class="archive-entries"><a class="archive-entry" href="posts/2026-07-30-growing-knowledge-base.html"><time datetime="2026-07-30"><b>30</b><span>JUL</span></time><div><p>工作日志 · AI · 知识管理 · Obsidian</p><h3>未来真正属于你的资产，是能持续生长的知识库</h3></div><i>↗</i></a><a class="archive-entry" href="posts/2026-07-23-ai-film-audio-notes.html"><time datetime="2026-07-23"><b>23</b><span>JUL</span></time><div><p>工作日志 · AI影视 · 短剧 · 剧本 · 音频</p><h3>短剧还在立骨架，声音开始落地</h3></div><i>↗</i></a><a class="archive-entry" href="posts/2026-07-17-deepwhite-skills.html"><time datetime="2026-07-17"><b>17</b><span>JUL</span></time><div><p>AI · 技能 · 工作日志 · 影视</p><h3>从故事到画面：拆解 3 个 DeepWhite 影视技能</h3></div><i>↗</i></a><a class="archive-entry" href="posts/2026-07-16-ai-work-journal.html"><time datetime="2026-07-16"><b>16</b><span>JUL</span></time><div><p>AI · 技术 · 工作日志 · 视频</p><h3>我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频</h3></div><i>↗</i></a></div></section><section class="archive-month" id="may"><header><span>05</span><div><p>MAY / 2026</p><h2>五月</h2></div><b>06 NOTES</b></header><div class="archive-entries"><a class="archive-entry" href="posts/ai-era.html"><time datetime="2026-05-22"><b>22</b><span>MAY</span></time><div><p>AI · 个人成长 · 效率</p><h3>关于AI时代的个人成长思考</h3></div><i>↗</i></a><a class="archive-entry" href="posts/ai-growth.html"><time datetime="2026-05-22"><b>22</b><span>MAY</span></time><div><p>AI · 个人成长 · 认知</p><h3>AI时代的个人成长：从焦虑到共生</h3></div><i>↗</i></a><a class="archive-entry" href="posts/growth-mindset.html"><time datetime="2026-05-15"><b>15</b><span>MAY</span></time><div><p>读书 · 个人成长</p><h3>《终身成长》读后感</h3></div><i>↗</i></a><a class="archive-entry" href="posts/letter-to-31.html"><time datetime="2026-05-15"><b>15</b><span>MAY</span></time><div><p>随笔 · 人生 · 成长</p><h3>未来的寄托：写给 31 岁的自己</h3></div><i>↗</i></a><a class="archive-entry" href="posts/10y-experience.html"><time datetime="2026-05-08"><b>08</b><span>MAY</span></time><div><p>职场 · 个人成长</p><h3>十年职场经验总结</h3></div><i>↗</i></a><a class="archive-entry" href="posts/career-10years.html"><time datetime="2026-05-08"><b>08</b><span>MAY</span></time><div><p>职场 · 经验 · 成长</p><h3>职场十年：那些谁也拿不走的底层能力</h3></div><i>↗</i></a></div></section><section class="archive-month" id="april"><header><span>04</span><div><p>APRIL / 2026</p><h2>四月</h2></div><b>06 NOTES</b></header><div class="archive-entries"><a class="archive-entry" href="posts/ai-tools.html"><time datetime="2026-04-28"><b>28</b><span>APR</span></time><div><p>AI · 效率</p><h3>如何用AI工具提升工作效率300%</h3></div><i>↗</i></a><a class="archive-entry" href="posts/ai-workflow.html"><time datetime="2026-04-28"><b>28</b><span>APR</span></time><div><p>AI · 效率 · 工作流</p><h3>我用了4年AI，总结出这4个普通人也能上手的高效工作流</h3></div><i>↗</i></a><a class="archive-entry" href="posts/learning-method.html"><time datetime="2026-04-20"><b>20</b><span>APR</span></time><div><p>学习 · 方法论 · 成长</p><h3>我的极简学习方法论：从兴趣出发，在复盘中成长</h3></div><i>↗</i></a><a class="archive-entry" href="posts/reading-method.html"><time datetime="2026-04-20"><b>20</b><span>APR</span></time><div><p>读书 · 效率</p><h3>我的阅读方法论：一年50本书的秘密</h3></div><i>↗</i></a><a class="archive-entry" href="posts/build-blog-v2.html"><time datetime="2026-04-12"><b>12</b><span>APR</span></time><div><p>技术 · 博客 · AI实践</p><h3>从零开始搭建个人博客：一个运营人的AI时代技术实践</h3></div><i>↗</i></a><a class="archive-entry" href="posts/build-blog.html"><time datetime="2026-04-12"><b>12</b><span>APR</span></time><div><p>技术 · 效率</p><h3>从零搭建个人博客：运营人的技术实践</h3></div><i>↗</i></a></div></section></div></section>
+  </main>
+  <footer class="archive-footer"><strong>NUO NOTES</strong><p>记录仍在继续。下一篇文章，也会回到这里。</p><a href="index.html">返回首页 →</a></footer>
+  <button class="article-top" type="button" data-back-top aria-label="回到页面顶部">↑</button>
+  <script src="archive.js"></script>
 </body>
 </html>
