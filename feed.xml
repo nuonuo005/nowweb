@@ -4,9 +4,31 @@
     <link>https://nuonuo.me/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 08 Sep 2026 10:48:09 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 26 Sep 2026 12:00:00 +0800</lastBuildDate>
     <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
 
+
+    <item>
+      <title>海外最近很火的 Muse，到底是什么？普通人能拿它做什么？</title>
+      <link>https://nuonuo.me/posts/2026-09-26-muse.html</link>
+      <description>最近海外 AI 圈讨论得很热的 Muse，是 Meta 推出的个人 AI Agent。这篇用大白话讲清楚它是什么、能做什么，以及目前在哪里能用。</description>
+      <pubDate>Sat, 26 Sep 2026 12:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-09-26-muse.html</guid>
+    </item>
+    <item>
+      <title>X 上最近在热什么：Jev 是个模型，到底干什么？</title>
+      <link>https://nuonuo.me/posts/2026-09-19-jev-typesafe-ai.html</link>
+      <description>Jev 是 TypeSafe AI 发布的判断模型：不做长篇回答，而是给出带概率和置信度的判断。</description>
+      <pubDate>Sat, 19 Sep 2026 12:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-09-19-jev-typesafe-ai.html</guid>
+    </item>
+    <item>
+      <title>我用 Codex 从零到一，自动剪出了一条 2 分 54 秒的知识视频</title>
+      <link>https://nuonuo.me/posts/2026-09-14-codex-video.html</link>
+      <description>我把一篇自己写好的口播稿、已有的 IP 形象和本人授权音色交给 Codex，让它完成配音、字幕对齐、分镜、动效和渲染。</description>
+      <pubDate>Mon, 14 Sep 2026 12:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-09-14-codex-video.html</guid>
+    </item>
     <item><title>给博客换一个新样子，也把过去的记录重新安放</title><link>https://nuonuo.me/posts/2026-09-08-blog-redesign.html</link><description>从首页 Demo 到整站更新：统一随笔、归档、关于与作品页面，调整阅读排版和手机体验，也为过去的记录保留原来的位置。</description><pubDate>Tue, 08 Sep 2026 10:48:09 +0800</pubDate><guid>https://nuonuo.me/posts/2026-09-08-blog-redesign.html</guid></item><item>
       <title>我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来</title>
       <link>https://nuonuo.me/posts/2026-08-25-ai-work-journal-reinstall.html</link>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jev 是 TypeSafe AI 发布的判断模型：不做长篇回答，而是给出带概率和置信度的判断。">
+  <meta name="theme-color" content="#ffffff">
+  <title>X 上最近在热什么：Jev 是个模型，到底干什么？ · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
+  <script>(function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+  <link rel="stylesheet" href="../article-content.css">
+  <link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
+  <link rel="canonical" href="https://nuonuo.me/posts/2026-09-19-jev-typesafe-ai.html">
+</head>
+<body class="article-page">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions"><button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button><a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a></div>
+  </header>
+  <main><article data-tags='["AI","Jev","模型观察"]'>
+    <header class="article-hero migrated-hero article-hero--text"><div class="article-hero__grid"><div class="article-hero__copy"><a class="article-back" href="../archive.html">← 返回文章归档</a><p class="article-kicker">NUO NOTES / 随笔</p><h1>X 上最近在热什么：Jev 是个模型，到底干什么？</h1><p>Jev 是 TypeSafe AI 发布的判断模型：不做长篇回答，而是给出带概率和置信度的判断。</p><div class="article-meta"><time datetime="2026-09-19">2026-09-19</time><span>约 5 分钟</span></div><div class="article-tags"><span>AI</span><span>Jev</span><span>模型观察</span></div></div></div></header>
+    <div class="article-layout"><aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#trend" data-toc>一、先说热点：X 最近在聊 Jev</a><a href="#what" data-toc>二、一句话：Jev 是什么</a><a href="#example" data-toc>三、小白例子：它到底在干什么？</a><a href="#usage" data-toc>四、它怎么用、在哪用</a><a href="#why" data-toc>五、为什么这件事值得盯</a><a href="#takeaway" data-toc>六、带走一句</a></nav></aside><div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
+<p><img loading="lazy" decoding="async" src="../assets/articles/2026-09-19-jev/cover.png" alt="Jev 模型文章配图" /></p>
+<hr>
+<h2 id="trend" data-article-section>一、先说热点：X 最近在聊 Jev</h2>
+<p>这几天刷 X，AI 圈里反复冒出来的一个名字是 <strong>Jev</strong>（有人听成 Dev、GVE、jve，其实是同一个东西）。</p>
+<p>它不是又一个「更会聊天」的新产品故事。大家吵的点很集中：</p>
+<ul>
+<li><strong>它是什么</strong>：TypeSafe AI 发布的一个 <strong>AI 模型（model）</strong>，官方归类叫 <strong>System One</strong></li>
+<li><strong>它干什么</strong>：不做长篇回答；做「带概率的判断」——有多确定、有多不确定</li>
+<li><strong>谁带的节奏</strong>：创始人 Diogo Almeida（前 OpenAI）自己发线讲取舍，浏览量到了百万级</li>
+<li><strong>旁边还有两拨人</strong>：一拨在跟开源复刻（比如 Bespoke Nimble）；一拨在实测「所谓校准概率到底准不准」</li>
+</ul>
+<p>所以热点一句话：</p>
+<blockquote>
+<p><strong>X 最近在热的是一个叫 Jev 的模型——专门回答「确定还是不确定」，不是陪你聊天的那种。</strong></p>
+</blockquote>
+<p>相关帖可以点开看：</p>
+<ul>
+<li><a href="https://x.com/CompleteSkeptic/status/2099925684256899543" target="_blank" rel="noopener noreferrer">创始人讲取舍</a></li>
+<li><a href="https://x.com/_odedf/status/2099973620030431304" target="_blank" rel="noopener noreferrer">开发者一句话理解</a></li>
+<li><a href="https://x.com/madiator/status/2100990591215783946" target="_blank" rel="noopener noreferrer">开源对打</a></li>
+<li><a href="https://x.com/yibie/status/2100492523453993218" target="_blank" rel="noopener noreferrer">校准质疑</a></li>
+</ul>
+<hr />
+<h2 id="what" data-article-section>二、一句话：Jev 是什么</h2>
+<p><strong>Jev 是一个做「判断」的 AI 模型，不是聊天机器人。</strong></p>
+<p>英文关键术语可以记这两个：</p>
+<ul>
+<li><strong>概率 / Probability</strong>：它认为某个答案有多可能</li>
+<li><strong>置信度 / Confidence</strong>：它自己这次有多笃定（越尖越稳，越散越该犹豫）</li>
+</ul>
+<p>你给它一段现场情况，再问几个「封闭式问题」。<br />
+它不写小作文，直接吐结果：是/否、选哪个、打几分——并且带上把握大小。</p>
+<hr />
+<h2 id="example" data-article-section>三、小白例子：它到底在干什么？</h2>
+<p>别管架构了。想一个客服场景就够。</p>
+<p>顾客发来一封邮件：</p>
+<blockquote>
+<p>「我被扣了两次款，发票号 INV-44921，请处理。」</p>
+</blockquote>
+<p>人肉客服会想三件事：</p>
+<ol>
+<li>要不要退款？</li>
+<li>该进账单组还是技术组？</li>
+<li>这次判断靠不靠谱，能不能自动处理？</li>
+</ol>
+<p><strong>丢给普通聊天模型</strong>，它可能写一段很礼貌的回复，听起来很懂。<br />
+但软件真正要的，不是这段话——是三个能执行的开关。</p>
+<p><strong>丢给 Jev</strong>，更像这样（示意）：</p>
+<div class="article-table-scroll"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>它可能返回</th>
+<th>人话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>要不要退款？</td>
+<td>是，概率 0.91</td>
+<td>九成像要退</td>
+</tr>
+<tr>
+<td>进哪个队列？</td>
+<td>Billing 0.87</td>
+<td>更像账单问题</td>
+</tr>
+<tr>
+<td>这次有多有把握？</td>
+<td>confidence 0.84</td>
+<td>比较稳，可以考虑自动走</td>
+</tr>
+</tbody>
+</table></div>
+<p>然后代码很好写：</p>
+<ul>
+<li>把握高 → 系统自动分流 / 自动退</li>
+<li>把握低 → 转人工，别硬装懂</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="../assets/articles/2026-09-19-jev/example.png" alt="小白例子：工单进，判断出" /></p>
+<p>再换成别的场景也一样：</p>
+<ul>
+<li>Agent 要不要调用「删数据」工具？没把握就拦住</li>
+<li>内容审核查不查？确定的自动过，不确定的进人工</li>
+<li>给别的大模型「阅卷」：它写完了，Jev 来判要不要放行</li>
+</ul>
+<p><strong>所以 Jev 干的事，用人话讲就是：</strong></p>
+<blockquote>
+<p>在一堆「要不要自动做」的关口，替你说清楚——这次有几成把握；没把握就别硬冲。</p>
+</blockquote>
+<hr />
+<h2 id="usage" data-article-section>四、它怎么用、在哪用</h2>
+<h3 id="how" data-article-section>怎么用（概念三步）</h3>
+<ol>
+<li>准备 <strong>状态 / State</strong>：邮件、工单、日志、对话……</li>
+<li>预先写好 <strong>问题类型</strong>：是/否（Boolean）、单选（Choice）、打分（Score）</li>
+<li>一次调用拿回概率和置信度，再用阈值决定「自动」还是「转人」</li>
+</ol>
+<h3 id="where" data-article-section>在哪用</h3>
+<ul>
+<li><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noopener noreferrer">官网介绍</a></li>
+<li><a href="https://docs.typesafe.ai/" target="_blank" rel="noopener noreferrer">文档</a></li>
+<li>Vercel AI Gateway 模型名：<code>typesafe-ai/jev</code><br />
+<a href="https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway" target="_blank" rel="noopener noreferrer">Vercel AI Gateway 更新说明</a></li>
+</ul>
+<p>适合：客服分流、风控打分、Agent 安全门、审核预筛。<br />
+不适合：写文案、写代码、闲聊——那些还是交给聊天大模型。</p>
+<hr />
+<h2 id="why" data-article-section>五、为什么这件事值得盯</h2>
+<p>过去两年大家默认：<strong>更强 AI = 更会写。</strong></p>
+<p>Jev 提醒另一面：<strong>很多软件不需要作家，需要裁判。</strong><br />
+裁判的价值是——没把握时敢说没把握。这样自动化才接得进真业务。</p>
+<p>X 上又有开源跟进、又有校准质疑，说明这个品类开始能打、也能验，不只是热搜名词。</p>
+<hr />
+<h2 id="takeaway" data-article-section>六、带走一句</h2>
+<p><strong>Jev = X 上最近在热的一个「判断模型」：不陪聊，只告诉你这次有多确定、多不确定。</strong></p>
+    </div><footer class="article-end"><span>END OF NOTE</span><p>发布于 2026-09-19 · 诺诺</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div></footer></div></div>
+  </article></main>
+  <button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button><script src="../article.js"></script>
+</body>
+</html>
