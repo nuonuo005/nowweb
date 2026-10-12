@@ -1,0 +1,18 @@
+/* Keep the work itself close to the title on video articles. */
+.video-showcase .article-hero { min-height: 0; padding: 28px 24px 30px; }
+.video-showcase .article-hero__copy { max-width: 920px; }
+.video-showcase .article-back { margin-bottom: 14px; }
+.video-showcase .article-kicker { margin-bottom: 10px; }
+.video-showcase .article-hero h1 { font-size: clamp(27px, 3vw, 38px); line-height: 1.45; }
+.video-showcase .article-deck { max-width: 850px; margin-top: 12px; font-size: 16px; line-height: 1.8; }
+.video-showcase .article-meta { margin-top: 14px; }
+.video-showcase .article-tags { margin-top: 10px; }
+.showcase-player { width: min(100%, 800px); margin: 24px auto 0; scroll-margin-top: calc(var(--header-h) + 20px); }
+.showcase-player video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #10151a; }
+.showcase-player figcaption { margin-top: 10px; color: var(--secondary); font: 13px/1.8 sans-serif; }
+.video-showcase .article-layout { padding-top: 38px; }
+@media (max-width: 560px) {
+  .video-showcase .article-hero { padding: 24px 17px; }
+  .video-showcase .article-tags { font-size: 12px; }
+  .showcase-player { margin-top: 18px; }
+}

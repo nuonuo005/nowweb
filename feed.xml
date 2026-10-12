@@ -4,10 +4,31 @@
     <link>https://nuonuo.me/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Sep 2026 12:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 12:00:00 +0800</lastBuildDate>
     <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>白板讲解视频：从知识科普到工具教学</title>
+      <link>https://nuonuo.me/posts/2026-10-12-whiteboard-si-video.html</link>
+      <description>观看两条完整视频：AI 概念讲解与打开网页做歌词 PV。看看白板怎样用于知识科普、工具介绍和操作教学，以及保留豆包刘飞配音的成片效果。</description>
+      <pubDate>Mon, 12 Oct 2026 12:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-10-12-whiteboard-si-video.html</guid>
+    </item>
+    <item>
+      <title>商业调查视频样片：把房贷贴息与现房改革讲清楚</title>
+      <link>https://nuonuo.me/posts/2026-10-11-mortgage-investigation-video.html</link>
+      <description>观看约 30 秒商业调查视频样片，了解长片的主题与受众、AI 如何寻找素材和参与制作，以及豆包刘飞配音、文字动画与可拓展的领域。</description>
+      <pubDate>Sun, 11 Oct 2026 12:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-10-11-mortgage-investigation-video.html</guid>
+    </item>
 
 
+    <item>
+      <title>我用 AI 做视频：从一个想法，到一支短片</title>
+      <link>https://nuonuo.me/posts/2026-09-26-aigc-video-creation.html</link>
+      <description>四支 AIGC 作品：情绪 MV、虚拟人物演唱与火柴人故事。记录我已有的制作能力、从剧本到分镜和资产规划的技能，以及实践中的经验。</description>
+      <pubDate>Sat, 26 Sep 2026 12:00:00 +0800</pubDate>
+      <guid>https://nuonuo.me/posts/2026-09-26-aigc-video-creation.html</guid>
+    </item>
     <item>
       <title>海外最近很火的 Muse，到底是什么？普通人能拿它做什么？</title>
       <link>https://nuonuo.me/posts/2026-09-26-muse.html</link>

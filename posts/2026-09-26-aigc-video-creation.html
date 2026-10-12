@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="四支 AIGC 作品：情绪 MV、虚拟人物演唱与火柴人故事。记录我已有的制作能力、从剧本到分镜和资产规划的技能，以及实践中的经验。">
+  <meta name="theme-color" content="#ffffff">
+  <title>我用 AI 做视频：从一个想法，到一支短片 · NUO NOTES</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='3'%20y='3'%20width='26'%20height='26'%20fill='white'%20stroke='%232457d6'/%3E%3Ctext%20x='8'%20y='24'%20font-size='22'%20font-family='serif'%20fill='%232457d6'%3EN%3C/text%3E%3C/svg%3E">
+  <script>(function(){var t=localStorage.getItem('nuo-demo-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=LXGW+WenKai:wght@400;700&amp;family=Noto+Serif+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../reading-refinement.css">
+  <link rel="stylesheet" href="../article-content.css">
+  <link rel="stylesheet" href="../video-showcase.css">
+  <link rel="alternate" type="application/rss+xml" title="诺诺的小博客空间" href="../feed.xml">
+  <link rel="canonical" href="https://nuonuo.me/posts/2026-09-26-aigc-video-creation.html">
+</head>
+<body class="article-page video-showcase">
+  <a class="skip-link" href="#article-body">跳到正文</a>
+  <div class="article-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header article-header" data-header>
+    <a class="brand" href="../index.html" aria-label="返回 NUO NOTES 首页"><span class="brand-mark">N</span><span><strong>诺诺的小博客空间</strong><small>NUO NOTES</small></span></a>
+    <nav class="desktop-nav" aria-label="文章导航"><a class="is-active" href="../index.html#writings">随笔</a><a href="../index.html#projects">作品</a><a href="../archive.html">归档</a><a href="../about.html">关于</a></nav>
+    <div class="header-actions"><button class="icon-button" type="button" data-theme-toggle aria-label="切换深浅主题"><svg class="sun" viewbox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon" viewbox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.3 8.3 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg></button><a class="article-close" href="../index.html#writings" aria-label="返回随笔列表">返回 <span>↙</span></a></div>
+  </header>
+  <main><article data-tags='["AIGC","AI 视频","创作实践"]'>
+    <header class="article-hero migrated-hero article-hero--text">
+      <div class="article-hero__grid"><div class="article-hero__copy">
+        <a class="article-back" href="../archive.html">← 返回文章归档</a>
+        <p class="article-kicker">NUO NOTES / AIGC 创作</p>
+        <h1>我用 AI 做视频：从一个想法，到一支短片</h1>
+        <p class="article-deck">情绪 MV、虚拟人物演唱和火柴人故事，是我已经做过的几种尝试。把作品放在这里，也聊聊从剧本、分镜到资产规划，我现在能做些什么。</p>
+        <div class="article-meta"><time datetime="2026-09-26">2026-09-26</time><span>阅读约 7 分钟</span></div>
+        <div class="article-tags"><span>AIGC</span><span>AI 视频</span><span>创作实践</span></div>
+      </div></div>
+      <figure class="showcase-player">
+  <video controls playsinline preload="metadata" poster="../assets/articles/2026-09-26-aigc-video-creation/campus-mv.jpg" width="1344" height="768" style="aspect-ratio:1344/768" aria-label="校园夕阳 · 情绪 MV">
+    <source src="../assets/articles/2026-09-26-aigc-video-creation/campus-mv.mp4" type="video/mp4">
+    你的浏览器暂不支持视频播放，<a href="../assets/articles/2026-09-26-aigc-video-creation/campus-mv.mp4">打开视频</a>。
+  </video>
+  <figcaption>校园夕阳 · 情绪 MV · 完整成片 · 约 16 秒。 <a href="../assets/articles/2026-09-26-aigc-video-creation/campus-mv.mp4">单独打开视频 ↗</a></figcaption>
+</figure>
+    </header>
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="文章目录"><p>CONTENTS</p><nav><a href="#music" data-toc>用音乐和画面留下一种情绪</a><a href="#character" data-toc>让虚拟人物成为主角</a><a href="#story" data-toc>把一个观点讲成故事</a><a href="#workflow" data-toc>从剧本、分镜到资产规划</a><a href="#lessons" data-toc>做过之后，更在意什么</a><a href="#next" data-toc>暂时停下，留下继续做的基础</a></nav></aside>
+      <div class="article-prose migrated-prose" id="article-body"><div id="migrated-content" class="migrated-content">
+<p>我做过几支 AI 视频：有校园夕阳里的情绪 MV，有草地和蓝天下的音乐片段，有古风人物面对镜头演唱，也有用火柴人讲述的寓言故事。</p>
+<p>它们的完成度各有不同，但已经让我能把几种想法做成看得见的作品。音乐可以有自己的画面，虚拟人物可以成为主角，一个抽象观点也可以变成有起因、有转折的小故事。</p>
+<h2 id="music" data-article-section>用音乐和画面留下一种情绪</h2>
+<p>其中，我比较喜欢情绪 MV 这种形式。它可以用很短的时间留下一种感受。校园里的一次回眸、走廊里透进来的夕阳、手里透着光的水瓶，放在一起，是一段青春记忆；换成草地、树荫、花朵和远处的山，整支片子就变得松弛了。</p>
+<p>这类视频适合歌曲片段、个人情绪表达，也可以作为品牌氛围短片的尝试方向。做过之后，我开始注意画面的搭配：人物近景用在哪里，什么时候需要一个远景，哪些细节值得单独留一个镜头。音乐也要尽早考虑，镜头的停留和切换会影响情绪，等画面全部做好再找音乐，常常还得重新调整。</p>
+<figure class="showcase-player">
+  <video controls playsinline preload="none" poster="../assets/articles/2026-09-26-aigc-video-creation/nature-mv.jpg" width="2688" height="1536" style="aspect-ratio:2688/1536" aria-label="草地与蓝天 · 情绪 MV">
+    <source src="../assets/articles/2026-09-26-aigc-video-creation/nature-mv.mp4" type="video/mp4">
+    你的浏览器暂不支持视频播放，<a href="../assets/articles/2026-09-26-aigc-video-creation/nature-mv.mp4">打开视频</a>。
+  </video>
+  <figcaption>草地与蓝天 · 情绪 MV · 完整成片 · 约 14 秒。 <a href="../assets/articles/2026-09-26-aigc-video-creation/nature-mv.mp4">单独打开视频 ↗</a></figcaption>
+</figure>
+<h2 id="character" data-article-section>让虚拟人物成为主角</h2>
+<p>人物演唱是另一种尝试。我做过古风女性角色面对镜头唱歌的片段，配合表情、嘴部动作和歌词展示。这种形式可以用于虚拟歌手、角色主题视频和歌曲视觉化。它对人物状态的要求更高：脸是否稳定，眼神是否自然，嘴部动作和声音是否配合，观众会一直看着。现在我已经能做出这样的片段，更细的表演和音画配合，还需要继续打磨。</p>
+<figure class="showcase-player">
+  <video controls playsinline preload="none" poster="../assets/articles/2026-09-26-aigc-video-creation/character-singing.jpg" width="1344" height="768" style="aspect-ratio:1344/768" aria-label="古风人物演唱">
+    <source src="../assets/articles/2026-09-26-aigc-video-creation/character-singing.mp4" type="video/mp4">
+    你的浏览器暂不支持视频播放，<a href="../assets/articles/2026-09-26-aigc-video-creation/character-singing.mp4">打开视频</a>。
+  </video>
+  <figcaption>古风人物演唱 · 完整成片 · 约 19 秒。 <a href="../assets/articles/2026-09-26-aigc-video-creation/character-singing.mp4">单独打开视频 ↗</a></figcaption>
+</figure>
+<h2 id="story" data-article-section>把一个观点讲成故事</h2>
+<p>火柴人故事则让我练习了怎样把观点讲成一个事件。《影子里的苹果》里，角色把别人苹果的巨大影子当成更大的价值，丢下自己的苹果去追逐，最后发现到手的苹果并没有更好。比较、嫉妒和误判，都落在了具体的行动里。</p>
+<p>这类短片可以用来讲寓言、生活观察和心理话题，也适合给一段观点配一个容易理解的故事。我学到的一点是，观点先要找到能被看见的东西。角色要争什么、为什么做出选择、这个选择带来什么后果，想清楚这些，才有镜头可拍。</p>
+<figure class="showcase-player">
+  <video controls playsinline preload="none" poster="../assets/articles/2026-09-26-aigc-video-creation/apple-in-the-shadow.jpg" width="640" height="360" style="aspect-ratio:640/360" aria-label="《影子里的苹果》 · 火柴人故事">
+    <source src="../assets/articles/2026-09-26-aigc-video-creation/apple-in-the-shadow.mp4" type="video/mp4">
+    你的浏览器暂不支持视频播放，<a href="../assets/articles/2026-09-26-aigc-video-creation/apple-in-the-shadow.mp4">打开视频</a>。
+  </video>
+  <figcaption>《影子里的苹果》 · 火柴人故事 · 完整成片 · 约 1 分钟。 <a href="../assets/articles/2026-09-26-aigc-video-creation/apple-in-the-shadow.mp4">单独打开视频 ↗</a></figcaption>
+</figure>
+<h2 id="workflow" data-article-section>从剧本、分镜到资产规划</h2>
+<p>为了继续做这些内容，我在电脑里整理了一组 AIGC 制作技能。从故事编写和改编，到分镜、角色、场景与道具规划，再到动态镜头和后期，都有相应的工具协助。接下来即使做更复杂的叙事，也有一套准备方法可以沿用。</p>
+<p>比如拿到一段文案、一个故事梗概，或者一篇需要改编的文字，我可以先用剧本改编技能整理主线，确定人物的目标、冲突和转折，再拆成场次。心理描写需要改成动作或反应，解释性的段落需要找到能展示它的物件和场景。做系列内容时，还可以规划分集，让每集有自己的推进和停顿，而不是把文字按长度截开。</p>
+<p>剧本确定之后，分镜技能可以帮助我把它变成镜头表。每个镜头需要说明拍谁、从哪里拍、人物做什么、持续多久、台词属于谁，以及怎样接到下一镜。一个人发现异常，可以先拍他看到的东西，再拍他的反应；一段动作太复杂，就拆开安排。分镜做得清楚，生成时才知道要什么，剪辑时也知道这些片段该放在哪里。</p>
+<p>资产规划是我现在更重视的一部分。</p>
+<p>角色资产技能可以帮助整理人物的外形特征、服装、多角度参考和表情需求。场景道具技能则负责地点、空间关系、灯光状态和关键物件。准备一个反复出现的房间，要知道门窗在哪里、人物从哪边进出；准备一个会被拿起或损坏的道具，要明确它的形状、尺寸和前后状态。</p>
+<p>这些资料会变成角色卡、参考图需求和资产清单。哪些人物与场景会多次出现，哪些镜头需要新资产，哪些可以复用，都能提前列出来。有了这个安排，同一个角色和地点在不同镜头里更容易保持一致，预算也可以优先留给值得做的画面。</p>
+<p>我电脑里还有视觉导演、动态镜头导演和项目圣经这几个技能。视觉导演帮助确定全片的色彩、光线、材质和构图规则；动态镜头导演把分镜细化成动作过程，写清人物怎样动、摄影机怎样跟、镜头停在哪里。项目圣经可以理解成一份统一的设定档案，记录人物关系、服装、道具归属和剧情状态，做多场景或多集内容时方便核对。</p>
+<p>加上已有的 AI 视频制作流程，我可以把前期文稿、参考素材和镜头计划，接到画面生成、声音、字幕、剪辑与导出检查上。现阶段，已经跑通的短片和这些制作准备能力，是我继续创作的基础。更长、更复杂的作品，还要通过具体项目检验。</p>
+<h2 id="lessons" data-article-section>做过之后，更在意什么</h2>
+<p>做视频也改变了我看生成结果的方式。</p>
+<p>以前容易先看画面漂不漂亮，现在会多看几秒：人物的动作有没有接上，手里的东西有没有变化，前后镜头还是不是同一个人。之前一次舞蹈测试，生成结果能做出几个相似姿势，中间的手臂轨迹、脚步和重心却衔接不好。那次的复盘提醒我，动作本身做不顺，后期也很难补回来。</p>
+<p>我因此更愿意在生成前减少一个镜头里的任务。复杂动作拆开，关键人物先确定参考，重要场景先做一小段测试。模型和方法要根据镜头选择，发现某种效果做不稳，就调整方案。每次尝试留下具体的问题，比只记一句“效果不太好”有用。</p>
+<p>声音也一样。故事分段生成时，几个片段的音色和语气可能不统一。提示词里写“同一个讲述者”，并不能保证听感一致。需要连续讲述的内容，我会优先考虑一条完整的旁白，再让画面跟着声音组织。字幕则按意思断句，留出读完的时间，不能只看文字有没有放上去。</p>
+<p>这些经验让我越来越重视前期的选择。故事怎么讲、角色怎么定、资产怎么复用、声音怎样保留，都会影响后面要花多少时间返工。技能能帮我整理方案、补充细节、执行部分工作，最后还是要由我判断，成片有没有把想表达的东西说清楚。</p>
+<h2 id="next" data-article-section>暂时停下，留下继续做的基础</h2>
+<p>目前因为经费不足，我暂时停下了生成类视频的继续探索。反复生成和调整需要预算，有些镜头要试过才知道能不能用。我先把已有作品、技能和流程留下来，把踩过的坑记清楚。</p>
+<p>以后有条件继续，我想沿着音乐短片、虚拟人物和故事动画这些方向做下去，也试着把它们用于歌曲宣传、角色内容和系列短片。现在再开始一个项目，我会先写出它要讲什么，列好镜头和资产，再决定哪些地方值得花钱生成。</p>
+      </div><footer class="article-end"><span>END OF NOTE</span><p>写于 2026-09-26 · 诺诺</p><div><a href="../index.html#writings">← 返回随笔</a><a href="../archive.html">浏览归档 →</a></div></footer></div>
+    </div>
+  </article></main>
+  <button class="article-top" type="button" data-back-top aria-label="回到文章顶部">↑</button><script src="../article.js"></script>
+</body>
+</html>
