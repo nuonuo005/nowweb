@@ -1,157 +1,158 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>诺诺的小博客空间</title>
-    <link>https://nuonuo.me/</link>
+    <link>https://nuodve.xyz/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 12 Oct 2026 12:00:00 +0800</lastBuildDate>
-    <atom:link href="https://nuonuo.me/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Sat, 17 Oct 2026 12:00:00 +0800</lastBuildDate>
+    <atom:link href="https://nuodve.xyz/feed.xml" rel="self" type="application/rss+xml"/>
+    <item><title>简历之外，我能把什么事做成？</title><link>https://nuodve.xyz/posts/2026-10-17-beyond-my-resume.html</link><description>我正在找工作。把 AIGC 作品、90 天 62 条投稿和千万播放的实际数据放在一起，展开聊聊内容制作、AI Agent、数据分析与项目交付，以及我习惯怎样把一件事做成。</description><pubDate>Sat, 17 Oct 2026 12:00:00 +0800</pubDate><guid>https://nuodve.xyz/posts/2026-10-17-beyond-my-resume.html</guid></item>
     <item>
       <title>白板讲解视频：从知识科普到工具教学</title>
-      <link>https://nuonuo.me/posts/2026-10-12-whiteboard-si-video.html</link>
+      <link>https://nuodve.xyz/posts/2026-10-12-whiteboard-si-video.html</link>
       <description>观看两条完整视频：AI 概念讲解与打开网页做歌词 PV。看看白板怎样用于知识科普、工具介绍和操作教学，以及保留豆包刘飞配音的成片效果。</description>
       <pubDate>Mon, 12 Oct 2026 12:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-10-12-whiteboard-si-video.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-10-12-whiteboard-si-video.html</guid>
     </item>
     <item>
       <title>商业调查视频样片：把房贷贴息与现房改革讲清楚</title>
-      <link>https://nuonuo.me/posts/2026-10-11-mortgage-investigation-video.html</link>
+      <link>https://nuodve.xyz/posts/2026-10-11-mortgage-investigation-video.html</link>
       <description>观看约 30 秒商业调查视频样片，了解长片的主题与受众、AI 如何寻找素材和参与制作，以及豆包刘飞配音、文字动画与可拓展的领域。</description>
       <pubDate>Sun, 11 Oct 2026 12:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-10-11-mortgage-investigation-video.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-10-11-mortgage-investigation-video.html</guid>
     </item>
 
 
     <item>
       <title>我用 AI 做视频：从一个想法，到一支短片</title>
-      <link>https://nuonuo.me/posts/2026-09-26-aigc-video-creation.html</link>
+      <link>https://nuodve.xyz/posts/2026-09-26-aigc-video-creation.html</link>
       <description>四支 AIGC 作品：情绪 MV、虚拟人物演唱与火柴人故事。记录我已有的制作能力、从剧本到分镜和资产规划的技能，以及实践中的经验。</description>
       <pubDate>Sat, 26 Sep 2026 12:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-09-26-aigc-video-creation.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-09-26-aigc-video-creation.html</guid>
     </item>
     <item>
       <title>海外最近很火的 Muse，到底是什么？普通人能拿它做什么？</title>
-      <link>https://nuonuo.me/posts/2026-09-26-muse.html</link>
+      <link>https://nuodve.xyz/posts/2026-09-26-muse.html</link>
       <description>最近海外 AI 圈讨论得很热的 Muse，是 Meta 推出的个人 AI Agent。这篇用大白话讲清楚它是什么、能做什么，以及目前在哪里能用。</description>
       <pubDate>Sat, 26 Sep 2026 12:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-09-26-muse.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-09-26-muse.html</guid>
     </item>
     <item>
       <title>X 上最近在热什么：Jev 是个模型，到底干什么？</title>
-      <link>https://nuonuo.me/posts/2026-09-19-jev-typesafe-ai.html</link>
+      <link>https://nuodve.xyz/posts/2026-09-19-jev-typesafe-ai.html</link>
       <description>Jev 是 TypeSafe AI 发布的判断模型：不做长篇回答，而是给出带概率和置信度的判断。</description>
       <pubDate>Sat, 19 Sep 2026 12:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-09-19-jev-typesafe-ai.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-09-19-jev-typesafe-ai.html</guid>
     </item>
     <item>
       <title>我用 Codex 从零到一，自动剪出了一条 2 分 54 秒的知识视频</title>
-      <link>https://nuonuo.me/posts/2026-09-14-codex-video.html</link>
+      <link>https://nuodve.xyz/posts/2026-09-14-codex-video.html</link>
       <description>我把一篇自己写好的口播稿、已有的 IP 形象和本人授权音色交给 Codex，让它完成配音、字幕对齐、分镜、动效和渲染。</description>
       <pubDate>Mon, 14 Sep 2026 12:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-09-14-codex-video.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-09-14-codex-video.html</guid>
     </item>
-    <item><title>给博客换一个新样子，也把过去的记录重新安放</title><link>https://nuonuo.me/posts/2026-09-08-blog-redesign.html</link><description>从首页 Demo 到整站更新：统一随笔、归档、关于与作品页面，调整阅读排版和手机体验，也为过去的记录保留原来的位置。</description><pubDate>Tue, 08 Sep 2026 10:48:09 +0800</pubDate><guid>https://nuonuo.me/posts/2026-09-08-blog-redesign.html</guid></item><item>
+    <item><title>给博客换一个新样子，也把过去的记录重新安放</title><link>https://nuodve.xyz/posts/2026-09-08-blog-redesign.html</link><description>从首页 Demo 到整站更新：统一随笔、归档、关于与作品页面，调整阅读排版和手机体验，也为过去的记录保留原来的位置。</description><pubDate>Tue, 08 Sep 2026 10:48:09 +0800</pubDate><guid>https://nuodve.xyz/posts/2026-09-08-blog-redesign.html</guid></item><item>
       <title>我的 AI 工作日志 #007：重装电脑后的两天，把工作重新接起来</title>
-      <link>https://nuonuo.me/posts/2026-08-25-ai-work-journal-reinstall.html</link>
+      <link>https://nuodve.xyz/posts/2026-08-25-ai-work-journal-reinstall.html</link>
       <description>记录 Pi Agent、Obsidian 知识库恢复、口播剪辑问题和 H3 MV 首版生成：把能复用的成果留下，也把还没完成的缺口写清楚。</description>
       <pubDate>Tue, 25 Aug 2026 14:30:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-08-25-ai-work-journal-reinstall.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-08-25-ai-work-journal-reinstall.html</guid>
     </item>
 
     <item>
       <title>豆包生图、生视频怎么直接下载无印素材？豆包无印资源助手使用指南</title>
-      <link>https://nuonuo.me/posts/2026-08-05-doubao-clean-resource-guide.html</link>
+      <link>https://nuodve.xyz/posts/2026-08-05-doubao-clean-resource-guide.html</link>
       <description>安装一次，生成后打开资源面板，预览、截图、单独下载或批量保存豆包图片和视频；仅限私人、非商业使用。</description>
       <pubDate>Wed, 05 Aug 2026 23:40:57 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-08-05-doubao-clean-resource-guide.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-08-05-doubao-clean-resource-guide.html</guid>
     </item>
 
     <item>
       <title>我的 AI 工作日志 #005：把豆包无印资源做成一个真正能用的浏览器助手</title>
-      <link>https://nuonuo.me/posts/2026-08-05-doubao-clean-resource.html</link>
+      <link>https://nuodve.xyz/posts/2026-08-05-doubao-clean-resource.html</link>
       <description>从编译 DLL 取证、豆包响应解析到 Chrome/Edge 插件封装，记录资源发现、预览、批量下载和视频比例自适应。</description>
       <pubDate>Wed, 05 Aug 2026 23:21:02 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-08-05-doubao-clean-resource.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-08-05-doubao-clean-resource.html</guid>
     </item>
 
     <item>
       <title>未来真正属于你的资产，是一座能持续生长的知识库</title>
-      <link>https://nuonuo.me/posts/2026-07-30-growing-knowledge-base.html</link>
+      <link>https://nuodve.xyz/posts/2026-07-30-growing-knowledge-base.html</link>
       <description>从目录、飞书迁入、来源保留、主题索引到真实关系图谱，记录一座个人 AI 知识库如何搭建、如何持续生长。</description>
       <pubDate>Thu, 30 Jul 2026 22:25:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-07-30-growing-knowledge-base.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-07-30-growing-knowledge-base.html</guid>
     </item>
 
     <item>
       <title>我的 AI 工作日志 #003：短剧还在立骨架，声音开始落地</title>
-      <link>https://nuonuo.me/posts/2026-07-23-ai-film-audio-notes.html</link>
+      <link>https://nuodve.xyz/posts/2026-07-23-ai-film-audio-notes.html</link>
       <description>复盘短剧、剧本与音频生产的真实进度、未完成项与下一步制作计划：先完成一支能判断成败的 30—60 秒样片。</description>
       <pubDate>Thu, 23 Jul 2026 20:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-07-23-ai-film-audio-notes.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-07-23-ai-film-audio-notes.html</guid>
     </item>
 
     <item>
       <title>我的 AI 工作日志 #002：从故事到画面，拆解 3 个 DeepWhite 影视技能</title>
-      <link>https://nuonuo.me/posts/2026-07-17-deepwhite-skills.html</link>
+      <link>https://nuodve.xyz/posts/2026-07-17-deepwhite-skills.html</link>
       <description>详细梳理中文影视编剧、双语图像提示词与中文分镜三个技能，以及它们如何串成完整 AI 影视工作流。</description>
       <pubDate>Fri, 17 Jul 2026 23:40:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-07-17-deepwhite-skills.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-07-17-deepwhite-skills.html</guid>
     </item>
 
     <item>
       <title>我的 AI 工作日志 #001：语音转写修复、风格提取与剪纸视频</title>
-      <link>https://nuonuo.me/posts/2026-07-16-ai-work-journal.html</link>
+      <link>https://nuodve.xyz/posts/2026-07-16-ai-work-journal.html</link>
       <description>一天完成三个可复用成果：桌面语音转写工具 v1.3.0 修复、绛霞绮梦东方摄影风格提取、太原龙城 AI 剪纸视频。</description>
       <pubDate>Thu, 16 Jul 2026 22:30:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/2026-07-16-ai-work-journal.html</guid>
+      <guid>https://nuodve.xyz/posts/2026-07-16-ai-work-journal.html</guid>
     </item>
 
     <item>
       <title>AI时代的个人成长：从焦虑到共生</title>
-      <link>https://nuonuo.me/posts/ai-growth.html</link>
+      <link>https://nuodve.xyz/posts/ai-growth.html</link>
       <description>2022年底ChatGPT横空出世，我经历了从焦虑到从容的心路历程。分享四条应对AI时代的核心策略。</description>
       <pubDate>Fri, 22 May 2026 00:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/ai-growth.html</guid>
+      <guid>https://nuodve.xyz/posts/ai-growth.html</guid>
     </item>
 
     <item>
       <title>未来的寄托：写给 31 岁的自己</title>
-      <link>https://nuonuo.me/posts/letter-to-31.html</link>
+      <link>https://nuodve.xyz/posts/letter-to-31.html</link>
       <description>总说三十而立，可站在31岁的门槛上，我才发现成长从来都不是一瞬间的事。愿你遍历山河，仍觉人间值得。</description>
       <pubDate>Fri, 15 May 2026 00:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/letter-to-31.html</guid>
+      <guid>https://nuodve.xyz/posts/letter-to-31.html</guid>
     </item>
 
     <item>
       <title>职场十年：那些谁也拿不走的底层能力</title>
-      <link>https://nuonuo.me/posts/career-10years.html</link>
+      <link>https://nuodve.xyz/posts/career-10years.html</link>
       <description>十年间辗转三个行业、四家公司，真正决定职业天花板的是那些看不见的底层能力。</description>
       <pubDate>Fri, 08 May 2026 00:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/career-10years.html</guid>
+      <guid>https://nuodve.xyz/posts/career-10years.html</guid>
     </item>
 
     <item>
       <title>我用了4年AI，总结出这4个普通人也能上手的高效工作流</title>
-      <link>https://nuonuo.me/posts/ai-workflow.html</link>
+      <link>https://nuodve.xyz/posts/ai-workflow.html</link>
       <description>四年AI辅助工作总结，分享四个最实用的AI工作流：写作助手、数据分析、绘图、自动化。</description>
       <pubDate>Tue, 28 Apr 2026 00:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/ai-workflow.html</guid>
+      <guid>https://nuodve.xyz/posts/ai-workflow.html</guid>
     </item>
 
     <item>
       <title>我的极简学习方法论：从兴趣出发，在复盘中成长</title>
-      <link>https://nuonuo.me/posts/learning-method.html</link>
+      <link>https://nuodve.xyz/posts/learning-method.html</link>
       <description>学习方法论特别简单：多看多学。兴趣是最好的驱动力，复盘总结是从知识到认知的关键一步。</description>
       <pubDate>Mon, 20 Apr 2026 00:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/learning-method.html</guid>
+      <guid>https://nuodve.xyz/posts/learning-method.html</guid>
     </item>
 
     <item>
       <title>从零开始搭建个人博客：一个运营人的AI时代技术实践</title>
-      <link>https://nuonuo.me/posts/build-blog-v2.html</link>
+      <link>https://nuodve.xyz/posts/build-blog-v2.html</link>
       <description>一个完全不懂编程的运营人员，如何从零开始亲手搭建个人博客？在AI时代，不会写代码也能拥有自己的网站。</description>
       <pubDate>Sun, 12 Apr 2026 00:00:00 +0800</pubDate>
-      <guid>https://nuonuo.me/posts/build-blog-v2.html</guid>
+      <guid>https://nuodve.xyz/posts/build-blog-v2.html</guid>
     </item>
   </channel>
 </rss>
