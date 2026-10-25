@@ -4,8 +4,9 @@
     <link>https://nuodve.xyz/</link>
     <description>记录技术思考、阅读笔记与生活灵感</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 12:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 09:53:22 -0500</lastBuildDate>
     <atom:link href="https://nuodve.xyz/feed.xml" rel="self" type="application/rss+xml"/>
+    <item><title>这两天，我用 AI 把知识做成了几种不同的样子</title><link>https://nuodve.xyz/posts/2026-10-25-ai-video-styles.html</link><description>斗拱、二维码、推荐算法、苏轼，还有太原与宋朝的一天。把最近做的作品放在一起，记录我用 AI 搭建不同视频风格的尝试。</description><pubDate>Sun, 25 Oct 2026 09:53:22 -0500</pubDate><guid>https://nuodve.xyz/posts/2026-10-25-ai-video-styles.html</guid></item>
     <item><title>简历之外，我能把什么事做成？</title><link>https://nuodve.xyz/posts/2026-10-17-beyond-my-resume.html</link><description>我正在找工作。把 AIGC 作品、90 天 62 条投稿和千万播放的实际数据放在一起，展开聊聊内容制作、AI Agent、数据分析与项目交付，以及我习惯怎样把一件事做成。</description><pubDate>Sat, 17 Oct 2026 12:00:00 +0800</pubDate><guid>https://nuodve.xyz/posts/2026-10-17-beyond-my-resume.html</guid></item>
     <item>
       <title>白板讲解视频：从知识科普到工具教学</title>
